@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST || 'instagram-scraper-20251.p.rapidapi.com';
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 // ── GET /api/profile?username=xxx ─────────────────────────────────────────────
 app.get('/api/profile', async (req, res) => {
@@ -57,7 +57,7 @@ app.post('/api/analyze', async (req, res) => {
   const {
     full_name, username, specialty, city, biography,
     follower_count, likes, comments, frequency,
-    captions, observations, is_verified
+    captions, observations
   } = profile;
 
   const prompt = `Você é um especialista em marketing médico premium, com foco em dermatologistas e clínicas de alto padrão no Brasil.
@@ -150,22 +150,20 @@ REGRAS:
 - Pensar como uma agência premium (Dermabrand)`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-6',
-        max_tokens: 2000,
+        model: 'gpt-4o-mini',
         messages: [{ role: 'user', content: prompt }],
       }),
     });
 
     const data = await response.json();
-    const text = data.content?.map(b => b.text || '').join('') || '';
+    const text = data.choices?.[0]?.message?.content || '';
 
     if (!text) return res.status(500).json({ error: 'IA não retornou análise', detail: data });
 
