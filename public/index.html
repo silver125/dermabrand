@@ -199,10 +199,6 @@
       display: inline-block; width: 14px; height: 14px;
       background: #378ADD; border-radius: 50%; margin-left: 5px; vertical-align: middle;
     }
-    .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .metric { background: var(--bg-sec); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
-    .metric-val { font-size: 22px; font-weight: 600; color: var(--text); }
-    .metric-label { font-size: 11px; color: var(--text-sec); margin-top: 3px; }
 
     /* ── Report ── */
     .report-section { display: none; }
@@ -229,7 +225,6 @@
     footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text-sec); }
 
     @media (max-width: 600px) {
-      .metrics-row { grid-template-columns: repeat(2, 1fr); }
       .search-row { flex-direction: column; }
       .btn-primary { width: 100%; }
       .form-row { flex-direction: column; gap: 0; }
@@ -252,8 +247,8 @@
 <main>
 
   <div class="search-section">
-    <h1 class="search-title">Análise de perfil médico premium</h1>
-    <p class="search-sub">Cole o link do Instagram ou o @username para extrair dados da conta automaticamente.</p>
+    <h1 class="search-title">Análise médica de ponta a ponta</h1>
+    <p class="search-sub">Cole o link do Instagram para extrair dados. Em seguida, enriqueça os campos para uma análise profunda.</p>
     <div class="search-row">
       <input type="text" id="igInput" placeholder="@dra.anasouza ou instagram.com/dra.anasouza" />
       <button class="btn-primary" id="btnSearch" onclick="fetchProfileData()">Buscar Dados</button>
@@ -276,19 +271,34 @@
 
   <!-- Formulário de validação / complemento -->
   <div class="form-section" id="formSection">
-    <h2 class="form-title">Revise os dados de perfil</h2>
+    <h2 class="form-title">Dossiê Estratégico do Médico</h2>
     <p style="font-size: 13px; color: var(--text-sec); margin-top:-10px; margin-bottom: 1.2rem;">
-      Modifique qualquer campo e selecione os tipos de conteúdo aplicáveis para aumentar a precisão do relatório estratégico.
+      Preencha com exatidão os campos a seguir para obter o relatório Dermabrand focado em autoridade e conversão.
     </p>
 
+    <div class="form-row">
+      <div class="form-col">
+        <div class="form-group">
+          <label>Nome do Médico / Perfil</label>
+          <input type="text" id="fName" placeholder="Ex: Dra. Ana Souza" />
+        </div>
+      </div>
+      <div class="form-col">
+        <div class="form-group">
+          <label>Especialidade</label>
+          <input type="text" id="fSpecialty" placeholder="Ex: Dermatologista" />
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
-      <label>Nome do Médico / Perfil</label>
-      <input type="text" id="fName" placeholder="Ex: Dra. Ana Souza" />
+      <label>Cidade / Localização</label>
+      <input type="text" id="fCity" placeholder="Ex: São Paulo - SP" />
     </div>
     
     <div class="form-group">
       <label>Biografia do Perfil</label>
-      <textarea id="fBio" placeholder="Cole a bio atual para análise de impacto"></textarea>
+      <textarea id="fBio" placeholder="Cole a bio atual"></textarea>
     </div>
     
     <div class="form-row">
@@ -300,32 +310,45 @@
       </div>
       <div class="form-col">
         <div class="form-group">
-          <label>Seguindo</label>
-          <input type="number" id="fFollowing" />
+          <label>Média de Curtidas (Aprox)</label>
+          <input type="text" id="fLikes" placeholder="Ex: 300" />
         </div>
       </div>
       <div class="form-col">
         <div class="form-group">
-          <label>Posts Totals</label>
-          <input type="number" id="fPosts" />
+          <label>Média de Comentários (Aprox)</label>
+          <input type="text" id="fComments" placeholder="Ex: 15" />
         </div>
       </div>
     </div>
     
     <div class="form-group">
+      <label>Frequência de Posts</label>
+      <input type="text" id="fFrequency" placeholder="Ex: Todo dia; 3x na semana..." />
+    </div>
+
+    <div class="form-group">
+      <label>Exemplos de Legendas (Transcreva pequenos trechos)</label>
+      <textarea id="fCaptions" placeholder="A legenda foca em explicações técnicas ou emocionais para os pacientes?"></textarea>
+    </div>
+
+    <div class="form-group">
       <label>Tipos de Conteúdo Principal (clicáveis)</label>
       <div class="tags-container">
-         <div class="content-tag" onclick="toggleTag(this)">Bastidores da clínica</div>
+         <div class="content-tag" onclick="toggleTag(this)">Reels Educativos</div>
          <div class="content-tag" onclick="toggleTag(this)">Antes e Depois</div>
-         <div class="content-tag" onclick="toggleTag(this)">Casos Clínicos</div>
-         <div class="content-tag" onclick="toggleTag(this)">Reels Educativos (Dicas)</div>
-         <div class="content-tag" onclick="toggleTag(this)">Caixinhas de Perguntas</div>
-         <div class="content-tag" onclick="toggleTag(this)">Lifestyle/Pessoal</div>
-         <div class="content-tag" onclick="toggleTag(this)">Procedimentos/Cirurgias</div>
+         <div class="content-tag" onclick="toggleTag(this)">Lifestyle</div>
+         <div class="content-tag" onclick="toggleTag(this)">Bastidores / Clínica</div>
+         <div class="content-tag" onclick="toggleTag(this)">Técnico / Artigos</div>
       </div>
     </div>
 
-    <button class="btn-primary btn-large" id="btnAnalyze" onclick="generateReport()">Gerar relatório estratégico</button>
+    <div class="form-group">
+      <label>Observações Gerais</label>
+      <textarea id="fObservations" placeholder="O layout visual é poluído? Usa muitas fotos de banco de imagens? Usa cores coerentes?"></textarea>
+    </div>
+
+    <button class="btn-primary btn-large" id="btnAnalyze" onclick="generateReport()">Processar Análise Premium</button>
   </div>
 
   <div class="profile-card" id="profileCard">
@@ -337,12 +360,6 @@
         <div class="profile-cat" id="pCat"></div>
         <div class="profile-bio" id="pBio"></div>
       </div>
-    </div>
-    <div class="metrics-row">
-      <div class="metric"><div class="metric-val" id="mFollowers">—</div><div class="metric-label">seguidores</div></div>
-      <div class="metric"><div class="metric-val" id="mFollowing">—</div><div class="metric-label">seguindo</div></div>
-      <div class="metric"><div class="metric-val" id="mPosts">—</div><div class="metric-label">posts</div></div>
-      <div class="metric"><div class="metric-val" id="mRatio">—</div><div class="metric-label">ratio seg/seg</div></div>
     </div>
   </div>
 
@@ -368,14 +385,6 @@
     return input.replace(/^@/, '').trim();
   }
 
-  function fmtNum(n) {
-    if (!n && n !== 0) return '—';
-    n = parseInt(n);
-    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-    return n.toLocaleString('pt-BR');
-  }
-
   function setStep(n, label) {
     ['ps1','ps2','ps3'].forEach((id, i) => {
       const el = document.getElementById(id);
@@ -397,18 +406,12 @@
     el.classList.toggle('selected');
   }
 
-  function parseSection(tag, text) {
-    const re = new RegExp('\\[' + tag + '\\]([\\s\\S]*?)(?=\\[|$)', 'i');
-    const m = text.match(re);
-    return m ? m[1].trim() : '';
-  }
-
-  function nivelBadge(text) {
-    if (/\balto\b/i.test(text)) return '<span class="badge badge-alto">Alto</span>';
-    if (/\bm[eé]dio\b/i.test(text)) return '<span class="badge badge-medio">Médio</span>';
-    if (/\bbaixo\b/i.test(text)) return '<span class="badge badge-baixo">Baixo</span>';
-    if (/\bbom\b/i.test(text)) return '<span class="badge badge-bom">Bom</span>';
-    return '';
+  function parseSection(text, title) {
+    // Escape special characters in the title for Regex
+    const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n\\d\\.|\\n---|$)`, 'i');
+    const match = text.match(regex);
+    return match ? match[1].trim() : '';
   }
 
   async function fetchProfileData() {
@@ -441,10 +444,17 @@
 
       // Populate form
       document.getElementById('fName').value = p.full_name || p.name || globUsername;
+      document.getElementById('fSpecialty').value = globCategory;
       document.getElementById('fBio').value = p.biography || p.bio || '';
       document.getElementById('fFollowers').value = parseInt(p.follower_count || p.edge_followed_by?.count || 0);
-      document.getElementById('fFollowing').value = parseInt(p.following_count || p.edge_follow?.count || 0);
-      document.getElementById('fPosts').value = parseInt(p.media_count || p.edge_owner_to_timeline_media?.count || 0);
+      
+      // Limpar os campos manuais
+      document.getElementById('fCity').value = '';
+      document.getElementById('fLikes').value = '';
+      document.getElementById('fComments').value = '';
+      document.getElementById('fFrequency').value = '';
+      document.getElementById('fCaptions').value = '';
+      document.getElementById('fObservations').value = '';
 
       // Reset content tags
       document.querySelectorAll('.content-tag').forEach(tag => tag.classList.remove('selected'));
@@ -468,14 +478,19 @@
     document.getElementById('btnAnalyze').disabled = true;
     document.getElementById('progressSection').style.display = 'block';
 
-    setStep(2, 'Enviando dados e gerando análise estratégica com IA...');
+    setStep(2, 'Avaliando dados e gerando estratégia complexa Dermabrand...');
 
     // Collect Data
-    const followers = parseInt(document.getElementById('fFollowers').value) || 0;
-    const following = parseInt(document.getElementById('fFollowing').value) || 0;
-    const posts = parseInt(document.getElementById('fPosts').value) || 0;
     const fullName = document.getElementById('fName').value;
+    const specialty = document.getElementById('fSpecialty').value;
+    const city = document.getElementById('fCity').value;
     const bio = document.getElementById('fBio').value;
+    const followers = document.getElementById('fFollowers').value;
+    const likes = document.getElementById('fLikes').value;
+    const comments = document.getElementById('fComments').value;
+    const frequency = document.getElementById('fFrequency').value;
+    const captions = document.getElementById('fCaptions').value;
+    const observations = document.getElementById('fObservations').value;
 
     const contentTypes = Array.from(document.querySelectorAll('.content-tag.selected'))
                               .map(el => el.textContent);
@@ -483,12 +498,16 @@
     const profileData = {
       full_name: fullName,
       username: globUsername,
+      specialty,
+      city,
       biography: bio,
       follower_count: followers,
-      following_count: following,
-      media_count: posts,
+      likes,
+      comments,
+      frequency,
+      captions,
+      observations,
       is_verified: globIsVerified,
-      category: globCategory,
       profile_pic_url: globProfilePic
     };
 
@@ -503,12 +522,12 @@
       if (!d.ok) throw new Error(d.error || 'Erro na análise.');
       reportText = d.report;
     } catch (e) {
-      document.getElementById('formSection').style.display = 'block'; // Ensure form is back so they can try again
+      document.getElementById('formSection').style.display = 'block';
       showError('Erro ao gerar análise: ' + e.message);
       return;
     }
 
-    setStep(3, 'Montando relatório...');
+    setStep(3, 'Montando relatório final...');
     document.getElementById('progressSection').style.display = 'none';
     document.getElementById('btnSearch').disabled = false;
     document.getElementById('btnAnalyze').disabled = false;
@@ -523,33 +542,28 @@
 
     document.getElementById('pName').innerHTML = fullName + (globIsVerified ? '<span class="verified-badge"></span>' : '');
     document.getElementById('pHandle').textContent = '@' + globUsername;
-    document.getElementById('pCat').textContent = globCategory;
+    document.getElementById('pCat').textContent = specialty + (city ? ` • ${city}` : '');
     document.getElementById('pBio').textContent = bio;
-    document.getElementById('mFollowers').textContent = fmtNum(followers);
-    document.getElementById('mFollowing').textContent = fmtNum(following);
-    document.getElementById('mPosts').textContent = fmtNum(posts);
-    document.getElementById('mRatio').textContent = following > 0 ? (followers / following).toFixed(1) + 'x' : '—';
     document.getElementById('profileCard').style.display = 'block';
 
-    // Build the report
+    // Build the report based on the new numbered format requested by user
     const sections = [
-      { tag: 'POSICIONAMENTO', title: 'Posicionamento e autoridade', badge: true },
-      { tag: 'BIO', title: 'Análise da bio', badge: false },
-      { tag: 'CONTEÚDO|CONTEUDO', title: 'Análise de conteúdo', badge: false },
-      { tag: 'ENGAJAMENTO', title: 'Engajamento e performance', badge: true },
-      { tag: 'ERROS', title: 'Erros e gargalos', badge: false },
-      { tag: 'PLANO', title: 'Plano de melhoria', badge: false },
-      { tag: 'IDEAS|IDEIAS', title: 'Ideias de conteúdo premium', badge: false },
+      { title: '1. POSICIONAMENTO E AUTORIDADE' },
+      { title: '2. ANÁLISE DA BIO' },
+      { title: '3. ANÁLISE DE CONTEÚDO' },
+      { title: '4. ENGAJAMENTO E PERFORMANCE' },
+      { title: '5. ERROS E GARGALOS' },
+      { title: '6. PLANO DE MELHORIA (PRÁTICO)' },
+      { title: '7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)' }
     ];
 
     const cardsHtml = sections.map(s => {
-      const content = parseSection(s.tag, reportText);
+      const content = parseSection(reportText, s.title);
       if (!content) return '';
-      const cleaned = content.replace(/^nível:.*$/im, '').trim();
-      const badge = s.badge ? nivelBadge(content) : '';
+      
       return `<div class="report-card">
-        <h3>${s.title} ${badge}</h3>
-        <div class="report-text">${cleaned}</div>
+        <h3>${s.title}</h3>
+        <div class="report-text">${content}</div>
       </div>`;
     }).join('');
 

@@ -55,64 +55,99 @@ app.post('/api/analyze', async (req, res) => {
   if (!profile) return res.status(400).json({ error: 'Dados do perfil obrigatórios' });
 
   const {
-    full_name, username, biography, follower_count,
-    following_count, media_count, is_verified, category,
+    full_name, username, specialty, city, biography,
+    follower_count, likes, comments, frequency,
+    captions, observations, is_verified
   } = profile;
 
-  function fmtNum(n) {
-    if (!n && n !== 0) return '—';
-    n = parseInt(n);
-    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-    return String(n);
-  }
+  const prompt = `Você é um especialista em marketing médico premium, com foco em dermatologistas e clínicas de alto padrão no Brasil.
 
-  const contentStr = contentTypes && contentTypes.length > 0
-    ? `\n- Tipos de conteúdo frequentemente postados: ${contentTypes.join(', ')}`
-    : '';
+Sua função é analisar um perfil de Instagram médico de forma estratégica, técnica e orientada à conversão de pacientes particulares.
 
-  const prompt = `Você é um especialista em marketing médico premium da agência Dermabrand, com foco em dermatologistas e clínicas de alto padrão no Brasil. Analise este perfil do Instagram e gere um relatório estratégico orientado à conversão de pacientes particulares.
+Analise os dados abaixo e gere um relatório completo, objetivo e sofisticado.
 
 DADOS DO PERFIL:
-- Nome: ${full_name || username || 'Não informado'}
+- Nome: ${full_name || 'Não informado'}
 - @username: @${username || 'Não informado'}
+- Especialidade: ${specialty || 'Não informada'}
+- Cidade: ${city || 'Não informada'}
 - Bio: ${biography || 'Não informada'}
-- Seguidores: ${fmtNum(follower_count)}
-- Seguindo: ${fmtNum(following_count)}
-- Total de posts: ${fmtNum(media_count)}
-- Categoria: ${category || 'Não informada'}
-- Verificado: ${is_verified ? 'Sim' : 'Não'}${contentStr}
+- Número de seguidores: ${follower_count || 'Não informado'}
+- Média de curtidas: ${likes || 'Não informada'}
+- Média de comentários: ${comments || 'Não informada'}
+- Frequência de posts: ${frequency || 'Não informada'}
+- Tipos de conteúdo (ex: reels, antes/depois, educativo, lifestyle): ${contentTypes && contentTypes.length > 0 ? contentTypes.join(', ') : 'Não informado'}
+- Exemplos de legendas: ${captions || 'Não informado'}
+- Observações gerais: ${observations || 'Nenhuma'}
 
-Responda EXATAMENTE neste formato com os marcadores entre colchetes:
+---
 
-[POSICIONAMENTO]
-Nível: Alto / Médio / Baixo
-Análise em 2-3 frases diretas sobre autoridade e posicionamento premium.
+ESTRUTURA DA RESPOSTA:
 
-[BIO]
-Diagnóstico em 2 frases.
-BIO OTIMIZADA: (bio pronta para uso, máx 150 caracteres)
+1. POSICIONAMENTO E AUTORIDADE
+Avalie se o perfil transmite autoridade médica, clareza de especialidade e posicionamento premium.
+Diga o nível: (Baixo / Médio / Alto)
+Explique de forma direta.
 
-[CONTEÚDO]
-Diagnóstico da qualidade baseado nos tipos de conteúdo postados (se informados).
-O que falta: (lista rápida)
-O que priorizar: (lista rápida)
+---
 
-[ENGAJAMENTO]
-Nível: Bom / Médio / Baixo
-Análise de 2-3 frases sobre conexão e potencial de crescimento.
+2. ANÁLISE DA BIO
+- Está estratégica ou genérica?
+- Tem clareza do público?
+- Tem chamada para ação (CTA)?
+Sugira uma BIO otimizada pronta para uso.
 
-[ERROS]
-3 a 5 erros estratégicos objetivos.
+---
 
-[PLANO]
-Frequência ideal, tipos de conteúdo adicionais, ajustes de linguagem — direto e prático.
+3. ANÁLISE DE CONTEÚDO
+Avalie:
+- Qualidade percebida
+- Clareza da comunicação
+- Foco em paciente vs técnico
+- Variedade de conteúdo
 
-[IDEAS]
-5 ideias de posts premium (alinhadas aos tipos de conteúdo):
-Gancho: | Tema: | Objetivo: atrair/educar/converter
+Identifique:
+- O que está faltando
+- O que está excessivo
+- O que deve ser priorizado
 
-Linguagem sofisticada, sem clichês, foco em resultado real.`;
+---
+
+4. ENGAJAMENTO E PERFORMANCE
+Com base nos dados:
+- O engajamento está bom, médio ou baixo?
+- O conteúdo gera conexão ou apenas informação?
+- Existe potencial de crescimento?
+
+---
+
+5. ERROS E GARGALOS
+Liste os principais erros estratégicos que estão impedindo o crescimento ou a conversão.
+
+---
+
+6. PLANO DE MELHORIA (PRÁTICO)
+Crie um plano direto com ações como:
+- Frequência ideal de postagem
+- Tipos de conteúdo recomendados
+- Ajustes de linguagem
+- Estratégias para atrair pacientes particulares
+
+---
+
+7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)
+Sugira 5 ideias de posts no estilo premium, com:
+- Gancho
+- Tema
+- Objetivo (atrair, educar ou converter)
+
+---
+
+REGRAS:
+- Linguagem sofisticada, mas clara
+- Evitar clichês e generalizações
+- Foco em resultado (atração de pacientes e autoridade)
+- Pensar como uma agência premium (Dermabrand)`;
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
