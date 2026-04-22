@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dermabrand — Análise de Perfis Médicos</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple-50: #EEEDFE;
+      --purple-100: #CECBF6;
+      --purple-200: #AFA9EC;
+      --purple-400: #7F77DD;
+      --purple-600: #534AB7;
+      --purple-800: #3C3489;
+      --purple-900: #26215C;
+      --teal-50: #E1F5EE;
+      --teal-400: #1D9E75;
+      --teal-800: #085041;
+      --amber-50: #FAEEDA;
+      --amber-800: #633806;
+      --red-50: #FCEBEB;
+      --red-600: #A32D2D;
+      --green-50: #EAF3DE;
+      --green-800: #27500A;
+      --bg: #ffffff;
+      --bg-sec: #f7f7f5;
+      --text: #1a1a1a;
+      --text-sec: #6b6b6b;
+      --border: rgba(0,0,0,0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --bg-sec: #242424;
+        --text: #f0f0f0;
+        --text-sec: #999;
+        --border: rgba(255,255,255,0.1);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-sec);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      width: 36px; height: 36px;
+      background: var(--purple-600);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo svg { width: 20px; height: 20px; }
+    .brand-name { font-size: 17px; font-weight: 600; color: var(--text); }
+    .brand-tag {
+      font-size: 11px; color: var(--text-sec);
+      background: var(--bg-sec);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-left: 4px;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ── Search ── */
+    .search-section { margin-bottom: 2rem; }
+    .search-title { font-size: 24px; font-weight: 600; margin-bottom: 6px; }
+    .search-sub { font-size: 14px; color: var(--text-sec); margin-bottom: 1.25rem; }
+    .search-row {
+      display: flex; gap: 10px;
+    }
+    .search-row input {
+      flex: 1;
+      height: 44px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0 14px;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-row input:focus { border-color: var(--purple-400); }
+    .btn-primary {
+      height: 44px;
+      padding: 0 22px;
+      background: var(--purple-600);
+      color: var(--purple-50);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s;
+    }
+    .btn-primary:hover { background: var(--purple-800); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* ── Progress ── */
+    .progress-section {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .progress-steps { display: flex; gap: 6px; margin-bottom: 10px; }
+    .pstep { flex: 1; height: 3px; border-radius: 2px; background: var(--bg-sec); }
+    .pstep.active { background: var(--purple-600); }
+    .pstep.done { background: var(--teal-400); }
+    .progress-label { font-size: 13px; color: var(--text-sec); display: flex; align-items: center; gap: 8px; }
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid var(--purple-200);
+      border-top-color: var(--purple-600);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Error ── */
+    .error-box {
+      background: var(--red-50);
+      border: 0.5px solid #F09595;
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      font-size: 13px;
+      color: var(--red-600);
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    /* ── Profile card ── */
+    .profile-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: none;
+    }
+    .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      object-fit: cover;
+      border: 0.5px solid var(--border);
+      flex-shrink: 0;
+    }
+    .avatar-ph {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--purple-50);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 600; color: var(--purple-600);
+      flex-shrink: 0;
+    }
+    .profile-name { font-size: 17px; font-weight: 600; }
+    .profile-handle { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+    .profile-cat { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+    .profile-bio { font-size: 13px; line-height: 1.6; color: var(--text); margin-top: 4px; }
+    .verified-badge {
+      display: inline-block;
+      width: 14px; height: 14px;
+      background: #378ADD;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .metric {
+      background: var(--bg-sec);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+    }
+    .metric-val { font-size: 22px; font-weight: 600; color: var(--text); }
+    .metric-label { font-size: 11px; color: var(--text-sec); margin-top: 3px; }
+
+    /* ── Report ── */
+    .report-section { display: none; }
+    .section-label {
+      font-size: 11px; font-weight: 600; color: var(--text-sec);
+      text-transform: uppercase; letter-spacing: .07em;
+      margin-bottom: 10px;
+    }
+    .report-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 10px;
+    }
+    .report-card h3 {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .badge {
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 11px; font-weight: 500;
+    }
+    .badge-alto { background: var(--green-50); color: var(--green-800); }
+    .badge-medio { background: var(--amber-50); color: var(--amber-800); }
+    .badge-baixo { background: var(--red-50); color: var(--red-600); }
+    .badge-bom { background: var(--green-50); color: var(--green-800); }
+    .report-text {
+      font-size: 13px; color: var(--text);
+      line-height: 1.75; white-space: pre-wrap;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text-sec);
+    }
+
+    @media (max-width: 600px) {
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+      .search-row { flex-direction: column; }
+      .btn-primary { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="7" r="3.5" fill="#EEEDFE"/>
+      <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#EEEDFE" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <span class="brand-name">Dermabrand</span>
+  <span class="brand-tag">beta</span>
+</header>
+
+<main>
+
+  <div class="search-section">
+    <h1 class="search-title">Análise de perfil médico</h1>
+    <p class="search-sub">Cole o link do Instagram ou o @username para gerar um relatório estratégico completo.</p>
+    <div class="search-row">
+      <input type="text" id="igInput" placeholder="@dra.anasouza ou instagram.com/dra.anasouza" />
+      <button class="btn-primary" id="btnAnalyze" onclick="startAnalysis()">Analisar perfil</button>
+    </div>
+  </div>
+
+  <div class="progress-section" id="progressSection">
+    <div class="progress-steps">
+      <div class="pstep" id="ps1"></div>
+      <div class="pstep" id="ps2"></div>
+      <div class="pstep" id="ps3"></div>
+    </div>
+    <div class="progress-label">
+      <div class="spinner"></div>
+      <span id="progressLabel">Iniciando...</span>
+    </div>
+  </div>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="profile-card" id="profileCard">
+    <div class="profile-top">
+      <div id="avatarWrap"></div>
+      <div>
+        <div class="profile-name" id="pName"></div>
+        <div class="profile-handle" id="pHandle"></div>
+        <div class="profile-cat" id="pCat"></div>
+        <div class="profile-bio" id="pBio"></div>
+      </div>
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-val" id="mFollowers">—</div><div class="metric-label">seguidores</div></div>
+      <div class="metric"><div class="metric-val" id="mFollowing">—</div><div class="metric-label">seguindo</div></div>
+      <div class="metric"><div class="metric-val" id="mPosts">—</div><div class="metric-label">posts</div></div>
+      <div class="metric"><div class="metric-val" id="mRatio">—</div><div class="metric-label">ratio seg/seg</div></div>
+    </div>
+  </div>
+
+  <div class="report-section" id="reportSection">
+    <div class="section-label">Relatório estratégico</div>
+    <div id="reportCards"></div>
+  </div>
+
+</main>
+
+<footer>Dermabrand &copy; 2025 — Marketing médico premium</footer>
+
+<script>
+  function extractUsername(input) {
+    input = input.trim();
+    const m = input.match(/instagram\.com\/([^/?#\s]+)/);
+    if (m) return m[1].replace(/\/$/, '');
+    return input.replace(/^@/, '').trim();
+  }
+
+  function fmtNum(n) {
+    if (!n && n !== 0) return '—';
+    n = parseInt(n);
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+    return n.toLocaleString('pt-BR');
+  }
+
+  function setStep(n, label) {
+    ['ps1','ps2','ps3'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.className = 'pstep' + (i < n - 1 ? ' done' : i === n - 1 ? ' active' : '');
+    });
+    document.getElementById('progressLabel').textContent = label;
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('errorBox');
+    el.style.display = 'block';
+    el.textContent = msg;
+    document.getElementById('progressSection').style.display = 'none';
+    document.getElementById('btnAnalyze').disabled = false;
+  }
+
+  function parseSection(tag, text) {
+    const re = new RegExp('\\[' + tag + '\\]([\\s\\S]*?)(?=\\[|$)', 'i');
+    const m = text.match(re);
+    return m ? m[1].trim() : '';
+  }
+
+  function nivelBadge(text) {
+    if (/\balto\b/i.test(text)) return '<span class="badge badge-alto">Alto</span>';
+    if (/\bm[eé]dio\b/i.test(text)) return '<span class="badge badge-medio">Médio</span>';
+    if (/\bbaixo\b/i.test(text)) return '<span class="badge badge-baixo">Baixo</span>';
+    if (/\bbom\b/i.test(text)) return '<span class="badge badge-bom">Bom</span>';
+    return '';
+  }
+
+  async function startAnalysis() {
+    const input = document.getElementById('igInput').value.trim();
+    if (!input) return;
+    const username = extractUsername(input);
+    if (!username) { showError('Informe um @username ou link válido.'); return; }
+
+    document.getElementById('btnAnalyze').disabled = true;
+    document.getElementById('errorBox').style.display = 'none';
+    document.getElementById('profileCard').style.display = 'none';
+    document.getElementById('reportSection').style.display = 'none';
+    document.getElementById('progressSection').style.display = 'block';
+
+    setStep(1, 'Buscando dados do perfil no Instagram...');
+
+    let profile;
+    try {
+      const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'Perfil não encontrado.');
+      profile = d.user;
+    } catch (e) {
+      showError('Erro ao buscar perfil: ' + e.message);
+      return;
+    }
+
+    setStep(2, 'Gerando análise estratégica com IA...');
+
+    const followers = parseInt(profile.follower_count || profile.edge_followed_by?.count || 0);
+    const following = parseInt(profile.following_count || profile.edge_follow?.count || 0);
+    const posts = parseInt(profile.media_count || profile.edge_owner_to_timeline_media?.count || 0);
+    const fullName = profile.full_name || profile.name || username;
+    const bio = profile.biography || profile.bio || '';
+    const pic = profile.profile_pic_url_hd || profile.profile_pic_url || '';
+    const isVerified = profile.is_verified || false;
+    const category = profile.category || profile.category_name || '';
+
+    let reportText = '';
+    try {
+      const r = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profile }),
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'Erro na análise.');
+      reportText = d.report;
+    } catch (e) {
+      showError('Erro ao gerar análise: ' + e.message);
+      return;
+    }
+
+    setStep(3, 'Montando relatório...');
+    document.getElementById('progressSection').style.display = 'none';
+    document.getElementById('btnAnalyze').disabled = false;
+
+    // Preenche perfil
+    const avatarWrap = document.getElementById('avatarWrap');
+    if (pic) {
+      avatarWrap.innerHTML = `<img src="${pic}" class="avatar" onerror="this.outerHTML='<div class=\\'avatar-ph\\'>${fullName.charAt(0).toUpperCase()}</div>'">`;
+    } else {
+      avatarWrap.innerHTML = `<div class="avatar-ph">${fullName.charAt(0).toUpperCase()}</div>`;
+    }
+
+    document.getElementById('pName').innerHTML = fullName + (isVerified ? '<span class="verified-badge"></span>' : '');
+    document.getElementById('pHandle').textContent = '@' + (profile.username || username);
+    document.getElementById('pCat').textContent = category;
+    document.getElementById('pBio').textContent = bio;
+    document.getElementById('mFollowers').textContent = fmtNum(followers);
+    document.getElementById('mFollowing').textContent = fmtNum(following);
+    document.getElementById('mPosts').textContent = fmtNum(posts);
+    document.getElementById('mRatio').textContent = following > 0 ? (followers / following).toFixed(1) + 'x' : '—';
+    document.getElementById('profileCard').style.display = 'block';
+
+    // Monta relatório
+    const sections = [
+      { tag: 'POSICIONAMENTO', title: 'Posicionamento e autoridade', badge: true },
+      { tag: 'BIO', title: 'Análise da bio', badge: false },
+      { tag: 'CONTEÚDO|CONTEUDO', title: 'Análise de conteúdo', badge: false },
+      { tag: 'ENGAJAMENTO', title: 'Engajamento e performance', badge: true },
+      { tag: 'ERROS', title: 'Erros e gargalos', badge: false },
+      { tag: 'PLANO', title: 'Plano de melhoria', badge: false },
+      { tag: 'IDEAS|IDEIAS', title: 'Ideias de conteúdo premium', badge: false },
+    ];
+
+    const cardsHtml = sections.map(s => {
+      const content = parseSection(s.tag, reportText);
+      if (!content) return '';
+      const cleaned = content.replace(/^nível:.*$/im, '').trim();
+      const badge = s.badge ? nivelBadge(content) : '';
+      return `<div class="report-card">
+        <h3>${s.title} ${badge}</h3>
+        <div class="report-text">${cleaned}</div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('reportCards').innerHTML = cardsHtml || `<div class="report-card"><div class="report-text">${reportText}</div></div>`;
+    document.getElementById('reportSection').style.display = 'block';
+  }
+
+  document.getElementById('igInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') startAnalysis();
+  });
+</script>
+
+</body>
+</html>
