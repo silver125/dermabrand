@@ -20,14 +20,15 @@ app.get('/api/profile', async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://${RAPIDAPI_HOST}/userinfo/?username_or_id=${username}`,
+      `https://instagram120.p.rapidapi.com/api/instagram/profile`,
       {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-rapidapi-host': RAPIDAPI_HOST,
+          'x-rapidapi-host': 'instagram120.p.rapidapi.com',
           'x-rapidapi-key': RAPIDAPI_KEY,
         },
+        body: JSON.stringify({ username })
       }
     );
 
@@ -37,10 +38,17 @@ app.get('/api/profile', async (req, res) => {
     }
 
     const data = await response.json();
-    const user = data?.data?.user || data?.user || data?.data || data;
+    
+    // A API instagram120 devolve os dados dentro de 'result'
+    let user = data?.result || data?.data?.user || data?.user || data?.data || data;
 
     if (!user || (!user.username && !user.full_name)) {
       return res.status(404).json({ error: 'Perfil não encontrado ou privado.' });
+    }
+
+    // Normalizar a contagem de seguidores para o frontend (que espera follower_count)
+    if (user.edge_followed_by && typeof user.edge_followed_by.count !== 'undefined') {
+      user.follower_count = user.edge_followed_by.count;
     }
 
     return res.json({ ok: true, user });
