@@ -89,46 +89,73 @@
     .search-section { margin-bottom: 2rem; }
     .search-title { font-size: 24px; font-weight: 600; margin-bottom: 6px; }
     .search-sub { font-size: 14px; color: var(--text-sec); margin-bottom: 1.25rem; }
-    .search-row {
-      display: flex; gap: 10px;
-    }
+    .search-row { display: flex; gap: 10px; }
     .search-row input {
-      flex: 1;
-      height: 44px;
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0 14px;
-      font-size: 14px;
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-      transition: border-color .15s;
+      flex: 1; height: 44px; border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 0 14px; font-size: 14px;
+      background: var(--bg); color: var(--text); outline: none; transition: border-color .15s;
     }
     .search-row input:focus { border-color: var(--purple-400); }
     .btn-primary {
-      height: 44px;
-      padding: 0 22px;
-      background: var(--purple-600);
-      color: var(--purple-50);
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
+      height: 44px; padding: 0 22px; background: var(--purple-600);
+      color: var(--purple-50); border: none; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap;
       transition: background .15s;
     }
     .btn-primary:hover { background: var(--purple-800); }
     .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
 
-    /* ── Progress ── */
-    .progress-section {
+    /* ── Review Form Section ── */
+    .form-section {
+      display: none;
       background: var(--bg);
       border: 0.5px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.25rem;
+      padding: 1.5rem;
       margin-bottom: 1.5rem;
-      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .form-title { font-size: 18px; font-weight: 600; margin-bottom: 1.2rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-sec); }
+    .form-group input, .form-group textarea {
+      width: 100%; border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px;
+      background: var(--bg); color: var(--text); font-family: inherit; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--purple-400); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-row { display: flex; gap: 1rem; }
+    .form-col { flex: 1; }
+
+    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .content-tag {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .2s;
+      background: var(--bg-sec);
+      color: var(--text);
+    }
+    .content-tag:hover { border-color: var(--purple-400); }
+    .content-tag.selected {
+      background: var(--purple-600);
+      color: var(--purple-50);
+      border-color: var(--purple-600);
+    }
+    
+    .btn-large {
+      width: 100%; height: 50px; font-size: 15px; margin-top: 10px;
+    }
+
+    /* ── Progress ── */
+    .progress-section {
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; display: none;
     }
     .progress-steps { display: flex; gap: 6px; margin-bottom: 10px; }
     .pstep { flex: 1; height: 3px; border-radius: 2px; background: var(--bg-sec); }
@@ -136,69 +163,44 @@
     .pstep.done { background: var(--teal-400); }
     .progress-label { font-size: 13px; color: var(--text-sec); display: flex; align-items: center; gap: 8px; }
     .spinner {
-      width: 14px; height: 14px;
-      border: 2px solid var(--purple-200);
-      border-top-color: var(--purple-600);
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      flex-shrink: 0;
+      width: 14px; height: 14px; border: 2px solid var(--purple-200);
+      border-top-color: var(--purple-600); border-radius: 50%;
+      animation: spin .7s linear infinite; flex-shrink: 0;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── Error ── */
     .error-box {
-      background: var(--red-50);
-      border: 0.5px solid #F09595;
-      border-radius: var(--radius-sm);
-      padding: 1rem 1.25rem;
-      font-size: 13px;
-      color: var(--red-600);
-      margin-bottom: 1.5rem;
-      display: none;
+      background: var(--red-50); border: 0.5px solid #F09595;
+      border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+      font-size: 13px; color: var(--red-600); margin-bottom: 1.5rem; display: none;
     }
 
     /* ── Profile card ── */
     .profile-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      display: none;
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem; display: none;
     }
     .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
     .avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      object-fit: cover;
-      border: 0.5px solid var(--border);
-      flex-shrink: 0;
+      width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+      border: 0.5px solid var(--border); flex-shrink: 0;
     }
     .avatar-ph {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: var(--purple-50);
+      width: 64px; height: 64px; border-radius: 50%; background: var(--purple-50);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 600; color: var(--purple-600);
-      flex-shrink: 0;
+      font-size: 22px; font-weight: 600; color: var(--purple-600); flex-shrink: 0;
     }
     .profile-name { font-size: 17px; font-weight: 600; }
     .profile-handle { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
     .profile-cat { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
     .profile-bio { font-size: 13px; line-height: 1.6; color: var(--text); margin-top: 4px; }
     .verified-badge {
-      display: inline-block;
-      width: 14px; height: 14px;
-      background: #378ADD;
-      border-radius: 50%;
-      margin-left: 5px;
-      vertical-align: middle;
+      display: inline-block; width: 14px; height: 14px;
+      background: #378ADD; border-radius: 50%; margin-left: 5px; vertical-align: middle;
     }
     .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .metric {
-      background: var(--bg-sec);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      text-align: center;
-    }
+    .metric { background: var(--bg-sec); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
     .metric-val { font-size: 22px; font-weight: 600; color: var(--text); }
     .metric-label { font-size: 11px; color: var(--text-sec); margin-top: 3px; }
 
@@ -206,47 +208,31 @@
     .report-section { display: none; }
     .section-label {
       font-size: 11px; font-weight: 600; color: var(--text-sec);
-      text-transform: uppercase; letter-spacing: .07em;
-      margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;
     }
     .report-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 10px;
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 10px;
     }
     .report-card h3 {
       font-size: 13px; font-weight: 600; color: var(--text);
-      margin-bottom: 10px;
-      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
     }
-    .badge {
-      padding: 2px 9px;
-      border-radius: 20px;
-      font-size: 11px; font-weight: 500;
-    }
+    .badge { padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 500; }
     .badge-alto { background: var(--green-50); color: var(--green-800); }
     .badge-medio { background: var(--amber-50); color: var(--amber-800); }
     .badge-baixo { background: var(--red-50); color: var(--red-600); }
     .badge-bom { background: var(--green-50); color: var(--green-800); }
-    .report-text {
-      font-size: 13px; color: var(--text);
-      line-height: 1.75; white-space: pre-wrap;
-    }
+    .report-text { font-size: 13px; color: var(--text); line-height: 1.75; white-space: pre-wrap; }
 
     /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 12px;
-      color: var(--text-sec);
-    }
+    footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text-sec); }
 
     @media (max-width: 600px) {
       .metrics-row { grid-template-columns: repeat(2, 1fr); }
       .search-row { flex-direction: column; }
       .btn-primary { width: 100%; }
+      .form-row { flex-direction: column; gap: 0; }
     }
   </style>
 </head>
@@ -266,11 +252,11 @@
 <main>
 
   <div class="search-section">
-    <h1 class="search-title">Análise de perfil médico</h1>
-    <p class="search-sub">Cole o link do Instagram ou o @username para gerar um relatório estratégico completo.</p>
+    <h1 class="search-title">Análise de perfil médico premium</h1>
+    <p class="search-sub">Cole o link do Instagram ou o @username para extrair dados da conta automaticamente.</p>
     <div class="search-row">
       <input type="text" id="igInput" placeholder="@dra.anasouza ou instagram.com/dra.anasouza" />
-      <button class="btn-primary" id="btnAnalyze" onclick="startAnalysis()">Analisar perfil</button>
+      <button class="btn-primary" id="btnSearch" onclick="fetchProfileData()">Buscar Dados</button>
     </div>
   </div>
 
@@ -287,6 +273,60 @@
   </div>
 
   <div class="error-box" id="errorBox"></div>
+
+  <!-- Formulário de validação / complemento -->
+  <div class="form-section" id="formSection">
+    <h2 class="form-title">Revise os dados de perfil</h2>
+    <p style="font-size: 13px; color: var(--text-sec); margin-top:-10px; margin-bottom: 1.2rem;">
+      Modifique qualquer campo e selecione os tipos de conteúdo aplicáveis para aumentar a precisão do relatório estratégico.
+    </p>
+
+    <div class="form-group">
+      <label>Nome do Médico / Perfil</label>
+      <input type="text" id="fName" placeholder="Ex: Dra. Ana Souza" />
+    </div>
+    
+    <div class="form-group">
+      <label>Biografia do Perfil</label>
+      <textarea id="fBio" placeholder="Cole a bio atual para análise de impacto"></textarea>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-col">
+        <div class="form-group">
+          <label>Seguidores</label>
+          <input type="number" id="fFollowers" />
+        </div>
+      </div>
+      <div class="form-col">
+        <div class="form-group">
+          <label>Seguindo</label>
+          <input type="number" id="fFollowing" />
+        </div>
+      </div>
+      <div class="form-col">
+        <div class="form-group">
+          <label>Posts Totals</label>
+          <input type="number" id="fPosts" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Tipos de Conteúdo Principal (clicáveis)</label>
+      <div class="tags-container">
+         <div class="content-tag" onclick="toggleTag(this)">Bastidores da clínica</div>
+         <div class="content-tag" onclick="toggleTag(this)">Antes e Depois</div>
+         <div class="content-tag" onclick="toggleTag(this)">Casos Clínicos</div>
+         <div class="content-tag" onclick="toggleTag(this)">Reels Educativos (Dicas)</div>
+         <div class="content-tag" onclick="toggleTag(this)">Caixinhas de Perguntas</div>
+         <div class="content-tag" onclick="toggleTag(this)">Lifestyle/Pessoal</div>
+         <div class="content-tag" onclick="toggleTag(this)">Procedimentos/Cirurgias</div>
+      </div>
+    </div>
+
+    <button class="btn-primary btn-large" id="btnAnalyze" onclick="generateReport()">Gerar relatório estratégico</button>
+  </div>
 
   <div class="profile-card" id="profileCard">
     <div class="profile-top">
@@ -316,6 +356,11 @@
 <footer>Dermabrand &copy; 2025 — Marketing médico premium</footer>
 
 <script>
+  let globProfilePic = '';
+  let globUsername = '';
+  let globIsVerified = false;
+  let globCategory = '';
+
   function extractUsername(input) {
     input = input.trim();
     const m = input.match(/instagram\.com\/([^/?#\s]+)/);
@@ -344,7 +389,12 @@
     el.style.display = 'block';
     el.textContent = msg;
     document.getElementById('progressSection').style.display = 'none';
+    document.getElementById('btnSearch').disabled = false;
     document.getElementById('btnAnalyze').disabled = false;
+  }
+
+  function toggleTag(el) {
+    el.classList.toggle('selected');
   }
 
   function parseSection(tag, text) {
@@ -361,72 +411,119 @@
     return '';
   }
 
-  async function startAnalysis() {
+  async function fetchProfileData() {
     const input = document.getElementById('igInput').value.trim();
     if (!input) return;
     const username = extractUsername(input);
     if (!username) { showError('Informe um @username ou link válido.'); return; }
 
-    document.getElementById('btnAnalyze').disabled = true;
+    document.getElementById('btnSearch').disabled = true;
     document.getElementById('errorBox').style.display = 'none';
+    document.getElementById('formSection').style.display = 'none';
     document.getElementById('profileCard').style.display = 'none';
     document.getElementById('reportSection').style.display = 'none';
     document.getElementById('progressSection').style.display = 'block';
 
-    setStep(1, 'Buscando dados do perfil no Instagram...');
+    setStep(1, 'Buscando dados do perfil na RapidAPI...');
 
-    let profile;
     try {
       const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
       const d = await r.json();
       if (!d.ok) throw new Error(d.error || 'Perfil não encontrado.');
-      profile = d.user;
+      
+      const p = d.user;
+      
+      // Store globals
+      globUsername = p.username || username;
+      globProfilePic = p.profile_pic_url_hd || p.profile_pic_url || '';
+      globIsVerified = p.is_verified || false;
+      globCategory = p.category || p.category_name || '';
+
+      // Populate form
+      document.getElementById('fName').value = p.full_name || p.name || globUsername;
+      document.getElementById('fBio').value = p.biography || p.bio || '';
+      document.getElementById('fFollowers').value = parseInt(p.follower_count || p.edge_followed_by?.count || 0);
+      document.getElementById('fFollowing').value = parseInt(p.following_count || p.edge_follow?.count || 0);
+      document.getElementById('fPosts').value = parseInt(p.media_count || p.edge_owner_to_timeline_media?.count || 0);
+
+      // Reset content tags
+      document.querySelectorAll('.content-tag').forEach(tag => tag.classList.remove('selected'));
+
+      // Hide progress, show form
+      document.getElementById('progressSection').style.display = 'none';
+      document.getElementById('formSection').style.display = 'block';
+      document.getElementById('btnSearch').disabled = false;
+      document.getElementById('btnSearch').textContent = 'Buscar Novamente';
+
     } catch (e) {
       showError('Erro ao buscar perfil: ' + e.message);
       return;
     }
+  }
 
-    setStep(2, 'Gerando análise estratégica com IA...');
+  async function generateReport() {
+    document.getElementById('errorBox').style.display = 'none';
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('btnSearch').disabled = true;
+    document.getElementById('btnAnalyze').disabled = true;
+    document.getElementById('progressSection').style.display = 'block';
 
-    const followers = parseInt(profile.follower_count || profile.edge_followed_by?.count || 0);
-    const following = parseInt(profile.following_count || profile.edge_follow?.count || 0);
-    const posts = parseInt(profile.media_count || profile.edge_owner_to_timeline_media?.count || 0);
-    const fullName = profile.full_name || profile.name || username;
-    const bio = profile.biography || profile.bio || '';
-    const pic = profile.profile_pic_url_hd || profile.profile_pic_url || '';
-    const isVerified = profile.is_verified || false;
-    const category = profile.category || profile.category_name || '';
+    setStep(2, 'Enviando dados e gerando análise estratégica com IA...');
+
+    // Collect Data
+    const followers = parseInt(document.getElementById('fFollowers').value) || 0;
+    const following = parseInt(document.getElementById('fFollowing').value) || 0;
+    const posts = parseInt(document.getElementById('fPosts').value) || 0;
+    const fullName = document.getElementById('fName').value;
+    const bio = document.getElementById('fBio').value;
+
+    const contentTypes = Array.from(document.querySelectorAll('.content-tag.selected'))
+                              .map(el => el.textContent);
+
+    const profileData = {
+      full_name: fullName,
+      username: globUsername,
+      biography: bio,
+      follower_count: followers,
+      following_count: following,
+      media_count: posts,
+      is_verified: globIsVerified,
+      category: globCategory,
+      profile_pic_url: globProfilePic
+    };
 
     let reportText = '';
     try {
       const r = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ profile }),
+        body: JSON.stringify({ profile: profileData, contentTypes }),
       });
       const d = await r.json();
       if (!d.ok) throw new Error(d.error || 'Erro na análise.');
       reportText = d.report;
     } catch (e) {
+      document.getElementById('formSection').style.display = 'block'; // Ensure form is back so they can try again
       showError('Erro ao gerar análise: ' + e.message);
       return;
     }
 
     setStep(3, 'Montando relatório...');
     document.getElementById('progressSection').style.display = 'none';
+    document.getElementById('btnSearch').disabled = false;
     document.getElementById('btnAnalyze').disabled = false;
 
-    // Preenche perfil
+    // Show final profile review card
     const avatarWrap = document.getElementById('avatarWrap');
-    if (pic) {
-      avatarWrap.innerHTML = `<img src="${pic}" class="avatar" onerror="this.outerHTML='<div class=\\'avatar-ph\\'>${fullName.charAt(0).toUpperCase()}</div>'">`;
+    if (globProfilePic) {
+      avatarWrap.innerHTML = `<img src="${globProfilePic}" class="avatar" onerror="this.outerHTML='<div class=\\'avatar-ph\\'>${fullName.charAt(0).toUpperCase()}</div>'">`;
     } else {
       avatarWrap.innerHTML = `<div class="avatar-ph">${fullName.charAt(0).toUpperCase()}</div>`;
     }
 
-    document.getElementById('pName').innerHTML = fullName + (isVerified ? '<span class="verified-badge"></span>' : '');
-    document.getElementById('pHandle').textContent = '@' + (profile.username || username);
-    document.getElementById('pCat').textContent = category;
+    document.getElementById('pName').innerHTML = fullName + (globIsVerified ? '<span class="verified-badge"></span>' : '');
+    document.getElementById('pHandle').textContent = '@' + globUsername;
+    document.getElementById('pCat').textContent = globCategory;
     document.getElementById('pBio').textContent = bio;
     document.getElementById('mFollowers').textContent = fmtNum(followers);
     document.getElementById('mFollowing').textContent = fmtNum(following);
@@ -434,7 +531,7 @@
     document.getElementById('mRatio').textContent = following > 0 ? (followers / following).toFixed(1) + 'x' : '—';
     document.getElementById('profileCard').style.display = 'block';
 
-    // Monta relatório
+    // Build the report
     const sections = [
       { tag: 'POSICIONAMENTO', title: 'Posicionamento e autoridade', badge: true },
       { tag: 'BIO', title: 'Análise da bio', badge: false },
@@ -461,7 +558,7 @@
   }
 
   document.getElementById('igInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') startAnalysis();
+    if (e.key === 'Enter') fetchProfileData();
   });
 </script>
 

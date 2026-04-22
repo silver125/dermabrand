@@ -51,7 +51,7 @@ app.get('/api/profile', async (req, res) => {
 
 // ── POST /api/analyze ─────────────────────────────────────────────────────────
 app.post('/api/analyze', async (req, res) => {
-  const { profile } = req.body;
+  const { profile, contentTypes } = req.body;
   if (!profile) return res.status(400).json({ error: 'Dados do perfil obrigatórios' });
 
   const {
@@ -67,6 +67,10 @@ app.post('/api/analyze', async (req, res) => {
     return String(n);
   }
 
+  const contentStr = contentTypes && contentTypes.length > 0
+    ? `\n- Tipos de conteúdo frequentemente postados: ${contentTypes.join(', ')}`
+    : '';
+
   const prompt = `Você é um especialista em marketing médico premium da agência Dermabrand, com foco em dermatologistas e clínicas de alto padrão no Brasil. Analise este perfil do Instagram e gere um relatório estratégico orientado à conversão de pacientes particulares.
 
 DADOS DO PERFIL:
@@ -77,7 +81,7 @@ DADOS DO PERFIL:
 - Seguindo: ${fmtNum(following_count)}
 - Total de posts: ${fmtNum(media_count)}
 - Categoria: ${category || 'Não informada'}
-- Verificado: ${is_verified ? 'Sim' : 'Não'}
+- Verificado: ${is_verified ? 'Sim' : 'Não'}${contentStr}
 
 Responda EXATAMENTE neste formato com os marcadores entre colchetes:
 
@@ -90,7 +94,7 @@ Diagnóstico em 2 frases.
 BIO OTIMIZADA: (bio pronta para uso, máx 150 caracteres)
 
 [CONTEÚDO]
-Diagnóstico sobre qualidade, foco paciente vs técnico, variedade.
+Diagnóstico da qualidade baseado nos tipos de conteúdo postados (se informados).
 O que falta: (lista rápida)
 O que priorizar: (lista rápida)
 
@@ -102,10 +106,10 @@ Análise de 2-3 frases sobre conexão e potencial de crescimento.
 3 a 5 erros estratégicos objetivos.
 
 [PLANO]
-Frequência ideal, tipos de conteúdo, ajustes de linguagem — direto e prático.
+Frequência ideal, tipos de conteúdo adicionais, ajustes de linguagem — direto e prático.
 
 [IDEAS]
-5 ideias de posts premium:
+5 ideias de posts premium (alinhadas aos tipos de conteúdo):
 Gancho: | Tema: | Objetivo: atrair/educar/converter
 
 Linguagem sofisticada, sem clichês, foco em resultado real.`;
