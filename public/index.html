@@ -3,578 +3,750 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dermabrand — Análise de Perfis Médicos</title>
+  <title>Dermabrand — O Dossiê Estratégico</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    
     :root {
-      --purple-50: #EEEDFE;
-      --purple-100: #CECBF6;
-      --purple-200: #AFA9EC;
-      --purple-400: #7F77DD;
-      --purple-600: #534AB7;
-      --purple-800: #3C3489;
-      --purple-900: #26215C;
-      --teal-50: #E1F5EE;
-      --teal-400: #1D9E75;
-      --teal-800: #085041;
-      --amber-50: #FAEEDA;
-      --amber-800: #633806;
-      --red-50: #FCEBEB;
-      --red-600: #A32D2D;
-      --green-50: #EAF3DE;
-      --green-800: #27500A;
-      --bg: #ffffff;
-      --bg-sec: #f7f7f5;
-      --text: #1a1a1a;
-      --text-sec: #6b6b6b;
-      --border: rgba(0,0,0,0.1);
-      --radius: 12px;
-      --radius-sm: 8px;
-    }
+      /* Luxury Dark Palette */
+      --obsidian: #050505;
+      --onyx: #0A0A0C;
+      --charcoal: #141416;
+      --silver: #EAEAEA;
+      --muted-silver: #A3A3A3;
+      --rose-gold: #D8AFA9;
+      --rose-gold-dark: #A37F79;
+      --champagne: #F2E8D5;
+      --gold-foil: #CFA665;
+      --error-wine: #6B2323;
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1a1a;
-        --bg-sec: #242424;
-        --text: #f0f0f0;
-        --text-sec: #999;
-        --border: rgba(255,255,255,0.1);
-      }
+      /* Material Effects */
+      --glass-bg: rgba(20, 20, 22, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.04);
+      --glass-border-hover: rgba(216, 175, 169, 0.25);
+      --shadow-ambient: 0 30px 60px rgba(0, 0, 0, 0.8);
+
+      /* Typography */
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Outfit', sans-serif;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-sec);
-      color: var(--text);
+      font-family: var(--font-sans);
+      background-color: var(--obsidian);
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(216, 175, 169, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(207, 166, 101, 0.03) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+      color: var(--silver);
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ── Header ── */
-    header {
-      background: var(--bg);
-      border-bottom: 0.5px solid var(--border);
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(216, 175, 169, 0); }
+      50% { box-shadow: 0 0 25px rgba(216, 175, 169, 0.15); }
+    }
+    @keyframes spinDelay {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ── Layout & Core ── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
       padding: 0 2rem;
-      height: 60px;
+      position: relative;
+    }
+
+    header {
+      padding: 3rem 0 4rem;
+      text-align: center;
+      position: relative;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .brand-mark {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose-gold);
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .brand-line {
+      width: 1px; height: 30px;
+      background: linear-gradient(to bottom, transparent, var(--rose-gold-dark), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 300; }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      color: var(--champagne);
+      margin-bottom: 1rem;
+    }
+    .hero-title i { font-style: italic; color: var(--rose-gold); }
+    
+    .hero-sub {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--muted-silver);
+      letter-spacing: 0.05em;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── Search Section ── */
+    .search-orb {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 12px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-ambient);
+      margin: 2rem auto;
+      max-width: 600px;
+      transition: border-color 0.4s ease;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      opacity: 0;
     }
-    .logo {
-      width: 36px; height: 36px;
-      background: var(--purple-600);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+    .search-orb:focus-within {
+      border-color: rgba(216, 175, 169, 0.4);
     }
-    .logo svg { width: 20px; height: 20px; }
-    .brand-name { font-size: 17px; font-weight: 600; color: var(--text); }
-    .brand-tag {
-      font-size: 11px; color: var(--text-sec);
-      background: var(--bg-sec);
-      border: 0.5px solid var(--border);
-      border-radius: 20px;
-      padding: 2px 10px;
-      margin-left: 4px;
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      color: var(--champagne);
+      outline: none;
+      letter-spacing: 0.03em;
     }
-
-    /* ── Main ── */
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    /* ── Search ── */
-    .search-section { margin-bottom: 2rem; }
-    .search-title { font-size: 24px; font-weight: 600; margin-bottom: 6px; }
-    .search-sub { font-size: 14px; color: var(--text-sec); margin-bottom: 1.25rem; }
-    .search-row { display: flex; gap: 10px; }
-    .search-row input {
-      flex: 1; height: 44px; border: 0.5px solid var(--border);
-      border-radius: var(--radius-sm); padding: 0 14px; font-size: 14px;
-      background: var(--bg); color: var(--text); outline: none; transition: border-color .15s;
-    }
-    .search-row input:focus { border-color: var(--purple-400); }
-    .btn-primary {
-      height: 44px; padding: 0 22px; background: var(--purple-600);
-      color: var(--purple-50); border: none; border-radius: var(--radius-sm);
-      font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap;
-      transition: background .15s;
-    }
-    .btn-primary:hover { background: var(--purple-800); }
-    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
-
-    /* ── Review Form Section ── */
-    .form-section {
-      display: none;
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeIn 0.3s ease;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .form-title { font-size: 18px; font-weight: 600; margin-bottom: 1.2rem; }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-sec); }
-    .form-group input, .form-group textarea {
-      width: 100%; border: 0.5px solid var(--border);
-      border-radius: var(--radius-sm); padding: 10px 14px; font-size: 14px;
-      background: var(--bg); color: var(--text); font-family: inherit; outline: none;
-    }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--purple-400); }
-    .form-group textarea { resize: vertical; min-height: 80px; }
-    .form-row { display: flex; gap: 1rem; }
-    .form-col { flex: 1; }
-
-    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .content-tag {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 8px 16px;
-      font-size: 13px;
+    .search-input::placeholder { color: rgba(255,255,255,0.2); }
+    
+    .btn-luxe {
+      background: var(--obsidian);
+      border: 1px solid var(--glass-border-hover);
+      color: var(--rose-gold);
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
       cursor: pointer;
-      user-select: none;
-      transition: all .2s;
-      background: var(--bg-sec);
-      color: var(--text);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
-    .content-tag:hover { border-color: var(--purple-400); }
-    .content-tag.selected {
-      background: var(--purple-600);
-      color: var(--purple-50);
-      border-color: var(--purple-600);
+    .btn-luxe::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(216, 175, 169, 0.05), transparent);
+      transform: translateX(-100%); transition: transform 0.6s ease;
+    }
+    .btn-luxe:hover {
+      background: var(--charcoal);
+      border-color: var(--rose-gold);
+      box-shadow: 0 0 20px rgba(216, 175, 169, 0.15);
+    }
+    .btn-luxe:hover::before { transform: translateX(100%); }
+    .btn-luxe:disabled { opacity: 0.5; cursor: not-allowed; border-color: var(--glass-border); }
+
+    /* ── Progress Indicators ── */
+    .status-ring {
+      display: none;
+      text-align: center;
+      margin: 3rem 0;
+      animation: fade 0.6s ease;
+    }
+    .orb-spinner {
+      width: 40px; height: 40px; margin: 0 auto 1.5rem;
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--rose-gold);
+      border-radius: 50%;
+      animation: spinDelay 1.2s cubic-bezier(0.6, 0.1, 0.4, 0.9) infinite;
+    }
+    .status-text {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--champagne);
+      letter-spacing: 0.05em;
     }
     
-    .btn-large {
-      width: 100%; height: 50px; font-size: 15px; margin-top: 10px;
+    .progress-bar {
+      width: 200px; height: 1px; background: rgba(255,255,255,0.05); margin: 1rem auto; position: relative;
+    }
+    .progress-fill {
+      position: absolute; top: 0; left: 0; height: 100%; background: var(--rose-gold);
+      width: 0%; transition: width 0.5s ease;
     }
 
-    /* ── Progress ── */
-    .progress-section {
-      background: var(--bg); border: 0.5px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; display: none;
+    /* ── Form Aesthetic ── */
+    .form-panel {
+      display: none;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 3rem 4rem;
+      border-radius: 12px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-ambient);
+      margin-bottom: 4rem;
+      position: relative;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .progress-steps { display: flex; gap: 6px; margin-bottom: 10px; }
-    .pstep { flex: 1; height: 3px; border-radius: 2px; background: var(--bg-sec); }
-    .pstep.active { background: var(--purple-600); }
-    .pstep.done { background: var(--teal-400); }
-    .progress-label { font-size: 13px; color: var(--text-sec); display: flex; align-items: center; gap: 8px; }
-    .spinner {
-      width: 14px; height: 14px; border: 2px solid var(--purple-200);
-      border-top-color: var(--purple-600); border-radius: 50%;
-      animation: spin .7s linear infinite; flex-shrink: 0;
+    
+    .panel-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .panel-header h2 {
+      font-size: 2.2rem;
+      color: var(--champagne);
+      margin-bottom: 0.5rem;
+    }
+    .panel-header p {
+      font-size: 0.85rem;
+      color: var(--muted-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
 
-    /* ── Error ── */
-    .error-box {
-      background: var(--red-50); border: 0.5px solid #F09595;
-      border-radius: var(--radius-sm); padding: 1rem 1.25rem;
-      font-size: 13px; color: var(--red-600); margin-bottom: 1.5rem; display: none;
+    .lux-field {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .lux-field label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.8rem;
+    }
+    .lux-input {
+      width: 100%;
+      background: rgba(0,0,0,0.2);
+      border: none;
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0.8rem 0;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--champagne);
+      transition: all 0.4s ease;
+      outline: none;
+    }
+    .lux-input::placeholder { color: rgba(255,255,255,0.1); font-family: var(--font-sans); font-size: 1rem; font-weight: 300;}
+    .lux-input:focus {
+      border-bottom-color: var(--rose-gold);
+      background: linear-gradient(to top, rgba(216, 175, 169, 0.03), transparent);
+    }
+    textarea.lux-input {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 40px;
     }
 
-    /* ── Profile card ── */
-    .profile-card {
-      background: var(--bg); border: 0.5px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem; display: none;
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+
+    /* ── Content Type Tags ── */
+    .tags-cloud {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;
     }
-    .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
-    .avatar {
-      width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
-      border: 0.5px solid var(--border); flex-shrink: 0;
+    .tag-btn {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--muted-silver);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .avatar-ph {
-      width: 64px; height: 64px; border-radius: 50%; background: var(--purple-50);
+    .tag-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--silver); }
+    .tag-btn.selected {
+      background: var(--rose-gold);
+      border-color: var(--rose-gold);
+      color: var(--obsidian);
+      font-weight: 500;
+    }
+
+    .btn-submit-container { text-align: center; margin-top: 4rem; }
+    .btn-grand {
+      background: var(--rose-gold);
+      color: var(--obsidian);
+      border: none;
+      padding: 1.2rem 4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(216, 175, 169, 0.1);
+    }
+    .btn-grand:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.25);
+      background: #FDFBF7;
+    }
+
+    /* ── Profile Header (Results) ── */
+    .profile-hero {
+      display: none;
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeUp 1s ease forwards;
+    }
+    .avatar-frame {
+      width: 100px; height: 100px; margin: 0 auto 1.5rem;
+      border-radius: 50%; padding: 4px;
+      border: 1px solid var(--rose-gold-dark);
+      background: rgba(0,0,0,0.5);
+    }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+    .avatar-letter {
+      width: 100%; height: 100%; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 600; color: var(--purple-600); flex-shrink: 0;
+      font-family: var(--font-serif); font-size: 2.5rem; color: var(--rose-gold);
     }
-    .profile-name { font-size: 17px; font-weight: 600; }
-    .profile-handle { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
-    .profile-cat { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
-    .profile-bio { font-size: 13px; line-height: 1.6; color: var(--text); margin-top: 4px; }
-    .verified-badge {
-      display: inline-block; width: 14px; height: 14px;
-      background: #378ADD; border-radius: 50%; margin-left: 5px; vertical-align: middle;
+    .ph-name { font-size: 2.5rem; color: var(--champagne); margin-bottom: 0.2rem; }
+    .ph-meta {
+      font-size: 0.85rem; color: var(--rose-gold-dark); text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .ph-bio {
+      margin: 1.5rem auto 0; max-width: 500px; font-weight: 300; font-size: 0.95rem; color: var(--muted-silver);
     }
 
-    /* ── Report ── */
-    .report-section { display: none; }
-    .section-label {
-      font-size: 11px; font-weight: 600; color: var(--text-sec);
-      text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;
+    /* ── Report Cards ── */
+    .dossier-view { display: none; margin-bottom: 6rem; }
+    .editorial-divider {
+      text-align: center; margin: 4rem 0 3rem;
+      font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--rose-gold-dark);
+      letter-spacing: 0.3em;
     }
+    .editorial-divider::before, .editorial-divider::after {
+      content: "—"; margin: 0 1rem; opacity: 0.3;
+    }
+
+    .report-grid { display: flex; flex-direction: column; gap: 2rem; }
     .report-card {
-      background: var(--bg); border: 0.5px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 10px;
+      background: linear-gradient(145deg, rgba(20,20,22,0.6), rgba(10,10,12,0.8));
+      border: 1px solid var(--glass-border);
+      border-left: 2px solid transparent;
+      padding: 3rem;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
     }
-    .report-card h3 {
-      font-size: 13px; font-weight: 600; color: var(--text);
-      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    .report-card:hover { border-left-color: var(--rose-gold); background: rgba(20,20,22,0.8); }
+    
+    .rc-title {
+      font-size: 1.8rem; color: var(--champagne); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
     }
-    .badge { padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 500; }
-    .badge-alto { background: var(--green-50); color: var(--green-800); }
-    .badge-medio { background: var(--amber-50); color: var(--amber-800); }
-    .badge-baixo { background: var(--red-50); color: var(--red-600); }
-    .badge-bom { background: var(--green-50); color: var(--green-800); }
-    .report-text { font-size: 13px; color: var(--text); line-height: 1.75; white-space: pre-wrap; }
+    .rc-number {
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600;
+      color: var(--obsidian); background: var(--rose-gold-dark);
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rc-body {
+      font-family: var(--font-sans); font-weight: 300; font-size: 1rem;
+      color: var(--silver); line-height: 1.8; white-space: pre-wrap;
+    }
 
-    /* ── Footer ── */
-    footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text-sec); }
+    /* Highlights within text based on simple match */
+    .rc-body strong { color: var(--champagne); font-weight: 500; }
+    .rc-body em { font-family: var(--font-serif); color: var(--rose-gold); font-size: 1.1em; }
 
-    @media (max-width: 600px) {
-      .search-row { flex-direction: column; }
-      .btn-primary { width: 100%; }
-      .form-row { flex-direction: column; gap: 0; }
+    .error-banner {
+      display: none; background: rgba(107, 35, 35, 0.1);
+      border: 1px solid var(--error-wine); color: #EAA;
+      padding: 1rem 2rem; border-radius: 6px; text-align: center;
+      margin: 2rem auto; max-width: 600px;
+    }
+
+    footer {
+      text-align: center; padding: 3rem 0; margin-top: 4rem;
+      border-top: 1px solid var(--glass-border);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .form-panel { padding: 2rem 1.5rem; }
+      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+      .search-orb { flex-direction: column; background: transparent; border:none; box-shadow:none; gap: 10px; }
+      .search-input { width: 100%; border: 1px solid var(--glass-border); border-radius:30px; background: rgba(20,20,22,0.8); }
+      .btn-luxe { width: 100%; }
+      .hero-title { font-size: 2.5rem; }
+      .report-card { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="7" r="3.5" fill="#EEEDFE"/>
-      <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#EEEDFE" stroke-width="1.6" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <span class="brand-name">Dermabrand</span>
-  <span class="brand-tag">beta</span>
-</header>
+  <div class="container">
+    <header>
+      <div class="brand-mark">Dermabrand</div>
+      <div class="brand-line"></div>
+      <h1 class="hero-title">O Dossiê <i>Estratégico</i></h1>
+      <p class="hero-sub">Inteligência artificial aliada ao design e curadoria médica. Gere diagnósticos autoritativos para os perfis mais luxuosos do país.</p>
+    </header>
 
-<main>
-
-  <div class="search-section">
-    <h1 class="search-title">Análise médica de ponta a ponta</h1>
-    <p class="search-sub">Cole o link do Instagram para extrair dados. Em seguida, enriqueça os campos para uma análise profunda.</p>
-    <div class="search-row">
-      <input type="text" id="igInput" placeholder="@dra.anasouza ou instagram.com/dra.anasouza" />
-      <button class="btn-primary" id="btnSearch" onclick="fetchProfileData()">Buscar Dados</button>
+    <!-- Search Region -->
+    <div class="search-orb" id="searchBox">
+      <input type="text" class="search-input" id="igInput" placeholder="Ex: @dra.elena.dermatologia" />
+      <button class="btn-luxe" id="btnSearch" onclick="fetchProfileData()">Extrair Perfil</button>
     </div>
-  </div>
 
-  <div class="progress-section" id="progressSection">
-    <div class="progress-steps">
-      <div class="pstep" id="ps1"></div>
-      <div class="pstep" id="ps2"></div>
-      <div class="pstep" id="ps3"></div>
+    <!-- Error Region -->
+    <div class="error-banner" id="errorBox"></div>
+
+    <!-- Processing State -->
+    <div class="status-ring" id="progressSection">
+      <div class="orb-spinner"></div>
+      <div class="status-text" id="progressLabel">Estabelecendo conexão...</div>
+      <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
     </div>
-    <div class="progress-label">
-      <div class="spinner"></div>
-      <span id="progressLabel">Iniciando...</span>
-    </div>
-  </div>
 
-  <div class="error-box" id="errorBox"></div>
+    <!-- Interactive Form -->
+    <div class="form-panel" id="formSection">
+      <div class="panel-header">
+        <h2>Parâmetros Clínicos</h2>
+        <p>Curadoria de Metadados</p>
+      </div>
 
-  <!-- Formulário de validação / complemento -->
-  <div class="form-section" id="formSection">
-    <h2 class="form-title">Dossiê Estratégico do Médico</h2>
-    <p style="font-size: 13px; color: var(--text-sec); margin-top:-10px; margin-bottom: 1.2rem;">
-      Preencha com exatidão os campos a seguir para obter o relatório Dermabrand focado em autoridade e conversão.
-    </p>
-
-    <div class="form-row">
-      <div class="form-col">
-        <div class="form-group">
-          <label>Nome do Médico / Perfil</label>
-          <input type="text" id="fName" placeholder="Ex: Dra. Ana Souza" />
+      <div class="form-grid-2">
+        <div class="lux-field">
+          <label>Nome do Médico / Marca</label>
+          <input type="text" class="lux-input" id="fName" placeholder="Dr(a). Especifique" />
+        </div>
+        <div class="lux-field">
+          <label>Especialidade Focal</label>
+          <input type="text" class="lux-input" id="fSpecialty" placeholder="Dermatologia Avançada" />
         </div>
       </div>
-      <div class="form-col">
-        <div class="form-group">
-          <label>Especialidade</label>
-          <input type="text" id="fSpecialty" placeholder="Ex: Dermatologista" />
+
+      <div class="lux-field">
+        <label>Localização / Praça</label>
+        <input type="text" class="lux-input" id="fCity" placeholder="São Paulo, SP" />
+      </div>
+
+      <div class="lux-field">
+        <label>Biografia Atualizada</label>
+        <textarea class="lux-input" id="fBio" placeholder="Revisite a promessa da bio atual do profissional..."></textarea>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="lux-field">
+          <label>Audiência</label>
+          <input type="number" class="lux-input" id="fFollowers" placeholder="Seguidores" />
+        </div>
+        <div class="lux-field">
+          <label>Curtidas (Aprox)</label>
+          <input type="text" class="lux-input" id="fLikes" placeholder="Ex: 450" />
+        </div>
+        <div class="lux-field">
+          <label>Comentários (Aprox)</label>
+          <input type="text" class="lux-input" id="fComments" placeholder="Ex: 22" />
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label>Cidade / Localização</label>
-      <input type="text" id="fCity" placeholder="Ex: São Paulo - SP" />
-    </div>
-    
-    <div class="form-group">
-      <label>Biografia do Perfil</label>
-      <textarea id="fBio" placeholder="Cole a bio atual"></textarea>
-    </div>
-    
-    <div class="form-row">
-      <div class="form-col">
-        <div class="form-group">
-          <label>Seguidores</label>
-          <input type="number" id="fFollowers" />
+      <div class="lux-field">
+        <label>Ritmo Editorial (Frequência)</label>
+        <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: Moderada (3x semanal)" />
+      </div>
+
+      <div class="lux-field">
+        <label>Diretriz das Legendas</label>
+        <textarea class="lux-input" id="fCaptions" placeholder="A tom de voz é técnico (focado no procedimento) ou emocional (focado no bem-estar do paciente)?"></textarea>
+      </div>
+
+      <div class="lux-field">
+        <label>Repertório de Conteúdo</label>
+        <div class="tags-cloud">
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Reels Educativos</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">A&D (Procedimentos)</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Lifestyle Premium</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Bastidores da Clínica</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Artigos Técnicos</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Social Proof (Depoimentos)</button>
         </div>
       </div>
-      <div class="form-col">
-        <div class="form-group">
-          <label>Média de Curtidas (Aprox)</label>
-          <input type="text" id="fLikes" placeholder="Ex: 300" />
-        </div>
-      </div>
-      <div class="form-col">
-        <div class="form-group">
-          <label>Média de Comentários (Aprox)</label>
-          <input type="text" id="fComments" placeholder="Ex: 15" />
-        </div>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label>Frequência de Posts</label>
-      <input type="text" id="fFrequency" placeholder="Ex: Todo dia; 3x na semana..." />
-    </div>
 
-    <div class="form-group">
-      <label>Exemplos de Legendas (Transcreva pequenos trechos)</label>
-      <textarea id="fCaptions" placeholder="A legenda foca em explicações técnicas ou emocionais para os pacientes?"></textarea>
-    </div>
+      <div class="lux-field">
+        <label>Parecer do Especialista (Observações Visuais)</label>
+        <textarea class="lux-input" id="fObservations" placeholder="Ex: As fotos têm pouca iluminação. Falta alinhamento na grade visual. Excesso de logos espalhados."></textarea>
+      </div>
 
-    <div class="form-group">
-      <label>Tipos de Conteúdo Principal (clicáveis)</label>
-      <div class="tags-container">
-         <div class="content-tag" onclick="toggleTag(this)">Reels Educativos</div>
-         <div class="content-tag" onclick="toggleTag(this)">Antes e Depois</div>
-         <div class="content-tag" onclick="toggleTag(this)">Lifestyle</div>
-         <div class="content-tag" onclick="toggleTag(this)">Bastidores / Clínica</div>
-         <div class="content-tag" onclick="toggleTag(this)">Técnico / Artigos</div>
+      <div class="btn-submit-container">
+        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Sintetizar Dossiê Intelectual</button>
       </div>
     </div>
 
-    <div class="form-group">
-      <label>Observações Gerais</label>
-      <textarea id="fObservations" placeholder="O layout visual é poluído? Usa muitas fotos de banco de imagens? Usa cores coerentes?"></textarea>
+    <!-- Final Result Headers -->
+    <div class="profile-hero" id="profileCard">
+      <div class="avatar-frame" id="avatarWrap"></div>
+      <h2 class="ph-name" id="pName">Nome Aqui</h2>
+      <div class="ph-meta" id="pCat"></div>
+      <p class="ph-bio" id="pBio"></p>
     </div>
 
-    <button class="btn-primary btn-large" id="btnAnalyze" onclick="generateReport()">Processar Análise Premium</button>
+    <!-- Report Canvas -->
+    <div class="dossier-view" id="reportSection">
+      <div class="editorial-divider">ANÁLISE ALGORÍTMICA</div>
+      <div class="report-grid" id="reportCards">
+        <!-- JS Injected Cards -->
+      </div>
+    </div>
+
   </div>
 
-  <div class="profile-card" id="profileCard">
-    <div class="profile-top">
-      <div id="avatarWrap"></div>
-      <div>
-        <div class="profile-name" id="pName"></div>
-        <div class="profile-handle" id="pHandle"></div>
-        <div class="profile-cat" id="pCat"></div>
-        <div class="profile-bio" id="pBio"></div>
-      </div>
-    </div>
-  </div>
+  <footer>
+    Dermabrand &copy; 2026 — The Premium Praxis
+  </footer>
 
-  <div class="report-section" id="reportSection">
-    <div class="section-label">Relatório estratégico</div>
-    <div id="reportCards"></div>
-  </div>
+  <script>
+    let globProfilePic = '';
+    let globUsername = '';
+    let globIsVerified = false;
+    let globCategory = '';
 
-</main>
+    function extractUsername(input) {
+      input = input.trim();
+      const m = input.match(/instagram\.com\/([^/?#\s]+)/);
+      if (m) return m[1].replace(/\/$/, '');
+      return input.replace(/^@/, '').trim();
+    }
 
-<footer>Dermabrand &copy; 2025 — Marketing médico premium</footer>
+    function setStatus(text, progressPercent) {
+      document.getElementById('progressLabel').textContent = text;
+      document.getElementById('pFill').style.width = progressPercent + '%';
+    }
 
-<script>
-  let globProfilePic = '';
-  let globUsername = '';
-  let globIsVerified = false;
-  let globCategory = '';
+    function toggleDisplay(id, display) {
+      document.getElementById(id).style.display = display;
+    }
 
-  function extractUsername(input) {
-    input = input.trim();
-    const m = input.match(/instagram\.com\/([^/?#\s]+)/);
-    if (m) return m[1].replace(/\/$/, '');
-    return input.replace(/^@/, '').trim();
-  }
-
-  function setStep(n, label) {
-    ['ps1','ps2','ps3'].forEach((id, i) => {
-      const el = document.getElementById(id);
-      el.className = 'pstep' + (i < n - 1 ? ' done' : i === n - 1 ? ' active' : '');
-    });
-    document.getElementById('progressLabel').textContent = label;
-  }
-
-  function showError(msg) {
-    const el = document.getElementById('errorBox');
-    el.style.display = 'block';
-    el.textContent = msg;
-    document.getElementById('progressSection').style.display = 'none';
-    document.getElementById('btnSearch').disabled = false;
-    document.getElementById('btnAnalyze').disabled = false;
-  }
-
-  function toggleTag(el) {
-    el.classList.toggle('selected');
-  }
-
-  function parseSection(text, title) {
-    // Escape special characters in the title for Regex
-    const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n\\d\\.|\\n---|$)`, 'i');
-    const match = text.match(regex);
-    return match ? match[1].trim() : '';
-  }
-
-  async function fetchProfileData() {
-    const input = document.getElementById('igInput').value.trim();
-    if (!input) return;
-    const username = extractUsername(input);
-    if (!username) { showError('Informe um @username ou link válido.'); return; }
-
-    document.getElementById('btnSearch').disabled = true;
-    document.getElementById('errorBox').style.display = 'none';
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('profileCard').style.display = 'none';
-    document.getElementById('reportSection').style.display = 'none';
-    document.getElementById('progressSection').style.display = 'block';
-
-    setStep(1, 'Buscando dados do perfil na RapidAPI...');
-
-    try {
-      const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
-      const d = await r.json();
-      if (!d.ok) throw new Error(d.error || 'Perfil não encontrado.');
-      
-      const p = d.user;
-      
-      // Store globals
-      globUsername = p.username || username;
-      globProfilePic = p.profile_pic_url_hd || p.profile_pic_url || '';
-      globIsVerified = p.is_verified || false;
-      globCategory = p.category || p.category_name || '';
-
-      // Populate form
-      document.getElementById('fName').value = p.full_name || p.name || globUsername;
-      document.getElementById('fSpecialty').value = globCategory;
-      document.getElementById('fBio').value = p.biography || p.bio || '';
-      document.getElementById('fFollowers').value = parseInt(p.follower_count || p.edge_followed_by?.count || 0);
-      
-      // Limpar os campos manuais
-      document.getElementById('fCity').value = '';
-      document.getElementById('fLikes').value = '';
-      document.getElementById('fComments').value = '';
-      document.getElementById('fFrequency').value = '';
-      document.getElementById('fCaptions').value = '';
-      document.getElementById('fObservations').value = '';
-
-      // Reset content tags
-      document.querySelectorAll('.content-tag').forEach(tag => tag.classList.remove('selected'));
-
-      // Hide progress, show form
-      document.getElementById('progressSection').style.display = 'none';
-      document.getElementById('formSection').style.display = 'block';
+    function showError(msg) {
+      const el = document.getElementById('errorBox');
+      el.style.display = 'block';
+      el.textContent = msg;
+      toggleDisplay('progressSection', 'none');
       document.getElementById('btnSearch').disabled = false;
-      document.getElementById('btnSearch').textContent = 'Buscar Novamente';
-
-    } catch (e) {
-      showError('Erro ao buscar perfil: ' + e.message);
-      return;
-    }
-  }
-
-  async function generateReport() {
-    document.getElementById('errorBox').style.display = 'none';
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('btnSearch').disabled = true;
-    document.getElementById('btnAnalyze').disabled = true;
-    document.getElementById('progressSection').style.display = 'block';
-
-    setStep(2, 'Avaliando dados e gerando estratégia complexa Dermabrand...');
-
-    // Collect Data
-    const fullName = document.getElementById('fName').value;
-    const specialty = document.getElementById('fSpecialty').value;
-    const city = document.getElementById('fCity').value;
-    const bio = document.getElementById('fBio').value;
-    const followers = document.getElementById('fFollowers').value;
-    const likes = document.getElementById('fLikes').value;
-    const comments = document.getElementById('fComments').value;
-    const frequency = document.getElementById('fFrequency').value;
-    const captions = document.getElementById('fCaptions').value;
-    const observations = document.getElementById('fObservations').value;
-
-    const contentTypes = Array.from(document.querySelectorAll('.content-tag.selected'))
-                              .map(el => el.textContent);
-
-    const profileData = {
-      full_name: fullName,
-      username: globUsername,
-      specialty,
-      city,
-      biography: bio,
-      follower_count: followers,
-      likes,
-      comments,
-      frequency,
-      captions,
-      observations,
-      is_verified: globIsVerified,
-      profile_pic_url: globProfilePic
-    };
-
-    let reportText = '';
-    try {
-      const r = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ profile: profileData, contentTypes }),
-      });
-      const d = await r.json();
-      if (!d.ok) throw new Error(d.error || 'Erro na análise.');
-      reportText = d.report;
-    } catch (e) {
-      document.getElementById('formSection').style.display = 'block';
-      showError('Erro ao gerar análise: ' + e.message);
-      return;
+      document.getElementById('btnSearch').textContent = 'Tentar Novamente';
+      if(document.getElementById('btnAnalyze')) document.getElementById('btnAnalyze').disabled = false;
     }
 
-    setStep(3, 'Montando relatório final...');
-    document.getElementById('progressSection').style.display = 'none';
-    document.getElementById('btnSearch').disabled = false;
-    document.getElementById('btnAnalyze').disabled = false;
-
-    // Show final profile review card
-    const avatarWrap = document.getElementById('avatarWrap');
-    if (globProfilePic) {
-      avatarWrap.innerHTML = `<img src="${globProfilePic}" class="avatar" onerror="this.outerHTML='<div class=\\'avatar-ph\\'>${fullName.charAt(0).toUpperCase()}</div>'">`;
-    } else {
-      avatarWrap.innerHTML = `<div class="avatar-ph">${fullName.charAt(0).toUpperCase()}</div>`;
+    function toggleTag(el) {
+      el.classList.toggle('selected');
     }
 
-    document.getElementById('pName').innerHTML = fullName + (globIsVerified ? '<span class="verified-badge"></span>' : '');
-    document.getElementById('pHandle').textContent = '@' + globUsername;
-    document.getElementById('pCat').textContent = specialty + (city ? ` • ${city}` : '');
-    document.getElementById('pBio').textContent = bio;
-    document.getElementById('profileCard').style.display = 'block';
+    function parseSection(text, title) {
+      const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n\\d\\.|\\n---|$)`, 'i');
+      const match = text.match(regex);
+      return match ? match[1].trim() : '';
+    }
 
-    // Build the report based on the new numbered format requested by user
-    const sections = [
-      { title: '1. POSICIONAMENTO E AUTORIDADE' },
-      { title: '2. ANÁLISE DA BIO' },
-      { title: '3. ANÁLISE DE CONTEÚDO' },
-      { title: '4. ENGAJAMENTO E PERFORMANCE' },
-      { title: '5. ERROS E GARGALOS' },
-      { title: '6. PLANO DE MELHORIA (PRÁTICO)' },
-      { title: '7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)' }
-    ];
+    async function fetchProfileData() {
+      const input = document.getElementById('igInput').value.trim();
+      if (!input) return;
+      const username = extractUsername(input);
+      if (!username) { showError('Identificador inválido fornecido.'); return; }
 
-    const cardsHtml = sections.map(s => {
-      const content = parseSection(reportText, s.title);
-      if (!content) return '';
+      document.getElementById('igInput').blur();
+      document.getElementById('btnSearch').disabled = true;
+      document.getElementById('btnSearch').textContent = 'Adquirindo...';
       
-      return `<div class="report-card">
-        <h3>${s.title}</h3>
-        <div class="report-text">${content}</div>
-      </div>`;
-    }).join('');
+      toggleDisplay('errorBox', 'none');
+      toggleDisplay('formSection', 'none');
+      toggleDisplay('profileCard', 'none');
+      toggleDisplay('reportSection', 'none');
+      toggleDisplay('progressSection', 'block');
 
-    document.getElementById('reportCards').innerHTML = cardsHtml || `<div class="report-card"><div class="report-text">${reportText}</div></div>`;
-    document.getElementById('reportSection').style.display = 'block';
-  }
+      setStatus('Integrando metadados via API de Scrape...', 30);
 
-  document.getElementById('igInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') fetchProfileData();
-  });
-</script>
+      try {
+        const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
+        const d = await r.json();
+        if (!d.ok) throw new Error(d.error || 'Autenticação falha ou perfil protegido.');
+        
+        const p = d.user;
+        
+        globUsername = p.username || username;
+        globProfilePic = p.profile_pic_url_hd || p.profile_pic_url || '';
+        globIsVerified = p.is_verified || false;
+        globCategory = p.category || p.category_name || '';
+
+        // populate form
+        document.getElementById('fName').value = p.full_name || p.name || globUsername;
+        document.getElementById('fSpecialty').value = globCategory;
+        document.getElementById('fBio').value = p.biography || p.bio || '';
+        document.getElementById('fFollowers').value = parseInt(p.follower_count || p.edge_followed_by?.count || 0);
+
+        // reset
+        ['fCity', 'fLikes', 'fComments', 'fFrequency', 'fCaptions', 'fObservations'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+        document.querySelectorAll('.content-tag').forEach(t => t.classList.remove('selected'));
+
+        setTimeout(() => {
+          toggleDisplay('progressSection', 'none');
+          toggleDisplay('formSection', 'block');
+          document.getElementById('searchBox').style.display = 'none'; // hide search box for elegant flow
+          document.getElementById('errorBox').style.display = 'none';
+        }, 600);
+
+      } catch (e) {
+        showError('Falha no subsistema: ' + e.message);
+      }
+    }
+
+    async function generateReport() {
+      toggleDisplay('errorBox', 'none');
+      toggleDisplay('formSection', 'none');
+      document.getElementById('btnAnalyze').disabled = true;
+      toggleDisplay('progressSection', 'block');
+
+      setStatus('O Motor OpenAI está sintetizando o dossiê...', 70);
+
+      const profileData = {
+        full_name: document.getElementById('fName').value,
+        username: globUsername,
+        specialty: document.getElementById('fSpecialty').value,
+        city: document.getElementById('fCity').value,
+        biography: document.getElementById('fBio').value,
+        follower_count: document.getElementById('fFollowers').value,
+        likes: document.getElementById('fLikes').value,
+        comments: document.getElementById('fComments').value,
+        frequency: document.getElementById('fFrequency').value,
+        captions: document.getElementById('fCaptions').value,
+        observations: document.getElementById('fObservations').value,
+        is_verified: globIsVerified,
+        profile_pic_url: globProfilePic
+      };
+
+      const contentTypes = Array.from(document.querySelectorAll('.content-tag.selected'))
+                                .map(el => el.textContent);
+
+      let reportText = '';
+      try {
+        const r = await fetch('/api/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ profile: profileData, contentTypes }),
+        });
+        const d = await r.json();
+        if (!d.ok) throw new Error((d.error||'') + " " + (d.detail||''));
+        reportText = d.report;
+      } catch (e) {
+        toggleDisplay('formSection', 'block');
+        showError('Colapso cognitivo (IA): ' + e.message);
+        return;
+      }
+
+      setStatus('Renderizando documento...', 100);
+      
+      setTimeout(() => {
+        toggleDisplay('progressSection', 'none');
+        buildFinalView(profileData, reportText);
+      }, 800);
+    }
+
+    function buildFinalView(p, text) {
+      const avatarWrap = document.getElementById('avatarWrap');
+      if (globProfilePic) {
+        avatarWrap.innerHTML = `<img src="${globProfilePic}" class="avatar-img" onerror="this.outerHTML='<div class=\\'avatar-letter\\'>${p.full_name.charAt(0).toUpperCase()}</div>'">`;
+      } else {
+        avatarWrap.innerHTML = `<div class="avatar-letter">${p.full_name.charAt(0).toUpperCase()}</div>`;
+      }
+
+      document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.5em; vertical-align:middle;">👑</span>' : '');
+      document.getElementById('pCat').textContent = p.specialty + (p.city ? ` • ${p.city}` : '');
+      document.getElementById('pBio').textContent = p.biography;
+      
+      toggleDisplay('profileCard', 'block');
+
+      const sections = [
+        "1. POSICIONAMENTO E AUTORIDADE",
+        "2. ANÁLISE DA BIO",
+        "3. ANÁLISE DE CONTEÚDO",
+        "4. ENGAJAMENTO E PERFORMANCE",
+        "5. ERROS E GARGALOS",
+        "6. PLANO DE MELHORIA (PRÁTICO)",
+        "7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)"
+      ];
+
+      // Format Text helper
+      const formatBody = (str) => {
+        return str
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .trim();
+      };
+
+      const blocksHtml = sections.map((title, i) => {
+        let content = parseSection(text, title);
+        if (!content) return '';
+        
+        let visualTitle = title.replace(/^\d\.\s*/, '');
+        
+        // Compute animation delay for stagger reveal
+        let delay = (i * 0.15) + "s";
+        
+        return `<div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay} forwards;">
+          <h3 class="rc-title"><div class="rc-number">${i+1}</div> ${visualTitle}</h3>
+          <div class="rc-body">${formatBody(content)}</div>
+        </div>`;
+      }).join('');
+
+      document.getElementById('reportCards').innerHTML = blocksHtml || `<div class="report-card" style="animation: fadeUp 0.8s forwards;"><div class="rc-body">${formatBody(text)}</div></div>`;
+      toggleDisplay('reportSection', 'block');
+    }
+
+    document.getElementById('igInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') fetchProfileData();
+    });
+  </script>
 
 </body>
 </html>
