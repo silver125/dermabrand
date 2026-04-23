@@ -441,7 +441,7 @@
       .btn-luxe { width: 100%; border-radius: 30px; }
       .report-card { padding: 1.5rem 1rem; }
       .rc-title { font-size: 1.4rem; flex-direction: row; align-items: center; }
-      .whatsapp-cta-link { font-size: 0.85rem !important; padding: 1rem !important; }
+      .whatsapp-cta-link { font-size: 0.85rem !important; padding: 0.8rem 2.5rem !important; display: inline-block !important; width: auto !important; }
     }
   </style>
 </head>
@@ -766,10 +766,12 @@
       }).join('');
 
       const whatsappCard = `
-      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards; border: 1px solid var(--glass-border); text-align: center;">
-          <h3 class="rc-title" style="justify-content: center; margin-bottom: 1rem; font-size: 1.2rem; line-height: 1.4;"><div class="rc-number">✦</div> Quero minhas sugestões de conteúdos já - clique aqui</h3>
-          <div class="rc-body" style="margin-top: 1.5rem;">
-            <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugest%C3%B5es%20de%20conte%C3%BAdo" target="_blank" class="whatsapp-cta-link" style="display: flex; align-items: center; justify-content: center; width: 100%; background: #ffffff; color: #000000; text-decoration: none; padding: 1.2rem 1rem; border-radius: 40px; font-weight: 700; font-size: 1rem; text-align: center; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); word-wrap: break-word;">
+      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards; border: 1px solid var(--glass-border); text-align: center; background: linear-gradient(145deg, rgba(20,20,22,0.6), rgba(20,15,10,0.8));">
+          <p style="color: #D4A33B; font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.5; font-style: italic; margin-bottom: 1.5rem; margin-top: 0.5rem;">
+            "Nós preparamos sugestões específicas de conteúdos e ajustes personalizados para o seu perfil no Instagram (clique abaixo)"
+          </p>
+          <div class="rc-body">
+            <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugest%C3%B5es%20de%20conte%C3%BAdo" target="_blank" class="whatsapp-cta-link" style="display: inline-block; background: linear-gradient(135deg, #F3C669 0%, #D4A33B 100%); color: #000000; text-decoration: none; padding: 0.8rem 3rem; border-radius: 40px; font-weight: 700; font-size: 0.95rem; text-align: center; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(212, 163, 59, 0.3); animation: pulseGoldGlow 2s infinite ease-in-out;">
                ACESSAR
             </a>
           </div>
