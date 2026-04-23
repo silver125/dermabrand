@@ -603,7 +603,7 @@
       toggleDisplay('reportSection', 'none');
       toggleDisplay('progressSection', 'block');
 
-      setStatus('Integrando metadados via API de Scrape...', 30);
+      setStatus('A mágica está acontecendo...', 30);
 
       try {
         const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
@@ -647,7 +647,7 @@
       document.getElementById('btnAnalyze').disabled = true;
       toggleDisplay('progressSection', 'block');
 
-      setStatus('O Motor OpenAI está sintetizando o dossiê...', 70);
+      setStatus('Produzindo insights estratégicos...', 70);
 
       const profileData = {
         full_name: document.getElementById('fName').value,
@@ -684,7 +684,7 @@
         return;
       }
 
-      setStatus('Renderizando documento...', 100);
+      setStatus('Finalizando apresentação...', 100);
       
       setTimeout(() => {
         toggleDisplay('progressSection', 'none');
