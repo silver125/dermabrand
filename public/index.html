@@ -64,6 +64,10 @@
       0%, 100% { box-shadow: 0 0 15px rgba(216, 175, 169, 0); }
       50% { box-shadow: 0 0 25px rgba(216, 175, 169, 0.15); }
     }
+    @keyframes pulseGoldGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(212, 163, 59, 0); transform: scale(1); }
+      50% { box-shadow: 0 0 35px rgba(212, 163, 59, 0.4); transform: scale(1.02); }
+    }
     @keyframes spinDelay {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -757,12 +761,14 @@
       }).join('');
 
       const whatsappCard = `
-      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards;">
-          <h3 class="rc-title"><div class="rc-number">✦</div> Plano de Ação Personalizado</h3>
+      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards; border-left: 2px solid var(--gold-foil);">
+          <h3 class="rc-title" style="color: var(--gold-foil);"><div class="rc-number" style="background: var(--gold-foil); color: var(--obsidian);">✦</div> Assessoria Estratégica Premium</h3>
           <div class="rc-body" style="text-align: center; margin-top: 1.5rem;">
-            <p style="margin-bottom: 2rem; color: var(--muted-silver);">Descubra uma curadoria exclusiva para elevar o nível da sua marca médica e dominar sua especialidade no ambiente digital.</p>
-            <a href="https://wa.me/5511916391848?text=Quero%20sugest%C3%A3o" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--rose-gold); color: var(--obsidian); text-decoration: none; padding: 1rem 2.5rem; border-radius: 40px; font-weight: 600; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 5px 20px rgba(216, 175, 169, 0.15);">
-               QUERO MINHAS SUGESTÕES DE CONTEÚDOS JÁ - CLIQUE AQUI
+            <p style="margin-bottom: 2rem; color: var(--silver); font-size: 1.1rem; line-height: 1.8;">
+              Cansado de produzir conteúdo genérico que não traz retorno? Receba um diagnóstico profundo, com diretrizes de posts, alinhamento de imagens e táticas avançadas para encher a sua agenda de consultas particulares.
+            </p>
+            <a href="https://wa.me/5511916391848?text=Quero%20uma%20sugest%C3%A3o%20de%20conte%C3%BAdo" target="_blank" style="display: block; width: 100%; max-width: 400px; margin: 0 auto; background: linear-gradient(135deg, #F3C669 0%, #D4A33B 100%); color: var(--obsidian); text-decoration: none; padding: 1.2rem; border-radius: 40px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(212, 163, 59, 0.3); animation: pulseGoldGlow 2s infinite ease-in-out;">
+               QUERO BOMBAR NO INSTAGRAM
             </a>
           </div>
       </div>
