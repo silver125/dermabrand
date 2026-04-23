@@ -582,7 +582,8 @@
 
     function parseSection(text, title) {
       const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n\\d\\.|\\n---|$)`, 'i');
+      // Adicionamos suporte a # antes no markdown gerado pela conversão da IA
+      const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n#*\\s*\\d\\.|\\n---|$)`, 'i');
       const match = text.match(regex);
       return match ? match[1].trim() : '';
     }
@@ -712,8 +713,8 @@
         "3. ANÁLISE DE CONTEÚDO",
         "4. ENGAJAMENTO E PERFORMANCE",
         "5. ERROS E GARGALOS",
-        "6. PLANO DE MELHORIA (PRÁTICO)",
-        "7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)"
+        "6. PLANO DE MELHORIA",
+        "7. IDEIAS DE CONTEÚDO"
       ];
 
       // Format Text helper
