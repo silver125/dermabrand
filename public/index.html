@@ -83,14 +83,29 @@
       position: relative;
       animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .brand-mark {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 2.4rem;
-      font-weight: 500;
-      letter-spacing: -0.04em;
+    .brand-mark-group {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .brand-mark-main {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
       color: #FFFFFF;
-      display: inline-block;
-      margin-bottom: 1rem;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .brand-mark-sub {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      color: var(--rose-gold);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
     }
     .brand-line {
       width: 1px; height: 30px;
@@ -425,7 +440,10 @@
 
   <div class="container">
     <header>
-      <div class="brand-mark">Dermabrand&trade;</div>
+      <div class="brand-mark-group">
+        <div class="brand-mark-main">Primora</div>
+        <div class="brand-mark-sub">By Dermabrand</div>
+      </div>
       <h1 class="hero-title">Diagnóstico <i>Estratégico</i></h1>
       <p class="hero-sub">Análise Estratégica do Instagram. Uma leitura aprofundada do seu perfil para identificar ajustes que fortalecem autoridade, percepção de valor e sofisticação da sua marca médica no digital.</p>
     </header>
