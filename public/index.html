@@ -712,8 +712,7 @@
         "3. ANÁLISE DE CONTEÚDO",
         "4. ENGAJAMENTO E PERFORMANCE",
         "5. ERROS E GARGALOS",
-        "6. PLANO DE MELHORIA",
-        "7. IDEIAS DE CONTEÚDO"
+        "6. PLANO DE MELHORIA"
       ];
 
       // Format Text helper
@@ -739,7 +738,20 @@
         </div>`;
       }).join('');
 
-      document.getElementById('reportCards').innerHTML = blocksHtml || `<div class="report-card" style="animation: fadeUp 0.8s forwards;"><div class="rc-body">${formatBody(text)}</div></div>`;
+      const whatsappCard = `
+      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards;">
+          <h3 class="rc-title"><div class="rc-number">✦</div> Quer sugestão de conteúdo?</h3>
+          <div class="rc-body" style="text-align: center; margin-top: 1.5rem;">
+            <p style="margin-bottom: 2rem; color: var(--muted-silver);">Descubra uma curadoria exclusiva para elevar o nível da sua marca médica e dominar sua especialidade no ambiente digital.</p>
+            <a href="https://wa.me/5511916391848?text=Quero%20sugest%C3%A3o" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--rose-gold); color: var(--obsidian); text-decoration: none; padding: 1rem 2.5rem; border-radius: 40px; font-weight: 600; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 5px 20px rgba(216, 175, 169, 0.15);">
+               <svg style="width:20px; height:20px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.146.565 4.223 1.636 6.064L0 24l6.096-1.599A11.95 11.95 0 0 0 12.031 24c6.646 0 12.031-5.385 12.031-12.031C24.062 5.385 18.677 0 12.031 0zm0 22.016c-1.802 0-3.568-.485-5.114-1.402l-.367-.217-3.805.998.998-3.805-.218-.367A9.919 9.919 0 0 1 12.031 10.04c5.548 0 10.047 4.5 10.047 10.047 0 5.547-4.499 10.047-10.047 10.047zM17.5 14.86c-.301-.151-1.782-.88-2.058-.981-.277-.101-.478-.151-.678.151-.201.301-.778.981-.954 1.182-.176.201-.351.226-.653.075-1.505-.753-2.613-1.458-3.593-2.668-.276-.327-.126-.503.025-.653.125-.126.301-.352.452-.528.151-.176.201-.302.302-.503.1-.201.05-.377-.025-.528-.075-.151-.678-1.633-.929-2.235-.251-.603-.502-.503-.678-.503h-.578c-.201 0-.528.075-.803.377-.276.301-1.054 1.03-1.054 2.512 0 1.482 1.08 2.915 1.23 3.116.15.201 2.133 3.266 5.172 4.572 1.93.829 2.76.904 3.765.753 1.004-.15 2.556-1.03 2.909-2.035.352-1.005.352-1.859.251-2.035-.101-.176-.377-.276-.678-.427z"/></svg> 
+               FALE CONOSCO
+            </a>
+          </div>
+      </div>
+      `;
+
+      document.getElementById('reportCards').innerHTML = (blocksHtml || `<div class="report-card" style="animation: fadeUp 0.8s forwards;"><div class="rc-body">${formatBody(text)}</div></div>`) + whatsappCard;
       toggleDisplay('reportSection', 'block');
     }
 

@@ -143,14 +143,6 @@ Crie um plano direto com ações como:
 
 ---
 
-7. IDEIAS DE CONTEÚDO (PRONTO PARA USO)
-Sugira 5 ideias de posts no estilo premium, com:
-- Gancho
-- Tema
-- Objetivo (atrair, educar ou converter)
-
----
-
 REGRAS:
 - Linguagem sofisticada, mas clara
 - Evitar clichês e generalizações
