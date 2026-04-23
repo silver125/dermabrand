@@ -582,8 +582,8 @@
 
     function parseSection(text, title) {
       const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      // Adicionamos suporte a # antes no markdown gerado pela conversão da IA
-      const regex = new RegExp(`${escapedTitle}\\s*([\\s\\S]*?)(?=\\n#*\\s*\\d\\.|\\n---|$)`, 'i');
+      // Tolera marcadores Markdown ** e ### antes ou depois dos títulos
+      const regex = new RegExp(`[#\\*\\s]*${escapedTitle}[#\\*\\s]*([\\s\\S]*?)(?=\\n[#\\*\\s]*\\d\\.|$)`, 'i');
       const match = text.match(regex);
       return match ? match[1].trim() : '';
     }
