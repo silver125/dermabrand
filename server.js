@@ -97,6 +97,16 @@ Avalie se o perfil transmite autoridade médica, clareza de especialidade e posi
 Diga o nível: (Baixo / Médio / Alto)
 Explique de forma direta e concisa.
 
+Inclua obrigatoriamente, dentro desta seção, as três notas abaixo, sempre no formato exato:
+Score de Autoridade: X/10
+Score de Bio e Posicionamento: X/10
+Score de Conteúdo e Engajamento: X/10
+
+Critérios das notas:
+- Score de Autoridade: percepção de expertise, confiança, diferenciação médica e presença premium.
+- Score de Bio e Posicionamento: clareza da promessa, especialidade, diferenciais, credibilidade e CTA.
+- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, conexão com paciente e potencial de conversão.
+
 ---
 
 2. ANÁLISE DA BIO (Especializada)
@@ -159,7 +169,9 @@ REGRAS:
 - Seja conciso e acionável
 - Use dados para sustentar cada recomendação
 - Não mencione consultas, serviços ou ofertas
-- Análise de BIO deve ser profunda e especializada`;
+- Análise de BIO deve ser profunda e especializada
+- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência
+- Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {

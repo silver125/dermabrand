@@ -437,38 +437,77 @@
       color: var(--muted-silver);
     }
 
-    .score-badge {
-      display: inline-block;
-      margin-top: 2rem;
-      text-align: center;
+    .scores-panel {
+      margin: 2.5rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 860px;
     }
 
-    .score-circle {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: conic-gradient(var(--rose-gold) 0deg, var(--rose-gold) var(--score-angle), var(--glass-border) var(--score-angle), var(--glass-border) 360deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.2);
-      animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    .score-card {
+      padding: 1.45rem 1.2rem;
+      border: 1px solid rgba(216, 175, 169, 0.24);
+      background: linear-gradient(145deg, rgba(216, 175, 169, 0.08), rgba(255, 255, 255, 0.025));
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.24);
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .score-value {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
+      font-size: 2.8rem;
+      line-height: 1;
       font-weight: 400;
       color: var(--champagne);
+      margin-bottom: 0.85rem;
     }
 
     .score-label {
-      font-size: 0.85rem;
+      font-size: 0.72rem;
       color: var(--muted-silver);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-top: 0.5rem;
+      letter-spacing: 0.16em;
+      margin-top: 0.8rem;
+    }
+
+    .star-rating {
+      position: relative;
+      display: inline-block;
+      font-size: 1.25rem;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      font-family: Arial, sans-serif;
+    }
+
+    .star-rating .stars-empty {
+      color: rgba(255, 255, 255, 0.18);
+    }
+
+    .star-rating .stars-filled {
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0%;
+      color: var(--rose-gold);
+      text-shadow: 0 0 18px rgba(216, 175, 169, 0.35);
+    }
+
+    .score-note {
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      color: rgba(232, 226, 218, 0.58);
+      font-weight: 300;
+    }
+
+    @media (max-width: 760px) {
+      .scores-panel {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+      }
     }
 
     .dossier-view {
@@ -832,11 +871,34 @@
       <h2 class="ph-name" id="pName"></h2>
       <div class="ph-meta" id="pCat"></div>
       <p class="ph-bio" id="pBio"></p>
-      <div class="score-badge">
-        <div class="score-circle" id="scoreCircle">
-          <span class="score-value" id="scoreValue">0</span>
+      <div class="scores-panel" id="scoresPanel">
+        <div class="score-card">
+          <div class="score-value"><span id="scoreAuthorityValue">0.0</span></div>
+          <div class="star-rating" aria-label="Score de Autoridade">
+            <span class="stars-empty">★★★★★</span>
+            <span class="stars-filled" id="scoreAuthorityStars">★★★★★</span>
+          </div>
+          <div class="score-label">Score de Autoridade</div>
+          <div class="score-note">Confiança, presença e percepção premium</div>
         </div>
-        <div class="score-label">Score de Autoridade</div>
+        <div class="score-card">
+          <div class="score-value"><span id="scoreBioValue">0.0</span></div>
+          <div class="star-rating" aria-label="Score de Bio e Posicionamento">
+            <span class="stars-empty">★★★★★</span>
+            <span class="stars-filled" id="scoreBioStars">★★★★★</span>
+          </div>
+          <div class="score-label">Bio e Posicionamento</div>
+          <div class="score-note">Clareza, diferenciação e chamada de ação</div>
+        </div>
+        <div class="score-card">
+          <div class="score-value"><span id="scoreContentValue">0.0</span></div>
+          <div class="star-rating" aria-label="Score de Conteúdo e Engajamento">
+            <span class="stars-empty">★★★★★</span>
+            <span class="stars-filled" id="scoreContentStars">★★★★★</span>
+          </div>
+          <div class="score-label">Conteúdo e Engajamento</div>
+          <div class="score-note">Consistência, conexão e potencial de conversão</div>
+        </div>
       </div>
     </div>
 
@@ -918,36 +980,41 @@
       return match ? match[1].trim() : '';
     }
 
-    function extractScore(text) {
-      // Procura por padrões de nota/score no texto
-      const patterns = [
-        /score[:\s]+(\d+(?:[.,]\d+)?)/i,
-        /nota[:\s]+(\d+(?:[.,]\d+)?)/i,
-        /(\d+(?:[.,]\d+)?)\s*(?:\/|de)\s*10/i,
-        /avalia[çc][ã]o[:\s]+(\d+(?:[.,]\d+)?)/i,
-      ];
+    function normalizeScore(value) {
+      const score = parseFloat(String(value).replace(',', '.'));
+      if (Number.isNaN(score)) return null;
+      return Math.min(10, Math.max(0, score));
+    }
 
-      for (const pattern of patterns) {
+    function extractNamedScore(text, labels, fallbackBase = 5) {
+      for (const label of labels) {
+        const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const pattern = new RegExp(`${escaped}\\s*[:\\-]?\\s*(\\d+(?:[.,]\\d+)?)\\s*(?:\\/|de)?\\s*(?:10)?`, 'i');
         const match = text.match(pattern);
-        if (match) {
-          let score = parseFloat(match[1].replace(',', '.'));
-          return Math.min(10, Math.max(0, score));
-        }
+        if (match) return normalizeScore(match[1]);
       }
 
-      // Se não encontrar explicitamente, calcula baseado em palavras-chave
-      const positiveWords = ['excelente', 'ótimo', 'premium', 'autoridade', 'forte', 'profissional'];
-      const negativeWords = ['fraco', 'genérico', 'baixo', 'inconsistente', 'amador'];
-
-      let score = 5;
-      positiveWords.forEach(word => {
-        if (text.toLowerCase().includes(word)) score += 0.8;
-      });
-      negativeWords.forEach(word => {
-        if (text.toLowerCase().includes(word)) score -= 0.8;
-      });
-
+      const lower = text.toLowerCase();
+      const positiveWords = ['excelente', 'forte', 'premium', 'autoridade', 'consistente', 'estratégico', 'claro', 'sofisticado'];
+      const negativeWords = ['fraco', 'genérico', 'baixo', 'inconsistente', 'amador', 'confuso', 'sem clareza'];
+      let score = fallbackBase;
+      positiveWords.forEach(word => { if (lower.includes(word)) score += 0.45; });
+      negativeWords.forEach(word => { if (lower.includes(word)) score -= 0.55; });
       return Math.min(10, Math.max(0, score));
+    }
+
+    function extractScores(text) {
+      return {
+        authority: extractNamedScore(text, ['Score de Autoridade', 'Autoridade'], 6),
+        bio: extractNamedScore(text, ['Score de Bio e Posicionamento', 'Bio e Posicionamento', 'Score da Bio'], 5.8),
+        content: extractNamedScore(text, ['Score de Conteúdo e Engajamento', 'Conteúdo e Engajamento', 'Score de Conteudo e Engajamento'], 5.6),
+      };
+    }
+
+    function setStarScore(valueId, starsId, score) {
+      const safeScore = normalizeScore(score) ?? 0;
+      document.getElementById(valueId).textContent = safeScore.toFixed(1);
+      document.getElementById(starsId).style.width = `${(safeScore / 10) * 100}%`;
     }
 
     async function fetchProfileData() {
@@ -1053,11 +1120,11 @@
       document.getElementById('pCat').textContent = (p.specialty || 'Médico') + (p.city ? ' • ' + p.city : '');
       document.getElementById('pBio').textContent = p.biography;
 
-      // Calcular score
-      const score = extractScore(text);
-      const scoreAngle = (score / 10) * 360;
-      document.documentElement.style.setProperty('--score-angle', scoreAngle + 'deg');
-      document.getElementById('scoreValue').textContent = score.toFixed(1);
+      // Calcular e exibir scores especialistas com estrelas preenchidas
+      const scores = extractScores(text);
+      setStarScore('scoreAuthorityValue', 'scoreAuthorityStars', scores.authority);
+      setStarScore('scoreBioValue', 'scoreBioStars', scores.bio);
+      setStarScore('scoreContentValue', 'scoreContentStars', scores.content);
 
       toggleDisplay('profileCard', 'block');
 
