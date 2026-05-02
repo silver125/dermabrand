@@ -163,4 +163,4 @@
 # Correção da Limpeza da Página Inicial
 - [x] Restaurar o link inferior “Termo de Privacidade” na página inicial.
 - [x] Alterar o subtítulo de “Adaptação leitura estratégica do perfil” para “Leitura estratégica do perfil”.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a correção.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a correção.
