@@ -40,3 +40,16 @@
 - [x] Adaptar critérios, linguagem, sugestões de bio e plano de ação à especialidade ou ao segmento informado.
 - [x] Evitar termos como dermatologista, médica ou autoridade clínica quando os dados indicarem agência, marketing médico, consultoria, clínica multiprofissional ou perfil institucional.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
+
+# Padronização das Notas do Diagnóstico
+- [x] Criar uma seção própria “Notas do Diagnóstico” com os três scores em formato padronizado.
+- [x] Remover notas soltas ou conflitantes dentro da seção “Posicionamento e Autoridade”.
+- [x] Fazer os cards visuais usarem exatamente os mesmos valores da seção padronizada.
+- [x] Ajustar o prompt da IA para retornar as notas uma única vez, em formato fixo e sem variações como “5/10” em outra parte do texto.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a padronização das notas.
+
+# Privacidade e Transparência da Plataforma
+- [x] Criar um termo de privacidade claro informando que a plataforma não armazena dados sigilosos do perfil nem coleta informações sensíveis.
+- [x] Deixar explícito que a análise usa somente informações fornecidas pelo usuário e sinais públicos ou não sensíveis disponíveis no próprio perfil informado.
+- [x] Inserir uma frase curta abaixo do campo de @ na landing page explicando que o app não solicita senha, não acessa conta privada e não armazena dados sigilosos.
+- [x] Ajustar a comunicação da landing page para reforçar que a plataforma é uma análise estratégica de branding para profissionais, clínicas, especialistas e negócios do mercado médico.

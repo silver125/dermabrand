@@ -92,14 +92,10 @@ DADOS DO PERFIL:
 
 ---
 
-ESTRUTURA DA RESPOSTA (exatamente 6 seções):
+ESTRUTURA DA RESPOSTA (exatamente 7 seções):
 
-1. POSICIONAMENTO E AUTORIDADE
-Avalie se o perfil transmite autoridade compatível com seu segmento, clareza de atuação, credibilidade profissional e posicionamento premium. Se for agência, consultoria ou marketing médico, avalie autoridade estratégica, prova de método, clareza de público-alvo e diferenciação B2B; se for profissional assistencial ou clínica, avalie autoridade técnica, confiança, especialidade e percepção de atendimento qualificado.
-Diga o nível: (Baixo / Médio / Alto)
-Explique de forma direta e concisa.
-
-Inclua obrigatoriamente, dentro desta seção, as três notas abaixo, sempre no formato exato:
+1. NOTAS DO DIAGNÓSTICO
+Retorne obrigatoriamente as três notas uma única vez, somente nesta seção, sempre no formato exato abaixo:
 Score de Autoridade: X/10
 Score de Bio e Posicionamento: X/10
 Score de Conteúdo e Engajamento: X/10
@@ -113,7 +109,15 @@ Critérios das notas:
 
 ---
 
-2. ANÁLISE DA BIO (Especializada)
+2. POSICIONAMENTO E AUTORIDADE
+Avalie se o perfil transmite autoridade compatível com seu segmento, clareza de atuação, credibilidade profissional e posicionamento premium. Se for agência, consultoria ou marketing médico, avalie autoridade estratégica, prova de método, clareza de público-alvo e diferenciação B2B; se for profissional assistencial ou clínica, avalie autoridade técnica, confiança, especialidade e percepção de atendimento qualificado.
+Diga o nível: (Baixo / Médio / Alto)
+Explique de forma direta e concisa.
+Não inclua notas numéricas nesta seção; as notas devem aparecer apenas em “1. NOTAS DO DIAGNÓSTICO”.
+
+---
+
+3. ANÁLISE DA BIO (Especializada)
 Avalie como especialista em branding para saúde:
 - **Tipo de perfil**: identifique se é profissional assistencial, clínica, agência de marketing médico, consultoria, serviço B2B ou outro segmento.
 - **Posicionamento**: o perfil deixa claro o diferencial e para quem ele existe?
@@ -126,7 +130,7 @@ Sugira uma BIO otimizada (máx 150 caracteres) com tom técnico, sóbrio e premi
 
 ---
 
-3. ANÁLISE DE CONTEÚDO
+4. ANÁLISE DE CONTEÚDO
 Avalie:
 - Qualidade percebida
 - Clareza da comunicação
@@ -140,7 +144,7 @@ Identifique:
 
 ---
 
-4. ENGAJAMENTO E PERFORMANCE
+5. ENGAJAMENTO E PERFORMANCE
 Com base nos dados:
 - O engajamento está bom, médio ou baixo?
 - O conteúdo gera conexão com o público-alvo correto ou apenas informação genérica?
@@ -149,12 +153,12 @@ Com base nos dados:
 
 ---
 
-5. ERROS E GARGALOS
+6. ERROS E GARGALOS
 Liste os principais erros estratégicos que estão impedindo o crescimento ou a conversão. Seja específico e acionável.
 
 ---
 
-6. PLANO DE MELHORIA (EXECUTIVO)
+7. PLANO DE MELHORIA (EXECUTIVO)
 Apresente um plano conciso e acionável:
 - **Ações Imediatas** (próximas 2 semanas): 2-3 mudanças de impacto rápido
 - **Conteúdo Estratégico**: Tipos específicos a priorizar
@@ -178,6 +182,7 @@ REGRAS:
 - A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
 - A sugestão de bio deve ser adequada ao tipo de perfil identificado. Se for marketing médico, agência, consultoria ou serviço B2B, não escreva como se fosse médica, médico, dermatologista ou clínica assistencial. Se for profissional ou clínica, respeite a especialidade informada. Em todos os casos, sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
 - As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência e explique os critérios usados de forma compreensível para o usuário final.
+- Não repita notas numéricas fora da seção “1. NOTAS DO DIAGNÓSTICO”. Em “Posicionamento e Autoridade” e nas demais seções, escreva apenas análise qualitativa.
 - Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
 
   try {

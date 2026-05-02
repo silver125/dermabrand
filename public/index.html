@@ -181,6 +181,27 @@
       color: rgba(255, 255, 255, 0.25);
     }
 
+    .privacy-note {
+      margin: 1rem auto 0;
+      max-width: 620px;
+      font-size: 0.76rem;
+      line-height: 1.7;
+      color: rgba(232, 224, 216, 0.58);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .privacy-note strong {
+      color: var(--champagne);
+      font-weight: 400;
+    }
+
+    .privacy-note a {
+      color: var(--rose-gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(216, 175, 169, 0.35);
+    }
+
     .btn-search {
       background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-gold-dark) 100%);
       border: none;
@@ -649,6 +670,56 @@
       font-style: italic;
     }
 
+    .diagnostic-notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .diagnostic-note-item {
+      padding: 1rem;
+      border: 1px solid rgba(216, 175, 169, 0.2);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .diagnostic-note-label {
+      display: block;
+      min-height: 2.4em;
+      color: var(--muted-silver);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.35;
+      margin-bottom: 0.55rem;
+    }
+
+    .diagnostic-note-value {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--champagne);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .diagnostic-note-value small {
+      font-family: 'Inter', sans-serif;
+      color: rgba(232, 226, 218, 0.55);
+      font-size: 0.78rem;
+      margin-left: 0.15rem;
+    }
+
+    .diagnostic-notes-text {
+      color: rgba(232, 226, 218, 0.78);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 760px) {
+      .diagnostic-notes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .whatsapp-cta {
       text-align: center;
       margin-top: 4rem;
@@ -746,6 +817,15 @@
       letter-spacing: 0.1em;
       border-top: 1px solid var(--glass-border);
       margin-top: 6rem;
+    }
+
+    .footer-privacy-link {
+      display: inline-block;
+      margin-top: 0.85rem;
+      color: var(--rose-gold);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(216, 175, 169, 0.35);
     }
 
     .icon-check {
@@ -882,6 +962,7 @@
         />
         <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Analisar</button>
       </div>
+      <p class="privacy-note"><strong>Privacidade:</strong> não solicitamos senha, não acessamos conta privada e não armazenamos dados sigilosos. A análise considera apenas o @ informado e informações públicas ou preenchidas por você. <a href="/privacidade.html">Ver termo</a>.</p>
     </div>
 
     <div class="error-box" id="errorBox"></div>
@@ -1047,7 +1128,8 @@
   </div>
 
   <footer>
-    PRIMORA by Dermabrand &copy; 2026 — The Premium Praxis
+    PRIMORA by Dermabrand &copy; 2026 — The Premium Praxis<br>
+    <a class="footer-privacy-link" href="/privacidade.html">Termo de Privacidade</a>
   </footer>
 
   <script>
@@ -1116,6 +1198,36 @@
         bio: extractNamedScore(text, ['Score de Bio e Posicionamento', 'Bio e Posicionamento', 'Score da Bio'], 5.8),
         content: extractNamedScore(text, ['Score de Conteúdo e Engajamento', 'Conteúdo e Engajamento', 'Score de Conteudo e Engajamento'], 5.6),
       };
+    }
+
+    function stripScoreLines(str) {
+      return (str || '')
+        .replace(/^\s*[-•]?\s*Score de Autoridade\s*[:\-].*$/gmi, '')
+        .replace(/^\s*[-•]?\s*Score de Bio e Posicionamento\s*[:\-].*$/gmi, '')
+        .replace(/^\s*[-•]?\s*Score de Conte[uú]do e Engajamento\s*[:\-].*$/gmi, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    }
+
+    function buildDiagnosticNotesCard(scores, sourceText, formatBody) {
+      const notesContent = parseSection(sourceText, '1. NOTAS DO DIAGNÓSTICO') || '';
+      const explanation = stripScoreLines(notesContent) || 'As notas são estimativas estratégicas de 0 a 10 calculadas pela IA a partir dos dados informados e dos sinais públicos do perfil. Elas consideram autoridade percebida, clareza da bio, posicionamento, consistência editorial, engajamento aproximado e potencial de conversão; não são métricas oficiais do Instagram.';
+      const scoreItems = [
+        ['Score de Autoridade', scores.authority],
+        ['Bio e Posicionamento', scores.bio],
+        ['Conteúdo e Engajamento', scores.content]
+      ];
+      const rows = scoreItems.map(([label, value]) => `
+        <div class="diagnostic-note-item">
+          <span class="diagnostic-note-label">${label}</span>
+          <span class="diagnostic-note-value">${normalizeScore(value).toFixed(1)}<small>/10</small></span>
+        </div>`).join('');
+
+      return `<div class="report-card diagnostic-notes-card">
+        <h3 class="rc-title"><div class="rc-number">1</div> Notas do Diagnóstico</h3>
+        <div class="diagnostic-notes-grid">${rows}</div>
+        <div class="diagnostic-notes-text">${formatBody(explanation)}</div>
+      </div>`;
     }
 
     function setStarScore(valueId, starsId, score) {
@@ -1238,12 +1350,12 @@
       toggleDisplay('profileCard', 'block');
 
       const sections = [
-        "1. POSICIONAMENTO E AUTORIDADE",
-        "2. ANÁLISE DA BIO",
-        "3. ANÁLISE DE CONTEÚDO",
-        "4. ENGAJAMENTO E PERFORMANCE",
-        "5. ERROS E GARGALOS",
-        "6. PLANO DE MELHORIA"
+        "2. POSICIONAMENTO E AUTORIDADE",
+        "3. ANÁLISE DA BIO",
+        "4. ANÁLISE DE CONTEÚDO",
+        "5. ENGAJAMENTO E PERFORMANCE",
+        "6. ERROS E GARGALOS",
+        "7. PLANO DE MELHORIA"
       ];
 
       const formatBody = (str) => {
@@ -1254,22 +1366,23 @@
           .trim();
       };
 
+      const notesCardHtml = buildDiagnosticNotesCard(scores, text, formatBody);
       const blocksHtml = sections.map((title, i) => {
-        let content = parseSection(text, title);
+        let content = stripScoreLines(parseSection(text, title));
         if (!content) return '';
 
         let visualTitle = title.replace(/^\d\.\s*/, '');
 
         return `<div class="report-card">
-          <h3 class="rc-title"><div class="rc-number">${i + 1}</div> ${visualTitle}</h3>
+          <h3 class="rc-title"><div class="rc-number">${i + 2}</div> ${visualTitle}</h3>
           <div class="rc-body">${formatBody(content)}</div>
         </div>`;
       }).join('');
 
-      document.getElementById('reportCards').innerHTML = blocksHtml;
+      document.getElementById('reportCards').innerHTML = notesCardHtml + blocksHtml;
 
       // Extrair e popular as seções adicionais
-      const improvementContent = parseSection(text, "6. PLANO DE MELHORIA");
+      const improvementContent = parseSection(text, "7. PLANO DE MELHORIA") || parseSection(text, "6. PLANO DE MELHORIA");
       const suggestionsContent = parseSection(text, "SUGESTÕES") || parseSection(text, "RECOMENDAÇÕES");
       const actionPlanContent = parseSection(text, "AÇÃO") || parseSection(text, "PRÓXIMOS PASSOS");
 
