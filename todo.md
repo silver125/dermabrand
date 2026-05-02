@@ -70,3 +70,9 @@
 - [x] Aprimorar a copy do botão dourado e dos textos próximos ao CTA para transformar o diagnóstico gratuito em lead qualificado.
 - [x] Garantir que o CTA abra um canal de contato comercial e mantenha linguagem premium, consultiva e orientada à venda.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o reposicionamento comercial.
+
+# Simplificação da Primeira Página
+- [x] Reduzir a copy da primeira página para médicos leigos, removendo excesso de explicações e mantendo uma mensagem objetiva.
+- [x] Remover o texto longo abaixo do campo de diagnóstico sobre clicar no botão dourado depois do diagnóstico.
+- [x] Manter uma orientação curta e acionável, focada em preencher o @, analisar e falar com especialista.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação.
