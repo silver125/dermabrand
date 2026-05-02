@@ -143,4 +143,4 @@
 - [x] Separar no mobile o campo de @username e o botão em dois blocos premium, como na referência enviada.
 - [x] Inserir ícone “@” dentro do campo no mobile.
 - [x] Elevar o posicionamento do conjunto campo/botão na primeira dobra do smartphone.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o novo botão mobile.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o novo botão mobile.
