@@ -69,4 +69,4 @@
 - [x] Reformular o bloco final do diagnóstico para conduzir o usuário a clicar no botão dourado e falar com um especialista da Dermabrand.
 - [x] Aprimorar a copy do botão dourado e dos textos próximos ao CTA para transformar o diagnóstico gratuito em lead qualificado.
 - [x] Garantir que o CTA abra um canal de contato comercial e mantenha linguagem premium, consultiva e orientada à venda.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o reposicionamento comercial.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o reposicionamento comercial.
