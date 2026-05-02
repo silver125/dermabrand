@@ -164,3 +164,8 @@
 - [x] Restaurar o link inferior “Termo de Privacidade” na página inicial.
 - [x] Alterar o subtítulo de “Adaptação leitura estratégica do perfil” para “Leitura estratégica do perfil”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a correção.
+
+# Nova Copy Principal da Landing Page
+- [x] Alterar o título principal para “Seu Instagram parece médico… ou amador?”.
+- [x] Alterar o subtítulo para “Descubra em segundos.”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy principal.
