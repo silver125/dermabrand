@@ -105,40 +105,29 @@
     }
 
     .instagram-icon {
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      border-radius: 4px;
+      width: 16px;
+      height: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 12px;
+      color: #FFFFFF;
+      font-size: 15px;
+      line-height: 1;
     }
 
     .brand-social {
-      width: fit-content;
-      margin: 0.9rem auto 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
-      padding: 0.58rem 1rem;
-      border: 1px solid rgba(216, 175, 169, 0.35);
-      border-radius: 999px;
-      color: var(--champagne);
-      background: rgba(216, 175, 169, 0.06);
+      color: #FFFFFF;
+      opacity: 0.7;
       text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
     .brand-social:hover {
-      transform: translateY(-2px);
-      border-color: var(--champagne);
-      background: rgba(216, 175, 169, 0.12);
+      opacity: 0.92;
+      transform: translateY(-1px);
     }
 
     .hero-kicker {
@@ -988,8 +977,29 @@
         grid-template-columns: 1fr;
       }
 
+      header {
+        padding: 2.4rem 0 0.65rem;
+      }
+
+      .brand-container {
+        margin-bottom: 0;
+      }
+
       .brand-mark {
         font-size: 2.2rem;
+      }
+
+      .brand-sub {
+        gap: 0.55rem;
+        opacity: 0.7;
+      }
+
+      .hero-section {
+        margin: 1.15rem 0 1.25rem;
+      }
+
+      .search-section {
+        margin: 1.35rem auto 1rem;
       }
 
       .ph-name {
@@ -1087,19 +1097,19 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <header id="siteHeader">
       <div class="brand-container">
         <div class="brand-mark">PRIMORA</div>
-        <div class="brand-sub">by Dermabrand</div>
-        <a class="brand-social" href="https://www.instagram.com/dermabrand/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Dermabrand">
-          <span class="instagram-icon"><i class="fab fa-instagram"></i></span>
-          @dermabrand
-        </a>
+        <div class="brand-sub">
+          by Dermabrand
+          <a class="brand-social" href="https://www.instagram.com/dermabrand/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Dermabrand">
+            <span class="instagram-icon"><i class="fab fa-instagram"></i></span>
+          </a>
+        </div>
       </div>
     </header>
 
     <div class="hero-section" id="heroSection">
-      <div class="hero-kicker">POSICIONAMENTO PARA MÉDICOS E EMPRESAS DA SAÚDE</div>
       <h1 class="hero-title">Seu Instagram transmite autoridade médica?</h1>
       <p class="hero-subtitle">Receba uma leitura estratégica do seu perfil.</p>
       <p class="hero-lead">Digite seu @ para iniciar.</p>
@@ -1444,8 +1454,11 @@
         setTimeout(() => {
           toggleDisplay('progressSection', 'none');
           toggleDisplay('formSection', 'block');
+          document.getElementById('siteHeader').style.display = 'none';
+          document.getElementById('heroSection').style.display = 'none';
           document.getElementById('searchBox').style.display = 'none';
           document.getElementById('errorBox').style.display = 'none';
+          document.getElementById('formSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 600);
       } catch (e) {
         showError('Erro: ' + e.message);
