@@ -68,11 +68,13 @@ app.post('/api/analyze', async (req, res) => {
     captions, observations
   } = profile;
 
-  const prompt = `Você é um especialista em branding médico premium e estratégia de posicionamento digital para dermatologistas e clínicas de alto padrão no Brasil.
+  const prompt = `Você é um especialista em branding premium para saúde, posicionamento digital e comunicação ética para diferentes perfis do ecossistema médico no Brasil.
 
-Sua análise deve ser técnica, especializada e orientada a resultados reais de atração de pacientes particulares.
+Sua primeira tarefa é identificar, pelos dados informados, se o perfil representa um profissional de saúde, uma clínica, uma agência de marketing médico, uma consultoria, um serviço B2B para médicos ou outra especialidade/segmento. Nunca assuma dermatologia, médica ou dermatologista por padrão.
 
-Analise os dados abaixo com rigor profissional e gere um diagnóstico estratégico completo.
+Sua análise deve ser técnica, especializada e orientada ao objetivo adequado ao tipo de perfil: atração de pacientes particulares quando for perfil assistencial, fortalecimento institucional quando for clínica, ou geração de autoridade e demanda B2B quando for marketing médico, consultoria ou serviço para profissionais de saúde.
+
+Analise os dados abaixo com rigor profissional e gere um diagnóstico estratégico completo, adaptado à especialidade, ao segmento e ao público-alvo identificados.
 
 DADOS DO PERFIL:
 - Nome: ${full_name || 'Não informado'}
@@ -93,7 +95,7 @@ DADOS DO PERFIL:
 ESTRUTURA DA RESPOSTA (exatamente 6 seções):
 
 1. POSICIONAMENTO E AUTORIDADE
-Avalie se o perfil transmite autoridade médica, clareza de especialidade e posicionamento premium.
+Avalie se o perfil transmite autoridade compatível com seu segmento, clareza de atuação, credibilidade profissional e posicionamento premium. Se for agência, consultoria ou marketing médico, avalie autoridade estratégica, prova de método, clareza de público-alvo e diferenciação B2B; se for profissional assistencial ou clínica, avalie autoridade técnica, confiança, especialidade e percepção de atendimento qualificado.
 Diga o nível: (Baixo / Médio / Alto)
 Explique de forma direta e concisa.
 
@@ -105,21 +107,22 @@ Score de Conteúdo e Engajamento: X/10
 Logo após as três notas, explique em 2 a 4 frases a base dos scores. Deixe claro que são estimativas estratégicas de branding digital, baseadas nos dados do perfil e nos sinais informados, não métricas oficiais do Instagram. Justifique objetivamente os principais fatores que elevaram ou reduziram cada nota.
 
 Critérios das notas:
-- Score de Autoridade: percepção de expertise, confiança, diferenciação médica, prova de especialidade, consistência de imagem e presença premium.
-- Score de Bio e Posicionamento: clareza da especialidade, promessa de valor, diferenciais reais, credibilidade, localização, coerência de linguagem e CTA sóbrio.
-- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, adequação à comunicação em saúde, conexão com paciente, frequência, sinais de engajamento e potencial de conversão.
+- Score de Autoridade: percepção de expertise, confiança, diferenciação no segmento, prova de competência, consistência de imagem e presença premium.
+- Score de Bio e Posicionamento: clareza da área de atuação, público-alvo, promessa de valor, diferenciais reais, credibilidade, localização quando relevante, coerência de linguagem e CTA sóbrio.
+- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, adequação à comunicação em saúde, conexão com o público correto, frequência, sinais de engajamento e potencial de conversão.
 
 ---
 
 2. ANÁLISE DA BIO (Especializada)
-Avalie como especialista em branding médico:
-- **Posicionamento**: O perfil deixa claro o diferencial?
-- **Linguagem**: Usa termos que atraem pacientes particulares ou é genérica?
-- **Credibilidade**: Transmite expertise e confiança?
-- **CTA**: Tem chamada clara para ação?
-- **Oportunidades**: O que está faltando para converter melhor?
+Avalie como especialista em branding para saúde:
+- **Tipo de perfil**: identifique se é profissional assistencial, clínica, agência de marketing médico, consultoria, serviço B2B ou outro segmento.
+- **Posicionamento**: o perfil deixa claro o diferencial e para quem ele existe?
+- **Linguagem**: usa termos adequados ao público correto — pacientes, médicos, clínicas, gestores ou outro decisor — ou é genérica?
+- **Credibilidade**: transmite expertise, método, prova de competência e confiança?
+- **CTA**: tem chamada clara, sóbria e compatível com o segmento?
+- **Oportunidades**: o que está faltando para converter melhor dentro daquele contexto?
 
-Sugira uma BIO otimizada (máx 150 caracteres) com tom médico, sóbrio, técnico e premium. A bio deve transmitir especialidade, método, autoridade clínica e clareza de atendimento sem parecer propaganda. Não use emojis, símbolos decorativos, promessas de resultado, frases como “transformando pele”, “resultados que falam”, “dermatologia de excelência”, “agende sua avaliação” ou qualquer chamada comercial genérica.
+Sugira uma BIO otimizada (máx 150 caracteres) com tom técnico, sóbrio e premium, adaptada ao tipo de perfil identificado. Para profissionais e clínicas, pode transmitir especialidade, método, autoridade clínica e clareza de atendimento. Para marketing médico, consultorias e serviços B2B, deve transmitir método, posicionamento estratégico, público atendido e credibilidade de mercado, sem fingir ser profissional de saúde. Não use emojis, símbolos decorativos, promessas de resultado, frases como “transformando pele”, “resultados que falam”, “dermatologia de excelência”, “agende sua avaliação” ou qualquer chamada comercial genérica.
 
 ---
 
@@ -127,7 +130,7 @@ Sugira uma BIO otimizada (máx 150 caracteres) com tom médico, sóbrio, técnic
 Avalie:
 - Qualidade percebida
 - Clareza da comunicação
-- Foco em paciente vs técnico
+- Adequação ao público-alvo correto, como paciente, médico, clínica, gestor ou decisor B2B
 - Variedade de conteúdo
 
 Identifique:
@@ -140,7 +143,7 @@ Identifique:
 4. ENGAJAMENTO E PERFORMANCE
 Com base nos dados:
 - O engajamento está bom, médio ou baixo?
-- O conteúdo gera conexão ou apenas informação?
+- O conteúdo gera conexão com o público-alvo correto ou apenas informação genérica?
 - Existe potencial de crescimento?
 - Taxa de engajamento estimada
 
@@ -164,16 +167,16 @@ Seja direto e evite recomendações genéricas.
 ---
 
 REGRAS:
-- Linguagem sofisticada, técnica, sóbria e compatível com a credibilidade médica.
+- Linguagem sofisticada, técnica, sóbria e compatível com a credibilidade exigida no mercado de saúde.
 - Nunca use emojis, ícones decorativos, símbolos chamativos ou linguagem de influenciador.
 - Evitar clichês, generalizações, promessas de resultado, frases promocionais e ofertas de serviços.
 - Foco em diagnóstico estratégico, não em vendas.
-- Pensar como especialista em branding médico premium, respeitando a seriedade da comunicação em saúde.
+- Pensar como especialista em branding premium para saúde, respeitando a seriedade da comunicação no setor.
 - Seja conciso e acionável.
 - Use dados para sustentar cada recomendação.
 - Não mencione consultas gratuitas, avaliações, agendamentos, descontos, ofertas ou chamadas comerciais agressivas.
 - A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
-- A sugestão de bio deve parecer adequada para uma médica/dermatologista de alto padrão: sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
+- A sugestão de bio deve ser adequada ao tipo de perfil identificado. Se for marketing médico, agência, consultoria ou serviço B2B, não escreva como se fosse médica, médico, dermatologista ou clínica assistencial. Se for profissional ou clínica, respeite a especialidade informada. Em todos os casos, sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
 - As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência e explique os critérios usados de forma compreensível para o usuário final.
 - Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
 

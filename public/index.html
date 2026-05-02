@@ -867,8 +867,8 @@
     </header>
 
     <div class="hero-section" id="heroSection">
-      <h1 class="hero-title">Transforme Seu Perfil em Autoridade Médica</h1>
-      <p class="hero-subtitle">Análise estratégica completa de branding para dermatologistas e clínicas premium</p>
+      <h1 class="hero-title">Transforme Seu Perfil em Autoridade na Saúde</h1>
+      <p class="hero-subtitle">Análise estratégica de branding para profissionais, clínicas, especialistas e negócios do mercado médico</p>
     </div>
 
     <div class="search-section" id="searchBox">
@@ -907,8 +907,8 @@
       </div>
 
       <div class="lux-field">
-        <label>Especialidade</label>
-        <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Dermatologista" />
+        <label>Especialidade ou Área de Atuação</label>
+        <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Cardiologista, clínica premium, marketing médico" />
       </div>
 
       <div class="form-grid-2">
@@ -1005,7 +1005,7 @@
       </div>
       <div class="score-criteria">
         <span class="score-criteria-title">Base das notas</span>
-        As notas são <strong>estimativas estratégicas de 0 a 10</strong>, calculadas pela IA a partir dos dados informados e dos sinais públicos do perfil. Elas consideram autoridade percebida, clareza da bio, especialidade, posicionamento, consistência editorial, engajamento aproximado, qualidade da comunicação e potencial de conversão. Não são métricas oficiais do Instagram nem avaliação médica; funcionam como leitura de branding e presença digital.
+        As notas são <strong>estimativas estratégicas de 0 a 10</strong>, calculadas pela IA a partir dos dados informados e dos sinais públicos do perfil. Elas consideram autoridade percebida, clareza da bio, área de atuação, público-alvo, posicionamento, consistência editorial, engajamento aproximado, qualidade da comunicação e potencial de conversão. Não são métricas oficiais do Instagram nem avaliação médica; funcionam como leitura de branding e presença digital adaptada ao segmento analisado.
       </div>
     </div>
 
@@ -1226,7 +1226,7 @@
       }
 
       document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.6em;">✓</span>' : '');
-      document.getElementById('pCat').textContent = (p.specialty || 'Médico') + (p.city ? ' • ' + p.city : '');
+      document.getElementById('pCat').textContent = (p.specialty || 'Área de atuação não informada') + (p.city ? ' • ' + p.city : '');
       document.getElementById('pBio').textContent = p.biography;
 
       // Calcular e exibir scores especialistas com estrelas preenchidas

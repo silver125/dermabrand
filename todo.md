@@ -33,3 +33,10 @@
 - [x] Ajustar o prompt da IA para justificar objetivamente os três scores com critérios visíveis e sem linguagem genérica.
 - [x] Substituir o indicador de processamento giratório por uma animação pequena, discreta e leve para iPhone.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio após a atualização.
+
+# Contexto Profissional e Especialidades
+- [x] Ajustar o diagnóstico para não assumir dermatologia por padrão quando o perfil analisado for de marketing médico, clínica, profissional de saúde ou outra especialidade.
+- [x] Fazer a IA identificar primeiro o tipo de perfil, a área de atuação e o público-alvo antes de escrever recomendações.
+- [x] Adaptar critérios, linguagem, sugestões de bio e plano de ação à especialidade ou ao segmento informado.
+- [x] Evitar termos como dermatologista, médica ou autoridade clínica quando os dados indicarem agência, marketing médico, consultoria, clínica multiprofissional ou perfil institucional.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
