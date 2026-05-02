@@ -124,4 +124,4 @@
 - [x] Substituir o box de suporte por “Dúvidas no preenchimento?”.
 - [x] Alterar o botão de suporte para “Falar com suporte”.
 - [x] Garantir blocos curtos, diretos e adequados à leitura rápida no mobile.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação da seção.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação da seção.
