@@ -179,4 +179,4 @@
 # Nova Ajuste da Copy Principal da Landing Page
 - [x] Alterar o título principal para “Avaliação da sua presença digital”.
 - [x] Alterar o subtítulo para “Sem perder tempo — direto ao ponto”.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da copy principal.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da copy principal.
