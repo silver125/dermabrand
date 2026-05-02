@@ -180,3 +180,9 @@
 - [x] Alterar o título principal para “Avaliação da sua presença digital”.
 - [x] Alterar o subtítulo para “Sem perder tempo — direto ao ponto”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da copy principal.
+
+# Ajuste da Copy da Primeira Dobra
+- [x] Alterar o título principal para “Análise do seu Instagram”.
+- [x] Alterar o subtítulo para “Resultado em segundos. Sem login.”.
+- [x] Alterar o texto do campo de Instagram para “Digite seu Instagram (@)usuário”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da primeira dobra.
