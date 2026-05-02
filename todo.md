@@ -187,3 +187,4 @@
 - [x] Alterar o texto do campo de Instagram para “Digite seu Instagram (@)usuário”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da primeira dobra.
 - [x] Simplificar placeholder do campo de Instagram para “@seuinstagram”.
+- [x] Alterar a frase abaixo do campo para “100% seguro · sem senha · sem acesso à sua conta”.
