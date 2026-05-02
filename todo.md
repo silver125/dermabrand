@@ -109,3 +109,11 @@
 - [x] Substituir “análise simples do seu perfil” por “leitura estratégica do seu perfil”.
 - [x] Ajustar o botão principal fraco “Analisar” para “Iniciar Avaliação”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após as correções críticas de copy.
+
+# Nova Copy Exata da Landing Page
+- [x] Alterar o selo para “POSICIONAMENTO PARA MÉDICOS E EMPRESAS DA SAÚDE”.
+- [x] Alterar a headline para “Seu Instagram transmite autoridade médica?”.
+- [x] Alterar o subtítulo para “Receba uma leitura estratégica do seu perfil.”.
+- [x] Alterar a frase de apoio para “Digite seu @ para iniciar.”.
+- [x] Alterar o botão para “INICIAR ANÁLISE”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy exata.
