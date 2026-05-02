@@ -21,7 +21,7 @@
 - [x] Corrigir o título “Plano de Acao” para “Plano de Ação” no diagnóstico.
 - [x] Ajustar o prompt da IA para proibir emojis em sugestões de bio e recomendações.
 - [x] Reforçar que sugestões de bio devem ter tom médico, técnico, sóbrio e premium, sem frases promocionais genéricas.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
 
 # Performance Mobile da Landing Page
 - [x] Remover ou desativar animações da landing page que prejudiquem a experiência em iPhone.
@@ -39,4 +39,4 @@
 - [x] Fazer a IA identificar primeiro o tipo de perfil, a área de atuação e o público-alvo antes de escrever recomendações.
 - [x] Adaptar critérios, linguagem, sugestões de bio e plano de ação à especialidade ou ao segmento informado.
 - [x] Evitar termos como dermatologista, médica ou autoridade clínica quando os dados indicarem agência, marketing médico, consultoria, clínica multiprofissional ou perfil institucional.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
