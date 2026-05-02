@@ -117,3 +117,11 @@
 - [x] Alterar a frase de apoio para “Digite seu @ para iniciar.”.
 - [x] Alterar o botão para “INICIAR ANÁLISE”.
 - [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy exata.
+
+# Simplificação Mobile-first da Continuação
+- [x] Alterar o título da seção para “Complete sua análise”.
+- [x] Substituir o subtexto por “Mais contexto → análise mais precisa”.
+- [x] Substituir o box de suporte por “Dúvidas no preenchimento?”.
+- [x] Alterar o botão de suporte para “Falar com suporte”.
+- [x] Garantir blocos curtos, diretos e adequados à leitura rápida no mobile.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação da seção.
