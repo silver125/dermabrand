@@ -175,3 +175,8 @@
 - [x] Adicionar ícones dourados para as etapas de Posicionamento, Conteúdo e Autoridade.
 - [x] Adicionar o texto menor “Estamos avaliando seu posicionamento, conteúdo e autoridade para gerar insights personalizados.”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a melhoria da tela de diagnóstico.
+
+# Nova Ajuste da Copy Principal da Landing Page
+- [x] Alterar o título principal para “Avaliação da sua presença digital”.
+- [x] Alterar o subtítulo para “Sem perder tempo — direto ao ponto”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da copy principal.
