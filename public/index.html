@@ -343,6 +343,80 @@
       letter-spacing: 0.05em;
     }
 
+    .diagnostic-details {
+      display: none;
+      margin: 2.1rem auto 0;
+      max-width: 560px;
+      animation: fade 0.7s ease;
+    }
+
+    .diagnostic-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.85rem;
+    }
+
+    .diagnostic-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.55rem;
+      min-width: 0;
+      color: var(--champagne);
+    }
+
+    .diagnostic-step svg {
+      width: 38px;
+      height: 38px;
+      color: var(--gold-foil);
+      filter: drop-shadow(0 0 16px rgba(207, 166, 101, 0.22));
+    }
+
+    .diagnostic-step span {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(244, 238, 229, 0.88);
+      letter-spacing: 0.02em;
+    }
+
+    .step-state {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(207, 166, 101, 0.18);
+      border: 1px solid rgba(207, 166, 101, 0.38);
+      color: var(--gold-foil);
+      font-size: 0.58rem;
+      line-height: 1;
+      box-shadow: 0 0 18px rgba(207, 166, 101, 0.14);
+    }
+
+    .step-state.is-pending {
+      background: rgba(244, 238, 229, 0.12);
+      border-color: rgba(244, 238, 229, 0.12);
+      color: rgba(244, 238, 229, 0.45);
+    }
+
+    .diagnostic-microcopy {
+      max-width: 450px;
+      margin: 0 auto;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.86rem;
+      line-height: 1.72;
+      color: rgba(244, 238, 229, 0.66);
+      letter-spacing: 0.025em;
+    }
+
+    .diagnostic-microcopy strong {
+      color: var(--gold-foil);
+      font-weight: 700;
+    }
+
     .form-panel {
       display: none;
       background: linear-gradient(135deg, rgba(30, 20, 25, 0.6), rgba(15, 10, 15, 0.8));
@@ -1171,6 +1245,31 @@
         line-height: 1.55;
       }
 
+      .diagnostic-details {
+        max-width: 360px;
+        margin-top: 2rem;
+      }
+
+      .diagnostic-steps {
+        gap: 0.7rem;
+        margin-bottom: 1.55rem;
+      }
+
+      .diagnostic-step svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      .diagnostic-step span {
+        font-size: 0.78rem;
+      }
+
+      .diagnostic-microcopy {
+        max-width: 315px;
+        font-size: 0.78rem;
+        line-height: 1.68;
+      }
+
       .processing-dot {
         animation-duration: 1.4s;
         transform: none;
@@ -1239,6 +1338,36 @@
         <span class="processing-dot"></span>
       </div>
       <p class="status-text" id="progressLabel">Preparando leitura estratégica...</p>
+      <div class="diagnostic-details" id="diagnosticProgressDetails" aria-hidden="true">
+        <div class="diagnostic-steps" aria-label="Etapas avaliadas no diagnóstico">
+          <div class="diagnostic-step">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2.6"/>
+              <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="2.6"/>
+              <path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+            <span>Posicionamento</span>
+            <i class="step-state">✓</i>
+          </div>
+          <div class="diagnostic-step">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M14 7h15l7 7v27H14V7Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M29 7v8h8M19 23h15M19 29h11M19 35h9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Conteúdo</span>
+            <i class="step-state">✓</i>
+          </div>
+          <div class="diagnostic-step">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="15" r="7" stroke="currentColor" stroke-width="2.6"/>
+              <path d="M12 40c1.8-8 6.4-12 12-12s10.2 4 12 12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+            <span>Autoridade</span>
+            <i class="step-state is-pending">●</i>
+          </div>
+        </div>
+        <p class="diagnostic-microcopy">Estamos avaliando seu <strong>posicionamento</strong>, conteúdo e autoridade para gerar insights personalizados.</p>
+      </div>
     </div>
 
     <div class="form-panel" id="formSection">
@@ -1429,6 +1558,8 @@
       el.style.display = 'block';
       el.textContent = msg;
       toggleDisplay('progressSection', 'none');
+      document.getElementById('diagnosticProgressDetails').style.display = 'none';
+      document.getElementById('diagnosticProgressDetails').setAttribute('aria-hidden', 'true');
       document.getElementById('btnSearch').disabled = false;
       document.getElementById('btnSearch').textContent = 'Tentar Novamente';
     }
@@ -1524,6 +1655,8 @@
       document.getElementById('btnSearch').disabled = true;
       document.getElementById('btnSearch').textContent = 'Buscando...';
       document.getElementById('progressLabel').textContent = 'Coletando dados do perfil...';
+      document.getElementById('diagnosticProgressDetails').style.display = 'none';
+      document.getElementById('diagnosticProgressDetails').setAttribute('aria-hidden', 'true');
 
       toggleDisplay('errorBox', 'none');
       toggleDisplay('formSection', 'none');
@@ -1571,6 +1704,8 @@
       toggleDisplay('formSection', 'none');
       document.getElementById('btnAnalyze').disabled = true;
       document.getElementById('progressLabel').textContent = 'Gerando diagnóstico estratégico...';
+      document.getElementById('diagnosticProgressDetails').style.display = 'block';
+      document.getElementById('diagnosticProgressDetails').setAttribute('aria-hidden', 'false');
       toggleDisplay('progressSection', 'block');
 
       const profileData = {

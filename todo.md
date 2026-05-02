@@ -169,3 +169,9 @@
 - [x] Alterar o título principal para “Seu Instagram parece médico… ou amador?”.
 - [x] Alterar o subtítulo para “Descubra em segundos.”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy principal.
+
+# Melhoria da Tela de Geração do Diagnóstico
+- [x] Inserir três etapas visuais na tela de carregamento: Posicionamento, Conteúdo e Autoridade.
+- [x] Adicionar ícones dourados para as etapas de Posicionamento, Conteúdo e Autoridade.
+- [x] Adicionar o texto menor “Estamos avaliando seu posicionamento, conteúdo e autoridade para gerar insights personalizados.”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a melhoria da tela de diagnóstico.
