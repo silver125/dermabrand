@@ -137,3 +137,10 @@
 - [x] Remover da segunda página a repetição de “Seu Instagram transmite autoridade médica?”, “Digite seu @ para iniciar.” e demais textos da primeira página.
 - [x] Manter a segunda página focada diretamente no formulário, sem duplicação da mensagem inicial.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a remoção da repetição.
+
+# Botão Premium Mobile da Primeira Dobra
+- [x] Substituir no mobile o botão “INICIAR ANÁLISE” por “VER MINHA ANÁLISE” com seta à direita.
+- [x] Separar no mobile o campo de @username e o botão em dois blocos premium, como na referência enviada.
+- [x] Inserir ícone “@” dentro do campo no mobile.
+- [x] Elevar o posicionamento do conjunto campo/botão na primeira dobra do smartphone.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o novo botão mobile.
