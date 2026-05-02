@@ -53,3 +53,7 @@
 - [x] Deixar explícito que a análise usa somente informações fornecidas pelo usuário e sinais públicos ou não sensíveis disponíveis no próprio perfil informado.
 - [x] Inserir uma frase curta abaixo do campo de @ na landing page explicando que o app não solicita senha, não acessa conta privada e não armazena dados sigilosos.
 - [x] Ajustar a comunicação da landing page para reforçar que a plataforma é uma análise estratégica de branding para profissionais, clínicas, especialistas e negócios do mercado médico.
+
+# Ajuste de Placeholder do Formulário
+- [x] Alterar o placeholder do campo “Especialidade ou área de atuação” de exemplos como cardiologista/marketing para “Ex: Dermato, Cirurgião, Nutrologia”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do placeholder.
