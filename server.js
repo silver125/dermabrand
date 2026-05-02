@@ -90,12 +90,12 @@ DADOS DO PERFIL:
 
 ---
 
-ESTRUTURA DA RESPOSTA:
+ESTRUTURA DA RESPOSTA (exatamente 6 seções):
 
 1. POSICIONAMENTO E AUTORIDADE
 Avalie se o perfil transmite autoridade médica, clareza de especialidade e posicionamento premium.
 Diga o nível: (Baixo / Médio / Alto)
-Explique de forma direta.
+Explique de forma direta e concisa.
 
 ---
 
@@ -103,7 +103,7 @@ Explique de forma direta.
 - Está estratégica ou genérica?
 - Tem clareza do público?
 - Tem chamada para ação (CTA)?
-Sugira uma BIO otimizada pronta para uso.
+Sugira uma BIO otimizada pronta para uso, com máximo 150 caracteres.
 
 ---
 
@@ -126,20 +126,22 @@ Com base nos dados:
 - O engajamento está bom, médio ou baixo?
 - O conteúdo gera conexão ou apenas informação?
 - Existe potencial de crescimento?
+- Taxa de engajamento estimada
 
 ---
 
 5. ERROS E GARGALOS
-Liste os principais erros estratégicos que estão impedindo o crescimento ou a conversão.
+Liste os principais erros estratégicos que estão impedindo o crescimento ou a conversão. Seja específico e acionável.
 
 ---
 
 6. PLANO DE MELHORIA (PRÁTICO)
 Crie um plano direto com ações como:
 - Frequência ideal de postagem
-- Tipos de conteúdo recomendados
-- Ajustes de linguagem
+- Tipos de conteúdo recomendados (com exemplos)
+- Ajustes de linguagem e tom
 - Estratégias para atrair pacientes particulares
+- Timeline de implementação (curto, médio, longo prazo)
 
 ---
 
@@ -147,7 +149,9 @@ REGRAS:
 - Linguagem sofisticada, mas clara
 - Evitar clichês e generalizações
 - Foco em resultado (atração de pacientes e autoridade)
-- Pensar como uma agência premium (Dermabrand)`;
+- Pensar como uma agência premium (Dermabrand)
+- Seja direto e objetivo
+- Use dados para sustentar recomendações`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -159,6 +163,8 @@ REGRAS:
       body: JSON.stringify({
         model: 'gpt-4o-mini',
         messages: [{ role: 'user', content: prompt }],
+        temperature: 0.7,
+        max_tokens: 2000,
       }),
     });
 

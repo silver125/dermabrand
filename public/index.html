@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dermabrand — O Dossiê Estratégico</title>
+  <title>Dermabrand — O Dossiê Estratégico Premium</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
     :root {
-      /* Luxury Dark Palette */
       --obsidian: #050505;
       --onyx: #0A0A0C;
       --charcoal: #141416;
@@ -24,14 +23,10 @@
       --champagne: #F2E8D5;
       --gold-foil: #CFA665;
       --error-wine: #6B2323;
-
-      /* Material Effects */
       --glass-bg: rgba(20, 20, 22, 0.4);
       --glass-border: rgba(255, 255, 255, 0.04);
       --glass-border-hover: rgba(216, 175, 169, 0.25);
       --shadow-ambient: 0 30px 60px rgba(0, 0, 0, 0.8);
-
-      /* Typography */
       --font-serif: 'Cormorant Garamond', serif;
       --font-sans: 'Outfit', sans-serif;
     }
@@ -41,8 +36,7 @@
       background-color: var(--obsidian);
       background-image: 
         radial-gradient(circle at 15% 50%, rgba(216, 175, 169, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(207, 166, 101, 0.03) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+        radial-gradient(circle at 85% 30%, rgba(207, 166, 101, 0.03) 0%, transparent 50%);
       color: var(--silver);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -51,262 +45,227 @@
       overflow-x: hidden;
     }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
       100% { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
-    @keyframes fade {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
+    @keyframes fade { 0% { opacity: 0; } 100% { opacity: 1; } }
     @keyframes pulseGlow {
       0%, 100% { box-shadow: 0 0 15px rgba(216, 175, 169, 0); }
       50% { box-shadow: 0 0 25px rgba(216, 175, 169, 0.15); }
-    }
-    @keyframes pulseGoldGlow {
-      0%, 100% { box-shadow: 0 0 15px rgba(212, 163, 59, 0); transform: scale(1); }
-      50% { box-shadow: 0 0 35px rgba(212, 163, 59, 0.4); transform: scale(1.02); }
     }
     @keyframes spinDelay {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    /* ── Layout & Core ── */
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 2rem;
-      position: relative;
     }
 
     header {
-      padding: 3rem 0 4rem;
+      padding: 3rem 0 2rem;
       text-align: center;
-      position: relative;
       animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .brand-mark-group {
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .brand-mark-main {
+
+    .brand-mark {
       font-family: var(--font-serif);
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 300;
       letter-spacing: 0.15em;
       color: #FFFFFF;
       text-transform: uppercase;
-      line-height: 1;
+      margin-bottom: 0.5rem;
     }
-    .brand-mark-sub {
-      font-family: var(--font-sans);
-      font-size: 0.6rem;
+
+    .brand-sub {
+      font-size: 0.7rem;
       font-weight: 500;
       letter-spacing: 0.4em;
       color: var(--rose-gold);
       text-transform: uppercase;
-      margin-top: 0.5rem;
-    }
-    .brand-line {
-      width: 1px; height: 30px;
-      background: linear-gradient(to bottom, transparent, var(--rose-gold-dark), transparent);
-      margin: 0 auto 1.5rem;
     }
 
-    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 300; }
-    
-    .hero-title {
-      font-size: 3.5rem;
-      line-height: 1.1;
-      color: var(--champagne);
-      margin-bottom: 1rem;
-    }
-    .hero-title i { font-style: italic; color: var(--rose-gold); }
-    
-    .hero-sub {
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 1rem;
-      color: var(--muted-silver);
-      letter-spacing: 0.05em;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    /* ── Search Section ── */
-    .search-orb {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 40px;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-ambient);
-      margin: 2rem auto;
-      max-width: 600px;
-      transition: border-color 0.4s ease;
+    .search-section {
+      margin: 3rem auto;
+      max-width: 700px;
       animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
       opacity: 0;
     }
+
+    .search-orb {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      padding: 0.8rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.4s ease;
+    }
+
     .search-orb:focus-within {
       border-color: rgba(216, 175, 169, 0.4);
     }
+
     .search-input {
       flex: 1;
       background: transparent;
       border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-family: var(--font-sans);
-      font-weight: 300;
       color: var(--champagne);
       outline: none;
       letter-spacing: 0.03em;
     }
-    .search-input::placeholder { color: rgba(255,255,255,0.2); }
-    
-    .btn-luxe {
-      background: var(--obsidian);
-      border: 1px solid var(--glass-border-hover);
-      color: var(--rose-gold);
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-search {
+      background: var(--rose-gold);
+      border: none;
+      color: var(--obsidian);
       padding: 0.8rem 2rem;
       border-radius: 30px;
       font-family: var(--font-sans);
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.3s ease;
     }
-    .btn-luxe::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(216, 175, 169, 0.05), transparent);
-      transform: translateX(-100%); transition: transform 0.6s ease;
-    }
-    .btn-luxe:hover {
-      background: var(--charcoal);
-      border-color: var(--rose-gold);
-      box-shadow: 0 0 20px rgba(216, 175, 169, 0.15);
-    }
-    .btn-luxe:hover::before { transform: translateX(100%); }
-    .btn-luxe:disabled { opacity: 0.5; cursor: not-allowed; border-color: var(--glass-border); }
 
-    /* ── Progress Indicators ── */
+    .btn-search:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(216, 175, 169, 0.3);
+    }
+
+    .btn-search:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .status-ring {
       display: none;
       text-align: center;
       margin: 3rem 0;
       animation: fade 0.6s ease;
     }
+
     .orb-spinner {
-      width: 40px; height: 40px; margin: 0 auto 1.5rem;
-      border: 1px solid var(--glass-border);
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 1.5rem;
+      border: 2px solid var(--glass-border);
       border-top-color: var(--rose-gold);
       border-radius: 50%;
-      animation: spinDelay 1.2s cubic-bezier(0.6, 0.1, 0.4, 0.9) infinite;
+      animation: spinDelay 1.2s linear infinite;
     }
+
     .status-text {
       font-family: var(--font-serif);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-style: italic;
       color: var(--champagne);
       letter-spacing: 0.05em;
     }
-    
-    .progress-bar {
-      width: 200px; height: 1px; background: rgba(255,255,255,0.05); margin: 1rem auto; position: relative;
-    }
-    .progress-fill {
-      position: absolute; top: 0; left: 0; height: 100%; background: var(--rose-gold);
-      width: 0%; transition: width 0.5s ease;
-    }
 
-    /* ── Form Aesthetic ── */
     .form-panel {
       display: none;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      padding: 3rem 4rem;
+      padding: 3rem;
       border-radius: 12px;
       backdrop-filter: blur(20px);
       box-shadow: var(--shadow-ambient);
-      margin-bottom: 4rem;
-      position: relative;
+      margin: 3rem auto;
+      max-width: 700px;
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    
+
     .panel-header {
       text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
+      margin-bottom: 2rem;
     }
+
     .panel-header h2 {
-      font-size: 2.2rem;
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
       color: var(--champagne);
       margin-bottom: 0.5rem;
+      font-weight: 300;
     }
+
     .panel-header p {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--muted-silver);
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
 
     .lux-field {
-      margin-bottom: 2rem;
-      position: relative;
+      margin-bottom: 1.5rem;
     }
+
     .lux-field label {
       display: block;
-      font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 500;
       color: var(--muted-silver);
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
+
     .lux-input {
       width: 100%;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       border: none;
       border-bottom: 1px solid var(--glass-border);
       padding: 0.8rem 0;
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-family: var(--font-sans);
+      font-size: 1rem;
       color: var(--champagne);
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       outline: none;
     }
-    .lux-input::placeholder { color: rgba(255,255,255,0.1); font-family: var(--font-sans); font-size: 1rem; font-weight: 300;}
+
+    .lux-input::placeholder {
+      color: rgba(255, 255, 255, 0.1);
+    }
+
     .lux-input:focus {
       border-bottom-color: var(--rose-gold);
       background: linear-gradient(to top, rgba(216, 175, 169, 0.03), transparent);
     }
-    textarea.lux-input {
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.6;
-      resize: vertical;
-      min-height: 40px;
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
 
-    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
 
-    /* ── Content Type Tags ── */
     .tags-cloud {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
     }
+
     .tag-btn {
       background: transparent;
       border: 1px solid var(--glass-border);
@@ -314,24 +273,33 @@
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       font-family: var(--font-sans);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .tag-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--silver); }
+
+    .tag-btn:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--silver);
+    }
+
     .tag-btn.selected {
       background: var(--rose-gold);
       border-color: var(--rose-gold);
       color: var(--obsidian);
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .btn-submit-container { text-align: center; margin-top: 4rem; }
+    .btn-submit-container {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
     .btn-grand {
       background: var(--rose-gold);
       color: var(--obsidian);
       border: none;
-      padding: 1.2rem 4rem;
+      padding: 1rem 3rem;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -339,172 +307,317 @@
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 10px 30px rgba(216, 175, 169, 0.1);
+      text-transform: uppercase;
     }
+
     .btn-grand:hover {
       transform: translateY(-2px);
       box-shadow: 0 15px 40px rgba(216, 175, 169, 0.25);
-      background: #FDFBF7;
     }
 
-    /* ── Profile Header (Results) ── */
+    .btn-grand:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .profile-hero {
       display: none;
       text-align: center;
-      margin-bottom: 4rem;
+      margin: 4rem 0;
       animation: fadeUp 1s ease forwards;
     }
+
     .avatar-frame {
-      width: 100px; height: 100px; margin: 0 auto 1.5rem;
-      border-radius: 50%; padding: 4px;
-      border: 1px solid var(--rose-gold-dark);
-      background: rgba(0,0,0,0.5);
-    }
-    .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-    .avatar-letter {
-      width: 100%; height: 100%; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-serif); font-size: 2.5rem; color: var(--rose-gold);
-    }
-    .ph-name { font-size: 2.5rem; color: var(--champagne); margin-bottom: 0.2rem; }
-    .ph-meta {
-      font-size: 0.85rem; color: var(--rose-gold-dark); text-transform: uppercase; letter-spacing: 0.1em;
-    }
-    .ph-bio {
-      margin: 1.5rem auto 0; max-width: 500px; font-weight: 300; font-size: 0.95rem; color: var(--muted-silver);
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      padding: 4px;
+      border: 2px solid var(--rose-gold-dark);
+      background: rgba(0, 0, 0, 0.5);
+      overflow: hidden;
     }
 
-    /* ── Report Cards ── */
-    .dossier-view { display: none; margin-bottom: 6rem; }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .avatar-letter {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      color: var(--rose-gold);
+    }
+
+    .ph-name {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--champagne);
+      margin-bottom: 0.3rem;
+      font-weight: 300;
+    }
+
+    .ph-meta {
+      font-size: 0.85rem;
+      color: var(--rose-gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .ph-bio {
+      margin: 0 auto;
+      max-width: 600px;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--muted-silver);
+    }
+
+    .dossier-view {
+      display: none;
+      margin-bottom: 6rem;
+    }
+
     .editorial-divider {
-      text-align: center; margin: 4rem 0 3rem;
-      font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--rose-gold-dark);
+      text-align: center;
+      margin: 4rem 0 3rem;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--rose-gold-dark);
       letter-spacing: 0.3em;
     }
-    .editorial-divider::before, .editorial-divider::after {
-      content: "—"; margin: 0 1rem; opacity: 0.3;
+
+    .editorial-divider::before,
+    .editorial-divider::after {
+      content: "—";
+      margin: 0 1rem;
+      opacity: 0.3;
     }
 
-    .report-grid { display: flex; flex-direction: column; gap: 2rem; }
+    .report-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
     .report-card {
-      background: linear-gradient(145deg, rgba(20,20,22,0.6), rgba(10,10,12,0.8));
+      background: linear-gradient(145deg, rgba(20, 20, 22, 0.6), rgba(10, 10, 12, 0.8));
       border: 1px solid var(--glass-border);
-      border-left: 2px solid transparent;
-      padding: 3rem;
+      border-left: 3px solid transparent;
+      padding: 2.5rem;
       border-radius: 8px;
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.5s ease;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .report-card:hover { border-left-color: var(--rose-gold); background: rgba(20,20,22,0.8); }
-    
+
+    .report-card:nth-child(1) { animation-delay: 0s; }
+    .report-card:nth-child(2) { animation-delay: 0.1s; }
+    .report-card:nth-child(3) { animation-delay: 0.2s; }
+    .report-card:nth-child(4) { animation-delay: 0.3s; }
+    .report-card:nth-child(5) { animation-delay: 0.4s; }
+    .report-card:nth-child(6) { animation-delay: 0.5s; }
+    .report-card:nth-child(7) { animation-delay: 0.6s; }
+
+    .report-card:hover {
+      border-left-color: var(--rose-gold);
+      background: rgba(20, 20, 22, 0.8);
+    }
+
     .rc-title {
-      font-size: 1.8rem; color: var(--champagne); margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--champagne);
+      font-weight: 400;
     }
+
     .rc-number {
-      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600;
-      color: var(--obsidian); background: var(--rose-gold-dark);
-      width: 24px; height: 24px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(216, 175, 169, 0.1);
+      border: 1px solid var(--rose-gold-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--rose-gold);
     }
+
     .rc-body {
-      font-family: var(--font-sans); font-weight: 300; font-size: 1rem;
-      color: var(--silver); line-height: 1.8; white-space: pre-wrap;
+      font-size: 0.95rem;
+      color: var(--silver);
+      line-height: 1.8;
     }
 
-    /* Highlights within text based on simple match */
-    .rc-body strong { color: var(--champagne); font-weight: 500; }
-    .rc-body em { font-family: var(--font-serif); color: var(--rose-gold); font-size: 1.1em; }
+    .rc-body strong {
+      color: var(--champagne);
+      font-weight: 600;
+    }
 
-    .error-banner {
-      display: none; background: rgba(107, 35, 35, 0.1);
-      border: 1px solid var(--error-wine); color: #EAA;
-      padding: 1rem 2rem; border-radius: 6px; text-align: center;
-      margin: 2rem auto; max-width: 600px;
+    .rc-body em {
+      color: var(--rose-gold);
+      font-style: italic;
+    }
+
+    .whatsapp-cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .whatsapp-cta p {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--rose-gold);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #F3C669 0%, #D4A33B 100%);
+      color: #000000;
+      text-decoration: none;
+      padding: 0.8rem 2.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      letter-spacing: 0.1em;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(212, 163, 59, 0.3);
+      text-transform: uppercase;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 163, 59, 0.5);
+    }
+
+    .error-box {
+      display: none;
+      background: rgba(107, 35, 35, 0.2);
+      border: 1px solid var(--error-wine);
+      color: #FF6B6B;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem auto;
+      max-width: 700px;
+      text-align: center;
+      font-size: 0.95rem;
+      animation: fadeUp 0.5s ease;
     }
 
     footer {
-      text-align: center; padding: 3rem 0; margin-top: 4rem;
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 0.8rem;
+      color: var(--muted-silver);
+      letter-spacing: 0.1em;
       border-top: 1px solid var(--glass-border);
-      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.2);
+      margin-top: 6rem;
     }
 
     @media (max-width: 768px) {
-      .container { padding: 0 1rem; }
-      header { padding: 2rem 0; }
-      .brand-mark-main { font-size: 2rem; }
-      .hero-title { font-size: 2.2rem; }
-      .form-panel { padding: 1.5rem 1rem; }
-      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; gap: 1.2rem; }
-      .search-orb { flex-direction: column; background: transparent; border:none; box-shadow:none; gap: 10px; }
-      .search-input { width: 100%; border: 1px solid var(--glass-border); border-radius:30px; background: rgba(20,20,22,0.8); }
-      .btn-luxe { width: 100%; border-radius: 30px; }
-      .report-card { padding: 1.5rem 1rem; }
-      .rc-title { font-size: 1.4rem; flex-direction: row; align-items: center; }
-      .whatsapp-cta-link { font-size: 0.8rem !important; padding: 0.5rem 1.8rem !important; display: inline-block !important; width: auto !important; border-radius: 25px !important; }
+      .form-grid-2,
+      .form-grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-mark {
+        font-size: 2rem;
+      }
+
+      .ph-name {
+        font-size: 1.8rem;
+      }
+
+      .form-panel {
+        padding: 2rem;
+      }
+
+      .rc-title {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <header>
-      <div class="brand-mark-group">
-        <div class="brand-mark-main">Primora</div>
-        <div class="brand-mark-sub">By Dermabrand</div>
-      </div>
-      <h1 class="hero-title">Diagnóstico <i>Estratégico</i></h1>
-      <p class="hero-sub">Análise Estratégica do Instagram. Uma leitura aprofundada do seu perfil para identificar ajustes que fortalecem autoridade, percepção de valor e sofisticação da sua marca médica no digital.</p>
+      <div class="brand-mark">DERMABRAND</div>
+      <div class="brand-sub">O Dossiê Estratégico</div>
     </header>
 
-    <!-- Search Region -->
-    <div class="search-orb" id="searchBox">
-      <input type="text" class="search-input" id="igInput" placeholder="Ex: @dra.elena.dermatologia" />
-      <button class="btn-luxe" id="btnSearch" onclick="fetchProfileData()">Extrair Perfil</button>
+    <div class="search-section" id="searchBox">
+      <div class="search-orb">
+        <span style="color: var(--rose-gold); font-weight: 600;">@</span>
+        <input
+          type="text"
+          class="search-input"
+          id="igInput"
+          placeholder="Digite o username do perfil"
+          autocomplete="off"
+        />
+        <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Analisar</button>
+      </div>
     </div>
 
-    <!-- Error Region -->
-    <div class="error-banner" id="errorBox"></div>
+    <div class="error-box" id="errorBox"></div>
 
-    <!-- Processing State -->
     <div class="status-ring" id="progressSection">
       <div class="orb-spinner"></div>
-      <div class="status-text" id="progressLabel">Estabelecendo conexão...</div>
-      <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+      <p class="status-text" id="progressLabel">Adquirindo dados...</p>
     </div>
 
-    <!-- Interactive Form -->
     <div class="form-panel" id="formSection">
       <div class="panel-header">
-        <h2>Parâmetros Clínicos</h2>
-        <p>Curadoria de Metadados</p>
+        <h2>Enriqueça os Dados</h2>
+        <p>Informações complementares para análise mais profunda</p>
+      </div>
+
+      <div class="lux-field">
+        <label>Nome Completo</label>
+        <input type="text" class="lux-input" id="fName" placeholder="Nome do profissional" />
+      </div>
+
+      <div class="lux-field">
+        <label>Especialidade</label>
+        <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Dermatologista" />
       </div>
 
       <div class="form-grid-2">
         <div class="lux-field">
-          <label>Nome do Médico / Marca</label>
-          <input type="text" class="lux-input" id="fName" placeholder="Dr(a). Especifique" />
+          <label>Cidade</label>
+          <input type="text" class="lux-input" id="fCity" placeholder="Ex: São Paulo" />
         </div>
         <div class="lux-field">
-          <label>Especialidade (Nicho)</label>
-          <input type="text" class="lux-input" id="fSpecialty" placeholder="Dermatologia Avançada" />
+          <label>Bio do Perfil</label>
+          <input type="text" class="lux-input" id="fBio" placeholder="Bio atual" />
         </div>
-      </div>
-
-      <div class="lux-field">
-        <label>Localização (Cidade e Bairro)</label>
-        <input type="text" class="lux-input" id="fCity" placeholder="São Paulo, Vila Nova Conceição" />
-      </div>
-
-      <div class="lux-field">
-        <label>Biografia Atualizada</label>
-        <textarea class="lux-input" id="fBio" placeholder="Revisite a promessa da bio atual do profissional..."></textarea>
       </div>
 
       <div class="form-grid-3">
         <div class="lux-field">
-          <label>Audiência</label>
-          <input type="number" class="lux-input" id="fFollowers" placeholder="Seguidores" />
+          <label>Seguidores</label>
+          <input type="number" class="lux-input" id="fFollowers" placeholder="Ex: 5000" />
         </div>
         <div class="lux-field">
           <label>Curtidas (Aprox)</label>
@@ -517,53 +630,54 @@
       </div>
 
       <div class="lux-field">
-        <label>Ritmo Editorial (Quantas vezes posta na semana)</label>
-        <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: Moderada (3x semanal)" />
+        <label>Frequência de Posts</label>
+        <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: 3x por semana" />
       </div>
 
       <div class="lux-field">
-        <label>Sobre o que costuma falar na legenda?</label>
-        <textarea class="lux-input" id="fCaptions" placeholder="Ex: Misturo explicações técnicas com histórias de pacientes..."></textarea>
+        <label>Sobre o que fala nas legendas?</label>
+        <textarea class="lux-input" id="fCaptions" placeholder="Descreva o tom e tópicos das legendas" style="min-height: 80px; resize: vertical;"></textarea>
       </div>
 
       <div class="lux-field">
-        <label>Repertório de Conteúdo</label>
+        <label>Tipos de Conteúdo</label>
         <div class="tags-cloud">
           <button class="tag-btn content-tag" onclick="toggleTag(this)">Antes e Depois</button>
-          <button class="tag-btn content-tag" onclick="toggleTag(this)">Lifestyle (Família e Viagens)</button>
-          <button class="tag-btn content-tag" onclick="toggleTag(this)">Artigos Técnicos</button>
-          <button class="tag-btn content-tag" onclick="toggleTag(this)">Trends do Momento</button>
-          <button class="tag-btn content-tag" onclick="toggleTag(this)">Social Proof / Depoimentos</button>
-          <button class="tag-btn content-tag" onclick="toggleTag(this)">Carrossel Educativo</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Lifestyle</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Educativo</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Reels</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Depoimentos</button>
+          <button class="tag-btn content-tag" onclick="toggleTag(this)">Carrossel</button>
         </div>
       </div>
 
       <div class="lux-field">
-        <label>Parecer do Especialista (Observações Visuais)</label>
-        <textarea class="lux-input" id="fObservations" placeholder="Ex: As fotos têm pouca iluminação. Falta alinhamento na grade visual. Excesso de logos espalhados."></textarea>
+        <label>Observações Visuais</label>
+        <textarea class="lux-input" id="fObservations" placeholder="Qualidade das fotos, layout, consistência visual..." style="min-height: 80px; resize: vertical;"></textarea>
       </div>
 
       <div class="btn-submit-container">
-        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Começar Minha Análise</button>
+        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Gerar Análise Premium</button>
       </div>
     </div>
 
-    <!-- Final Result Headers -->
     <div class="profile-hero" id="profileCard">
       <div class="avatar-frame" id="avatarWrap"></div>
-      <h2 class="ph-name" id="pName">Nome Aqui</h2>
+      <h2 class="ph-name" id="pName"></h2>
       <div class="ph-meta" id="pCat"></div>
       <p class="ph-bio" id="pBio"></p>
     </div>
 
-    <!-- Report Canvas -->
     <div class="dossier-view" id="reportSection">
-      <div class="editorial-divider">ANÁLISE ALGORÍTMICA</div>
-      <div class="report-grid" id="reportCards">
-        <!-- JS Injected Cards -->
+      <div class="editorial-divider">ANÁLISE ESTRATÉGICA</div>
+      <div class="report-grid" id="reportCards"></div>
+      <div class="whatsapp-cta">
+        <p>"Sugestões personalizadas e plano de ação completo para seu perfil"</p>
+        <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugestões%20de%20conteúdo%20para%20o%20Instagram" target="_blank" class="whatsapp-btn">
+          Falar com Especialista
+        </a>
       </div>
     </div>
-
   </div>
 
   <footer>
@@ -583,11 +697,6 @@
       return input.replace(/^@/, '').trim();
     }
 
-    function setStatus(text, progressPercent) {
-      document.getElementById('progressLabel').textContent = text;
-      document.getElementById('pFill').style.width = progressPercent + '%';
-    }
-
     function toggleDisplay(id, display) {
       document.getElementById(id).style.display = display;
     }
@@ -599,7 +708,6 @@
       toggleDisplay('progressSection', 'none');
       document.getElementById('btnSearch').disabled = false;
       document.getElementById('btnSearch').textContent = 'Tentar Novamente';
-      if(document.getElementById('btnAnalyze')) document.getElementById('btnAnalyze').disabled = false;
     }
 
     function toggleTag(el) {
@@ -608,7 +716,6 @@
 
     function parseSection(text, title) {
       const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      // Tolera marcadores Markdown ** e ### antes ou depois dos títulos
       const regex = new RegExp(`[#\\*\\s]*${escapedTitle}[#\\*\\s]*([\\s\\S]*?)(?=\\n[#\\*\\s]*\\d\\.|$)`, 'i');
       const match = text.match(regex);
       return match ? match[1].trim() : '';
@@ -618,39 +725,37 @@
       const input = document.getElementById('igInput').value.trim();
       if (!input) return;
       const username = extractUsername(input);
-      if (!username) { showError('Identificador inválido fornecido.'); return; }
+      if (!username) {
+        showError('Username inválido.');
+        return;
+      }
 
       document.getElementById('igInput').blur();
       document.getElementById('btnSearch').disabled = true;
-      document.getElementById('btnSearch').textContent = 'Adquirindo...';
-      
+      document.getElementById('btnSearch').textContent = 'Buscando...';
+
       toggleDisplay('errorBox', 'none');
       toggleDisplay('formSection', 'none');
       toggleDisplay('profileCard', 'none');
       toggleDisplay('reportSection', 'none');
       toggleDisplay('progressSection', 'block');
 
-      setStatus('A mágica está acontecendo...', 30);
-
       try {
         const r = await fetch(`/api/profile?username=${encodeURIComponent(username)}`);
         const d = await r.json();
-        if (!d.ok) throw new Error(d.error || 'Autenticação falha ou perfil protegido.');
-        
+        if (!d.ok) throw new Error(d.error || 'Perfil não encontrado.');
+
         const p = d.user;
-        
         globUsername = p.username || username;
-        globProfilePic = p.profile_pic_url_hd || p.profile_pic_url || '';
+        globProfilePic = p.profile_pic_url || '';
         globIsVerified = p.is_verified || false;
-        globCategory = p.category || p.category_name || '';
+        globCategory = p.category || '';
 
-        // populate form
-        document.getElementById('fName').value = p.full_name || p.name || globUsername;
+        document.getElementById('fName').value = p.full_name || globUsername;
         document.getElementById('fSpecialty').value = globCategory;
-        document.getElementById('fBio').value = p.biography || p.bio || '';
-        document.getElementById('fFollowers').value = parseInt(p.follower_count || p.edge_followed_by?.count || 0);
+        document.getElementById('fBio').value = p.biography || '';
+        document.getElementById('fFollowers').value = parseInt(p.follower_count || 0);
 
-        // reset
         ['fCity', 'fLikes', 'fComments', 'fFrequency', 'fCaptions', 'fObservations'].forEach(id => {
           document.getElementById(id).value = '';
         });
@@ -659,12 +764,11 @@
         setTimeout(() => {
           toggleDisplay('progressSection', 'none');
           toggleDisplay('formSection', 'block');
-          document.getElementById('searchBox').style.display = 'none'; // hide search box for elegant flow
+          document.getElementById('searchBox').style.display = 'none';
           document.getElementById('errorBox').style.display = 'none';
         }, 600);
-
       } catch (e) {
-        showError('Falha no subsistema: ' + e.message);
+        showError('Erro: ' + e.message);
       }
     }
 
@@ -673,8 +777,6 @@
       toggleDisplay('formSection', 'none');
       document.getElementById('btnAnalyze').disabled = true;
       toggleDisplay('progressSection', 'block');
-
-      setStatus('Produzindo insights estratégicos...', 70);
 
       const profileData = {
         full_name: document.getElementById('fName').value,
@@ -693,9 +795,8 @@
       };
 
       const contentTypes = Array.from(document.querySelectorAll('.content-tag.selected'))
-                                .map(el => el.textContent);
+        .map(el => el.textContent);
 
-      let reportText = '';
       try {
         const r = await fetch('/api/analyze', {
           method: 'POST',
@@ -703,20 +804,12 @@
           body: JSON.stringify({ profile: profileData, contentTypes }),
         });
         const d = await r.json();
-        if (!d.ok) throw new Error((d.error||'') + " " + (d.detail||''));
-        reportText = d.report;
+        if (!d.ok) throw new Error(d.error || 'Erro ao gerar análise');
+        buildFinalView(profileData, d.report);
       } catch (e) {
         toggleDisplay('formSection', 'block');
-        showError('Colapso cognitivo (IA): ' + e.message);
-        return;
+        showError('Erro na análise: ' + e.message);
       }
-
-      setStatus('Finalizando apresentação...', 100);
-      
-      setTimeout(() => {
-        toggleDisplay('progressSection', 'none');
-        buildFinalView(profileData, reportText);
-      }, 800);
     }
 
     function buildFinalView(p, text) {
@@ -727,10 +820,10 @@
         avatarWrap.innerHTML = `<div class="avatar-letter">${p.full_name.charAt(0).toUpperCase()}</div>`;
       }
 
-      document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.5em; vertical-align:middle;">👑</span>' : '');
-      document.getElementById('pCat').textContent = p.specialty + (p.city ? ` • ${p.city}` : '');
+      document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.5em;">✓</span>' : '');
+      document.getElementById('pCat').textContent = (p.specialty || 'Médico') + (p.city ? ' • ' + p.city : '');
       document.getElementById('pBio').textContent = p.biography;
-      
+
       toggleDisplay('profileCard', 'block');
 
       const sections = [
@@ -742,50 +835,34 @@
         "6. PLANO DE MELHORIA"
       ];
 
-      // Format Text helper
       const formatBody = (str) => {
         return str
           .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\n/g, '<br>')
           .trim();
       };
 
       const blocksHtml = sections.map((title, i) => {
         let content = parseSection(text, title);
         if (!content) return '';
-        
+
         let visualTitle = title.replace(/^\d\.\s*/, '');
-        
-        // Compute animation delay for stagger reveal
-        let delay = (i * 0.15) + "s";
-        
-        return `<div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay} forwards;">
-          <h3 class="rc-title"><div class="rc-number">${i+1}</div> ${visualTitle}</h3>
+
+        return `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-number">${i + 1}</div> ${visualTitle}</h3>
           <div class="rc-body">${formatBody(content)}</div>
         </div>`;
       }).join('');
 
-      const whatsappCard = `
-      <div class="report-card" style="animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${sections.length * 0.15}s forwards; border: 1px solid var(--glass-border); text-align: center; background: linear-gradient(145deg, rgba(20,20,22,0.6), rgba(20,15,10,0.8));">
-          <p style="color: #D4A33B; font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.5; font-style: italic; margin-bottom: 1.5rem; margin-top: 0.5rem;">
-            "Nós preparamos sugestões específicas de conteúdos e ajustes personalizados para o seu perfil no Instagram (clique abaixo)"
-          </p>
-          <div class="rc-body">
-            <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugest%C3%B5es%20de%20conte%C3%BAdo" target="_blank" class="whatsapp-cta-link" style="display: inline-block; background: linear-gradient(135deg, #F3C669 0%, #D4A33B 100%); color: #000000; text-decoration: none; padding: 0.5rem 2rem; border-radius: 25px; font-weight: 700; font-size: 0.85rem; text-align: center; letter-spacing: 0.1em; transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(212, 163, 59, 0.3); animation: pulseGoldGlow 2s infinite ease-in-out;">
-               ACESSAR
-            </a>
-          </div>
-      </div>
-      `;
-
-      document.getElementById('reportCards').innerHTML = (blocksHtml || `<div class="report-card" style="animation: fadeUp 0.8s forwards;"><div class="rc-body">${formatBody(text)}</div></div>`) + whatsappCard;
+      document.getElementById('reportCards').innerHTML = blocksHtml;
       toggleDisplay('reportSection', 'block');
+      toggleDisplay('progressSection', 'none');
     }
 
     document.getElementById('igInput').addEventListener('keydown', e => {
       if (e.key === 'Enter') fetchProfileData();
     });
   </script>
-
 </body>
 </html>
