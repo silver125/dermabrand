@@ -149,3 +149,13 @@
 - [x] Centralizar melhor no smartphone o bloco “Gerando diagnóstico estratégico...”, evitando que fique preso ao topo.
 - [x] Reduzir a sensação de grande vazio abaixo do carregamento no mobile.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do carregamento mobile.
+
+# Limpeza da Página Inicial Mobile
+- [x] Substituir o subtítulo inicial por “Adaptação leitura estratégica do perfil”.
+- [x] Remover o texto “Digite seu @ para iniciar.” da página inicial.
+- [x] Alterar o botão mobile para dourado com o texto “INICIAR ANÁLISE”.
+- [x] Remover a seta do botão inicial mobile.
+- [x] Remover o link “Ver termo.” da frase de privacidade da página inicial.
+- [x] Remover o rodapé “PRIMORA by Dermabrand © 2026 — The Premium Praxis” da página inicial.
+- [x] Remover o link inferior “Termo de Privacidade” da página inicial.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a limpeza da página inicial.

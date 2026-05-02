@@ -270,7 +270,7 @@
     }
 
     .btn-search {
-      background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-gold-dark) 100%);
+      background: linear-gradient(135deg, #F7D892 0%, #D6A44F 48%, #B98225 100%);
       border: none;
       color: var(--obsidian);
       padding: 0.9rem 2.2rem;
@@ -282,7 +282,7 @@
       letter-spacing: 0.15em;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(216, 175, 169, 0.2);
+      box-shadow: 0 12px 34px rgba(207, 166, 101, 0.24);
     }
 
     .btn-search-arrow {
@@ -295,7 +295,7 @@
 
     .btn-search:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.4);
+      box-shadow: 0 16px 42px rgba(207, 166, 101, 0.36);
     }
 
     .btn-search:disabled {
@@ -1068,11 +1068,11 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        padding: 1rem 3.2rem;
+        padding: 1rem 2rem;
         border-radius: 24px;
-        background: linear-gradient(135deg, #F0C9C2 0%, #D9AFA8 52%, #C99991 100%);
+        background: linear-gradient(135deg, #F7D892 0%, #D6A44F 48%, #B98225 100%);
         color: #100D0D;
-        box-shadow: 0 18px 48px rgba(216, 175, 169, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        box-shadow: 0 18px 48px rgba(207, 166, 101, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.28);
         font-size: 0.82rem;
         letter-spacing: 0.18em;
       }
@@ -1210,8 +1210,7 @@
 
     <div class="hero-section" id="heroSection">
       <h1 class="hero-title">Seu Instagram transmite autoridade médica?</h1>
-      <p class="hero-subtitle">Receba uma leitura estratégica do seu perfil.</p>
-      <p class="hero-lead">Digite seu @ para iniciar.</p>
+      <p class="hero-subtitle">Adaptação leitura estratégica do perfil</p>
     </div>
 
     <div class="search-section" id="searchBox">
@@ -1226,9 +1225,9 @@
             autocomplete="off"
           />
         </div>
-        <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">VER MINHA ANÁLISE <span class="btn-search-arrow" aria-hidden="true">→</span></button>
+        <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">INICIAR ANÁLISE</button>
       </div>
-      <p class="privacy-note"><strong>Privacidade:</strong> sua avaliação não exige senha, não acessa sua conta e não armazena informações sigilosas. <a href="/privacidade.html">Ver termo</a>.</p>
+      <p class="privacy-note"><strong>Privacidade:</strong> sua avaliação não exige senha, não acessa sua conta e não armazena informações sigilosas.</p>
     </div>
 
     <div class="error-box" id="errorBox"></div>
@@ -1403,10 +1402,7 @@
     </div>
   </div>
 
-  <footer>
-    PRIMORA by Dermabrand &copy; 2026 — The Premium Praxis<br>
-    <a class="footer-privacy-link" href="/privacidade.html">Termo de Privacidade</a>
-  </footer>
+
 
   <script>
     let globProfilePic = '';
