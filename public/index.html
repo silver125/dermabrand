@@ -75,7 +75,7 @@
     header {
       padding: 4rem 0 2rem;
       text-align: center;
-      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: none;
     }
 
     .brand-container {
@@ -119,8 +119,8 @@
     .hero-section {
       text-align: center;
       margin: 3rem 0;
-      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-      opacity: 0;
+      animation: none;
+      opacity: 1;
     }
 
     .hero-title {
@@ -143,8 +143,8 @@
     .search-section {
       margin: 3rem auto;
       max-width: 700px;
-      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-      opacity: 0;
+      animation: none;
+      opacity: 1;
     }
 
     .search-orb {
@@ -157,8 +157,8 @@
       gap: 1rem;
       backdrop-filter: blur(20px);
       box-shadow: 0 20px 60px rgba(216, 175, 169, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.4s ease;
-      animation: pulseGlow 3s ease-in-out infinite;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      animation: none;
     }
 
     .search-orb:focus-within {
@@ -755,6 +755,57 @@
       .hero-title {
         font-size: 1.8rem;
       }
+
+      body {
+        background-attachment: scroll;
+      }
+
+      header,
+      .hero-section,
+      .search-section,
+      .form-panel,
+      .profile-hero,
+      .score-card,
+      .report-card,
+      .action-section,
+      .error-box {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .search-orb,
+      .form-panel {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .search-orb,
+      .btn-search,
+      .btn-grand,
+      .tag-btn,
+      .lux-input,
+      .whatsapp-btn,
+      .report-card {
+        transition: none !important;
+      }
+
+      .btn-search:hover,
+      .btn-grand:hover,
+      .whatsapp-btn:hover,
+      .report-card:hover {
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
@@ -909,7 +960,7 @@
       <div class="action-section" id="improvementSection">
         <div class="action-title">
           <i class="fas fa-lightbulb"></i>
-          Plano de Melhoria Estrategico
+          Plano de Melhoria Estratégico
         </div>
         <div class="action-content" id="improvementContent"></div>
       </div>
@@ -917,7 +968,7 @@
       <div class="action-section" id="suggestionsSection">
         <div class="action-title">
           <i class="fas fa-star"></i>
-          Sugestoes Personalizadas
+          Sugestões Personalizadas
         </div>
         <div class="action-content" id="suggestionsContent"></div>
       </div>
@@ -925,7 +976,7 @@
       <div class="action-section" id="actionPlanSection">
         <div class="action-title">
           <i class="fas fa-tasks"></i>
-          Plano de Acao
+          Plano de Ação
         </div>
         <div class="action-content" id="actionPlanContent"></div>
       </div>

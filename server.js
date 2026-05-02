@@ -117,7 +117,7 @@ Avalie como especialista em branding médico:
 - **CTA**: Tem chamada clara para ação?
 - **Oportunidades**: O que está faltando para converter melhor?
 
-Sugira uma BIO otimizada (máx 150 caracteres) que posicione como autoridade.
+Sugira uma BIO otimizada (máx 150 caracteres) com tom médico, sóbrio, técnico e premium. A bio deve transmitir especialidade, método, autoridade clínica e clareza de atendimento sem parecer propaganda. Não use emojis, símbolos decorativos, promessas de resultado, frases como “transformando pele”, “resultados que falam”, “dermatologia de excelência”, “agende sua avaliação” ou qualquer chamada comercial genérica.
 
 ---
 
@@ -162,15 +162,17 @@ Seja direto e evite recomendações genéricas.
 ---
 
 REGRAS:
-- Linguagem sofisticada e técnica
-- Evitar clichês, generalizações e ofertas de serviços
-- Foco em diagnóstico estratégico, não em vendas
-- Pensar como especialista em branding médico premium
-- Seja conciso e acionável
-- Use dados para sustentar cada recomendação
-- Não mencione consultas, serviços ou ofertas
-- Análise de BIO deve ser profunda e especializada
-- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência
+- Linguagem sofisticada, técnica, sóbria e compatível com a credibilidade médica.
+- Nunca use emojis, ícones decorativos, símbolos chamativos ou linguagem de influenciador.
+- Evitar clichês, generalizações, promessas de resultado, frases promocionais e ofertas de serviços.
+- Foco em diagnóstico estratégico, não em vendas.
+- Pensar como especialista em branding médico premium, respeitando a seriedade da comunicação em saúde.
+- Seja conciso e acionável.
+- Use dados para sustentar cada recomendação.
+- Não mencione consultas gratuitas, avaliações, agendamentos, descontos, ofertas ou chamadas comerciais agressivas.
+- A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
+- A sugestão de bio deve parecer adequada para uma médica/dermatologista de alto padrão: sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
+- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência.
 - Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
 
   try {

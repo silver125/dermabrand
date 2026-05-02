@@ -16,3 +16,14 @@
 - [x] Substituir a visualização circular do score por estrelas preenchidas.
 - [x] Exibir três scores especialistas com nomes claros e critérios estratégicos.
 - [x] Garantir que os scores fiquem legíveis e elegantes no mobile e desktop.
+
+# Correções de Credibilidade do Diagnóstico
+- [x] Corrigir o título “Plano de Acao” para “Plano de Ação” no diagnóstico.
+- [x] Ajustar o prompt da IA para proibir emojis em sugestões de bio e recomendações.
+- [x] Reforçar que sugestões de bio devem ter tom médico, técnico, sóbrio e premium, sem frases promocionais genéricas.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a correção.
+
+# Performance Mobile da Landing Page
+- [x] Remover ou desativar animações da landing page que prejudiquem a experiência em iPhone.
+- [x] Reduzir efeitos pesados de blur, transform, animações contínuas e transições excessivas no mobile.
+- [x] Validar que a landing page continue visualmente premium, estável e legível no smartphone.
