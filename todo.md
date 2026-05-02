@@ -102,3 +102,10 @@
 - [x] Reduzir a largura do botão, especialmente na visualização mobile.
 - [x] Aplicar visual dourado premium ao botão final.
 - [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do botão.
+
+# Correções Críticas de Copy Premium
+- [x] Substituir “Diagnóstico gratuito para médicos e negócios da saúde” por “Análise Estratégica de Presença no Instagram”.
+- [x] Substituir “Faça um diagnóstico gratuito e veja o que melhorar.” por “Identifique os pontos que estão limitando sua autoridade”.
+- [x] Substituir “análise simples do seu perfil” por “leitura estratégica do seu perfil”.
+- [x] Ajustar o botão principal fraco “Analisar” para “Iniciar Avaliação”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após as correções críticas de copy.
