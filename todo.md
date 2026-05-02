@@ -159,3 +159,8 @@
 - [x] Remover o rodapé “PRIMORA by Dermabrand © 2026 — The Premium Praxis” da página inicial.
 - [x] Remover o link inferior “Termo de Privacidade” da página inicial.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a limpeza da página inicial.
+
+# Correção da Limpeza da Página Inicial
+- [x] Restaurar o link inferior “Termo de Privacidade” na página inicial.
+- [x] Alterar o subtítulo de “Adaptação leitura estratégica do perfil” para “Leitura estratégica do perfil”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a correção.
