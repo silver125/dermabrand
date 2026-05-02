@@ -174,4 +174,4 @@
 - [x] Inserir três etapas visuais na tela de carregamento: Posicionamento, Conteúdo e Autoridade.
 - [x] Adicionar ícones dourados para as etapas de Posicionamento, Conteúdo e Autoridade.
 - [x] Adicionar o texto menor “Estamos avaliando seu posicionamento, conteúdo e autoridade para gerar insights personalizados.”.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a melhoria da tela de diagnóstico.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a melhoria da tela de diagnóstico.
