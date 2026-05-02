@@ -116,6 +116,54 @@
       font-size: 12px;
     }
 
+    .brand-social {
+      width: fit-content;
+      margin: 0.9rem auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.58rem 1rem;
+      border: 1px solid rgba(216, 175, 169, 0.35);
+      border-radius: 999px;
+      color: var(--champagne);
+      background: rgba(216, 175, 169, 0.06);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .brand-social:hover {
+      transform: translateY(-2px);
+      border-color: var(--champagne);
+      background: rgba(216, 175, 169, 0.12);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      padding: 0.48rem 0.9rem;
+      border: 1px solid rgba(216, 175, 169, 0.28);
+      border-radius: 999px;
+      color: var(--rose-gold);
+      background: rgba(216, 175, 169, 0.055);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      max-width: 680px;
+      margin: -0.8rem auto 2.1rem;
+      color: rgba(232, 224, 216, 0.78);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
     .hero-section {
       text-align: center;
       margin: 3rem 0;
@@ -200,6 +248,21 @@
       color: var(--rose-gold);
       text-decoration: none;
       border-bottom: 1px solid rgba(216, 175, 169, 0.35);
+    }
+
+    .conversion-note {
+      max-width: 640px;
+      margin: 1rem auto 0;
+      color: rgba(245, 228, 206, 0.76);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .conversion-note strong {
+      color: var(--champagne);
+      font-weight: 500;
     }
 
     .btn-search {
@@ -408,6 +471,54 @@
     .btn-grand:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+
+    .form-support-card {
+      margin: 0 auto 2rem;
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgba(216, 175, 169, 0.28);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(216, 175, 169, 0.08), rgba(255, 255, 255, 0.025));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .form-support-copy {
+      color: rgba(232, 224, 216, 0.74);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .form-support-copy strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--champagne);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    .support-btn {
+      flex: 0 0 auto;
+      padding: 0.78rem 1rem;
+      border-radius: 999px;
+      background: rgba(216, 175, 169, 0.12);
+      border: 1px solid rgba(216, 175, 169, 0.42);
+      color: var(--champagne);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .support-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(216, 175, 169, 0.2);
     }
 
     .profile-hero {
@@ -729,11 +840,22 @@
 
     .whatsapp-cta p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.45rem;
       color: var(--rose-gold);
-      margin-bottom: 1.5rem;
+      margin: 0 auto 1rem;
+      max-width: 680px;
+      line-height: 1.55;
       font-weight: 400;
-      line-height: 1.6;
+    }
+
+    .whatsapp-cta small {
+      display: block;
+      max-width: 620px;
+      margin: 0 auto 1.8rem;
+      color: rgba(232, 224, 216, 0.72);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
     }
 
     .action-section {
@@ -871,6 +993,17 @@
         padding: 2rem;
       }
 
+      .form-support-card {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .support-btn {
+        width: 100%;
+        text-align: center;
+      }
+
       .rc-title {
         font-size: 1.2rem;
       }
@@ -943,12 +1076,18 @@
       <div class="brand-container">
         <div class="brand-mark">PRIMORA</div>
         <div class="brand-sub">by Dermabrand</div>
+        <a class="brand-social" href="https://www.instagram.com/dermabrand/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Dermabrand">
+          <span class="instagram-icon"><i class="fab fa-instagram"></i></span>
+          @dermabrand
+        </a>
       </div>
     </header>
 
     <div class="hero-section" id="heroSection">
-      <h1 class="hero-title">Transforme Seu Perfil em Autoridade na Saúde</h1>
-      <p class="hero-subtitle">Análise estratégica de branding para profissionais, clínicas, especialistas e negócios do mercado médico</p>
+      <div class="hero-kicker">Diagnóstico gratuito para médicos e negócios da saúde</div>
+      <h1 class="hero-title">Descubra por que seu perfil ainda não vende autoridade como deveria</h1>
+      <p class="hero-subtitle">A Dermabrand transforma presença digital médica em posicionamento, desejo e demanda qualificada.</p>
+      <p class="hero-lead">Receba uma leitura estratégica inicial do seu Instagram e identifique o que precisa mudar para atrair pacientes, fortalecer reputação e abrir uma conversa com especialistas em marketing médico premium.</p>
     </div>
 
     <div class="search-section" id="searchBox">
@@ -963,6 +1102,7 @@
         <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Analisar</button>
       </div>
       <p class="privacy-note"><strong>Privacidade:</strong> não solicitamos senha, não acessamos conta privada e não armazenamos dados sigilosos. A análise considera apenas o @ informado e informações públicas ou preenchidas por você. <a href="/privacidade.html">Ver termo</a>.</p>
+      <p class="conversion-note"><strong>Depois do diagnóstico, clique no botão dourado</strong> para receber orientação da Dermabrand sobre como transformar os pontos encontrados em crescimento real de marca.</p>
     </div>
 
     <div class="error-box" id="errorBox"></div>
@@ -978,8 +1118,16 @@
 
     <div class="form-panel" id="formSection">
       <div class="panel-header">
-        <h2>Enriqueça os Dados</h2>
-        <p>Informações complementares para análise mais profunda</p>
+        <h2>Complete o Diagnóstico Estratégico</h2>
+        <p>Quanto mais contexto você informa, mais precisa fica a leitura comercial do seu posicionamento.</p>
+      </div>
+
+      <div class="form-support-card">
+        <div class="form-support-copy">
+          <strong>Precisa de ajuda para preencher?</strong>
+          Se alguma informação gerar dúvida, fale com o suporte da Dermabrand antes de gerar o diagnóstico.
+        </div>
+        <a class="support-btn" href="https://wa.me/5511916391848?text=Estou%20preenchendo%20o%20diagnóstico%20Dermabrand%20e%20preciso%20de%20ajuda" target="_blank" rel="noopener noreferrer">Suporte</a>
       </div>
 
       <div class="lux-field">
@@ -1048,7 +1196,7 @@
       </div>
 
       <div class="btn-submit-container">
-        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Gerar Análise Premium</button>
+        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Gerar Diagnóstico Gratuito</button>
       </div>
     </div>
 
@@ -1121,9 +1269,10 @@
       </div>
 
       <div class="whatsapp-cta">
-        <p>"Sugestões personalizadas e plano de ação completo para seu perfil"</p>
-        <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugestões%20de%20conteúdo%20para%20o%20Instagram" target="_blank" class="whatsapp-btn">
-          Falar com Especialista
+        <p>Seu diagnóstico mostra onde sua marca médica pode crescer. O próximo passo é transformar essa leitura em um plano comercial real.</p>
+        <small>Clique no botão dourado para falar com um especialista da Dermabrand, receber mais informações sobre os pontos do seu diagnóstico e entender como podemos conduzir seu posicionamento com método, estética e estratégia.</small>
+        <a href="https://wa.me/5511916391848?text=Quero%20falar%20com%20um%20especialista%20da%20Dermabrand%20sobre%20meu%20diagnóstico%20gratuito" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          Clique aqui e fale com um especialista
         </a>
       </div>
     </div>

@@ -72,7 +72,7 @@ app.post('/api/analyze', async (req, res) => {
 
 Sua primeira tarefa é identificar, pelos dados informados, se o perfil representa um profissional de saúde, uma clínica, uma agência de marketing médico, uma consultoria, um serviço B2B para médicos ou outra especialidade/segmento. Nunca assuma dermatologia, médica ou dermatologista por padrão.
 
-Sua análise deve ser técnica, especializada e orientada ao objetivo adequado ao tipo de perfil: atração de pacientes particulares quando for perfil assistencial, fortalecimento institucional quando for clínica, ou geração de autoridade e demanda B2B quando for marketing médico, consultoria ou serviço para profissionais de saúde.
+Sua análise deve ser técnica, especializada e orientada ao objetivo adequado ao tipo de perfil: atração de pacientes particulares quando for perfil assistencial, fortalecimento institucional quando for clínica, ou geração de autoridade e demanda B2B quando for marketing médico, consultoria ou serviço para profissionais de saúde. Escreva como uma agência de marketing médico premium que entende que o diagnóstico gratuito é a primeira etapa de uma conversa comercial consultiva: entregue valor real, evidencie lacunas estratégicas e conduza o leitor para perceber que existe um próximo nível de planejamento com especialistas.
 
 Analise os dados abaixo com rigor profissional e gere um diagnóstico estratégico completo, adaptado à especialidade, ao segmento e ao público-alvo identificados.
 
@@ -159,31 +159,33 @@ Liste os principais erros estratégicos que estão impedindo o crescimento ou a 
 ---
 
 7. PLANO DE MELHORIA (EXECUTIVO)
-Apresente um plano conciso e acionável:
+Apresente um plano conciso, elegante e acionável:
 - **Ações Imediatas** (próximas 2 semanas): 2-3 mudanças de impacto rápido
 - **Conteúdo Estratégico**: Tipos específicos a priorizar
 - **Frequência Recomendada**: Postagens por semana
 - **Diferencial Competitivo**: Como se destacar
 - **Métrica de Sucesso**: Como medir melhoria
+- **Próximo passo estratégico**: explique, em tom consultivo e premium, por que conversar com especialistas pode transformar o diagnóstico em um plano de posicionamento, conteúdo e conversão.
 
-Seja direto e evite recomendações genéricas.
+Seja direto, sofisticado e evite recomendações genéricas.
 
 ---
 
 REGRAS:
 - Linguagem sofisticada, técnica, sóbria e compatível com a credibilidade exigida no mercado de saúde.
 - Nunca use emojis, ícones decorativos, símbolos chamativos ou linguagem de influenciador.
-- Evitar clichês, generalizações, promessas de resultado, frases promocionais e ofertas de serviços.
-- Foco em diagnóstico estratégico, não em vendas.
+- Evitar clichês, generalizações, promessas de resultado, sensacionalismo e ofertas agressivas.
+- Foco em diagnóstico estratégico com intenção comercial consultiva: a pessoa deve sentir que recebeu valor, mas que o próximo passo com a Dermabrand pode aprofundar método, plano de ação e execução.
 - Pensar como especialista em branding premium para saúde, respeitando a seriedade da comunicação no setor.
 - Seja conciso e acionável.
 - Use dados para sustentar cada recomendação.
-- Não mencione consultas gratuitas, avaliações, agendamentos, descontos, ofertas ou chamadas comerciais agressivas.
+- Não mencione consultas médicas gratuitas, descontos, garantias de resultado ou chamadas comerciais agressivas. Pode mencionar uma conversa com especialistas da Dermabrand como próximo passo estratégico para transformar o diagnóstico em plano de marca, conteúdo e conversão.
 - A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
 - A sugestão de bio deve ser adequada ao tipo de perfil identificado. Se for marketing médico, agência, consultoria ou serviço B2B, não escreva como se fosse médica, médico, dermatologista ou clínica assistencial. Se for profissional ou clínica, respeite a especialidade informada. Em todos os casos, sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
 - As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência e explique os critérios usados de forma compreensível para o usuário final.
 - Não repita notas numéricas fora da seção “1. NOTAS DO DIAGNÓSTICO”. Em “Posicionamento e Autoridade” e nas demais seções, escreva apenas análise qualitativa.
-- Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
+- Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado.
+- O texto deve soar como uma agência de marketing médico de altíssimo nível: preciso, bonito, persuasivo, premium e voltado à geração de lead qualificado, sem parecer apelativo.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {

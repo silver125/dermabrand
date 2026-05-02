@@ -61,3 +61,12 @@
 # Ajuste de Tipos de Conteúdo
 - [x] Adicionar as opções “Trends do momento” e “Stories” à lista de tipos de conteúdo do formulário.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a inclusão dos novos tipos de conteúdo.
+
+# Reposicionamento Comercial e Geração de Leads
+- [x] Reescrever a primeira dobra da landing page para deixar claro que o diagnóstico gratuito é uma entrada estratégica para médicos, clínicas e especialistas descobrirem oportunidades de crescimento com a Dermabrand.
+- [x] Adicionar o @dermabrand com ícone de Instagram clicável na primeira página, apontando para o perfil da agência.
+- [x] Inserir um botão de suporte visível durante o preenchimento das informações antes do diagnóstico, com texto de ajuda comercial e contato direto.
+- [x] Reformular o bloco final do diagnóstico para conduzir o usuário a clicar no botão dourado e falar com um especialista da Dermabrand.
+- [x] Aprimorar a copy do botão dourado e dos textos próximos ao CTA para transformar o diagnóstico gratuito em lead qualificado.
+- [x] Garantir que o CTA abra um canal de contato comercial e mantenha linguagem premium, consultiva e orientada à venda.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o reposicionamento comercial.
