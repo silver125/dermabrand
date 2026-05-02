@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dermabrand — O Dossiê Estratégico Premium</title>
+  <title>PRIMORA by Dermabrand — Análise Premium de Perfis</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,15 +29,13 @@
       --glass-border-hover: rgba(216, 175, 169, 0.25);
       --shadow-ambient: 0 30px 60px rgba(0, 0, 0, 0.8);
       --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Outfit', sans-serif;
+      --font-sans: 'Lato', sans-serif;
     }
 
     body {
       font-family: var(--font-sans);
-      background-color: var(--obsidian);
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(216, 175, 169, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(207, 166, 101, 0.03) 0%, transparent 50%);
+      background: linear-gradient(135deg, #050505 0%, #0a0a0c 50%, #0f0a15 100%);
+      background-attachment: fixed;
       color: var(--silver);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -46,71 +45,125 @@
     }
 
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+      0% { opacity: 0; transform: translateY(40px); filter: blur(4px); }
       100% { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
     @keyframes fade { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
     @keyframes pulseGlow {
       0%, 100% { box-shadow: 0 0 15px rgba(216, 175, 169, 0); }
-      50% { box-shadow: 0 0 25px rgba(216, 175, 169, 0.15); }
+      50% { box-shadow: 0 0 30px rgba(216, 175, 169, 0.3); }
     }
     @keyframes spinDelay {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    @keyframes scaleIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
     header {
-      padding: 3rem 0 2rem;
+      padding: 4rem 0 2rem;
       text-align: center;
       animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
+    .brand-container {
+      margin-bottom: 1rem;
+    }
+
     .brand-mark {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
       color: #FFFFFF;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
 
     .brand-sub {
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.75rem;
+      font-weight: 400;
       letter-spacing: 0.4em;
       color: var(--rose-gold);
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .instagram-icon {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin: 3rem 0;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--champagne);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted-silver);
+      letter-spacing: 0.05em;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
     .search-section {
       margin: 3rem auto;
       max-width: 700px;
-      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
       opacity: 0;
     }
 
     .search-orb {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, rgba(30, 20, 25, 0.8), rgba(15, 10, 15, 0.9));
+      border: 2px solid var(--rose-gold);
+      border-radius: 60px;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       gap: 1rem;
       backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-ambient);
+      box-shadow: 0 20px 60px rgba(216, 175, 169, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       transition: all 0.4s ease;
+      animation: pulseGlow 3s ease-in-out infinite;
     }
 
     .search-orb:focus-within {
-      border-color: rgba(216, 175, 169, 0.4);
+      border-color: var(--champagne);
+      box-shadow: 0 30px 80px rgba(216, 175, 169, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
 
     .search-input {
@@ -125,27 +178,28 @@
     }
 
     .search-input::placeholder {
-      color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.25);
     }
 
     .btn-search {
-      background: var(--rose-gold);
+      background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-gold-dark) 100%);
       border: none;
       color: var(--obsidian);
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
+      padding: 0.9rem 2.2rem;
+      border-radius: 40px;
       font-family: var(--font-sans);
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(216, 175, 169, 0.2);
     }
 
     .btn-search:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(216, 175, 169, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.4);
     }
 
     .btn-search:disabled {
@@ -156,36 +210,36 @@
     .status-ring {
       display: none;
       text-align: center;
-      margin: 3rem 0;
+      margin: 4rem 0;
       animation: fade 0.6s ease;
     }
 
     .orb-spinner {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       margin: 0 auto 1.5rem;
-      border: 2px solid var(--glass-border);
+      border: 3px solid var(--glass-border);
       border-top-color: var(--rose-gold);
       border-radius: 50%;
       animation: spinDelay 1.2s linear infinite;
     }
 
     .status-text {
-      font-family: var(--font-serif);
+      font-family: 'Lato', sans-serif;
       font-size: 1.1rem;
-      font-style: italic;
+      font-weight: 400;
       color: var(--champagne);
       letter-spacing: 0.05em;
     }
 
     .form-panel {
       display: none;
-      background: var(--glass-bg);
+      background: linear-gradient(135deg, rgba(30, 20, 25, 0.6), rgba(15, 10, 15, 0.8));
       border: 1px solid var(--glass-border);
       padding: 3rem;
-      border-radius: 12px;
+      border-radius: 16px;
       backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-ambient);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       margin: 3rem auto;
       max-width: 700px;
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -193,15 +247,15 @@
 
     .panel-header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .panel-header h2 {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
       color: var(--champagne);
       margin-bottom: 0.5rem;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .panel-header p {
@@ -212,25 +266,25 @@
     }
 
     .lux-field {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .lux-field label {
       display: block;
       font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--muted-silver);
+      font-weight: 600;
+      color: var(--rose-gold);
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.7rem;
     }
 
     .lux-input {
       width: 100%;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.3);
       border: none;
-      border-bottom: 1px solid var(--glass-border);
-      padding: 0.8rem 0;
+      border-bottom: 2px solid var(--glass-border);
+      padding: 0.9rem 0;
       font-family: var(--font-sans);
       font-size: 1rem;
       color: var(--champagne);
@@ -239,12 +293,12 @@
     }
 
     .lux-input::placeholder {
-      color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.15);
     }
 
     .lux-input:focus {
       border-bottom-color: var(--rose-gold);
-      background: linear-gradient(to top, rgba(216, 175, 169, 0.03), transparent);
+      background: linear-gradient(to top, rgba(216, 175, 169, 0.05), transparent);
     }
 
     .form-grid-2 {
@@ -279,40 +333,40 @@
     }
 
     .tag-btn:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--silver);
+      border-color: var(--rose-gold);
+      color: var(--rose-gold);
     }
 
     .tag-btn.selected {
       background: var(--rose-gold);
       border-color: var(--rose-gold);
       color: var(--obsidian);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .btn-submit-container {
       text-align: center;
-      margin-top: 2.5rem;
+      margin-top: 3rem;
     }
 
     .btn-grand {
-      background: var(--rose-gold);
+      background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-gold-dark) 100%);
       color: var(--obsidian);
       border: none;
-      padding: 1rem 3rem;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 1.1rem 3.5rem;
+      font-size: 0.9rem;
+      font-weight: 700;
       letter-spacing: 0.2em;
-      border-radius: 40px;
+      border-radius: 50px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 30px rgba(216, 175, 169, 0.1);
+      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.2);
       text-transform: uppercase;
     }
 
     .btn-grand:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(216, 175, 169, 0.35);
     }
 
     .btn-grand:disabled {
@@ -328,14 +382,15 @@
     }
 
     .avatar-frame {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.5rem;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 2rem;
       border-radius: 50%;
       padding: 4px;
-      border: 2px solid var(--rose-gold-dark);
-      background: rgba(0, 0, 0, 0.5);
+      border: 3px solid var(--rose-gold);
+      background: linear-gradient(135deg, rgba(216, 175, 169, 0.1), rgba(216, 175, 169, 0.05));
       overflow: hidden;
+      box-shadow: 0 20px 60px rgba(216, 175, 169, 0.2);
     }
 
     .avatar-img {
@@ -352,33 +407,68 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-serif);
-      font-size: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 400;
       color: var(--rose-gold);
     }
 
     .ph-name {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
       color: var(--champagne);
-      margin-bottom: 0.3rem;
-      font-weight: 300;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
     }
 
     .ph-meta {
-      font-size: 0.85rem;
-      color: var(--rose-gold-dark);
+      font-size: 0.9rem;
+      color: var(--rose-gold);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .ph-bio {
       margin: 0 auto;
       max-width: 600px;
       font-weight: 300;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--muted-silver);
+    }
+
+    .score-badge {
+      display: inline-block;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .score-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--rose-gold) 0deg, var(--rose-gold) var(--score-angle), var(--glass-border) var(--score-angle), var(--glass-border) 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.2);
+      animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .score-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      color: var(--champagne);
+    }
+
+    .score-label {
+      font-size: 0.85rem;
+      color: var(--muted-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.5rem;
     }
 
     .dossier-view {
@@ -389,18 +479,18 @@
     .editorial-divider {
       text-align: center;
       margin: 4rem 0 3rem;
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--rose-gold-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--rose-gold);
       letter-spacing: 0.3em;
     }
 
     .editorial-divider::before,
     .editorial-divider::after {
-      content: "—";
+      content: "✦";
       margin: 0 1rem;
-      opacity: 0.3;
+      opacity: 0.5;
     }
 
     .report-grid {
@@ -410,14 +500,15 @@
     }
 
     .report-card {
-      background: linear-gradient(145deg, rgba(20, 20, 22, 0.6), rgba(10, 10, 12, 0.8));
+      background: linear-gradient(135deg, rgba(30, 20, 25, 0.5), rgba(15, 10, 15, 0.7));
       border: 1px solid var(--glass-border);
-      border-left: 3px solid transparent;
+      border-left: 4px solid var(--rose-gold);
       padding: 2.5rem;
-      border-radius: 8px;
+      border-radius: 12px;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: all 0.3s ease;
     }
 
     .report-card:nth-child(1) { animation-delay: 0s; }
@@ -429,8 +520,9 @@
     .report-card:nth-child(7) { animation-delay: 0.6s; }
 
     .report-card:hover {
-      border-left-color: var(--rose-gold);
-      background: rgba(20, 20, 22, 0.8);
+      border-left-color: var(--champagne);
+      background: linear-gradient(135deg, rgba(30, 20, 25, 0.7), rgba(15, 10, 15, 0.85));
+      transform: translateX(10px);
     }
 
     .rc-title {
@@ -438,24 +530,25 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 1.5rem;
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
       color: var(--champagne);
       font-weight: 400;
     }
 
     .rc-number {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(216, 175, 169, 0.1);
-      border: 1px solid var(--rose-gold-dark);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--rose-gold);
+      background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-dark));
+      border: 2px solid var(--rose-gold);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--obsidian);
+      flex-shrink: 0;
     }
 
     .rc-body {
@@ -466,7 +559,7 @@
 
     .rc-body strong {
       color: var(--champagne);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .rc-body em {
@@ -482,12 +575,50 @@
     }
 
     .whatsapp-cta p {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
       color: var(--rose-gold);
       margin-bottom: 1.5rem;
-      font-style: italic;
+      font-weight: 400;
       line-height: 1.6;
+    }
+
+    .action-section {
+      background: linear-gradient(135deg, rgba(30, 20, 25, 0.5), rgba(15, 10, 15, 0.7));
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--gold-foil);
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+      opacity: 0;
+    }
+
+    .action-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold-foil);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .action-content {
+      font-size: 0.95rem;
+      color: var(--silver);
+      line-height: 1.8;
+    }
+
+    .action-content strong {
+      color: var(--champagne);
+      font-weight: 700;
+    }
+
+    .action-content em {
+      color: var(--rose-gold);
+      font-style: italic;
     }
 
     .whatsapp-btn {
@@ -495,29 +626,29 @@
       background: linear-gradient(135deg, #F3C669 0%, #D4A33B 100%);
       color: #000000;
       text-decoration: none;
-      padding: 0.8rem 2.5rem;
-      border-radius: 30px;
+      padding: 0.9rem 2.8rem;
+      border-radius: 40px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       text-align: center;
       letter-spacing: 0.1em;
       transition: all 0.4s ease;
-      box-shadow: 0 5px 15px rgba(212, 163, 59, 0.3);
+      box-shadow: 0 10px 30px rgba(212, 163, 59, 0.3);
       text-transform: uppercase;
     }
 
     .whatsapp-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(212, 163, 59, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 163, 59, 0.5);
     }
 
     .error-box {
       display: none;
       background: rgba(107, 35, 35, 0.2);
-      border: 1px solid var(--error-wine);
-      color: #FF6B6B;
+      border: 2px solid var(--error-wine);
+      color: #FF8B8B;
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: 12px;
       margin: 2rem auto;
       max-width: 700px;
       text-align: center;
@@ -535,6 +666,31 @@
       margin-top: 6rem;
     }
 
+    .icon-check {
+      color: var(--gold-foil);
+      font-size: 1.2rem;
+    }
+
+    .action-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .action-list li {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .action-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--gold-foil);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
     @media (max-width: 768px) {
       .form-grid-2,
       .form-grid-3 {
@@ -542,11 +698,11 @@
       }
 
       .brand-mark {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .ph-name {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
       }
 
       .form-panel {
@@ -554,7 +710,11 @@
       }
 
       .rc-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -562,18 +722,24 @@
 <body>
   <div class="container">
     <header>
-      <div class="brand-mark">DERMABRAND</div>
-      <div class="brand-sub">O Dossiê Estratégico</div>
+      <div class="brand-container">
+        <div class="brand-mark">PRIMORA</div>
+        <div class="brand-sub">by Dermabrand</div>
+      </div>
     </header>
+
+    <div class="hero-section" id="heroSection">
+      <h1 class="hero-title">Transforme Seu Perfil em Autoridade Médica</h1>
+      <p class="hero-subtitle">Análise estratégica completa de branding para dermatologistas e clínicas premium</p>
+    </div>
 
     <div class="search-section" id="searchBox">
       <div class="search-orb">
-        <span style="color: var(--rose-gold); font-weight: 600;">@</span>
         <input
           type="text"
           class="search-input"
           id="igInput"
-          placeholder="Digite o username do perfil"
+          placeholder="Digite o @username"
           autocomplete="off"
         />
         <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Analisar</button>
@@ -666,11 +832,42 @@
       <h2 class="ph-name" id="pName"></h2>
       <div class="ph-meta" id="pCat"></div>
       <p class="ph-bio" id="pBio"></p>
+      <div class="score-badge">
+        <div class="score-circle" id="scoreCircle">
+          <span class="score-value" id="scoreValue">0</span>
+        </div>
+        <div class="score-label">Score de Autoridade</div>
+      </div>
     </div>
 
     <div class="dossier-view" id="reportSection">
-      <div class="editorial-divider">ANÁLISE ESTRATÉGICA</div>
+      <div class="editorial-divider">ANÁLISE ESTRATÉGICA COMPLETA</div>
       <div class="report-grid" id="reportCards"></div>
+      
+      <div class="action-section" id="improvementSection">
+        <div class="action-title">
+          <i class="fas fa-lightbulb"></i>
+          Plano de Melhoria Estrategico
+        </div>
+        <div class="action-content" id="improvementContent"></div>
+      </div>
+
+      <div class="action-section" id="suggestionsSection">
+        <div class="action-title">
+          <i class="fas fa-star"></i>
+          Sugestoes Personalizadas
+        </div>
+        <div class="action-content" id="suggestionsContent"></div>
+      </div>
+
+      <div class="action-section" id="actionPlanSection">
+        <div class="action-title">
+          <i class="fas fa-tasks"></i>
+          Plano de Acao
+        </div>
+        <div class="action-content" id="actionPlanContent"></div>
+      </div>
+
       <div class="whatsapp-cta">
         <p>"Sugestões personalizadas e plano de ação completo para seu perfil"</p>
         <a href="https://wa.me/5511916391848?text=Quero%20minhas%20sugestões%20de%20conteúdo%20para%20o%20Instagram" target="_blank" class="whatsapp-btn">
@@ -681,7 +878,7 @@
   </div>
 
   <footer>
-    Dermabrand &copy; 2026 — The Premium Praxis
+    PRIMORA by Dermabrand &copy; 2026 — The Premium Praxis
   </footer>
 
   <script>
@@ -719,6 +916,38 @@
       const regex = new RegExp(`[#\\*\\s]*${escapedTitle}[#\\*\\s]*([\\s\\S]*?)(?=\\n[#\\*\\s]*\\d\\.|$)`, 'i');
       const match = text.match(regex);
       return match ? match[1].trim() : '';
+    }
+
+    function extractScore(text) {
+      // Procura por padrões de nota/score no texto
+      const patterns = [
+        /score[:\s]+(\d+(?:[.,]\d+)?)/i,
+        /nota[:\s]+(\d+(?:[.,]\d+)?)/i,
+        /(\d+(?:[.,]\d+)?)\s*(?:\/|de)\s*10/i,
+        /avalia[çc][ã]o[:\s]+(\d+(?:[.,]\d+)?)/i,
+      ];
+
+      for (const pattern of patterns) {
+        const match = text.match(pattern);
+        if (match) {
+          let score = parseFloat(match[1].replace(',', '.'));
+          return Math.min(10, Math.max(0, score));
+        }
+      }
+
+      // Se não encontrar explicitamente, calcula baseado em palavras-chave
+      const positiveWords = ['excelente', 'ótimo', 'premium', 'autoridade', 'forte', 'profissional'];
+      const negativeWords = ['fraco', 'genérico', 'baixo', 'inconsistente', 'amador'];
+
+      let score = 5;
+      positiveWords.forEach(word => {
+        if (text.toLowerCase().includes(word)) score += 0.8;
+      });
+      negativeWords.forEach(word => {
+        if (text.toLowerCase().includes(word)) score -= 0.8;
+      });
+
+      return Math.min(10, Math.max(0, score));
     }
 
     async function fetchProfileData() {
@@ -820,9 +1049,15 @@
         avatarWrap.innerHTML = `<div class="avatar-letter">${p.full_name.charAt(0).toUpperCase()}</div>`;
       }
 
-      document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.5em;">✓</span>' : '');
+      document.getElementById('pName').innerHTML = p.full_name + (globIsVerified ? ' <span style="font-size:0.6em;">✓</span>' : '');
       document.getElementById('pCat').textContent = (p.specialty || 'Médico') + (p.city ? ' • ' + p.city : '');
       document.getElementById('pBio').textContent = p.biography;
+
+      // Calcular score
+      const score = extractScore(text);
+      const scoreAngle = (score / 10) * 360;
+      document.documentElement.style.setProperty('--score-angle', scoreAngle + 'deg');
+      document.getElementById('scoreValue').textContent = score.toFixed(1);
 
       toggleDisplay('profileCard', 'block');
 
@@ -856,6 +1091,33 @@
       }).join('');
 
       document.getElementById('reportCards').innerHTML = blocksHtml;
+
+      // Extrair e popular as seções adicionais
+      const improvementContent = parseSection(text, "6. PLANO DE MELHORIA");
+      const suggestionsContent = parseSection(text, "SUGESTÕES") || parseSection(text, "RECOMENDAÇÕES");
+      const actionPlanContent = parseSection(text, "AÇÃO") || parseSection(text, "PRÓXIMOS PASSOS");
+
+      if (improvementContent) {
+        document.getElementById('improvementContent').innerHTML = formatBody(improvementContent);
+        document.getElementById('improvementSection').style.opacity = '1';
+      } else {
+        document.getElementById('improvementSection').style.display = 'none';
+      }
+
+      if (suggestionsContent) {
+        document.getElementById('suggestionsContent').innerHTML = formatBody(suggestionsContent);
+        document.getElementById('suggestionsSection').style.opacity = '1';
+      } else {
+        document.getElementById('suggestionsSection').style.display = 'none';
+      }
+
+      if (actionPlanContent) {
+        document.getElementById('actionPlanContent').innerHTML = formatBody(actionPlanContent);
+        document.getElementById('actionPlanSection').style.opacity = '1';
+      } else {
+        document.getElementById('actionPlanSection').style.display = 'none';
+      }
+
       toggleDisplay('reportSection', 'block');
       toggleDisplay('progressSection', 'none');
     }

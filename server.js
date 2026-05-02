@@ -68,11 +68,11 @@ app.post('/api/analyze', async (req, res) => {
     captions, observations
   } = profile;
 
-  const prompt = `Você é um especialista em marketing médico premium, com foco em dermatologistas e clínicas de alto padrão no Brasil.
+  const prompt = `Você é um especialista em branding médico premium e estratégia de posicionamento digital para dermatologistas e clínicas de alto padrão no Brasil.
 
-Sua função é analisar um perfil de Instagram médico de forma estratégica, técnica e orientada à conversão de pacientes particulares.
+Sua análise deve ser técnica, especializada e orientada a resultados reais de atração de pacientes particulares.
 
-Analise os dados abaixo e gere um relatório completo, objetivo e sofisticado.
+Analise os dados abaixo com rigor profissional e gere um diagnóstico estratégico completo.
 
 DADOS DO PERFIL:
 - Nome: ${full_name || 'Não informado'}
@@ -99,11 +99,15 @@ Explique de forma direta e concisa.
 
 ---
 
-2. ANÁLISE DA BIO
-- Está estratégica ou genérica?
-- Tem clareza do público?
-- Tem chamada para ação (CTA)?
-Sugira uma BIO otimizada pronta para uso, com máximo 150 caracteres.
+2. ANÁLISE DA BIO (Especializada)
+Avalie como especialista em branding médico:
+- **Posicionamento**: O perfil deixa claro o diferencial?
+- **Linguagem**: Usa termos que atraem pacientes particulares ou é genérica?
+- **Credibilidade**: Transmite expertise e confiança?
+- **CTA**: Tem chamada clara para ação?
+- **Oportunidades**: O que está faltando para converter melhor?
+
+Sugira uma BIO otimizada (máx 150 caracteres) que posicione como autoridade.
 
 ---
 
@@ -135,23 +139,27 @@ Liste os principais erros estratégicos que estão impedindo o crescimento ou a 
 
 ---
 
-6. PLANO DE MELHORIA (PRÁTICO)
-Crie um plano direto com ações como:
-- Frequência ideal de postagem
-- Tipos de conteúdo recomendados (com exemplos)
-- Ajustes de linguagem e tom
-- Estratégias para atrair pacientes particulares
-- Timeline de implementação (curto, médio, longo prazo)
+6. PLANO DE MELHORIA (EXECUTIVO)
+Apresente um plano conciso e acionável:
+- **Ações Imediatas** (próximas 2 semanas): 2-3 mudanças de impacto rápido
+- **Conteúdo Estratégico**: Tipos específicos a priorizar
+- **Frequência Recomendada**: Postagens por semana
+- **Diferencial Competitivo**: Como se destacar
+- **Métrica de Sucesso**: Como medir melhoria
+
+Seja direto e evite recomendações genéricas.
 
 ---
 
 REGRAS:
-- Linguagem sofisticada, mas clara
-- Evitar clichês e generalizações
-- Foco em resultado (atração de pacientes e autoridade)
-- Pensar como uma agência premium (Dermabrand)
-- Seja direto e objetivo
-- Use dados para sustentar recomendações`;
+- Linguagem sofisticada e técnica
+- Evitar clichês, generalizações e ofertas de serviços
+- Foco em diagnóstico estratégico, não em vendas
+- Pensar como especialista em branding médico premium
+- Seja conciso e acionável
+- Use dados para sustentar cada recomendação
+- Não mencione consultas, serviços ou ofertas
+- Análise de BIO deve ser profunda e especializada`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
