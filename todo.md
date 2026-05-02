@@ -144,3 +144,8 @@
 - [x] Inserir ícone “@” dentro do campo no mobile.
 - [x] Elevar o posicionamento do conjunto campo/botão na primeira dobra do smartphone.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o novo botão mobile.
+
+# Centralização do Carregamento Mobile
+- [x] Centralizar melhor no smartphone o bloco “Gerando diagnóstico estratégico...”, evitando que fique preso ao topo.
+- [x] Reduzir a sensação de grande vazio abaixo do carregamento no mobile.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do carregamento mobile.
