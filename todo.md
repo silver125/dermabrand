@@ -75,4 +75,4 @@
 - [x] Reduzir a copy da primeira página para médicos leigos, removendo excesso de explicações e mantendo uma mensagem objetiva.
 - [x] Remover o texto longo abaixo do campo de diagnóstico sobre clicar no botão dourado depois do diagnóstico.
 - [x] Manter uma orientação curta e acionável, focada em preencher o @, analisar e falar com especialista.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação.
