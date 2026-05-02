@@ -57,3 +57,7 @@
 # Ajuste de Placeholder do Formulário
 - [x] Alterar o placeholder do campo “Especialidade ou área de atuação” de exemplos como cardiologista/marketing para “Ex: Dermato, Cirurgião, Nutrologia”.
 - [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do placeholder.
+
+# Ajuste de Tipos de Conteúdo
+- [x] Adicionar as opções “Trends do momento” e “Stories” à lista de tipos de conteúdo do formulário.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a inclusão dos novos tipos de conteúdo.
