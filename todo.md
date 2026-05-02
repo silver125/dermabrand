@@ -27,3 +27,9 @@
 - [x] Remover ou desativar animações da landing page que prejudiquem a experiência em iPhone.
 - [x] Reduzir efeitos pesados de blur, transform, animações contínuas e transições excessivas no mobile.
 - [x] Validar que a landing page continue visualmente premium, estável e legível no smartphone.
+
+# Clareza dos Scores e Processamento Mobile
+- [x] Exibir no diagnóstico uma explicação clara de que as notas são estimativas estratégicas baseadas em autoridade percebida, clareza da bio, posicionamento, conteúdo, engajamento e potencial de conversão.
+- [x] Ajustar o prompt da IA para justificar objetivamente os três scores com critérios visíveis e sem linguagem genérica.
+- [x] Substituir o indicador de processamento giratório por uma animação pequena, discreta e leve para iPhone.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio após a atualização.

@@ -102,10 +102,12 @@ Score de Autoridade: X/10
 Score de Bio e Posicionamento: X/10
 Score de Conteúdo e Engajamento: X/10
 
+Logo após as três notas, explique em 2 a 4 frases a base dos scores. Deixe claro que são estimativas estratégicas de branding digital, baseadas nos dados do perfil e nos sinais informados, não métricas oficiais do Instagram. Justifique objetivamente os principais fatores que elevaram ou reduziram cada nota.
+
 Critérios das notas:
-- Score de Autoridade: percepção de expertise, confiança, diferenciação médica e presença premium.
-- Score de Bio e Posicionamento: clareza da promessa, especialidade, diferenciais, credibilidade e CTA.
-- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, conexão com paciente e potencial de conversão.
+- Score de Autoridade: percepção de expertise, confiança, diferenciação médica, prova de especialidade, consistência de imagem e presença premium.
+- Score de Bio e Posicionamento: clareza da especialidade, promessa de valor, diferenciais reais, credibilidade, localização, coerência de linguagem e CTA sóbrio.
+- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, adequação à comunicação em saúde, conexão com paciente, frequência, sinais de engajamento e potencial de conversão.
 
 ---
 
@@ -172,7 +174,7 @@ REGRAS:
 - Não mencione consultas gratuitas, avaliações, agendamentos, descontos, ofertas ou chamadas comerciais agressivas.
 - A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
 - A sugestão de bio deve parecer adequada para uma médica/dermatologista de alto padrão: sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
-- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência.
+- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência e explique os critérios usados de forma compreensível para o usuário final.
 - Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado`;
 
   try {

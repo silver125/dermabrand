@@ -57,9 +57,9 @@
       0%, 100% { box-shadow: 0 0 15px rgba(216, 175, 169, 0); }
       50% { box-shadow: 0 0 30px rgba(216, 175, 169, 0.3); }
     }
-    @keyframes spinDelay {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes processingDot {
+      0%, 100% { opacity: 0.35; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-4px); }
     }
     @keyframes scaleIn {
       0% { opacity: 0; transform: scale(0.9); }
@@ -214,15 +214,30 @@
       animation: fade 0.6s ease;
     }
 
-    .orb-spinner {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 1.5rem;
-      border: 3px solid var(--glass-border);
-      border-top-color: var(--rose-gold);
-      border-radius: 50%;
-      animation: spinDelay 1.2s linear infinite;
+    .processing-indicator {
+      width: fit-content;
+      margin: 0 auto 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.7rem 1rem;
+      border: 1px solid rgba(216, 175, 169, 0.2);
+      border-radius: 999px;
+      background: rgba(216, 175, 169, 0.055);
     }
+
+    .processing-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rose-gold);
+      animation: processingDot 1.15s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .processing-dot:nth-child(2) { animation-delay: 0.16s; }
+    .processing-dot:nth-child(3) { animation-delay: 0.32s; }
 
     .status-text {
       font-family: 'Lato', sans-serif;
@@ -501,6 +516,34 @@
       font-size: 0.78rem;
       color: rgba(232, 226, 218, 0.58);
       font-weight: 300;
+    }
+
+    .score-criteria {
+      max-width: 860px;
+      margin: 1rem auto 0;
+      padding: 1.25rem 1.35rem;
+      border: 1px solid rgba(216, 175, 169, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.025);
+      color: rgba(232, 226, 218, 0.72);
+      font-size: 0.84rem;
+      line-height: 1.75;
+      text-align: left;
+    }
+
+    .score-criteria strong {
+      color: var(--champagne);
+      font-weight: 700;
+    }
+
+    .score-criteria-title {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--rose-gold);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     @media (max-width: 760px) {
@@ -791,6 +834,11 @@
         transition: none !important;
       }
 
+      .processing-dot {
+        animation-duration: 1.4s;
+        transform: none;
+      }
+
       .btn-search:hover,
       .btn-grand:hover,
       .whatsapp-btn:hover,
@@ -838,9 +886,13 @@
 
     <div class="error-box" id="errorBox"></div>
 
-    <div class="status-ring" id="progressSection">
-      <div class="orb-spinner"></div>
-      <p class="status-text" id="progressLabel">Adquirindo dados...</p>
+    <div class="status-ring" id="progressSection" aria-live="polite">
+      <div class="processing-indicator" aria-hidden="true">
+        <span class="processing-dot"></span>
+        <span class="processing-dot"></span>
+        <span class="processing-dot"></span>
+      </div>
+      <p class="status-text" id="progressLabel">Preparando análise...</p>
     </div>
 
     <div class="form-panel" id="formSection">
@@ -950,6 +1002,10 @@
           <div class="score-label">Conteúdo e Engajamento</div>
           <div class="score-note">Consistência, conexão e potencial de conversão</div>
         </div>
+      </div>
+      <div class="score-criteria">
+        <span class="score-criteria-title">Base das notas</span>
+        As notas são <strong>estimativas estratégicas de 0 a 10</strong>, calculadas pela IA a partir dos dados informados e dos sinais públicos do perfil. Elas consideram autoridade percebida, clareza da bio, especialidade, posicionamento, consistência editorial, engajamento aproximado, qualidade da comunicação e potencial de conversão. Não são métricas oficiais do Instagram nem avaliação médica; funcionam como leitura de branding e presença digital.
       </div>
     </div>
 
@@ -1080,6 +1136,7 @@
       document.getElementById('igInput').blur();
       document.getElementById('btnSearch').disabled = true;
       document.getElementById('btnSearch').textContent = 'Buscando...';
+      document.getElementById('progressLabel').textContent = 'Coletando dados do perfil...';
 
       toggleDisplay('errorBox', 'none');
       toggleDisplay('formSection', 'none');
@@ -1123,6 +1180,7 @@
       toggleDisplay('errorBox', 'none');
       toggleDisplay('formSection', 'none');
       document.getElementById('btnAnalyze').disabled = true;
+      document.getElementById('progressLabel').textContent = 'Gerando diagnóstico estratégico...';
       toggleDisplay('progressSection', 'block');
 
       const profileData = {
