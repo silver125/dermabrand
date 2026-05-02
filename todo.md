@@ -168,4 +168,4 @@
 # Nova Copy Principal da Landing Page
 - [x] Alterar o título principal para “Seu Instagram parece médico… ou amador?”.
 - [x] Alterar o subtítulo para “Descubra em segundos.”.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy principal.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a nova copy principal.
