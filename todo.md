@@ -130,10 +130,10 @@
 - [x] Remover o selo “POSICIONAMENTO PARA MÉDICOS E EMPRESAS DA SAÚDE” da primeira dobra.
 - [x] Deixar o link do Instagram apenas com ícone branco e “by Dermabrand”, com 70% de opacidade.
 - [x] Subir o bloco de análise no smartphone para reduzir o espaço vertical antes da headline e do formulário.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após os ajustes mobile.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após os ajustes mobile.
 
 # Remoção de Repetição na Segunda Página
 - [x] Ocultar a primeira dobra ao exibir a etapa “Complete sua análise”.
 - [x] Remover da segunda página a repetição de “Seu Instagram transmite autoridade médica?”, “Digite seu @ para iniciar.” e demais textos da primeira página.
 - [x] Manter a segunda página focada diretamente no formulário, sem duplicação da mensagem inicial.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a remoção da repetição.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a remoção da repetição.
