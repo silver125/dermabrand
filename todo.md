@@ -186,3 +186,4 @@
 - [x] Alterar o subtítulo para “Resultado em segundos. Sem login.”.
 - [x] Alterar o texto do campo de Instagram para “Digite seu Instagram (@)usuário”.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste da primeira dobra.
+- [x] Simplificar placeholder do campo de Instagram para “@seuinstagram”.
