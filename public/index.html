@@ -449,23 +449,30 @@
     }
 
     .btn-grand {
-      background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-gold-dark) 100%);
-      color: var(--obsidian);
-      border: none;
-      padding: 1.1rem 3.5rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      min-width: 260px;
+      max-width: 340px;
+      background: linear-gradient(135deg, #F7D37A 0%, #D9A63E 48%, #9F6E20 100%);
+      color: #080604;
+      border: 1px solid rgba(255, 224, 145, 0.5);
+      padding: 1rem 2.1rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      border-radius: 999px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 15px 40px rgba(216, 175, 169, 0.2);
+      box-shadow: 0 14px 34px rgba(217, 166, 62, 0.22), inset 0 1px 0 rgba(255, 245, 210, 0.55);
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .btn-grand:hover {
       transform: translateY(-3px);
-      box-shadow: 0 20px 50px rgba(216, 175, 169, 0.35);
+      box-shadow: 0 18px 44px rgba(217, 166, 62, 0.34), inset 0 1px 0 rgba(255, 245, 210, 0.68);
     }
 
     .btn-grand:disabled {
@@ -1004,6 +1011,14 @@
         text-align: center;
       }
 
+      .btn-grand {
+        min-width: 0;
+        width: min(82%, 320px);
+        padding: 0.95rem 1.45rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.13em;
+      }
+
       .rc-title {
         font-size: 1.2rem;
       }
@@ -1084,10 +1099,10 @@
     </header>
 
     <div class="hero-section" id="heroSection">
-      <div class="hero-kicker">Diagnóstico gratuito para médicos e negócios da saúde</div>
-      <h1 class="hero-title">Seu Instagram atrai pacientes?</h1>
-      <p class="hero-subtitle">Faça um diagnóstico gratuito e veja o que melhorar.</p>
-      <p class="hero-lead">Digite seu @ e receba uma análise simples do seu perfil.</p>
+      <div class="hero-kicker">Leitura de Posicionamento para médicos e clínicas de alto padrão</div>
+      <h1 class="hero-title">Seu Instagram posiciona sua autoridade médica?</h1>
+      <p class="hero-subtitle">Receba uma avaliação estratégica da sua presença digital e identifique oportunidades de autoridade, percepção premium e conversão.</p>
+      <p class="hero-lead">Digite seu @ para iniciar uma leitura aprofundada do seu posicionamento no Instagram.</p>
     </div>
 
     <div class="search-section" id="searchBox">
@@ -1099,9 +1114,9 @@
           placeholder="Digite o @username"
           autocomplete="off"
         />
-        <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Analisar</button>
+        <button class="btn-search" id="btnSearch" onclick="fetchProfileData()">Iniciar Avaliação</button>
       </div>
-      <p class="privacy-note"><strong>Privacidade:</strong> não pedimos senha, não acessamos sua conta e não armazenamos dados sigilosos. <a href="/privacidade.html">Ver termo</a>.</p>
+      <p class="privacy-note"><strong>Privacidade:</strong> sua avaliação não exige senha, não acessa sua conta e não armazena informações sigilosas. <a href="/privacidade.html">Ver termo</a>.</p>
     </div>
 
     <div class="error-box" id="errorBox"></div>
@@ -1112,21 +1127,21 @@
         <span class="processing-dot"></span>
         <span class="processing-dot"></span>
       </div>
-      <p class="status-text" id="progressLabel">Preparando análise...</p>
+      <p class="status-text" id="progressLabel">Preparando leitura estratégica...</p>
     </div>
 
     <div class="form-panel" id="formSection">
       <div class="panel-header">
-        <h2>Complete o Diagnóstico Estratégico</h2>
-        <p>Quanto mais contexto você informa, mais precisa fica a leitura comercial do seu posicionamento.</p>
+        <h2>Complete a Leitura de Posicionamento</h2>
+        <p>Quanto mais contexto você informa, mais precisa se torna a avaliação estratégica da sua marca médica.</p>
       </div>
 
       <div class="form-support-card">
         <div class="form-support-copy">
           <strong>Precisa de ajuda para preencher?</strong>
-          Se alguma informação gerar dúvida, fale com o suporte da Dermabrand antes de gerar o diagnóstico.
+          Se alguma informação gerar dúvida, fale com o suporte da Dermabrand antes de concluir sua avaliação.
         </div>
-        <a class="support-btn" href="https://wa.me/5511916391848?text=Estou%20preenchendo%20o%20diagnóstico%20Dermabrand%20e%20preciso%20de%20ajuda" target="_blank" rel="noopener noreferrer">Suporte</a>
+        <a class="support-btn" href="https://wa.me/5511916391848?text=Estou%20preenchendo%20a%20avaliacao%20Dermabrand%20e%20preciso%20de%20ajuda" target="_blank" rel="noopener noreferrer">Suporte</a>
       </div>
 
       <div class="lux-field">
@@ -1195,7 +1210,7 @@
       </div>
 
       <div class="btn-submit-container">
-        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Gerar Diagnóstico Gratuito</button>
+        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">Acessar Diagnóstico</button>
       </div>
     </div>
 
@@ -1240,7 +1255,7 @@
     </div>
 
     <div class="dossier-view" id="reportSection">
-      <div class="editorial-divider">ANÁLISE ESTRATÉGICA COMPLETA</div>
+      <div class="editorial-divider">LEITURA ESTRATÉGICA DE POSICIONAMENTO</div>
       <div class="report-grid" id="reportCards"></div>
       
       <div class="action-section" id="improvementSection">
@@ -1268,9 +1283,9 @@
       </div>
 
       <div class="whatsapp-cta">
-        <p>Próximo passo: transformar diagnóstico em pacientes.</p>
+        <p>Próximo passo: transformar posicionamento em pacientes de maior valor.</p>
         <small>Clique para falar com um especialista.</small>
-        <a href="https://wa.me/5511916391848?text=Quero%20falar%20com%20um%20especialista%20da%20Dermabrand%20sobre%20meu%20diagnóstico%20gratuito" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        <a href="https://wa.me/5511916391848?text=Quero%20falar%20com%20um%20especialista%20da%20Dermabrand%20sobre%20minha%20avaliacao%20estrategica" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
           Clique aqui e fale com um especialista
         </a>
       </div>

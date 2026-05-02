@@ -76,3 +76,29 @@
 - [x] Remover o texto longo abaixo do campo de diagnóstico sobre clicar no botão dourado depois do diagnóstico.
 - [x] Manter uma orientação curta e acionável, focada em preencher o @, analisar e falar com especialista.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a simplificação.
+
+# Reescrita Premium da Landing Page
+- [x] Reescrever a copy da landing page com linguagem premium, estratégica e orientada a médicos e clínicas de alto padrão.
+- [x] Substituir termos genéricos como “diagnóstico gratuito” e “análise simples” por “Análise Estratégica”, “Leitura de Posicionamento” ou equivalentes sofisticados.
+- [x] Manter clareza da ação principal: digitar o @ e iniciar avaliação.
+- [ ] Entregar versão final pronta para uso, sem explicações adicionais.
+
+# Variações Premium de CTA
+- [x] Criar 10 variações de CTA para landing page premium de análise de Instagram.
+- [x] Evitar o verbo “analisar” e termos básicos nas opções de botão.
+- [x] Garantir que as opções soem sofisticadas, diretas e adequadas a médicos e clínicas de alto padrão.
+
+# Refinamento Premium do Aviso de Privacidade
+- [x] Reescrever o aviso de privacidade com linguagem mais sofisticada, profissional e confiável.
+- [x] Manter clareza objetiva sobre não solicitar senha, não acessar conta e não armazenar dados sigilosos.
+
+# Aplicação do CTA Escolhido
+- [x] Atualizar o botão principal da landing page para “Iniciar Avaliação”.
+- [x] Ajustar textos relacionados para manter coerência com a linguagem premium e estratégica.
+- [ ] Publicar no GitHub e verificar o domínio dermabrand.com.br após validação local da atualização do CTA e do aviso de privacidade.
+
+# Ajuste Premium do Botão Final
+- [x] Alterar o botão final do formulário para “Acessar Diagnóstico”.
+- [x] Reduzir a largura do botão, especialmente na visualização mobile.
+- [x] Aplicar visual dourado premium ao botão final.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após o ajuste do botão.
