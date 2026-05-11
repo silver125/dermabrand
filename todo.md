@@ -195,4 +195,16 @@
 - [x] Adicionar na primeira página o bloco “Trend Radar Primora”.
 - [x] Explicar que o recurso mostra temas em alta no Instagram filtrados para comunicação médica elegante, ética e estratégica.
 - [x] Incluir referência visual/textual discreta à “Google Trends API Alpha”.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a inclusão.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a inclusão.
+
+# Trend Radar Primora — curadoria de formatos
+- [ ] Definir a melhor curadoria de trends para comunicação médica com recomendações separadas para vídeo/Reels e conteúdo fixo/carrossel.
+- [ ] Atualizar a primeira página para comunicar que o Trend Radar sugere temas do momento por formato de conteúdo.
+- [ ] Incluir textos curtos para vídeo/Reels e conteúdo fixo/carrossel sem aumentar o ruído visual da primeira dobra.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a atualização.
+
+# Trend Radar Primora — aba separada
+- [ ] Separar o Trend Radar Primora do diagnóstico principal em uma aba/seção específica abaixo.
+- [ ] Organizar a aba de trends com recomendações separadas para vídeo/Reels e conteúdo fixo/carrossel.
+- [ ] Remover a percepção de que trends fazem parte da nota do diagnóstico, mantendo-as como oportunidade editorial complementar.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a separação da aba.

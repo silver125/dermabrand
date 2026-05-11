@@ -371,6 +371,113 @@
       white-space: nowrap;
     }
 
+    .trend-tab-section {
+      margin: 2rem 0 0;
+      padding: 1.35rem;
+      border: 1px solid rgba(216, 175, 169, 0.16);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(207, 166, 101, 0.05));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.16);
+    }
+
+    .trend-tab-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .trend-tab-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(247, 216, 146, 0.82);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .trend-tab-title {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.72rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .trend-tab-copy {
+      max-width: 720px;
+      margin: 0.45rem 0 0;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .trend-tab-badge {
+      flex: 0 0 auto;
+      padding: 0.48rem 0.68rem;
+      border: 1px solid rgba(247, 216, 146, 0.18);
+      border-radius: 999px;
+      color: rgba(247, 216, 146, 0.7);
+      background: rgba(207, 166, 101, 0.06);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .trend-tab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.95rem;
+    }
+
+    .trend-format-card {
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .trend-format-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(247, 216, 146, 0.78);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.62rem;
+    }
+
+    .trend-format-title {
+      display: block;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.94rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.45rem;
+    }
+
+    .trend-format-body {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    .trend-format-note {
+      margin-top: 0.74rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.7rem;
+      line-height: 1.55;
+    }
+
     .conversion-note {
       max-width: 640px;
       margin: 1rem auto 0;
@@ -1332,6 +1439,40 @@
         line-height: 1.45;
       }
 
+      .trend-tab-section {
+        margin-top: 1.45rem;
+        padding: 1rem;
+        border-radius: 22px;
+      }
+
+      .trend-tab-header {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .trend-tab-title {
+        font-size: 1.38rem;
+      }
+
+      .trend-tab-copy {
+        font-size: 0.78rem;
+        line-height: 1.62;
+      }
+
+      .trend-tab-badge {
+        align-self: flex-start;
+        white-space: normal;
+      }
+
+      .trend-tab-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trend-format-card {
+        padding: 0.88rem;
+        border-radius: 18px;
+      }
+
       .ph-name {
         font-size: 1.9rem;
       }
@@ -1716,6 +1857,31 @@
         </div>
         <div class="action-content" id="actionPlanContent"></div>
       </div>
+
+      <section class="trend-tab-section" id="trendRadarSection" aria-label="Trend Radar Primora separado do diagnóstico">
+        <div class="trend-tab-header">
+          <div>
+            <span class="trend-tab-eyebrow"><i class="fa-solid fa-wave-square"></i> Trend Radar Primora</span>
+            <h3 class="trend-tab-title">Trends do momento para conteúdo médico</h3>
+            <p class="trend-tab-copy">Esta aba fica separada do diagnóstico para funcionar como oportunidade editorial complementar. Ela traduz sinais de tendência em pautas elegantes, éticas e estratégicas para o Instagram.</p>
+          </div>
+          <span class="trend-tab-badge">Sinais sociais + curadoria</span>
+        </div>
+        <div class="trend-tab-grid">
+          <article class="trend-format-card">
+            <span class="trend-format-label"><i class="fa-solid fa-video"></i> Vídeo / Reels</span>
+            <span class="trend-format-title">Tema em alta transformado em roteiro curto</span>
+            <p class="trend-format-body">Sugestão: abrir com uma dúvida real do paciente, explicar em até 30 segundos e fechar com orientação responsável. Exemplo: “3 sinais de que sua rotina de pele está exagerada”.</p>
+            <div class="trend-format-note">Foco em alcance, retenção e autoridade sem promessa de resultado.</div>
+          </article>
+          <article class="trend-format-card">
+            <span class="trend-format-label"><i class="fa-solid fa-layer-group"></i> Conteúdo fixo / Carrossel</span>
+            <span class="trend-format-title">Tema em alta organizado como educação premium</span>
+            <p class="trend-format-body">Sugestão: transformar a trend em uma sequência clara: contexto, erro comum, explicação médica e próximo passo seguro. Exemplo: “O que observar antes de copiar uma trend de skincare”.</p>
+            <div class="trend-format-note">Foco em salvamentos, confiança e tomada de decisão informada.</div>
+          </article>
+        </div>
+      </section>
 
       <div class="whatsapp-cta">
         <p>Próximo passo: transformar posicionamento em pacientes de maior valor.</p>
