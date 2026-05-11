@@ -306,6 +306,71 @@
       color: rgba(255, 255, 255, 0.42);
     }
 
+    .trend-radar-card {
+      max-width: 560px;
+      margin: 1rem auto 0;
+      padding: 0.82rem 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.78rem;
+      align-items: center;
+      border: 1px solid rgba(216, 175, 169, 0.14);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(216, 175, 169, 0.045));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      opacity: 0.78;
+    }
+
+    .trend-radar-icon {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      color: rgba(247, 216, 146, 0.82);
+      background: rgba(207, 166, 101, 0.08);
+      border: 1px solid rgba(207, 166, 101, 0.16);
+      font-size: 0.95rem;
+    }
+
+    .trend-radar-content {
+      min-width: 0;
+      text-align: left;
+    }
+
+    .trend-radar-kicker {
+      display: block;
+      color: rgba(247, 216, 146, 0.78);
+      font-size: 0.64rem;
+      line-height: 1.2;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .trend-radar-title {
+      display: block;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.82rem;
+      line-height: 1.35;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .trend-radar-copy {
+      margin: 0.2rem 0 0;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.68rem;
+      line-height: 1.55;
+      letter-spacing: 0.025em;
+    }
+
+    .trend-radar-source {
+      color: rgba(247, 216, 146, 0.6);
+      white-space: nowrap;
+    }
+
     .conversion-note {
       max-width: 640px;
       margin: 1rem auto 0;
@@ -1237,6 +1302,36 @@
         font-size: 0.7rem;
       }
 
+      .trend-radar-card {
+        max-width: 340px;
+        margin-top: 0.85rem;
+        padding: 0.72rem 0.82rem;
+        gap: 0.64rem;
+        border-radius: 20px;
+        opacity: 0.72;
+      }
+
+      .trend-radar-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        font-size: 0.84rem;
+      }
+
+      .trend-radar-kicker {
+        font-size: 0.56rem;
+        letter-spacing: 0.13em;
+      }
+
+      .trend-radar-title {
+        font-size: 0.72rem;
+      }
+
+      .trend-radar-copy {
+        font-size: 0.62rem;
+        line-height: 1.45;
+      }
+
       .ph-name {
         font-size: 1.9rem;
       }
@@ -1417,6 +1512,14 @@
         <div class="mini-insight">
           <span class="mini-insight-icon" aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
           <span class="mini-insight-title">Oportunidades<br><span class="mini-insight-muted">de crescimento</span></span>
+        </div>
+      </div>
+      <div class="trend-radar-card" aria-label="Trend Radar Primora">
+        <span class="trend-radar-icon" aria-hidden="true"><i class="fa-solid fa-wave-square"></i></span>
+        <div class="trend-radar-content">
+          <span class="trend-radar-kicker">Trend Radar Primora</span>
+          <span class="trend-radar-title">Temas em alta no Instagram, filtrados para comunicação médica.</span>
+          <p class="trend-radar-copy">Elegante, ética e estratégica. <span class="trend-radar-source">Google Trends API Alpha</span></p>
         </div>
       </div>
       <p class="privacy-note">100% seguro · sem senha · sem acesso à sua conta</p>

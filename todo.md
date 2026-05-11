@@ -190,3 +190,9 @@
 - [x] Alterar a frase abaixo do campo para “100% seguro · sem senha · sem acesso à sua conta”.
 - [x] Trocar o botão principal da primeira dobra para “VER MINHA ANÁLISE”.
 - [x] Adicionar abaixo do botão três indicadores discretos: “Pontuação do perfil”, “Erros ocultos que afastam” e “Oportunidades de crescimento”, com ícones pequenos e sem chamar muita atenção.
+
+# Trend Radar Primora
+- [x] Adicionar na primeira página o bloco “Trend Radar Primora”.
+- [x] Explicar que o recurso mostra temas em alta no Instagram filtrados para comunicação médica elegante, ética e estratégica.
+- [x] Incluir referência visual/textual discreta à “Google Trends API Alpha”.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a inclusão.
