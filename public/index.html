@@ -371,6 +371,171 @@
       white-space: nowrap;
     }
 
+    /* ── Painel de Trends por Especialidade (pós-@) ──────────────────────── */
+    .specialty-trends-panel {
+      margin-bottom: 1.75rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(247, 216, 146, 0.14);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(207, 166, 101, 0.06), rgba(255, 255, 255, 0.025));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .stp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .stp-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(247, 216, 146, 0.82);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .stp-title {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.52rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+    }
+
+    .stp-subtitle {
+      margin: 0.3rem 0 0;
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+
+    .stp-badge {
+      flex: 0 0 auto;
+      padding: 0.38rem 0.62rem;
+      border: 1px solid rgba(247, 216, 146, 0.2);
+      border-radius: 999px;
+      color: rgba(247, 216, 146, 0.72);
+      background: rgba(207, 166, 101, 0.07);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .stp-loading {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.8rem;
+      padding: 0.5rem 0;
+    }
+
+    .stp-loading-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(247, 216, 146, 0.6);
+      animation: processingDot 1.2s ease-in-out infinite;
+    }
+    .stp-loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .stp-loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    .stp-trends-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .stp-trend-block {
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .stp-trend-tema {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .stp-trend-tema-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(207, 166, 101, 0.14);
+      border: 1px solid rgba(247, 216, 146, 0.22);
+      color: rgba(247, 216, 146, 0.82);
+      font-size: 0.68rem;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
+    .stp-formats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .stp-format {
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .stp-format-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      color: rgba(247, 216, 146, 0.72);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .stp-format-titulo {
+      display: block;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.32rem;
+    }
+
+    .stp-format-gancho {
+      margin: 0 0 0.28rem;
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.74rem;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .stp-format-angulo {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.38);
+      font-size: 0.68rem;
+      line-height: 1.55;
+    }
+
     .trend-tab-section {
       margin: 2rem 0 0;
       padding: 1.35rem;
@@ -1708,6 +1873,27 @@
     </div>
 
     <div class="form-panel" id="formSection">
+
+      <!-- Painel de Conteúdos em Alta por Especialidade -->
+      <section class="specialty-trends-panel" id="specialtyTrendsPanel" style="display:none;" aria-label="Conteúdos em alta para gravar">
+        <div class="stp-header">
+          <div>
+            <span class="stp-eyebrow"><i class="fa-solid fa-fire"></i> Conteúdos em alta</span>
+            <h3 class="stp-title" id="stpTitle">Pautas para gravar agora</h3>
+            <p class="stp-subtitle" id="stpSubtitle">Identificando temas em alta para sua especialidade...</p>
+          </div>
+          <span class="stp-badge" id="stpBadge">IA + curadoria</span>
+        </div>
+        <div id="stpBody">
+          <div class="stp-loading" id="stpLoading">
+            <span class="stp-loading-dot"></span>
+            <span class="stp-loading-dot"></span>
+            <span class="stp-loading-dot"></span>
+            <span>Buscando temas em alta para sua área...</span>
+          </div>
+        </div>
+      </section>
+
       <div class="panel-header">
         <h2>Complete sua análise</h2>
         <p>Mais contexto → análise mais precisa</p>
@@ -2047,6 +2233,10 @@
         });
         document.querySelectorAll('.content-tag').forEach(t => t.classList.remove('selected'));
 
+        // Iniciar busca de trends em paralelo (não bloqueia o formulário)
+        const specialtyForTrends = globCategory || '';
+        fetchSpecialtyTrends(specialtyForTrends);
+
         setTimeout(() => {
           toggleDisplay('progressSection', 'none');
           toggleDisplay('formSection', 'block');
@@ -2058,6 +2248,69 @@
         }, 600);
       } catch (e) {
         showError('Erro: ' + e.message);
+      }
+    }
+
+    async function fetchSpecialtyTrends(specialty) {
+      const panel = document.getElementById('specialtyTrendsPanel');
+      const stpBody = document.getElementById('stpBody');
+      const stpTitle = document.getElementById('stpTitle');
+      const stpSubtitle = document.getElementById('stpSubtitle');
+      const stpBadge = document.getElementById('stpBadge');
+
+      // Mostrar painel com loading
+      panel.style.display = 'block';
+      stpBody.innerHTML = `<div class="stp-loading">
+        <span class="stp-loading-dot"></span>
+        <span class="stp-loading-dot"></span>
+        <span class="stp-loading-dot"></span>
+        <span>Buscando temas em alta para sua área...</span>
+      </div>`;
+
+      try {
+        const r = await fetch('/api/trends', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ specialty, category: specialty, username: globUsername }),
+        });
+        const d = await r.json();
+
+        if (!d.ok || !Array.isArray(d.trends) || d.trends.length === 0) {
+          panel.style.display = 'none';
+          return;
+        }
+
+        const areaLabel = d.area || specialty || 'Saúde';
+        stpTitle.textContent = `Pautas em alta para ${areaLabel}`;
+        stpSubtitle.textContent = `${d.trends.length} temas selecionados pela IA para o Instagram médico agora.`;
+        stpBadge.textContent = 'IA + curadoria';
+
+        const blocksHtml = d.trends.map((t, i) => `
+          <div class="stp-trend-block">
+            <div class="stp-trend-tema">
+              <span class="stp-trend-tema-num">${i + 1}</span>
+              ${t.tema || 'Tema'}
+            </div>
+            <div class="stp-formats">
+              <div class="stp-format">
+                <span class="stp-format-label"><i class="fa-solid fa-video"></i> Vídeo / Reels</span>
+                <span class="stp-format-titulo">${t.reels?.titulo || ''}</span>
+                <p class="stp-format-gancho">“${t.reels?.gancho || ''}”</p>
+                <p class="stp-format-angulo">${t.reels?.angulo || ''}</p>
+              </div>
+              <div class="stp-format">
+                <span class="stp-format-label"><i class="fa-solid fa-layer-group"></i> Carrossel</span>
+                <span class="stp-format-titulo">${t.carrossel?.titulo || ''}</span>
+                <p class="stp-format-gancho">“${t.carrossel?.gancho || ''}”</p>
+                <p class="stp-format-angulo">${t.carrossel?.angulo || ''}</p>
+              </div>
+            </div>
+          </div>`).join('');
+
+        stpBody.innerHTML = `<div class="stp-trends-list">${blocksHtml}</div>`;
+      } catch (err) {
+        // Falha silenciosa — não interrompe o fluxo principal
+        panel.style.display = 'none';
       }
     }
 

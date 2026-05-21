@@ -213,6 +213,79 @@ REGRAS:
   }
 });
 
+// ── POST /api/trends ─────────────────────────────────────────────────────────
+// Recebe { specialty, category, username } e retorna pautas em alta por formato.
+app.post('/api/trends', async (req, res) => {
+  const { specialty, category, username } = req.body;
+
+  const areaLabel = specialty || category || 'saúde';
+
+  const prompt = `Você é especialista em estratégia de conteúdo para profissionais e clínicas de saúde no Instagram brasileiro.
+
+Com base na área de atuação informada abaixo, identifique os 3 temas de conteúdo mais relevantes e em alta no momento para essa especialidade no Instagram. Para cada tema, crie uma sugestão de pauta para Vídeo/Reels e uma sugestão de pauta para Carrossel/Post fixo.
+
+Área de atuação: ${areaLabel}
+
+Regras:
+- Linguagem sóbria, técnica e premium — sem emojis, sem sensacionalismo, sem promessas de resultado
+- Pautas éticas, compatíveis com o CFM e com a comunicação médica responsável
+- Foco em educação, autoridade e conexão com o público correto
+- Cada sugestão deve ter: título da pauta (máx 12 palavras), gancho de abertura (1 frase) e ângulo estratégico (1 frase)
+- Não repita temas entre os 3 blocos
+- Não mencione marcas, produtos ou procedimentos específicos sem contexto clínico
+
+Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, no formato exato:
+{
+  "area": "<área identificada>",
+  "trends": [
+    {
+      "tema": "<título do tema>",
+      "reels": {
+        "titulo": "<título da pauta para Reels>",
+        "gancho": "<frase de abertura>",
+        "angulo": "<ângulo estratégico>"
+      },
+      "carrossel": {
+        "titulo": "<título da pauta para Carrossel>",
+        "gancho": "<frase de abertura>",
+        "angulo": "<ângulo estratégico>"
+      }
+    }
+  ]
+}`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.75,
+        max_tokens: 900,
+        response_format: { type: 'json_object' },
+      }),
+    });
+
+    const data = await response.json();
+    const raw = data.choices?.[0]?.message?.content || '{}';
+
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return res.status(500).json({ error: 'IA retornou JSON inválido', raw });
+    }
+
+    return res.json({ ok: true, ...parsed });
+  } catch (err) {
+    return res.status(500).json({ error: 'Erro ao gerar trends', detail: err.message });
+  }
+});
+
 // ── Fallback → index.html ─────────────────────────────────────────────────────
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

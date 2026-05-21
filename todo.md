@@ -208,3 +208,11 @@
 - [x] Organizar a aba de trends com recomendações separadas para vídeo/Reels e conteúdo fixo/carrossel.
 - [x] Remover a percepção de que trends fazem parte da nota do diagnóstico, mantendo-as como oportunidade editorial complementar.
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a separação da aba.
+
+# Trends por Especialidade — Painel pós-@
+- [ ] Criar endpoint POST /api/trends no server.js que recebe specialty + category e retorna pautas em alta via IA.
+- [ ] Exibir painel de "Conteúdos em alta para gravar" logo após o retorno do /api/profile, antes do formulário.
+- [ ] Personalizar as sugestões de pauta pela área/especialidade detectada no perfil do Instagram.
+- [ ] Separar as pautas por formato: Vídeo/Reels e Carrossel/Post fixo.
+- [ ] Estilizar o painel com o design premium dark luxury e gold accents do projeto.
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a implementação.
