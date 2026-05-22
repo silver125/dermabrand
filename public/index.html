@@ -2389,7 +2389,8 @@
           .trim();
       };
 
-      const notesCardHtml = buildDiagnosticNotesCard(scores, text, formatBody);
+      // Notas aparecem somente no quadrante de estrelas do topo — card removido do relatório
+      const notesCardHtml = '';
       const blocksHtml = sections.map((title, i) => {
         let content = stripScoreLines(parseSection(text, title));
         if (!content) return '';

@@ -232,7 +232,7 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Trend Radar focado na especialidade + notas apenas no quadrante superior
-- [ ] Reformular o prompt do /api/trends para que a especialidade seja o foco central, não contexto secundário.
-- [ ] Garantir que stripScoreLines remove todas as notas numéricas dos cards do relatório.
-- [ ] Notas (Score X/10) devem aparecer SOMENTE no quadrante superior de scores, nunca nos cards de análise.
-- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+- [x] Reformular o prompt do /api/trends para que a especialidade seja o foco central, não contexto secundário.
+- [x] Garantir que stripScoreLines remove todas as notas numéricas dos cards do relatório.
+- [x] Notas (Score X/10) devem aparecer SOMENTE no quadrante superior de scores, nunca nos cards de análise.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
