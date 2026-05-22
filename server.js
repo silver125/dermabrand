@@ -213,26 +213,186 @@ REGRAS:
   }
 });
 
+// ── Calendário sazonal brasileiro para saúde ────────────────────────────────────────────
+const SEASONAL_CALENDAR = [
+  // Janeiro
+  { month: 1, day: 1,  label: 'Ano Novo', tags: ['bem-estar','saúde mental','metas de saúde'] },
+  { month: 1, day: 17, label: 'Dia Mundial da Religião (Bem-estar)', tags: ['saúde mental','equilíbrio'] },
+  { month: 1, day: 27, label: 'Dia Nacional de Combate à Hansenaníase', tags: ['dermatologia','infectologia','saúde pública'] },
+  // Fevereiro
+  { month: 2, day: 4,  label: 'Dia Mundial do Câncer', tags: ['oncologia','prevenção','dermatologia'] },
+  { month: 2, day: 14, label: 'Dia dos Namorados (EUA/Internacional)', tags: ['bem-estar','saúde sexual','relacionamentos'] },
+  { month: 2, day: 28, label: 'Dia das Doenças Raras', tags: ['genética','neurologia','saúde pública'] },
+  // Março
+  { month: 3, day: 1,  label: 'Início do Verão no Hemisfério Sul (calor intenso)', tags: ['dermatologia','fotoproteção','hidratação'] },
+  { month: 3, day: 8,  label: 'Dia Internacional da Mulher', tags: ['saúde feminina','ginecologia','bem-estar'] },
+  { month: 3, day: 20, label: 'Dia Mundial da Felicidade', tags: ['saúde mental','psiquiatria','bem-estar'] },
+  { month: 3, day: 21, label: 'Dia Mundial da Doença de Down', tags: ['genética','neurologia','pediatria'] },
+  { month: 3, day: 24, label: 'Dia Mundial da Tuberculose', tags: ['infectologia','pneumologia','saúde pública'] },
+  { month: 3, day: 26, label: 'Dia Nacional de Prevenção e Combate à Hipertensão', tags: ['cardiologia','clínica médica','saúde pública'] },
+  // Abril
+  { month: 4, day: 2,  label: 'Dia Mundial do Autismo (Abril Azul)', tags: ['neurologia','pediatria','psiquiatria'] },
+  { month: 4, day: 7,  label: 'Dia Mundial da Saúde', tags: ['saúde pública','prevenção','bem-estar'] },
+  { month: 4, day: 17, label: 'Dia Nacional de Combate à Hipertensão', tags: ['cardiologia','clínica médica'] },
+  { month: 4, day: 22, label: 'Dia da Terra (Sustentabilidade e Saúde)', tags: ['saúde ambiental','bem-estar'] },
+  // Maio
+  { month: 5, day: 1,  label: 'Dia do Trabalho (Maio Amarelo — saúde mental no trabalho)', tags: ['saúde mental','psiquiatria','bem-estar'] },
+  { month: 5, day: 11, label: 'Dia Nacional de Prevenção da Obesidade', tags: ['endocrinologia','nutrologia','cirurgia bariátrica'] },
+  { month: 5, day: 12, label: 'Dia das Mães', tags: ['saúde feminina','ginecologia','bem-estar','dermatologia'] },
+  { month: 5, day: 15, label: 'Dia da Familia (Saúde Familiar)', tags: ['pediatria','clínica médica','saúde pública'] },
+  { month: 5, day: 17, label: 'Dia Mundial da Hipertensão', tags: ['cardiologia','clínica médica','saúde pública'] },
+  { month: 5, day: 22, label: 'Dia Mundial da Diversidade Biológica', tags: ['saúde ambiental'] },
+  { month: 5, day: 25, label: 'Dia Nacional de Prevenção da Hipertensão', tags: ['cardiologia'] },
+  { month: 5, day: 28, label: 'Dia Internacional da Saúde da Mulher', tags: ['ginecologia','saúde feminina'] },
+  { month: 5, day: 31, label: 'Dia Mundial Sem Tabaco', tags: ['pneumologia','cardiologia','oncologia'] },
+  // Junho
+  { month: 6, day: 5,  label: 'Dia Mundial do Meio Ambiente', tags: ['saúde ambiental','bem-estar'] },
+  { month: 6, day: 12, label: 'Dia dos Namorados (Brasil)', tags: ['saúde sexual','dermatologia','bem-estar','ginecologia'] },
+  { month: 6, day: 13, label: 'Festa Junina (Inverno Brasileiro)', tags: ['nutrição','endocrinologia','dermatologia'] },
+  { month: 6, day: 21, label: 'Início do Inverno', tags: ['dermatologia','pneumologia','imunologia','nutrição'] },
+  { month: 6, day: 26, label: 'Dia Internacional de Combate às Drogas', tags: ['psiquiatria','saúde mental','saúde pública'] },
+  // Julho
+  { month: 7, day: 11, label: 'Dia Mundial da População', tags: ['saúde pública','ginecologia'] },
+  { month: 7, day: 28, label: 'Dia Mundial da Hepatite', tags: ['gastroenterologia','infectologia','hepatologia'] },
+  // Agosto
+  { month: 8, day: 1,  label: 'Agosto Dourado — Semana Mundial do Aleitamento Materno', tags: ['pediatria','ginecologia','nutrologia'] },
+  { month: 8, day: 9,  label: 'Dia Nacional de Combate ao Fumo', tags: ['pneumologia','cardiologia','oncologia'] },
+  { month: 8, day: 13, label: 'Dia dos Pais', tags: ['saúde masculina','urologia','cardiologia','bem-estar'] },
+  { month: 8, day: 26, label: 'Dia Nacional de Doação de Órgãos', tags: ['cirurgia','saúde pública','nefrologia'] },
+  // Setembro
+  { month: 9, day: 10, label: 'Dia Mundial de Prevenção ao Suicídio (Setembro Amarelo)', tags: ['psiquiatria','saúde mental','neurologia'] },
+  { month: 9, day: 21, label: 'Dia Mundial do Alzheimer', tags: ['neurologia','geriatria','psiquiatria'] },
+  { month: 9, day: 22, label: 'Início da Primavera', tags: ['dermatologia','alergologia','nutrição'] },
+  { month: 9, day: 29, label: 'Dia Mundial do Coração', tags: ['cardiologia','clínica médica','saúde pública'] },
+  // Outubro
+  { month: 10, day: 1,  label: 'Dia Internacional do Idoso', tags: ['geriatria','cardiologia','ortopedia'] },
+  { month: 10, day: 2,  label: 'Outubro Rosa — Câncer de Mama', tags: ['mastologia','ginecologia','oncologia','dermatologia'] },
+  { month: 10, day: 10, label: 'Dia Mundial da Saúde Mental', tags: ['psiquiatria','saúde mental','neurologia'] },
+  { month: 10, day: 12, label: 'Dia das Crianças', tags: ['pediatria','nutrição','dermatologia'] },
+  { month: 10, day: 15, label: 'Dia do Médico', tags: ['todos os especialistas','branding médico'] },
+  { month: 10, day: 16, label: 'Dia Mundial da Alimentação', tags: ['nutrologia','endocrinologia','gastroenterologia'] },
+  { month: 10, day: 20, label: 'Dia Mundial da Osteoporose', tags: ['ortopedia','reumatologia','endocrinologia'] },
+  { month: 10, day: 31, label: 'Halloween (Tendências de beleza e pele)', tags: ['dermatologia','cirurgia plástica'] },
+  // Novembro
+  { month: 11, day: 1,  label: 'Novembro Azul — Saúde Masculina', tags: ['urologia','andrologia','cardiologia','saúde masculina'] },
+  { month: 11, day: 14, label: 'Dia Mundial do Diabetes', tags: ['endocrinologia','nutrologia','clínica médica'] },
+  { month: 11, day: 20, label: 'Dia da Consciência Negra (Saúde da População Negra)', tags: ['dermatologia','saúde pública','hematologia'] },
+  { month: 11, day: 25, label: 'Dia Internacional de Eliminação da Violência contra a Mulher', tags: ['saúde feminina','psiquiatria','saúde pública'] },
+  // Dezembro
+  { month: 12, day: 1,  label: 'Dia Mundial de Combate à AIDS (Dezembro Vermelho)', tags: ['infectologia','ginecologia','saúde sexual','dermatologia'] },
+  { month: 12, day: 9,  label: 'Dia Internacional do Combate à Corrupção (Transparência em Saúde)', tags: ['saúde pública'] },
+  { month: 12, day: 21, label: 'Início do Verão', tags: ['dermatologia','fotoproteção','nutrição','cirurgia plástica'] },
+  { month: 12, day: 25, label: 'Natal (Bem-estar e Alimentação nas Festas)', tags: ['nutrologia','endocrinologia','saúde mental','bem-estar'] },
+  { month: 12, day: 31, label: 'Réveillon (Metas de Saúde para o Novo Ano)', tags: ['bem-estar','saúde mental','nutrologia','dermatologia'] },
+];
+
+// Eventos especiais recorrentes (Copa do Mundo, Olimpíadas, etc.) — adicionar quando confirmados
+const SPECIAL_EVENTS = [
+  // Copa do Mundo FIFA 2026: Jun-Jul 2026
+  { from: '2026-06-11', to: '2026-07-19', label: 'Copa do Mundo FIFA 2026', tags: ['medicina esportiva','ortopedia','nutrição','cardiologia','fisioterapia'] },
+  // Olimpíadas Paris 2024 (passadas, mas manter para referência de padrão)
+  // { from: '2024-07-26', to: '2024-08-11', label: 'Olimpíadas Paris 2024', tags: ['medicina esportiva','ortopedia'] },
+];
+
+function getUpcomingSeasonalContext(referenceDate) {
+  const now = referenceDate || new Date();
+  // Usar fuso horário de Brasília (UTC-3)
+  const brtOffset = -3 * 60;
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const brt = new Date(utc + brtOffset * 60000);
+
+  const todayMonth = brt.getMonth() + 1;
+  const todayDay = brt.getDate();
+  const todayYear = brt.getFullYear();
+
+  // Formatar data atual em português
+  const months = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const todayStr = `${todayDay} de ${months[todayMonth - 1]} de ${todayYear}`;
+
+  // Calcular dias até cada data do calendário (próximos 60 dias)
+  const upcoming = [];
+
+  for (const event of SEASONAL_CALENDAR) {
+    let eventYear = todayYear;
+    let eventDate = new Date(eventYear, event.month - 1, event.day);
+    if (eventDate < brt) {
+      eventYear += 1;
+      eventDate = new Date(eventYear, event.month - 1, event.day);
+    }
+    const diffMs = eventDate - brt;
+    const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    if (diffDays >= 0 && diffDays <= 60) {
+      upcoming.push({ ...event, diffDays, eventYear, dateStr: `${event.day}/${event.month < 10 ? '0' + event.month : event.month}` });
+    }
+  }
+
+  // Verificar eventos especiais ativos ou próximos
+  const activeSpecial = [];
+  for (const ev of SPECIAL_EVENTS) {
+    const from = new Date(ev.from);
+    const to = new Date(ev.to);
+    const diffStart = Math.ceil((from - brt) / (1000 * 60 * 60 * 24));
+    const diffEnd = Math.ceil((to - brt) / (1000 * 60 * 60 * 24));
+    if (diffEnd >= 0 && diffStart <= 60) {
+      const status = diffStart <= 0 ? 'em andamento' : `em ${diffStart} dias`;
+      activeSpecial.push({ label: ev.label, tags: ev.tags, status });
+    }
+  }
+
+  // Ordenar por proximidade e pegar os 5 mais próximos
+  upcoming.sort((a, b) => a.diffDays - b.diffDays);
+  const top5 = upcoming.slice(0, 5);
+
+  return { todayStr, upcoming: top5, specialEvents: activeSpecial };
+}
+
 // ── POST /api/trends ─────────────────────────────────────────────────────────
-// Recebe { specialty, category, username } e retorna pautas em alta por formato.
+// Recebe { specialty, category, username } e retorna pautas sazonais por formato.
 app.post('/api/trends', async (req, res) => {
   const { specialty, category, username } = req.body;
-
   const areaLabel = specialty || category || 'saúde';
+
+  const { todayStr, upcoming, specialEvents } = getUpcomingSeasonalContext();
+
+  // Montar contexto sazonal para o prompt
+  let seasonalContext = `Data de hoje (Brasília): ${todayStr}\n`;
+
+  if (specialEvents.length > 0) {
+    seasonalContext += `\nEventos especiais relevantes agora:\n`;
+    specialEvents.forEach(ev => {
+      seasonalContext += `- ${ev.label} (${ev.status}) — áreas: ${ev.tags.join(', ')}\n`;
+    });
+  }
+
+  if (upcoming.length > 0) {
+    seasonalContext += `\nPróximas datas comemorativas e campanhas de saúde (até 60 dias):\n`;
+    upcoming.forEach(ev => {
+      const when = ev.diffDays === 0 ? 'hoje' : ev.diffDays === 1 ? 'amanhã' : `em ${ev.diffDays} dias (${ev.dateStr})`;
+      seasonalContext += `- ${ev.label} — ${when} — áreas relacionadas: ${ev.tags.join(', ')}\n`;
+    });
+  } else {
+    seasonalContext += `\nNão há datas comemorativas específicas nos próximos 60 dias, mas considere a estação do ano e o contexto geral de saúde.\n`;
+  }
 
   const prompt = `Você é especialista em estratégia de conteúdo para profissionais e clínicas de saúde no Instagram brasileiro.
 
-Com base na área de atuação informada abaixo, identifique os 3 temas de conteúdo mais relevantes e em alta no momento para essa especialidade no Instagram. Para cada tema, crie uma sugestão de pauta para Vídeo/Reels e uma sugestão de pauta para Carrossel/Post fixo.
+Sua tarefa é gerar exatamente 3 sugestões de pauta para a especialidade informada, priorizando as datas sazonais e eventos reais que estão se aproximando. Cada pauta deve ser diretamente motivada por uma data, campanha ou evento do calendário — não por tendências genéricas.
 
-Área de atuação: ${areaLabel}
+${seasonalContext}
+Área de atuação do profissional: ${areaLabel}
 
-Regras:
+Instruções:
+1. Selecione as 3 datas/eventos do contexto acima que mais se conectam com a especialidade informada.
+2. Para cada data selecionada, crie uma pauta para Vídeo/Reels e uma para Carrossel/Post fixo.
+3. Se uma data não tiver conexão óbvia com a especialidade, crie uma ponte criativa e ética entre o tema da data e a área de atuação.
+4. Informe sempre qual data/evento motivou cada pauta no campo "gatilho".
+
+Regras de qualidade:
 - Linguagem sóbria, técnica e premium — sem emojis, sem sensacionalismo, sem promessas de resultado
 - Pautas éticas, compatíveis com o CFM e com a comunicação médica responsável
 - Foco em educação, autoridade e conexão com o público correto
 - Cada sugestão deve ter: título da pauta (máx 12 palavras), gancho de abertura (1 frase) e ângulo estratégico (1 frase)
-- Não repita temas entre os 3 blocos
-- Não mencione marcas, produtos ou procedimentos específicos sem contexto clínico
+- Não repita datas entre os 3 blocos
 
 Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, no formato exato:
 {
@@ -240,6 +400,8 @@ Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, n
   "trends": [
     {
       "tema": "<título do tema>",
+      "gatilho": "<nome da data ou evento que motivou esta pauta>",
+      "gatilho_data": "<data no formato DD/MM ou descrição como 'em andamento'>",
       "reels": {
         "titulo": "<título da pauta para Reels>",
         "gancho": "<frase de abertura>",
@@ -264,8 +426,8 @@ Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, n
       body: JSON.stringify({
         model: 'gpt-4o-mini',
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.75,
-        max_tokens: 900,
+        temperature: 0.7,
+        max_tokens: 1200,
         response_format: { type: 'json_object' },
       }),
     });

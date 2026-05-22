@@ -210,9 +210,16 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a separação da aba.
 
 # Trends por Especialidade — Painel pós-@
-- [ ] Criar endpoint POST /api/trends no server.js que recebe specialty + category e retorna pautas em alta via IA.
-- [ ] Exibir painel de "Conteúdos em alta para gravar" logo após o retorno do /api/profile, antes do formulário.
-- [ ] Personalizar as sugestões de pauta pela área/especialidade detectada no perfil do Instagram.
-- [ ] Separar as pautas por formato: Vídeo/Reels e Carrossel/Post fixo.
-- [ ] Estilizar o painel com o design premium dark luxury e gold accents do projeto.
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a implementação.
+- [x] Criar endpoint POST /api/trends no server.js que recebe specialty + category e retorna pautas em alta via IA.
+- [x] Exibir painel de "Conteúdos em alta para gravar" logo após o retorno do /api/profile, antes do formulário.
+- [x] Personalizar as sugestões de pauta pela área/especialidade detectada no perfil do Instagram.
+- [x] Separar as pautas por formato: Vídeo/Reels e Carrossel/Post fixo.
+- [x] Estilizar o painel com o design premium dark luxury e gold accents do projeto.
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a implementação.
+
+# Trend Radar Sazonal — dados reais de datas e eventos
+- [ ] Construir calendário sazonal brasileiro completo no server.js (datas comemorativas, campanhas de saúde, eventos esportivos, estações do ano).
+- [ ] Reformular o endpoint /api/trends para injetar no prompt: data atual, próximas 3 datas relevantes e contexto sazonal real.
+- [ ] Cruzar as datas sazonais com a especialidade da médica para gerar pautas oportunas e contextualizadas.
+- [ ] Atualizar o painel HTML para mostrar o gatilho sazonal de cada pauta (ex: "Dia dos Namorados — 12 jun").
+- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br.
