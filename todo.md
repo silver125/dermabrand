@@ -225,8 +225,14 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br.
 
 # Trends na última página + otimização do relatório
-- [ ] Remover o painel "Conteúdos em Alta" do formulário/pré-diagnóstico.
-- [ ] Integrar o painel de trends (com chamada ao /api/trends) na última página do diagnóstico (Trend Radar Primora), gerado junto com o relatório.
-- [ ] Reduzir o texto das notas do diagnóstico — sem repetição, mais direto, foco em ação.
-- [ ] Ajustar o prompt do /api/analyze para gerar notas mais curtas e objetivas.
+- [x] Remover o painel "Conteúdos em Alta" do formulário/pré-diagnóstico.
+- [x] Integrar o painel de trends (com chamada ao /api/trends) na última página do diagnóstico (Trend Radar Primora), gerado junto com o relatório.
+- [x] Reduzir o texto das notas do diagnóstico — sem repetição, mais direto, foco em ação.
+- [x] Ajustar o prompt do /api/analyze para gerar notas mais curtas e objetivas.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Trend Radar focado na especialidade + notas apenas no quadrante superior
+- [ ] Reformular o prompt do /api/trends para que a especialidade seja o foco central, não contexto secundário.
+- [ ] Garantir que stripScoreLines remove todas as notas numéricas dos cards do relatório.
+- [ ] Notas (Score X/10) devem aparecer SOMENTE no quadrante superior de scores, nunca nos cards de análise.
 - [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

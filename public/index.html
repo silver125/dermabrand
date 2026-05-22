@@ -2150,9 +2150,14 @@
 
     function stripScoreLines(str) {
       return (str || '')
+        // Remove linhas de score nomeadas
         .replace(/^\s*[-•]?\s*Score de Autoridade\s*[:\-].*$/gmi, '')
         .replace(/^\s*[-•]?\s*Score de Bio e Posicionamento\s*[:\-].*$/gmi, '')
         .replace(/^\s*[-•]?\s*Score de Conte[uú]do e Engajamento\s*[:\-].*$/gmi, '')
+        // Remove qualquer linha que contenha padrão "N/10" ou "X/10" (notas numéricas)
+        .replace(/^.*\b\d+([,.]\d+)?\s*\/\s*10\b.*$/gmi, '')
+        // Remove linhas com "Score:" genérico
+        .replace(/^\s*[-•]?\s*Score\s*[:\-].*$/gmi, '')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
     }

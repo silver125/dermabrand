@@ -348,23 +348,32 @@ app.post('/api/trends', async (req, res) => {
 
   const prompt = `Você é especialista em estratégia de conteúdo para profissionais e clínicas de saúde no Instagram brasileiro.
 
-Sua tarefa é gerar exatamente 3 sugestões de pauta para a especialidade informada, priorizando as datas sazonais e eventos reais que estão se aproximando. Cada pauta deve ser diretamente motivada por uma data, campanha ou evento do calendário — não por tendências genéricas.
+ESPECIALIDADE DO PROFISSIONAL: ${areaLabel}
+
+Sua tarefa é gerar exatamente 3 sugestões de pauta EXCLUSIVAMENTE sobre ${areaLabel}. Todo o conteúdo deve ser específico desta especialidade — termos clínicos, procedimentos, dúvidas e público-alvo típicos de ${areaLabel}. Não gere pautas genéricas de saúde que qualquer especialidade poderia usar.
+
+Use as datas sazonais abaixo como GANCHO EDITORIAL para criar pautas de ${areaLabel}. Cada pauta deve conectar uma data real com um tema específico da especialidade.
 
 ${seasonalContext}
-Área de atuação do profissional: ${areaLabel}
 
-Instruções:
-1. Selecione as 3 datas/eventos do contexto acima que mais se conectam com a especialidade informada.
-2. Para cada data selecionada, crie uma pauta para Vídeo/Reels e uma para Carrossel/Post fixo.
-3. Se uma data não tiver conexão óbvia com a especialidade, crie uma ponte criativa e ética entre o tema da data e a área de atuação.
+Instrucões:
+1. Para cada uma das 3 datas mais próximas, crie uma pauta sobre um tema real de ${areaLabel} que se conecte com aquela data.
+2. O tema, o título, o gancho e o ângulo devem ser sobre ${areaLabel} — a data é apenas o gatilho de oportunidade.
+3. Exemplos do nível de especificidade esperado:
+   - Dermatologia: fotoproteção, acne, manchas, botox, peeling, skincare, rosácea, dermatite
+   - Nutrição: microbiota, resistência à insulina, jejum intermitente, suplementação, emagrecimento
+   - Cardiologia: pressão arterial, colesterol, infarto, arritmia, exames preventivos
+   - Ortopedia: coluna, joelho, postura, lesões esportivas, osteoporose
+   - Ginecologia: ciclo menstrual, menopausa, HPV, pré-natal, saúde hormonal
 4. Informe sempre qual data/evento motivou cada pauta no campo "gatilho".
 
 Regras de qualidade:
 - Linguagem sóbria, técnica e premium — sem emojis, sem sensacionalismo, sem promessas de resultado
 - Pautas éticas, compatíveis com o CFM e com a comunicação médica responsável
-- Foco em educação, autoridade e conexão com o público correto
+- Foco em educação, autoridade e conexão com o público correto da especialidade
 - Cada sugestão deve ter: título da pauta (máx 12 palavras), gancho de abertura (1 frase) e ângulo estratégico (1 frase)
 - Não repita datas entre os 3 blocos
+- NUNCA gere pauta genérica — se não souber a especialidade, use saúde geral mas sinalize no campo "area"
 
 Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, no formato exato:
 {
