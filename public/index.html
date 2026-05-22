@@ -1894,26 +1894,6 @@
 
     <div class="form-panel" id="formSection">
 
-      <!-- Painel de Conteúdos em Alta por Especialidade -->
-      <section class="specialty-trends-panel" id="specialtyTrendsPanel" style="display:none;" aria-label="Conteúdos em alta para gravar">
-        <div class="stp-header">
-          <div>
-            <span class="stp-eyebrow"><i class="fa-solid fa-fire"></i> Conteúdos em alta</span>
-            <h3 class="stp-title" id="stpTitle">Pautas para gravar agora</h3>
-            <p class="stp-subtitle" id="stpSubtitle">Identificando temas em alta para sua especialidade...</p>
-          </div>
-          <span class="stp-badge" id="stpBadge">IA + curadoria</span>
-        </div>
-        <div id="stpBody">
-          <div class="stp-loading" id="stpLoading">
-            <span class="stp-loading-dot"></span>
-            <span class="stp-loading-dot"></span>
-            <span class="stp-loading-dot"></span>
-            <span>Buscando temas em alta para sua área...</span>
-          </div>
-        </div>
-      </section>
-
       <div class="panel-header">
         <h2>Complete sua análise</h2>
         <p>Mais contexto → análise mais precisa</p>
@@ -2064,28 +2044,22 @@
         <div class="action-content" id="actionPlanContent"></div>
       </div>
 
-      <section class="trend-tab-section" id="trendRadarSection" aria-label="Trend Radar Primora separado do diagnóstico">
+      <section class="trend-tab-section" id="trendRadarSection" aria-label="Trend Radar Primora">
         <div class="trend-tab-header">
           <div>
-            <span class="trend-tab-eyebrow"><i class="fa-solid fa-wave-square"></i> Trend Radar Primora</span>
-            <h3 class="trend-tab-title">Trends do momento para conteúdo médico</h3>
-            <p class="trend-tab-copy">Esta aba fica separada do diagnóstico para funcionar como oportunidade editorial complementar. Ela traduz sinais de tendência em pautas elegantes, éticas e estratégicas para o Instagram.</p>
+            <span class="trend-tab-eyebrow"><i class="fa-solid fa-calendar-days"></i> Trend Radar Primora</span>
+            <h3 class="trend-tab-title" id="trTitle">Conteúdos em alta para gravar</h3>
+            <p class="trend-tab-copy" id="trSubtitle">Pautas baseadas nas próximas datas e campanhas do calendário de saúde.</p>
           </div>
-          <span class="trend-tab-badge">Sinais sociais + curadoria</span>
+          <span class="trend-tab-badge" id="trBadge">Calendário + IA</span>
         </div>
-        <div class="trend-tab-grid">
-          <article class="trend-format-card">
-            <span class="trend-format-label"><i class="fa-solid fa-video"></i> Vídeo / Reels</span>
-            <span class="trend-format-title">Tema em alta transformado em roteiro curto</span>
-            <p class="trend-format-body">Sugestão: abrir com uma dúvida real do paciente, explicar em até 30 segundos e fechar com orientação responsável. Exemplo: “3 sinais de que sua rotina de pele está exagerada”.</p>
-            <div class="trend-format-note">Foco em alcance, retenção e autoridade sem promessa de resultado.</div>
-          </article>
-          <article class="trend-format-card">
-            <span class="trend-format-label"><i class="fa-solid fa-layer-group"></i> Conteúdo fixo / Carrossel</span>
-            <span class="trend-format-title">Tema em alta organizado como educação premium</span>
-            <p class="trend-format-body">Sugestão: transformar a trend em uma sequência clara: contexto, erro comum, explicação médica e próximo passo seguro. Exemplo: “O que observar antes de copiar uma trend de skincare”.</p>
-            <div class="trend-format-note">Foco em salvamentos, confiança e tomada de decisão informada.</div>
-          </article>
+        <div id="trBody">
+          <div class="stp-loading" id="trLoading">
+            <span class="stp-loading-dot"></span>
+            <span class="stp-loading-dot"></span>
+            <span class="stp-loading-dot"></span>
+            <span>Buscando pautas sazonais para sua área...</span>
+          </div>
         </div>
       </section>
 
@@ -2253,9 +2227,7 @@
         });
         document.querySelectorAll('.content-tag').forEach(t => t.classList.remove('selected'));
 
-        // Iniciar busca de trends em paralelo (não bloqueia o formulário)
-        const specialtyForTrends = globCategory || '';
-        fetchSpecialtyTrends(specialtyForTrends);
+        // Trends serão carregados na última página do diagnóstico
 
         setTimeout(() => {
           toggleDisplay('progressSection', 'none');
@@ -2271,21 +2243,13 @@
       }
     }
 
-    async function fetchSpecialtyTrends(specialty) {
-      const panel = document.getElementById('specialtyTrendsPanel');
-      const stpBody = document.getElementById('stpBody');
-      const stpTitle = document.getElementById('stpTitle');
-      const stpSubtitle = document.getElementById('stpSubtitle');
-      const stpBadge = document.getElementById('stpBadge');
+    async function fetchReportTrends(specialty) {
+      const trBody = document.getElementById('trBody');
+      const trTitle = document.getElementById('trTitle');
+      const trSubtitle = document.getElementById('trSubtitle');
+      const trBadge = document.getElementById('trBadge');
 
-      // Mostrar painel com loading
-      panel.style.display = 'block';
-      stpBody.innerHTML = `<div class="stp-loading">
-        <span class="stp-loading-dot"></span>
-        <span class="stp-loading-dot"></span>
-        <span class="stp-loading-dot"></span>
-        <span>Buscando temas em alta para sua área...</span>
-      </div>`;
+      if (!specialty || !trBody) return;
 
       try {
         const r = await fetch('/api/trends', {
@@ -2296,17 +2260,17 @@
         const d = await r.json();
 
         if (!d.ok || !Array.isArray(d.trends) || d.trends.length === 0) {
-          panel.style.display = 'none';
+          document.getElementById('trLoading').style.display = 'none';
           return;
         }
 
         const areaLabel = d.area || specialty || 'Saúde';
-        stpTitle.textContent = `Pautas sazonais para ${areaLabel}`;
-        stpSubtitle.textContent = `${d.trends.length} pautas baseadas nas próximas datas e campanhas do calendário de saúde.`;
-        stpBadge.textContent = 'Calendário + IA';
+        trTitle.textContent = `Conteúdos em alta para ${areaLabel}`;
+        trSubtitle.textContent = `${d.trends.length} pautas baseadas nas próximas datas do calendário de saúde.`;
+        trBadge.textContent = 'Calendário + IA';
 
         const blocksHtml = d.trends.map((t, i) => {
-          const gatilhoHtml = (t.gatilho) ? `
+          const gatilhoHtml = t.gatilho ? `
             <div class="stp-trend-gatilho">
               <i class="fa-solid fa-calendar-days"></i>
               <span>${t.gatilho}${t.gatilho_data ? ' — ' + t.gatilho_data : ''}</span>
@@ -2320,7 +2284,7 @@
             ${gatilhoHtml}
             <div class="stp-formats">
               <div class="stp-format">
-                <span class="stp-format-label"><i class="fa-solid fa-video"></i> Vídeo / Reels</span>
+                <span class="stp-format-label"><i class="fa-solid fa-video"></i> Reels</span>
                 <span class="stp-format-titulo">${t.reels?.titulo || ''}</span>
                 <p class="stp-format-gancho">“${t.reels?.gancho || ''}”</p>
                 <p class="stp-format-angulo">${t.reels?.angulo || ''}</p>
@@ -2335,10 +2299,9 @@
           </div>`;
         }).join('');
 
-        stpBody.innerHTML = `<div class="stp-trends-list">${blocksHtml}</div>`;
+        trBody.innerHTML = `<div class="stp-trends-list">${blocksHtml}</div>`;
       } catch (err) {
-        // Falha silenciosa — não interrompe o fluxo principal
-        panel.style.display = 'none';
+        if (document.getElementById('trLoading')) document.getElementById('trLoading').style.display = 'none';
       }
     }
 
@@ -2408,10 +2371,9 @@
       const sections = [
         "2. POSICIONAMENTO E AUTORIDADE",
         "3. ANÁLISE DA BIO",
-        "4. ANÁLISE DE CONTEÚDO",
-        "5. ENGAJAMENTO E PERFORMANCE",
-        "6. ERROS E GARGALOS",
-        "7. PLANO DE MELHORIA"
+        "4. ANÁLISE DE CONTEÚDO E ENGAJAMENTO",
+        "5. ERROS E GARGALOS",
+        "6. PLANO DE MELHORIA"
       ];
 
       const formatBody = (str) => {
@@ -2437,34 +2399,18 @@
 
       document.getElementById('reportCards').innerHTML = notesCardHtml + blocksHtml;
 
-      // Extrair e popular as seções adicionais
-      const improvementContent = parseSection(text, "7. PLANO DE MELHORIA") || parseSection(text, "6. PLANO DE MELHORIA");
-      const suggestionsContent = parseSection(text, "SUGESTÕES") || parseSection(text, "RECOMENDAÇÕES");
-      const actionPlanContent = parseSection(text, "AÇÃO") || parseSection(text, "PRÓXIMOS PASSOS");
-
-      if (improvementContent) {
-        document.getElementById('improvementContent').innerHTML = formatBody(improvementContent);
-        document.getElementById('improvementSection').style.opacity = '1';
-      } else {
-        document.getElementById('improvementSection').style.display = 'none';
-      }
-
-      if (suggestionsContent) {
-        document.getElementById('suggestionsContent').innerHTML = formatBody(suggestionsContent);
-        document.getElementById('suggestionsSection').style.opacity = '1';
-      } else {
-        document.getElementById('suggestionsSection').style.display = 'none';
-      }
-
-      if (actionPlanContent) {
-        document.getElementById('actionPlanContent').innerHTML = formatBody(actionPlanContent);
-        document.getElementById('actionPlanSection').style.opacity = '1';
-      } else {
-        document.getElementById('actionPlanSection').style.display = 'none';
-      }
+      // As seções adicionais foram consolidadas no novo prompt (6 seções)
+      // O Plano de Melhoria já é renderizado como card no blocksHtml acima
+      document.getElementById('improvementSection').style.display = 'none';
+      document.getElementById('suggestionsSection').style.display = 'none';
+      document.getElementById('actionPlanSection').style.display = 'none';
 
       toggleDisplay('reportSection', 'block');
       toggleDisplay('progressSection', 'none');
+
+      // Carregar trends sazonais na última página do diagnóstico
+      const trendSpecialty = p.specialty || globCategory || '';
+      fetchReportTrends(trendSpecialty);
     }
 
     document.getElementById('igInput').addEventListener('keydown', e => {

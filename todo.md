@@ -218,8 +218,15 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br após a implementação.
 
 # Trend Radar Sazonal — dados reais de datas e eventos
-- [ ] Construir calendário sazonal brasileiro completo no server.js (datas comemorativas, campanhas de saúde, eventos esportivos, estações do ano).
-- [ ] Reformular o endpoint /api/trends para injetar no prompt: data atual, próximas 3 datas relevantes e contexto sazonal real.
-- [ ] Cruzar as datas sazonais com a especialidade da médica para gerar pautas oportunas e contextualizadas.
-- [ ] Atualizar o painel HTML para mostrar o gatilho sazonal de cada pauta (ex: "Dia dos Namorados — 12 jun").
-- [ ] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br.
+- [x] Construir calendário sazonal brasileiro completo no server.js (datas comemorativas, campanhas de saúde, eventos esportivos, estações do ano).
+- [x] Reformular o endpoint /api/trends para injetar no prompt: data atual, próximas 3 datas relevantes e contexto sazonal real.
+- [x] Cruzar as datas sazonais com a especialidade da médica para gerar pautas oportunas e contextualizadas.
+- [x] Atualizar o painel HTML para mostrar o gatilho sazonal de cada pauta (ex: "Dia dos Namorados — 12 jun").
+- [x] Validar sintaxe, publicar no GitHub e verificar o domínio dermabrand.com.br.
+
+# Trends na última página + otimização do relatório
+- [ ] Remover o painel "Conteúdos em Alta" do formulário/pré-diagnóstico.
+- [ ] Integrar o painel de trends (com chamada ao /api/trends) na última página do diagnóstico (Trend Radar Primora), gerado junto com o relatório.
+- [ ] Reduzir o texto das notas do diagnóstico — sem repetição, mais direto, foco em ação.
+- [ ] Ajustar o prompt do /api/analyze para gerar notas mais curtas e objetivas.
+- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

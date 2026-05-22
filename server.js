@@ -92,82 +92,54 @@ DADOS DO PERFIL:
 
 ---
 
-ESTRUTURA DA RESPOSTA (exatamente 7 seções):
+ESTRUTURA DA RESPOSTA (exatamente 6 seções, cada uma objetiva e sem repetição entre elas):
 
 1. NOTAS DO DIAGNÓSTICO
-Retorne obrigatoriamente as três notas uma única vez, somente nesta seção, sempre no formato exato abaixo:
+Retorne as três notas somente aqui, no formato exato:
 Score de Autoridade: X/10
 Score de Bio e Posicionamento: X/10
 Score de Conteúdo e Engajamento: X/10
 
-Logo após as três notas, explique em 2 a 4 frases a base dos scores. Deixe claro que são estimativas estratégicas de branding digital, baseadas nos dados do perfil e nos sinais informados, não métricas oficiais do Instagram. Justifique objetivamente os principais fatores que elevaram ou reduziram cada nota.
+Em seguida, 2 frases justificando os scores. Seja direto: cite o fator principal que elevou e o principal que reduziu cada nota. Não repita os critérios nas seções seguintes.
 
-Critérios das notas:
-- Score de Autoridade: percepção de expertise, confiança, diferenciação no segmento, prova de competência, consistência de imagem e presença premium.
-- Score de Bio e Posicionamento: clareza da área de atuação, público-alvo, promessa de valor, diferenciais reais, credibilidade, localização quando relevante, coerência de linguagem e CTA sóbrio.
-- Score de Conteúdo e Engajamento: consistência editorial, qualidade percebida, adequação à comunicação em saúde, conexão com o público correto, frequência, sinais de engajamento e potencial de conversão.
+Critérios (use internamente, não repita no texto):
+- Autoridade: expertise percebida, diferenciação, consistência de imagem.
+- Bio: clareza de área, público, diferencial, CTA sóbrio.
+- Conteúdo: consistência editorial, qualidade, engajamento real.
 
 ---
 
 2. POSICIONAMENTO E AUTORIDADE
-Avalie se o perfil transmite autoridade compatível com seu segmento, clareza de atuação, credibilidade profissional e posicionamento premium. Se for agência, consultoria ou marketing médico, avalie autoridade estratégica, prova de método, clareza de público-alvo e diferenciação B2B; se for profissional assistencial ou clínica, avalie autoridade técnica, confiança, especialidade e percepção de atendimento qualificado.
-Diga o nível: (Baixo / Médio / Alto)
-Explique de forma direta e concisa.
-Não inclua notas numéricas nesta seção; as notas devem aparecer apenas em “1. NOTAS DO DIAGNÓSTICO”.
+Nível: Baixo / Médio / Alto.
+3 a 4 frases: o que transmite autoridade hoje e o principal gap. Sem notas numéricas. Sem repetir o que foi dito em "1".
 
 ---
 
-3. ANÁLISE DA BIO (Especializada)
-Avalie como especialista em branding para saúde:
-- **Tipo de perfil**: identifique se é profissional assistencial, clínica, agência de marketing médico, consultoria, serviço B2B ou outro segmento.
-- **Posicionamento**: o perfil deixa claro o diferencial e para quem ele existe?
-- **Linguagem**: usa termos adequados ao público correto — pacientes, médicos, clínicas, gestores ou outro decisor — ou é genérica?
-- **Credibilidade**: transmite expertise, método, prova de competência e confiança?
-- **CTA**: tem chamada clara, sóbria e compatível com o segmento?
-- **Oportunidades**: o que está faltando para converter melhor dentro daquele contexto?
-
-Sugira uma BIO otimizada (máx 150 caracteres) com tom técnico, sóbrio e premium, adaptada ao tipo de perfil identificado. Para profissionais e clínicas, pode transmitir especialidade, método, autoridade clínica e clareza de atendimento. Para marketing médico, consultorias e serviços B2B, deve transmitir método, posicionamento estratégico, público atendido e credibilidade de mercado, sem fingir ser profissional de saúde. Não use emojis, símbolos decorativos, promessas de resultado, frases como “transformando pele”, “resultados que falam”, “dermatologia de excelência”, “agende sua avaliação” ou qualquer chamada comercial genérica.
+3. ANÁLISE DA BIO
+Identifique o tipo de perfil (profissional, clínica, agência, B2B). Avalie em 3 frases: clareza, credibilidade e oportunidade principal.
+Sugira uma BIO otimizada (máx 150 caracteres), sóbria, sem emojis, sem promessas genéricas, adaptada ao tipo de perfil.
 
 ---
 
-4. ANÁLISE DE CONTEÚDO
-Avalie:
-- Qualidade percebida
-- Clareza da comunicação
-- Adequação ao público-alvo correto, como paciente, médico, clínica, gestor ou decisor B2B
-- Variedade de conteúdo
-
-Identifique:
-- O que está faltando
-- O que está excessivo
-- O que deve ser priorizado
+4. ANÁLISE DE CONTEÚDO E ENGAJAMENTO
+Em 4 a 5 frases: qualidade percebida, adequação ao público correto, taxa de engajamento estimada e potencial de crescimento. Aponte 1 ponto forte e 1 lacuna crítica. Seja específico, use os dados informados.
 
 ---
 
-5. ENGAJAMENTO E PERFORMANCE
-Com base nos dados:
-- O engajamento está bom, médio ou baixo?
-- O conteúdo gera conexão com o público-alvo correto ou apenas informação genérica?
-- Existe potencial de crescimento?
-- Taxa de engajamento estimada
+5. ERROS E GARGALOS
+Liste de 3 a 4 erros estratégicos objetivos que impedem crescimento ou conversão. Cada item em 1 frase acionável. Sem repetição do que foi dito nas seções anteriores.
 
 ---
 
-6. ERROS E GARGALOS
-Liste os principais erros estratégicos que estão impedindo o crescimento ou a conversão. Seja específico e acionável.
+6. PLANO DE MELHORIA (EXECUTIVO)
+Apresente em formato conciso:
+- **Próximas 2 semanas**: 2 ações de impacto imediato
+- **Conteúdo a priorizar**: 2 formatos ou temas específicos
+- **Frequência**: postagens por semana recomendadas
+- **Diferencial**: 1 frase sobre como se destacar no segmento
+- **Próximo passo**: em tom consultivo, por que um plano com especialistas da Dermabrand aprofunda o que o diagnóstico identificou.
 
----
-
-7. PLANO DE MELHORIA (EXECUTIVO)
-Apresente um plano conciso, elegante e acionável:
-- **Ações Imediatas** (próximas 2 semanas): 2-3 mudanças de impacto rápido
-- **Conteúdo Estratégico**: Tipos específicos a priorizar
-- **Frequência Recomendada**: Postagens por semana
-- **Diferencial Competitivo**: Como se destacar
-- **Métrica de Sucesso**: Como medir melhoria
-- **Próximo passo estratégico**: explique, em tom consultivo e premium, por que conversar com especialistas pode transformar o diagnóstico em um plano de posicionamento, conteúdo e conversão.
-
-Seja direto, sofisticado e evite recomendações genéricas.
+Seja direto. Cada item em 1 a 2 frases. Sem repetição de pontos já citados.
 
 ---
 
