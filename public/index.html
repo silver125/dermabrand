@@ -2415,7 +2415,9 @@
       toggleDisplay('progressSection', 'none');
 
       // Carregar trends sazonais na última página do diagnóstico
-      const trendSpecialty = p.specialty || globCategory || '';
+      // Prioridade: (1) o que o usuário digitou no campo fSpecialty, (2) p.specialty do formData, (3) globCategory do Instagram
+      const userTypedSpecialty = (document.getElementById('fSpecialty')?.value || '').trim();
+      const trendSpecialty = userTypedSpecialty || p.specialty || globCategory || '';
       fetchReportTrends(trendSpecialty);
     }
 
