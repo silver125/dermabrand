@@ -943,6 +943,42 @@
       color: rgba(163,163,163,0.5);
       letter-spacing: 0.04em;
     }
+    /* === CHIPS === */
+    .chips-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.6rem;
+    }
+    .chip-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted-silver);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .chip-btn:hover {
+      border-color: var(--rose-gold);
+      color: var(--rose-gold);
+      background: rgba(216,175,169,0.07);
+    }
+    .chip-btn.selected {
+      background: linear-gradient(135deg, rgba(216,175,169,0.22), rgba(207,166,101,0.15));
+      border-color: var(--rose-gold);
+      color: var(--champagne);
+      font-weight: 700;
+      box-shadow: 0 0 0 1px rgba(216,175,169,0.3);
+    }
+    .chip-text-fallback {
+      font-size: 0.88rem;
+    }
+    /* === FIM CHIPS === */
     /* === FIM FORMULARIO MODERNO === */
 
     .panel-header {
@@ -2010,28 +2046,54 @@
 
       <!-- Campos essenciais sempre visíveis -->
       <div class="form-essential">
-        <div class="form-row-2">
-          <div class="lux-field">
-            <label><i class="fa-solid fa-user-doctor fa-xs"></i> Nome</label>
-            <input type="text" class="lux-input" id="fName" placeholder="Nome do profissional" />
-          </div>
-          <div class="lux-field">
-            <label><i class="fa-solid fa-stethoscope fa-xs"></i> Especialidade</label>
-            <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Dermatologia, Nutrição, Ortopedia" />
-          </div>
+
+        <!-- Nome -->
+        <div class="lux-field">
+          <label><i class="fa-solid fa-user-doctor fa-xs"></i> Nome <span class="field-opt">opcional</span></label>
+          <input type="text" class="lux-input" id="fName" placeholder="Nome do profissional" />
         </div>
 
-        <div class="form-row-2">
-          <div class="lux-field">
-            <label><i class="fa-solid fa-location-dot fa-xs"></i> Cidade <span class="field-opt">opcional</span></label>
-            <input type="text" class="lux-input" id="fCity" placeholder="Ex: São Paulo" />
+        <!-- Especialidade — chips -->
+        <div class="lux-field">
+          <label><i class="fa-solid fa-stethoscope fa-xs"></i> Especialidade <span class="field-opt">selecione ou digite</span></label>
+          <div class="chips-cloud" id="specialtyChips">
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Dermatologia')">Dermatologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Nutrição')">Nutrição</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Cardiologia')">Cardiologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Ginecologia')">Ginecologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Ortopedia')">Ortopedia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Pediatria')">Pediatria</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Psiquiatria')">Psiquiatria</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Endocrinologia')">Endocrinologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Cirurgia Plástica')">Cirurgia Plástica</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Oftalmologia')">Oftalmologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Neurologia')">Neurologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Medicina Esportiva')">Medicina Esportiva</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Odontologia')">Odontologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Fisioterapia')">Fisioterapia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Psicologia')">Psicologia</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Marketing Médico')">Marketing Médico</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Clínica Geral')">Clínica Geral</button>
+            <button class="chip-btn specialty-chip" onclick="selectChip('specialty',this,'Outra')">Outra</button>
           </div>
-          <div class="lux-field">
-            <label><i class="fa-solid fa-users fa-xs"></i> Seguidores <span class="field-opt">opcional</span></label>
-            <input type="number" class="lux-input" id="fFollowers" placeholder="Ex: 5000" />
-          </div>
+          <input type="text" class="lux-input chip-text-fallback" id="fSpecialty" placeholder="Ou digite sua especialidade" style="margin-top:0.8rem;" />
         </div>
 
+        <!-- Seguidores — chips -->
+        <div class="lux-field">
+          <label><i class="fa-solid fa-users fa-xs"></i> Seguidores <span class="field-opt">opcional</span></label>
+          <div class="chips-cloud">
+            <button class="chip-btn" onclick="selectChip('followers',this,'500 a 1.000')">500 a 1k</button>
+            <button class="chip-btn" onclick="selectChip('followers',this,'1.000 a 2.000')">1k a 2k</button>
+            <button class="chip-btn" onclick="selectChip('followers',this,'2.000 a 5.000')">2k a 5k</button>
+            <button class="chip-btn" onclick="selectChip('followers',this,'5.000 a 10.000')">5k a 10k</button>
+            <button class="chip-btn" onclick="selectChip('followers',this,'10.000 a 50.000')">10k a 50k</button>
+            <button class="chip-btn" onclick="selectChip('followers',this,'mais de 50.000')">+50k</button>
+          </div>
+          <input type="hidden" id="fFollowers" />
+        </div>
+
+        <!-- Bio -->
         <div class="lux-field">
           <label><i class="fa-solid fa-align-left fa-xs"></i> Bio do Perfil <span class="field-opt">opcional</span></label>
           <input type="text" class="lux-input" id="fBio" placeholder="Cole sua bio atual ou deixe em branco" />
@@ -2053,26 +2115,48 @@
         </div>
       </div>
 
+      <!-- Curtidas e Frequência — chips visíveis -->
+      <div class="lux-field">
+        <label><i class="fa-solid fa-heart fa-xs"></i> Curtidas por post (aprox) <span class="field-opt">opcional</span></label>
+        <div class="chips-cloud">
+          <button class="chip-btn" onclick="selectChip('likes',this,'menos de 20')">Menos de 20</button>
+          <button class="chip-btn" onclick="selectChip('likes',this,'mais de 20')">Mais de 20</button>
+          <button class="chip-btn" onclick="selectChip('likes',this,'mais de 50')">Mais de 50</button>
+          <button class="chip-btn" onclick="selectChip('likes',this,'mais de 100')">Mais de 100</button>
+          <button class="chip-btn" onclick="selectChip('likes',this,'mais de 500')">Mais de 500</button>
+          <button class="chip-btn" onclick="selectChip('likes',this,'mais de 1.000')">Mais de 1k</button>
+        </div>
+        <input type="hidden" id="fLikes" />
+      </div>
+
+      <div class="lux-field">
+        <label><i class="fa-solid fa-calendar-check fa-xs"></i> Frequência de posts <span class="field-opt">opcional</span></label>
+        <div class="chips-cloud">
+          <button class="chip-btn" onclick="selectChip('frequency',this,'Posto quando dá')">Posto quando dá</button>
+          <button class="chip-btn" onclick="selectChip('frequency',this,'Poucas vezes no mês')">Poucas vezes/mês</button>
+          <button class="chip-btn" onclick="selectChip('frequency',this,'1x por semana')">1x/semana</button>
+          <button class="chip-btn" onclick="selectChip('frequency',this,'2 a 3x por semana')">2-3x/semana</button>
+          <button class="chip-btn" onclick="selectChip('frequency',this,'Todos os dias')">Todos os dias</button>
+        </div>
+        <input type="hidden" id="fFrequency" />
+      </div>
+
       <!-- Acordeom de campos avançados -->
       <div class="form-advanced">
         <button class="form-advanced-toggle" onclick="toggleAdvanced(this)" type="button">
           <i class="fa-solid fa-sliders fa-xs"></i>
-          <span>Dados de engajamento e contexto</span>
+          <span>Contexto adicional (legendas e visual)</span>
           <i class="fa-solid fa-chevron-down adv-chevron"></i>
         </button>
         <div class="form-advanced-body" id="advancedFields">
-          <div class="form-row-3">
+          <div class="form-row-2">
             <div class="lux-field">
-              <label>Curtidas (aprox)</label>
-              <input type="text" class="lux-input" id="fLikes" placeholder="Ex: 450" />
+              <label>Cidade <span class="field-opt">opcional</span></label>
+              <input type="text" class="lux-input" id="fCity" placeholder="Ex: São Paulo" />
             </div>
             <div class="lux-field">
-              <label>Comentários (aprox)</label>
+              <label>Comentários por post (aprox)</label>
               <input type="text" class="lux-input" id="fComments" placeholder="Ex: 22" />
-            </div>
-            <div class="lux-field">
-              <label>Frequência de posts</label>
-              <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: 3x por semana" />
             </div>
           </div>
           <div class="lux-field">
@@ -2379,26 +2463,37 @@
       const trTitle = document.getElementById('trTitle');
       const trSubtitle = document.getElementById('trSubtitle');
       const trBadge = document.getElementById('trBadge');
+      const trLoading = document.getElementById('trLoading');
 
-      if (!specialty || !trBody) return;
+      // Garantir que o loading aparece
+      if (trLoading) trLoading.style.display = 'flex';
+      if (!trBody) return;
+
+      // Usar 'Saúde' como fallback se specialty vazio
+      const area = (specialty || 'Saúde').trim();
 
       try {
         const r = await fetch('/api/trends', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ specialty, category: specialty, username: globUsername }),
+          body: JSON.stringify({ specialty: area, category: area, username: globUsername }),
         });
+
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         const d = await r.json();
 
+        // Ocultar loading
+        if (trLoading) trLoading.style.display = 'none';
+
         if (!d.ok || !Array.isArray(d.trends) || d.trends.length === 0) {
-          document.getElementById('trLoading').style.display = 'none';
+          trBody.innerHTML = '<p style="color:rgba(163,163,163,0.5);font-size:0.85rem;padding:1rem 0;">Nenhuma pauta encontrada para esta área no momento.</p>';
           return;
         }
 
-        const areaLabel = d.area || specialty || 'Saúde';
-        trTitle.textContent = `Conteúdos em alta para ${areaLabel}`;
-        trSubtitle.textContent = `${d.trends.length} pautas baseadas nas próximas datas do calendário de saúde.`;
-        trBadge.textContent = 'Calendário + IA';
+        const areaLabel = d.area || area;
+        if (trTitle) trTitle.textContent = `Conteúdos em alta para ${areaLabel}`;
+        if (trSubtitle) trSubtitle.textContent = `${d.trends.length} pautas baseadas nas próximas datas do calendário de saúde.`;
+        if (trBadge) trBadge.textContent = 'Calendário + IA';
 
         const blocksHtml = d.trends.map((t, i) => {
           const gatilhoHtml = t.gatilho ? `
@@ -2417,13 +2512,13 @@
               <div class="stp-format">
                 <span class="stp-format-label"><i class="fa-solid fa-video"></i> Reels</span>
                 <span class="stp-format-titulo">${t.reels?.titulo || ''}</span>
-                <p class="stp-format-gancho">“${t.reels?.gancho || ''}”</p>
+                <p class="stp-format-gancho">"${t.reels?.gancho || ''}"</p>
                 <p class="stp-format-angulo">${t.reels?.angulo || ''}</p>
               </div>
               <div class="stp-format">
                 <span class="stp-format-label"><i class="fa-solid fa-layer-group"></i> Carrossel</span>
                 <span class="stp-format-titulo">${t.carrossel?.titulo || ''}</span>
-                <p class="stp-format-gancho">“${t.carrossel?.gancho || ''}”</p>
+                <p class="stp-format-gancho">"${t.carrossel?.gancho || ''}"</p>
                 <p class="stp-format-angulo">${t.carrossel?.angulo || ''}</p>
               </div>
             </div>
@@ -2432,7 +2527,8 @@
 
         trBody.innerHTML = `<div class="stp-trends-list">${blocksHtml}</div>`;
       } catch (err) {
-        if (document.getElementById('trLoading')) document.getElementById('trLoading').style.display = 'none';
+        if (trLoading) trLoading.style.display = 'none';
+        if (trBody) trBody.innerHTML = '<p style="color:rgba(163,163,163,0.4);font-size:0.85rem;padding:1rem 0;">Não foi possível carregar as pautas agora. Tente novamente em instantes.</p>';
       }
     }
 
@@ -2541,10 +2637,30 @@
       toggleDisplay('progressSection', 'none');
 
       // Carregar trends sazonais na última página do diagnóstico
-      // Prioridade: (1) o que o usuário digitou no campo fSpecialty, (2) p.specialty do formData, (3) globCategory do Instagram
+      // Prioridade: (1) chip selecionado / campo digitado, (2) p.specialty do formData, (3) globCategory do Instagram, (4) 'Saúde'
       const userTypedSpecialty = (document.getElementById('fSpecialty')?.value || '').trim();
-      const trendSpecialty = userTypedSpecialty || p.specialty || globCategory || '';
+      const trendSpecialty = userTypedSpecialty || p.specialty || globCategory || 'Saúde';
       fetchReportTrends(trendSpecialty);
+    }
+
+    // Mapa de valores dos chips por grupo
+    const chipValues = { specialty: '', followers: '', likes: '', frequency: '' };
+
+    function selectChip(group, btn, value) {
+      // Desselecionar chips do mesmo grupo
+      const parent = btn.closest('.chips-cloud');
+      parent.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('selected'));
+      // Selecionar o clicado
+      btn.classList.add('selected');
+      chipValues[group] = value;
+      // Sincronizar hidden input
+      const inputMap = { followers: 'fFollowers', likes: 'fLikes', frequency: 'fFrequency' };
+      if (inputMap[group]) document.getElementById(inputMap[group]).value = value;
+      // Para especialidade: preencher o input de texto também
+      if (group === 'specialty') {
+        document.getElementById('fSpecialty').value = value !== 'Outra' ? value : '';
+        if (value === 'Outra') document.getElementById('fSpecialty').focus();
+      }
     }
 
     function toggleAdvanced(btn) {

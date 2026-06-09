@@ -238,9 +238,17 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Modernização do formulário — campos opcionais + novo design
-- [ ] Tornar todos os campos do formulário opcionais (sem bloqueio para análise).
-- [ ] Pré-preencher campos automaticamente com dados do perfil do Instagram quando disponíveis.
-- [ ] Adicionar defaults inteligentes no servidor para campos não preenchidos (ex: frequência estimada, bio extraída).
-- [ ] Redesenhar o formulário com layout moderno: seção principal visível + campos extras colapsáveis.
-- [ ] Botão "Analisar agora" disponível desde o início, sem obrigatoriedade de preenchimento.
+- [x] Tornar todos os campos do formulário opcionais (sem bloqueio para análise).
+- [x] Pré-preencher campos automaticamente com dados do perfil do Instagram quando disponíveis.
+- [x] Adicionar defaults inteligentes no servidor para campos não preenchidos (ex: frequência estimada, bio extraída).
+- [x] Redesenhar o formulário com layout moderno: seção principal visível + campos extras colapsáveis.
+- [x] Botão "Gerar Diagnóstico" disponível desde o início, sem obrigatoriedade de preenchimento.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Formulário com chips seletores + fix Trend Radar
+- [ ] Substituir campo de texto "Especialidade" por chips das principais especialidades médicas.
+- [ ] Substituir campo "Seguidores" por chips de faixas (500-1k, 1k-2k, 2k-5k, 5k-10k, 10k-50k, +50k).
+- [ ] Substituir campo "Curtidas" por chips (mais de 20, mais de 50, mais de 100, mais de 500).
+- [ ] Substituir campo "Frequência" por chips (Posto quando dá, 1x/semana, 2-3x/semana, Todos os dias, Poucas vezes/mês).
+- [ ] Corrigir bug do Trend Radar que trava no loading sem renderizar palpites.
 - [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
