@@ -254,8 +254,8 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Auditoria completa: chips, calendário sazonal e notas
-- [ ] Auditar se chips de curtidas, frequência e seguidores chegam corretamente no profileData e no prompt.
-- [ ] Atualizar calendário sazonal 2026 com datas completas (saúde, comemorativas, esportivas, estações).
-- [ ] Garantir sugestões estratégicas de conteúdo por especialidade no Trend Radar.
-- [ ] Verificar e corrigir o fluxo de notas no diagnóstico (quadrante de estrelas + cards).
-- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+- [x] Auditar se chips de curtidas, frequência e seguidores chegam corretamente no profileData e no prompt.
+- [x] Atualizar calendário sazonal 2026 com datas completas (saúde, comemorativas, esportivas, estações).
+- [x] Garantir sugestões estratégicas de conteúdo por especialidade no Trend Radar.
+- [x] Verificar e corrigir o fluxo de notas no diagnóstico (quadrante de estrelas + cards).
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
