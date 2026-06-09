@@ -236,3 +236,11 @@
 - [x] Garantir que stripScoreLines remove todas as notas numéricas dos cards do relatório.
 - [x] Notas (Score X/10) devem aparecer SOMENTE no quadrante superior de scores, nunca nos cards de análise.
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Modernização do formulário — campos opcionais + novo design
+- [ ] Tornar todos os campos do formulário opcionais (sem bloqueio para análise).
+- [ ] Pré-preencher campos automaticamente com dados do perfil do Instagram quando disponíveis.
+- [ ] Adicionar defaults inteligentes no servidor para campos não preenchidos (ex: frequência estimada, bio extraída).
+- [ ] Redesenhar o formulário com layout moderno: seção principal visível + campos extras colapsáveis.
+- [ ] Botão "Analisar agora" disponível desde o início, sem obrigatoriedade de preenchimento.
+- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

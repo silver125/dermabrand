@@ -839,6 +839,112 @@
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
+    /* === FORMULARIO MODERNO === */
+    .form-hero-header {
+      text-align: center;
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .form-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(100, 200, 120, 0.12);
+      border: 1px solid rgba(100, 200, 120, 0.25);
+      color: #7dd99a;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .form-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--champagne);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .form-hero-sub {
+      font-size: 0.78rem;
+      color: var(--muted-silver);
+      letter-spacing: 0.04em;
+    }
+    .form-essential {
+      margin-bottom: 1.5rem;
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .form-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .field-opt {
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: rgba(163,163,163,0.5);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 0.3rem;
+    }
+    .form-tags-section {
+      margin-bottom: 1.5rem;
+    }
+    .form-advanced {
+      margin-bottom: 2rem;
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .form-advanced-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.025);
+      border: none;
+      color: var(--muted-silver);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .form-advanced-toggle:hover {
+      background: rgba(216,175,169,0.06);
+      color: var(--rose-gold);
+    }
+    .form-advanced-toggle span { flex: 1; text-align: left; }
+    .adv-chevron { transition: transform 0.3s ease; }
+    .form-advanced-toggle.open .adv-chevron { transform: rotate(180deg); }
+    .form-advanced-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+      padding: 0 1.2rem;
+    }
+    .form-advanced-body.open {
+      max-height: 600px;
+      padding: 1.2rem;
+    }
+    .btn-hint {
+      margin-top: 0.8rem;
+      font-size: 0.72rem;
+      color: rgba(163,163,163,0.5);
+      letter-spacing: 0.04em;
+    }
+    /* === FIM FORMULARIO MODERNO === */
+
     .panel-header {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -1479,7 +1585,9 @@
 
     @media (max-width: 768px) {
       .form-grid-2,
-      .form-grid-3 {
+      .form-grid-3,
+      .form-row-2,
+      .form-row-3 {
         grid-template-columns: 1fr;
       }
 
@@ -1894,66 +2002,45 @@
 
     <div class="form-panel" id="formSection">
 
-      <div class="panel-header">
-        <h2>Complete sua análise</h2>
-        <p>Mais contexto → análise mais precisa</p>
+      <div class="form-hero-header">
+        <div class="form-hero-badge"><i class="fa-solid fa-circle-check"></i> Perfil carregado</div>
+        <h2 class="form-hero-title">Personalize sua análise</h2>
+        <p class="form-hero-sub">Todos os campos são opcionais — quanto mais contexto, mais preciso o diagnóstico.</p>
       </div>
 
-      <div class="form-support-card">
-        <div class="form-support-copy">
-          <strong>Dúvidas no preenchimento?</strong>
+      <!-- Campos essenciais sempre visíveis -->
+      <div class="form-essential">
+        <div class="form-row-2">
+          <div class="lux-field">
+            <label><i class="fa-solid fa-user-doctor fa-xs"></i> Nome</label>
+            <input type="text" class="lux-input" id="fName" placeholder="Nome do profissional" />
+          </div>
+          <div class="lux-field">
+            <label><i class="fa-solid fa-stethoscope fa-xs"></i> Especialidade</label>
+            <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Dermatologia, Nutrição, Ortopedia" />
+          </div>
         </div>
-        <a class="support-btn" href="https://wa.me/5511916391848?text=Estou%20preenchendo%20a%20avaliacao%20Dermabrand%20e%20preciso%20de%20ajuda" target="_blank" rel="noopener noreferrer">Falar com suporte</a>
-      </div>
 
-      <div class="lux-field">
-        <label>Nome Completo</label>
-        <input type="text" class="lux-input" id="fName" placeholder="Nome do profissional" />
-      </div>
+        <div class="form-row-2">
+          <div class="lux-field">
+            <label><i class="fa-solid fa-location-dot fa-xs"></i> Cidade <span class="field-opt">opcional</span></label>
+            <input type="text" class="lux-input" id="fCity" placeholder="Ex: São Paulo" />
+          </div>
+          <div class="lux-field">
+            <label><i class="fa-solid fa-users fa-xs"></i> Seguidores <span class="field-opt">opcional</span></label>
+            <input type="number" class="lux-input" id="fFollowers" placeholder="Ex: 5000" />
+          </div>
+        </div>
 
-      <div class="lux-field">
-        <label>Especialidade ou Área de Atuação</label>
-        <input type="text" class="lux-input" id="fSpecialty" placeholder="Ex: Dermato, Cirurgião, Nutrologia" />
-      </div>
-
-      <div class="form-grid-2">
         <div class="lux-field">
-          <label>Cidade</label>
-          <input type="text" class="lux-input" id="fCity" placeholder="Ex: São Paulo" />
-        </div>
-        <div class="lux-field">
-          <label>Bio do Perfil</label>
-          <input type="text" class="lux-input" id="fBio" placeholder="Bio atual" />
+          <label><i class="fa-solid fa-align-left fa-xs"></i> Bio do Perfil <span class="field-opt">opcional</span></label>
+          <input type="text" class="lux-input" id="fBio" placeholder="Cole sua bio atual ou deixe em branco" />
         </div>
       </div>
 
-      <div class="form-grid-3">
-        <div class="lux-field">
-          <label>Seguidores</label>
-          <input type="number" class="lux-input" id="fFollowers" placeholder="Ex: 5000" />
-        </div>
-        <div class="lux-field">
-          <label>Curtidas (Aprox)</label>
-          <input type="text" class="lux-input" id="fLikes" placeholder="Ex: 450" />
-        </div>
-        <div class="lux-field">
-          <label>Comentários (Aprox)</label>
-          <input type="text" class="lux-input" id="fComments" placeholder="Ex: 22" />
-        </div>
-      </div>
-
-      <div class="lux-field">
-        <label>Frequência de Posts</label>
-        <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: 3x por semana" />
-      </div>
-
-      <div class="lux-field">
-        <label>Sobre o que fala nas legendas?</label>
-        <textarea class="lux-input" id="fCaptions" placeholder="Descreva o tom e tópicos das legendas" style="min-height: 80px; resize: vertical;"></textarea>
-      </div>
-
-      <div class="lux-field">
-        <label>Tipos de Conteúdo</label>
+      <!-- Tipos de conteúdo -->
+      <div class="lux-field form-tags-section">
+        <label><i class="fa-solid fa-layer-group fa-xs"></i> Tipos de Conteúdo <span class="field-opt">opcional</span></label>
         <div class="tags-cloud">
           <button class="tag-btn content-tag" onclick="toggleTag(this)">Antes e Depois</button>
           <button class="tag-btn content-tag" onclick="toggleTag(this)">Lifestyle</button>
@@ -1966,13 +2053,52 @@
         </div>
       </div>
 
-      <div class="lux-field">
-        <label>Observações Visuais</label>
-        <textarea class="lux-input" id="fObservations" placeholder="Qualidade das fotos, layout, consistência visual..." style="min-height: 80px; resize: vertical;"></textarea>
+      <!-- Acordeom de campos avançados -->
+      <div class="form-advanced">
+        <button class="form-advanced-toggle" onclick="toggleAdvanced(this)" type="button">
+          <i class="fa-solid fa-sliders fa-xs"></i>
+          <span>Dados de engajamento e contexto</span>
+          <i class="fa-solid fa-chevron-down adv-chevron"></i>
+        </button>
+        <div class="form-advanced-body" id="advancedFields">
+          <div class="form-row-3">
+            <div class="lux-field">
+              <label>Curtidas (aprox)</label>
+              <input type="text" class="lux-input" id="fLikes" placeholder="Ex: 450" />
+            </div>
+            <div class="lux-field">
+              <label>Comentários (aprox)</label>
+              <input type="text" class="lux-input" id="fComments" placeholder="Ex: 22" />
+            </div>
+            <div class="lux-field">
+              <label>Frequência de posts</label>
+              <input type="text" class="lux-input" id="fFrequency" placeholder="Ex: 3x por semana" />
+            </div>
+          </div>
+          <div class="lux-field">
+            <label>Sobre o que fala nas legendas?</label>
+            <textarea class="lux-input" id="fCaptions" placeholder="Tom, temas, abordagem..." style="min-height:72px;resize:vertical;"></textarea>
+          </div>
+          <div class="lux-field">
+            <label>Observações Visuais</label>
+            <textarea class="lux-input" id="fObservations" placeholder="Qualidade das fotos, layout, consistência visual..." style="min-height:72px;resize:vertical;"></textarea>
+          </div>
+        </div>
       </div>
 
       <div class="btn-submit-container">
-        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">VER MINHA ANÁLISE</button>
+        <button class="btn-grand" id="btnAnalyze" onclick="generateReport()">
+          <i class="fa-solid fa-wand-magic-sparkles" style="margin-right:0.5rem;font-size:0.85em;"></i>
+          GERAR DIAGNÓSTICO
+        </button>
+        <p class="btn-hint">Análise completa em segundos — sem obrigatoriedade de preenchimento</p>
+      </div>
+
+      <div class="form-support-card">
+        <div class="form-support-copy">
+          <strong>Dúvidas no preenchimento?</strong>
+        </div>
+        <a class="support-btn" href="https://wa.me/5511916391848?text=Estou%20preenchendo%20a%20avaliacao%20Dermabrand%20e%20preciso%20de%20ajuda" target="_blank" rel="noopener noreferrer">Suporte</a>
       </div>
     </div>
 
@@ -2419,6 +2545,12 @@
       const userTypedSpecialty = (document.getElementById('fSpecialty')?.value || '').trim();
       const trendSpecialty = userTypedSpecialty || p.specialty || globCategory || '';
       fetchReportTrends(trendSpecialty);
+    }
+
+    function toggleAdvanced(btn) {
+      btn.classList.toggle('open');
+      const body = document.getElementById('advancedFields');
+      body.classList.toggle('open');
     }
 
     document.getElementById('igInput').addEventListener('keydown', e => {
