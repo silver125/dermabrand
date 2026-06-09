@@ -246,9 +246,16 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Formulário com chips seletores + fix Trend Radar
-- [ ] Substituir campo de texto "Especialidade" por chips das principais especialidades médicas.
-- [ ] Substituir campo "Seguidores" por chips de faixas (500-1k, 1k-2k, 2k-5k, 5k-10k, 10k-50k, +50k).
-- [ ] Substituir campo "Curtidas" por chips (mais de 20, mais de 50, mais de 100, mais de 500).
-- [ ] Substituir campo "Frequência" por chips (Posto quando dá, 1x/semana, 2-3x/semana, Todos os dias, Poucas vezes/mês).
-- [ ] Corrigir bug do Trend Radar que trava no loading sem renderizar palpites.
+- [x] Substituir campo de texto "Especialidade" por chips das principais especialidades médicas.
+- [x] Substituir campo "Seguidores" por chips de faixas (500-1k, 1k-2k, 2k-5k, 5k-10k, 10k-50k, +50k).
+- [x] Substituir campo "Curtidas" por chips (mais de 20, mais de 50, mais de 100, mais de 500).
+- [x] Substituir campo "Frequência" por chips (Posto quando dá, 1x/semana, 2-3x/semana, Todos os dias, Poucas vezes/mês).
+- [x] Corrigir bug do Trend Radar que trava no loading sem renderizar palpites.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Auditoria completa: chips, calendário sazonal e notas
+- [ ] Auditar se chips de curtidas, frequência e seguidores chegam corretamente no profileData e no prompt.
+- [ ] Atualizar calendário sazonal 2026 com datas completas (saúde, comemorativas, esportivas, estações).
+- [ ] Garantir sugestões estratégicas de conteúdo por especialidade no Trend Radar.
+- [ ] Verificar e corrigir o fluxo de notas no diagnóstico (quadrante de estrelas + cards).
 - [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

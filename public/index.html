@@ -2433,14 +2433,23 @@
         globCategory = p.category || '';
 
         document.getElementById('fName').value = p.full_name || globUsername;
-        document.getElementById('fSpecialty').value = globCategory;
+        // Preencher especialidade com categoria do Instagram SOMENTE se o chip ainda não foi selecionado
+        if (!chipValues.specialty) {
+          document.getElementById('fSpecialty').value = globCategory;
+        }
         document.getElementById('fBio').value = p.biography || '';
-        document.getElementById('fFollowers').value = parseInt(p.follower_count || 0);
-
-        ['fCity', 'fLikes', 'fComments', 'fFrequency', 'fCaptions', 'fObservations'].forEach(id => {
+        // Preencher seguidores com valor do Instagram SOMENTE se o chip ainda não foi selecionado
+        if (!chipValues.followers) {
+          document.getElementById('fFollowers').value = parseInt(p.follower_count || 0);
+        }
+        // Limpar campos opcionais que não vêm do Instagram
+        ['fCity', 'fComments', 'fCaptions', 'fObservations'].forEach(id => {
           document.getElementById(id).value = '';
         });
-        document.querySelectorAll('.content-tag').forEach(t => t.classList.remove('selected'));
+        // Limpar chips de likes e frequency apenas se não foram selecionados
+        if (!chipValues.likes) document.getElementById('fLikes').value = '';
+        if (!chipValues.frequency) document.getElementById('fFrequency').value = '';
+        document.querySelectorAll('.content-tag').forEach(t => t.classList.remove('selected'));;
 
         // Trends serão carregados na última página do diagnóstico
 
