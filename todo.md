@@ -261,8 +261,14 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Tela de cadastro obrigatória (lead gate)
-- [ ] Criar endpoint POST /api/lead no server.js com envio de e-mail para dermabrandinfo@gmail.com.
-- [ ] Criar tela de cadastro premium com campos: Nome, E-mail, WhatsApp e Área de Atuação (chips de especialidades médicas).
-- [ ] Bloquear acesso ao diagnóstico até o cadastro ser concluído (verificar localStorage).
-- [ ] Salvar lead no localStorage para não pedir novamente na mesma sessão/dispositivo.
+- [x] Criar endpoint POST /api/lead no server.js com envio de e-mail para dermabrandinfo@gmail.com.
+- [x] Criar tela de cadastro premium com campos: Nome, E-mail, WhatsApp e Área de Atuação (chips de especialidades médicas).
+- [x] Bloquear acesso ao diagnóstico até o cadastro ser concluído (verificar localStorage).
+- [x] Salvar lead no localStorage para não pedir novamente na mesma sessão/dispositivo.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Lead gate como modal — acionado ao clicar em "VER MINHA ANÁLISE"
+- [ ] Remover o lead gate de tela cheia e converter para modal/overlay.
+- [ ] Interceptar o clique em "VER MINHA ANÁLISE" — se lead não cadastrado, abrir modal; se já cadastrado, seguir normalmente.
+- [ ] Após o cadastro no modal, fechar e continuar o fetchProfileData com o @ já digitado.
 - [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

@@ -155,20 +155,29 @@
 
     /* ── LEAD GATE ─────────────────────────────────────────────────────────── */
     .lead-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5,4,3,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: calc(100vh - 80px);
-      padding: 2rem 1rem;
+      padding: 1rem;
+      overflow-y: auto;
     }
     .lead-gate-inner {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.18);
+      background: #111009;
+      border: 1px solid rgba(201,168,76,0.25);
       border-radius: 20px;
       padding: 2.5rem 2rem;
-      max-width: 520px;
+      max-width: 480px;
       width: 100%;
-      box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 64px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,168,76,0.08);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .lead-gate-badge {
       display: inline-block;
@@ -2079,10 +2088,8 @@
       </div>
     </header>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         LEAD GATE — Tela de cadastro obrigatória antes do diagnóstico
-    ═══════════════════════════════════════════════════════════════════════ -->
-    <div class="lead-gate" id="leadGate">
+    <!-- LEAD GATE MODAL -->
+    <div class="lead-gate" id="leadGate" style="display:none">
       <div class="lead-gate-inner">
         <div class="lead-gate-badge">ACESSO GRATUITO</div>
         <h2 class="lead-gate-title">Antes de iniciar sua análise</h2>
@@ -2877,100 +2884,96 @@
     });
 
     // ────────────────────────────────────────────────────────────────────────────────
-    // LEAD GATE — controle de acesso
+    // LEAD GATE — modal acionado pelo botão VER MINHA ANÁLISE
     // ────────────────────────────────────────────────────────────────────────────────
-    (function initLeadGate() {
-      const LEAD_KEY = 'primora_lead_ok';
-      const leadGate = document.getElementById('leadGate');
-      const heroSection = document.getElementById('heroSection');
-      const searchBox = document.getElementById('searchBox');
-      const formSection = document.getElementById('formSection');
-      const reportSection = document.getElementById('reportSection');
+    const LEAD_KEY = 'primora_lead_ok';
 
-      // Função para esconder o gate e mostrar a plataforma
-      function unlockPlatform() {
-        leadGate.style.display = 'none';
-        heroSection.style.display = '';
-        searchBox.style.display = '';
-      }
+    // Verifica se o lead já foi cadastrado
+    function isLeadRegistered() {
+      return !!localStorage.getItem(LEAD_KEY);
+    }
 
-      // Esconder tudo até o gate ser resolvido
-      heroSection.style.display = 'none';
-      searchBox.style.display = 'none';
-      formSection.style.display = 'none';
-      reportSection.style.display = 'none';
+    // Abre o modal do lead gate e retorna uma Promise que resolve quando o cadastro for concluído
+    function openLeadGate() {
+      return new Promise((resolve) => {
+        const leadGate = document.getElementById('leadGate');
+        leadGate.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
 
-      // Se já fez cadastro antes, liberar direto
-      if (localStorage.getItem(LEAD_KEY)) {
-        unlockPlatform();
-        return;
-      }
+        // Chips de área
+        document.querySelectorAll('#lgAreaChips .lead-chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('#lgAreaChips .lead-chip').forEach(c => c.classList.remove('selected'));
+            chip.classList.add('selected');
+            const val = chip.dataset.value;
+            document.getElementById('lgArea').value = val;
+            const outraInput = document.getElementById('lgAreaOutra');
+            outraInput.style.display = val === 'Outra' ? 'block' : 'none';
+            if (val !== 'Outra') outraInput.value = '';
+          });
+        });
 
-      // Chips de área
-      document.querySelectorAll('#lgAreaChips .lead-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          document.querySelectorAll('#lgAreaChips .lead-chip').forEach(c => c.classList.remove('selected'));
-          chip.classList.add('selected');
-          const val = chip.dataset.value;
-          document.getElementById('lgArea').value = val;
+        // Máscara de WhatsApp
+        const lgWpp = document.getElementById('lgWhatsapp');
+        lgWpp.addEventListener('input', function() {
+          let v = this.value.replace(/\D/g, '').slice(0, 11);
+          if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+          else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+          else if (v.length > 0) v = `(${v}`;
+          this.value = v;
+        });
+
+        // Submit do formulário
+        document.getElementById('leadForm').addEventListener('submit', async function handler(e) {
+          e.preventDefault();
+          const nome = document.getElementById('lgNome').value.trim();
+          const email = document.getElementById('lgEmail').value.trim();
+          const whatsapp = document.getElementById('lgWhatsapp').value.trim();
+          let area = document.getElementById('lgArea').value.trim();
           const outraInput = document.getElementById('lgAreaOutra');
-          outraInput.style.display = val === 'Outra' ? 'block' : 'none';
-          if (val !== 'Outra') outraInput.value = '';
+          if (area === 'Outra' && outraInput.value.trim()) area = outraInput.value.trim();
+
+          const errEl = document.getElementById('leadError');
+          errEl.textContent = '';
+
+          // Validação
+          if (!nome) { errEl.textContent = 'Por favor, informe seu nome completo.'; return; }
+          if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { errEl.textContent = 'Informe um e-mail válido.'; return; }
+          if (!whatsapp || whatsapp.replace(/\D/g,'').length < 10) { errEl.textContent = 'Informe um WhatsApp válido com DDD.'; return; }
+          if (!area) { errEl.textContent = 'Selecione sua área de atuação.'; return; }
+
+          // Loading
+          const btn = document.getElementById('leadSubmitBtn');
+          document.getElementById('leadSubmitText').style.display = 'none';
+          document.getElementById('leadSubmitSpinner').style.display = 'inline';
+          btn.disabled = true;
+
+          try {
+            await fetch('/api/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ nome, email, whatsapp, area }),
+            });
+          } catch (_) { /* falha silenciosa — não bloquear o usuário */ }
+
+          // Salvar no localStorage, fechar modal e continuar
+          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
+          leadGate.style.display = 'none';
+          document.body.style.overflow = '';
+          document.getElementById('leadForm').removeEventListener('submit', handler);
+          resolve();
         });
       });
+    }
 
-      // Máscara de WhatsApp
-      document.getElementById('lgWhatsapp').addEventListener('input', function() {
-        let v = this.value.replace(/\D/g, '').slice(0, 11);
-        if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-        else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-        else if (v.length > 0) v = `(${v}`;
-        this.value = v;
-      });
-
-      // Submit do formulário
-      document.getElementById('leadForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const nome = document.getElementById('lgNome').value.trim();
-        const email = document.getElementById('lgEmail').value.trim();
-        const whatsapp = document.getElementById('lgWhatsapp').value.trim();
-        let area = document.getElementById('lgArea').value.trim();
-        const outraInput = document.getElementById('lgAreaOutra');
-        if (area === 'Outra' && outraInput.value.trim()) area = outraInput.value.trim();
-
-        const errEl = document.getElementById('leadError');
-        errEl.textContent = '';
-
-        // Validação
-        if (!nome) { errEl.textContent = 'Por favor, informe seu nome completo.'; return; }
-        if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { errEl.textContent = 'Informe um e-mail válido.'; return; }
-        if (!whatsapp || whatsapp.replace(/\D/g,'').length < 10) { errEl.textContent = 'Informe um WhatsApp válido com DDD.'; return; }
-        if (!area) { errEl.textContent = 'Selecione sua área de atuação.'; return; }
-
-        // Loading
-        const btn = document.getElementById('leadSubmitBtn');
-        document.getElementById('leadSubmitText').style.display = 'none';
-        document.getElementById('leadSubmitSpinner').style.display = 'inline';
-        btn.disabled = true;
-
-        try {
-          const resp = await fetch('/api/lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nome, email, whatsapp, area }),
-          });
-          if (!resp.ok) throw new Error('Erro no servidor');
-
-          // Salvar no localStorage e liberar plataforma
-          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
-          unlockPlatform();
-        } catch (err) {
-          // Se o servidor falhar, liberar mesmo assim (não bloquear o usuário)
-          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
-          unlockPlatform();
-        }
-      });
-    })();
+    // Interceptar o botão VER MINHA ANÁLISE e o Enter no campo de @
+    const _origFetchProfile = fetchProfileData;
+    window.fetchProfileData = async function() {
+      if (!isLeadRegistered()) {
+        await openLeadGate();
+      }
+      _origFetchProfile();
+    };
     // ── /LEAD GATE ─────────────────────────────────────────────────────────────────────────────
   </script>
 </body>
