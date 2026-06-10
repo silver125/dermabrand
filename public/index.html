@@ -2603,8 +2603,8 @@
         globCategory = p.category || '';
 
         document.getElementById('fName').value = p.full_name || globUsername;
-        // Preencher especialidade automaticamente do lead gate (localStorage)
-        const savedLead = JSON.parse(localStorage.getItem('primora_lead_ok') || '{}');
+        // Preencher especialidade automaticamente do lead gate (sessão)
+        const savedLead = JSON.parse(sessionStorage.getItem('primora_lead_ok') || '{}');
         const leadArea = savedLead.area || globCategory || '';
         document.getElementById('fSpecialty').value = leadArea;
         document.getElementById('fBio').value = p.biography || '';
@@ -2819,8 +2819,8 @@
       toggleDisplay('progressSection', 'none');
 
       // Carregar trends sazonais na última página do diagnóstico
-      // Prioridade: (1) especialidade do lead gate (localStorage), (2) p.specialty do formData, (3) globCategory do Instagram, (4) 'Saúde'
-      const savedLeadForTrends = JSON.parse(localStorage.getItem('primora_lead_ok') || '{}');
+      // Prioridade: (1) especialidade do lead gate (sessão), (2) p.specialty do formData, (3) globCategory do Instagram, (4) 'Saúde'
+      const savedLeadForTrends = JSON.parse(sessionStorage.getItem('primora_lead_ok') || '{}');
       const trendSpecialty = (savedLeadForTrends.area || '').trim() || p.specialty || globCategory || 'Saúde';
       fetchReportTrends(trendSpecialty);
     }
@@ -2855,9 +2855,9 @@
     // ────────────────────────────────────────────────────────────────────────────────
     const LEAD_KEY = 'primora_lead_ok';
 
-    // Verifica se o lead já foi cadastrado
+    // Verifica se o lead já foi cadastrado nesta sessão (expira ao fechar/recarregar)
     function isLeadRegistered() {
-      return !!localStorage.getItem(LEAD_KEY);
+      return !!sessionStorage.getItem(LEAD_KEY);
     }
 
     // Abre o modal do lead gate e retorna uma Promise que resolve quando o cadastro for concluído
@@ -2919,8 +2919,8 @@
             });
           } catch (_) { /* falha silenciosa — não bloquear o usuário */ }
 
-          // Salvar no localStorage, fechar modal e continuar
-          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
+          // Salvar na sessão (expira ao fechar/recarregar a página)
+          sessionStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
           leadGate.style.display = 'none';
           document.body.style.overflow = '';
           document.getElementById('leadForm').removeEventListener('submit', handler);
