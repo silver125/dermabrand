@@ -3,17 +3,63 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const path = require('path');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
 
-const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '0e22bdfa13msh0e3e0fcbe1c11fdp128553jsn968d0eb71654';
+const app = express();
+
+// ── Segurança: headers HTTP via Helmet ─────────────────────────────────────────
+app.use(helmet({
+  contentSecurityPolicy: false, // CSP gerenciado pelo Vercel/CDN
+  crossOriginEmbedderPolicy: false,
+}));
+
+// ── CORS: aceitar apenas o domínio de produção e localhost ─────────────────────
+const allowedOrigins = [
+  'https://dermabrand.com.br',
+  'https://www.dermabrand.com.br',
+  /\.vercel\.app$/,
+  /^http:\/\/localhost/,
+];
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true); // Vercel serverless / curl
+    const ok = allowedOrigins.some(o => typeof o === 'string' ? o === origin : o.test(origin));
+    cb(ok ? null : new Error('CORS não permitido'), ok);
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
+
+// ── Limite de tamanho de payload (evitar ataques de payload gigante) ─────────
+app.use(express.json({ limit: '32kb' }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ── Rate limiting por endpoint ───────────────────────────────────────────────
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Muitas requisições. Aguarde um momento e tente novamente.' },
+});
+const leadLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Muitas tentativas de cadastro. Aguarde um momento.' },
+});
+app.use('/api/analyze', apiLimiter);
+app.use('/api/trends', apiLimiter);
+app.use('/api/profile', apiLimiter);
+app.use('/api/lead', leadLimiter);
+
+// ── Variáveis de ambiente (sem fallback hardcoded para chaves sensíveis) ──────
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '';
 const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST || 'instagram-scraper-20251.p.rapidapi.com';
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 
 // Configuração do transporte de e-mail (Gmail SMTP via App Password ou variável de ambiente)
 function createMailTransport() {
@@ -27,9 +73,18 @@ function createMailTransport() {
 }
 
 // ── GET /api/profile?username=xxx ─────────────────────────────────────────────
+// Helper: sanitizar string (strip tags, trim, limitar tamanho)
+function sanitize(str, maxLen = 500) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/<[^>]*>/g, '').trim().slice(0, maxLen);
+}
+
 app.get('/api/profile', async (req, res) => {
-  const { username } = req.query;
-  if (!username) return res.status(400).json({ error: 'username obrigatório' });
+  const raw = req.query.username;
+  if (!raw) return res.status(400).json({ error: 'username obrigatório' });
+  // Aceitar apenas caracteres válidos de username do Instagram
+  const username = raw.replace(/[^a-zA-Z0-9._]/g, '').slice(0, 30);
+  if (!username) return res.status(400).json({ error: 'Username inválido.' });
 
   try {
     const response = await fetch(
@@ -72,14 +127,23 @@ app.get('/api/profile', async (req, res) => {
 
 // ── POST /api/analyze ─────────────────────────────────────────────────────────
 app.post('/api/analyze', async (req, res) => {
-  const { profile, contentTypes } = req.body;
-  if (!profile) return res.status(400).json({ error: 'Dados do perfil obrigatórios' });
+  const { profile } = req.body;
+  if (!profile || typeof profile !== 'object') return res.status(400).json({ error: 'Dados do perfil obrigatórios' });
 
-  const {
-    full_name, username, specialty, city, biography,
-    follower_count, likes, comments, frequency,
-    captions, observations
-  } = profile;
+  const full_name    = sanitize(profile.full_name, 100);
+  const username     = sanitize(profile.username, 30).replace(/[^a-zA-Z0-9._]/g, '');
+  const specialty    = sanitize(profile.specialty, 80);
+  const city         = sanitize(profile.city, 80);
+  const biography    = sanitize(profile.biography, 300);
+  const follower_count = sanitize(String(profile.follower_count || ''), 20);
+  const likes        = sanitize(String(profile.likes || ''), 30);
+  const comments     = sanitize(String(profile.comments || ''), 20);
+  const frequency    = sanitize(profile.frequency, 50);
+  const captions     = sanitize(profile.captions, 400);
+  const observations = sanitize(profile.observations, 400);
+  const contentTypes = Array.isArray(profile.contentTypes)
+    ? profile.contentTypes.map(t => sanitize(t, 40)).slice(0, 10)
+    : (Array.isArray(req.body.contentTypes) ? req.body.contentTypes.map(t => sanitize(t, 40)).slice(0, 10) : []);
 
   const prompt = `Você é um especialista em branding premium para saúde, posicionamento digital e comunicação ética para diferentes perfis do ecossistema médico no Brasil.
 
@@ -364,7 +428,9 @@ function getUpcomingSeasonalContext(referenceDate) {
 // ── POST /api/trends ─────────────────────────────────────────────────────────
 // Recebe { specialty, category, username } e retorna pautas sazonais por formato.
 app.post('/api/trends', async (req, res) => {
-  const { specialty, category, username } = req.body;
+  const specialty = sanitize(req.body.specialty, 80);
+  const category  = sanitize(req.body.category, 80);
+  const username  = sanitize(req.body.username, 30).replace(/[^a-zA-Z0-9._]/g, '');
   const areaLabel = specialty || category || 'saúde';
 
   const { todayStr, upcoming, specialEvents } = getUpcomingSeasonalContext();
@@ -475,9 +541,21 @@ Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, n
 // ── POST /api/lead ────────────────────────────────────────────────────────────
 // Recebe dados do lead (nome, email, whatsapp, area) e envia e-mail para a agência
 app.post('/api/lead', async (req, res) => {
-  const { nome, email, whatsapp, area } = req.body;
+  const nome     = sanitize(req.body.nome, 100);
+  const email    = sanitize(req.body.email, 150).toLowerCase();
+  const whatsapp = sanitize(req.body.whatsapp, 20).replace(/[^0-9()+\- ]/g, '');
+  const area     = sanitize(req.body.area, 80);
+
   if (!nome || !email || !whatsapp || !area) {
     return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+  }
+  // Validar formato de e-mail
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return res.status(400).json({ error: 'E-mail inválido.' });
+  }
+  // Validar WhatsApp (mínimo 10 dígitos)
+  if (whatsapp.replace(/\D/g, '').length < 10) {
+    return res.status(400).json({ error: 'WhatsApp inválido.' });
   }
 
   // Salvar lead em log local (fallback sempre funciona)
