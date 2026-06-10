@@ -236,6 +236,8 @@
     }
     .lead-input:focus { border-color: rgba(201,168,76,0.6); }
     .lead-input::placeholder { color: #555; }
+    .lead-select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; cursor: pointer; }
+    .lead-select option { background: #1a1610; color: #f5f0e8; }
     .lead-input-sm { font-size: 0.88rem; padding: 10px 14px; }
     .lead-chips {
       display: flex;
@@ -2103,7 +2105,7 @@
           </div>
 
           <div class="lead-field">
-            <label class="lead-label" for="lgEmail">E-mail profissional <span class="lead-req">*</span></label>
+            <label class="lead-label" for="lgEmail">E-mail <span class="lead-req">*</span></label>
             <input class="lead-input" id="lgEmail" type="email" placeholder="seu@email.com" autocomplete="email" />
           </div>
 
@@ -2113,28 +2115,32 @@
           </div>
 
           <div class="lead-field">
-            <label class="lead-label">Área de atuação <span class="lead-req">*</span></label>
-            <div class="lead-chips" id="lgAreaChips">
-              <button type="button" class="lead-chip" data-value="Dermatologia">Dermatologia</button>
-              <button type="button" class="lead-chip" data-value="Cirurgia Plástica">Cirurgia Plástica</button>
-              <button type="button" class="lead-chip" data-value="Nutrição">Nutrição</button>
-              <button type="button" class="lead-chip" data-value="Ginecologia">Ginecologia</button>
-              <button type="button" class="lead-chip" data-value="Cardiologia">Cardiologia</button>
-              <button type="button" class="lead-chip" data-value="Ortopedia">Ortopedia</button>
-              <button type="button" class="lead-chip" data-value="Pediatria">Pediatria</button>
-              <button type="button" class="lead-chip" data-value="Psiquiatria">Psiquiatria</button>
-              <button type="button" class="lead-chip" data-value="Endocrinologia">Endocrinologia</button>
-              <button type="button" class="lead-chip" data-value="Odontologia">Odontologia</button>
-              <button type="button" class="lead-chip" data-value="Fisioterapia">Fisioterapia</button>
-              <button type="button" class="lead-chip" data-value="Psicologia">Psicologia</button>
-              <button type="button" class="lead-chip" data-value="Medicina Esportiva">Medicina Esportiva</button>
-              <button type="button" class="lead-chip" data-value="Neurologia">Neurologia</button>
-              <button type="button" class="lead-chip" data-value="Oftalmologia">Oftalmologia</button>
-              <button type="button" class="lead-chip" data-value="Clínica Geral">Clínica Geral</button>
-              <button type="button" class="lead-chip" data-value="Marketing Médico">Marketing Médico</button>
-              <button type="button" class="lead-chip" data-value="Clínica / Empresa">Clínica / Empresa</button>
-              <button type="button" class="lead-chip" data-value="Outra">Outra</button>
-            </div>
+            <label class="lead-label" for="lgAreaSelect">Área de atuação <span class="lead-req">*</span></label>
+            <select class="lead-input lead-select" id="lgAreaSelect">
+              <option value="">Selecione sua área</option>
+              <option value="Cardiologia">Cardiologia</option>
+              <option value="Cirurgia Plástica">Cirurgia Plástica</option>
+              <option value="Clínica Geral">Clínica Geral</option>
+              <option value="Clínica / Empresa">Clínica / Empresa</option>
+              <option value="Dermatologia">Dermatologia</option>
+              <option value="Endocrinologia">Endocrinologia</option>
+              <option value="Fisioterapia">Fisioterapia</option>
+              <option value="Ginecologia">Ginecologia</option>
+              <option value="Medicina Estética">Medicina Estética</option>
+              <option value="Medicina Esportiva">Medicina Esportiva</option>
+              <option value="Neurologia">Neurologia</option>
+              <option value="Nutrição">Nutrição</option>
+              <option value="Odontologia">Odontologia</option>
+              <option value="Oftalmologia">Oftalmologia</option>
+              <option value="Ortopedia">Ortopedia</option>
+              <option value="Otorrinolaringologia">Otorrinolaringologia</option>
+              <option value="Pediatria">Pediatria</option>
+              <option value="Psicologia">Psicologia</option>
+              <option value="Psiquiatria">Psiquiatria</option>
+              <option value="Radiologia">Radiologia</option>
+              <option value="Tricologia">Tricologia</option>
+              <option value="Outra">Outra</option>
+            </select>
             <input class="lead-input lead-input-sm" id="lgAreaOutra" type="text" placeholder="Especifique sua área" style="display:none;margin-top:10px" />
             <input type="hidden" id="lgArea" />
           </div>
@@ -2900,17 +2906,13 @@
         leadGate.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        // Chips de área
-        document.querySelectorAll('#lgAreaChips .lead-chip').forEach(chip => {
-          chip.addEventListener('click', () => {
-            document.querySelectorAll('#lgAreaChips .lead-chip').forEach(c => c.classList.remove('selected'));
-            chip.classList.add('selected');
-            const val = chip.dataset.value;
-            document.getElementById('lgArea').value = val;
-            const outraInput = document.getElementById('lgAreaOutra');
-            outraInput.style.display = val === 'Outra' ? 'block' : 'none';
-            if (val !== 'Outra') outraInput.value = '';
-          });
+        // Select de área
+        document.getElementById('lgAreaSelect').addEventListener('change', function() {
+          const val = this.value;
+          document.getElementById('lgArea').value = val;
+          const outraInput = document.getElementById('lgAreaOutra');
+          outraInput.style.display = val === 'Outra' ? 'block' : 'none';
+          if (val !== 'Outra') outraInput.value = '';
         });
 
         // Máscara de WhatsApp
@@ -2929,8 +2931,8 @@
           const nome = document.getElementById('lgNome').value.trim();
           const email = document.getElementById('lgEmail').value.trim();
           const whatsapp = document.getElementById('lgWhatsapp').value.trim();
-          let area = document.getElementById('lgArea').value.trim();
           const outraInput = document.getElementById('lgAreaOutra');
+          let area = document.getElementById('lgAreaSelect').value.trim();
           if (area === 'Outra' && outraInput.value.trim()) area = outraInput.value.trim();
 
           const errEl = document.getElementById('leadError');

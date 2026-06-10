@@ -268,7 +268,7 @@
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
 
 # Lead gate como modal — acionado ao clicar em "VER MINHA ANÁLISE"
-- [ ] Remover o lead gate de tela cheia e converter para modal/overlay.
-- [ ] Interceptar o clique em "VER MINHA ANÁLISE" — se lead não cadastrado, abrir modal; se já cadastrado, seguir normalmente.
-- [ ] Após o cadastro no modal, fechar e continuar o fetchProfileData com o @ já digitado.
-- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+- [x] Remover o lead gate de tela cheia e converter para modal/overlay.
+- [x] Interceptar o clique em "VER MINHA ANÁLISE" — se lead não cadastrado, abrir modal; se já cadastrado, seguir normalmente.
+- [x] Após o cadastro no modal, fechar e continuar o fetchProfileData com o @ já digitado.
+- [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
