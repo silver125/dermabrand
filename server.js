@@ -61,15 +61,24 @@ const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '0e22bdfa13msh0e3e0fcbe1c11fdp1
 const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST || 'instagram-scraper-20251.p.rapidapi.com';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 
-// Configuração do transporte de e-mail (Gmail SMTP via App Password ou variável de ambiente)
-function createMailTransport() {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.MAIL_USER || 'dermabrandinfo@gmail.com',
-      pass: process.env.MAIL_PASS || '',
-    },
-  });
+// ── Notificação nativa Manus ──────────────────────────────────────────────
+const FORGE_API_URL = 'https://forge.manus.ai/webdevtoken.v1.WebDevService/SendNotification';
+const FORGE_API_KEY = process.env.BUILT_IN_FORGE_API_KEY || 'J2PEMtJ5Djt2hwKPyWqrJW';
+
+async function notifyOwner(title, content) {
+  try {
+    await fetch(FORGE_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${FORGE_API_KEY}`,
+        'connect-protocol-version': '1',
+      },
+      body: JSON.stringify({ title, content }),
+    });
+  } catch (e) {
+    console.error('[Notify] Falha ao enviar notificação:', e.message);
+  }
 }
 
 // ── GET /api/profile?username=xxx ─────────────────────────────────────────────
@@ -564,38 +573,11 @@ app.post('/api/lead', async (req, res) => {
   const fs = require('fs');
   try { fs.appendFileSync(path.join(__dirname, 'leads.log'), logLine); } catch(e) {}
 
-  // Tentar enviar e-mail (não bloqueia a resposta se falhar)
-  if (process.env.MAIL_PASS) {
-    try {
-      const transporter = createMailTransport();
-      await transporter.sendMail({
-        from: `"Primora Diagnóstica" <${process.env.MAIL_USER || 'dermabrandinfo@gmail.com'}>`,
-        to: 'dermabrandinfo@gmail.com',
-        subject: `🩺 Novo Lead Primora — ${nome} (${area})`,
-        html: `
-          <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0d0d0d;color:#f5f0e8;padding:32px;border-radius:12px">
-            <div style="text-align:center;margin-bottom:24px">
-              <h1 style="color:#c9a84c;font-size:22px;margin:0">✨ Novo Lead — Primora Diagnóstica</h1>
-              <p style="color:#888;font-size:13px;margin:8px 0 0">Recebido em ${timestamp}</p>
-            </div>
-            <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:12px 0;border-bottom:1px solid #222;color:#888;width:140px">Nome</td><td style="padding:12px 0;border-bottom:1px solid #222;font-weight:bold">${nome}</td></tr>
-              <tr><td style="padding:12px 0;border-bottom:1px solid #222;color:#888">E-mail</td><td style="padding:12px 0;border-bottom:1px solid #222"><a href="mailto:${email}" style="color:#c9a84c">${email}</a></td></tr>
-              <tr><td style="padding:12px 0;border-bottom:1px solid #222;color:#888">WhatsApp</td><td style="padding:12px 0;border-bottom:1px solid #222"><a href="https://wa.me/55${whatsapp.replace(/\D/g,'')}" style="color:#c9a84c">${whatsapp}</a></td></tr>
-              <tr><td style="padding:12px 0;color:#888">Área de Atuação</td><td style="padding:12px 0;color:#c9a84c;font-weight:bold">${area}</td></tr>
-            </table>
-            <div style="margin-top:24px;padding:16px;background:#1a1a1a;border-radius:8px;text-align:center">
-              <a href="https://wa.me/55${whatsapp.replace(/\D/g,'')}" style="display:inline-block;background:#c9a84c;color:#0d0d0d;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:14px">💬 Responder no WhatsApp</a>
-            </div>
-          </div>
-        `,
-      });
-    } catch (mailErr) {
-      console.error('[Lead] Falha no envio de e-mail:', mailErr.message);
-    }
-  } else {
-    console.log('[Lead] MAIL_PASS não configurado — lead salvo apenas em log local.');
-  }
+  // Enviar notificação nativa Manus (sem dependência de e-mail ou configuração externa)
+  await notifyOwner(
+    `Novo Lead Primora — ${nome} (${area})`,
+    `Nome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}\nÁrea: ${area}\nRecebido em: ${timestamp}`
+  );
 
   return res.json({ ok: true });
 });
