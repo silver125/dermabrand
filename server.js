@@ -573,21 +573,11 @@ app.post('/api/lead', async (req, res) => {
   const fs = require('fs');
   try { fs.appendFileSync(path.join(__dirname, 'leads.log'), logLine); } catch(e) {}
 
-  // Salvar lead no banco de dados do Manus (dermabrand-v2) e enviar notificação
-  const MANUS_TRPC = 'https://dermabrand-v2.manus.space/api/trpc/leads.submit';
-  await Promise.all([
-    // Salvar no banco de dados
-    fetch(MANUS_TRPC, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ json: { nome, email, whatsapp, area, origem: 'dermabrand.com.br' } }),
-    }).catch(e => console.error('[Lead] Falha ao salvar no banco Manus:', e.message)),
-    // Notificação nativa Manus
-    notifyOwner(
-      `Novo Lead Primora — ${nome} (${area})`,
-      `Nome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}\nÁrea: ${area}\nRecebido em: ${timestamp}`
-    ),
-  ]);
+  // Enviar notificação nativa Manus
+  await notifyOwner(
+    `Novo Lead Primora — ${nome} (${area})`,
+    `Nome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}\nÁrea: ${area}\nRecebido em: ${timestamp}`
+  );
 
   return res.json({ ok: true });
 });
