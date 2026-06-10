@@ -259,3 +259,10 @@
 - [x] Garantir sugestões estratégicas de conteúdo por especialidade no Trend Radar.
 - [x] Verificar e corrigir o fluxo de notas no diagnóstico (quadrante de estrelas + cards).
 - [x] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.
+
+# Tela de cadastro obrigatória (lead gate)
+- [ ] Criar endpoint POST /api/lead no server.js com envio de e-mail para dermabrandinfo@gmail.com.
+- [ ] Criar tela de cadastro premium com campos: Nome, E-mail, WhatsApp e Área de Atuação (chips de especialidades médicas).
+- [ ] Bloquear acesso ao diagnóstico até o cadastro ser concluído (verificar localStorage).
+- [ ] Salvar lead no localStorage para não pedir novamente na mesma sessão/dispositivo.
+- [ ] Validar sintaxe, publicar no GitHub e verificar dermabrand.com.br.

@@ -153,6 +153,134 @@
       line-height: 1.8;
     }
 
+    /* ── LEAD GATE ─────────────────────────────────────────────────────────── */
+    .lead-gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 80px);
+      padding: 2rem 1rem;
+    }
+    .lead-gate-inner {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+    }
+    .lead-gate-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: #c9a84c;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+    .lead-gate-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #f5f0e8;
+      margin: 0 0 0.6rem;
+      line-height: 1.25;
+    }
+    .lead-gate-subtitle {
+      color: #a09880;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0 0 2rem;
+    }
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .lead-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .lead-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #c9a84c;
+      text-transform: uppercase;
+    }
+    .lead-req { color: #e07070; }
+    .lead-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #f5f0e8;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .lead-input:focus { border-color: rgba(201,168,76,0.6); }
+    .lead-input::placeholder { color: #555; }
+    .lead-input-sm { font-size: 0.88rem; padding: 10px 14px; }
+    .lead-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .lead-chip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      color: #a09880;
+      font-size: 0.8rem;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .lead-chip:hover { border-color: rgba(201,168,76,0.4); color: #c9a84c; }
+    .lead-chip.selected {
+      background: rgba(201,168,76,0.15);
+      border-color: #c9a84c;
+      color: #c9a84c;
+      font-weight: 600;
+    }
+    .lead-error {
+      color: #e07070;
+      font-size: 0.82rem;
+      min-height: 1.2em;
+    }
+    .lead-submit {
+      background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 100%);
+      color: #0d0d0d;
+      border: none;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+      margin-top: 0.4rem;
+    }
+    .lead-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .lead-submit:active { transform: translateY(0); }
+    .lead-privacy {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+    /* ── /LEAD GATE ──────────────────────────────────────────────────────────── */
+
     .hero-section {
       text-align: center;
       margin: 3rem 0;
@@ -1951,6 +2079,72 @@
       </div>
     </header>
 
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         LEAD GATE — Tela de cadastro obrigatória antes do diagnóstico
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <div class="lead-gate" id="leadGate">
+      <div class="lead-gate-inner">
+        <div class="lead-gate-badge">ACESSO GRATUITO</div>
+        <h2 class="lead-gate-title">Antes de iniciar sua análise</h2>
+        <p class="lead-gate-subtitle">Preencha seus dados para receber o diagnóstico completo e ser contactado por um especialista Dermabrand.</p>
+
+        <form id="leadForm" class="lead-form" novalidate>
+
+          <div class="lead-field">
+            <label class="lead-label" for="lgNome">Nome completo <span class="lead-req">*</span></label>
+            <input class="lead-input" id="lgNome" type="text" placeholder="Dr. Maria Oliveira" autocomplete="name" />
+          </div>
+
+          <div class="lead-field">
+            <label class="lead-label" for="lgEmail">E-mail profissional <span class="lead-req">*</span></label>
+            <input class="lead-input" id="lgEmail" type="email" placeholder="seu@email.com" autocomplete="email" />
+          </div>
+
+          <div class="lead-field">
+            <label class="lead-label" for="lgWhatsapp">WhatsApp <span class="lead-req">*</span></label>
+            <input class="lead-input" id="lgWhatsapp" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" />
+          </div>
+
+          <div class="lead-field">
+            <label class="lead-label">Área de atuação <span class="lead-req">*</span></label>
+            <div class="lead-chips" id="lgAreaChips">
+              <button type="button" class="lead-chip" data-value="Dermatologia">Dermatologia</button>
+              <button type="button" class="lead-chip" data-value="Cirurgia Plástica">Cirurgia Plástica</button>
+              <button type="button" class="lead-chip" data-value="Nutrição">Nutrição</button>
+              <button type="button" class="lead-chip" data-value="Ginecologia">Ginecologia</button>
+              <button type="button" class="lead-chip" data-value="Cardiologia">Cardiologia</button>
+              <button type="button" class="lead-chip" data-value="Ortopedia">Ortopedia</button>
+              <button type="button" class="lead-chip" data-value="Pediatria">Pediatria</button>
+              <button type="button" class="lead-chip" data-value="Psiquiatria">Psiquiatria</button>
+              <button type="button" class="lead-chip" data-value="Endocrinologia">Endocrinologia</button>
+              <button type="button" class="lead-chip" data-value="Odontologia">Odontologia</button>
+              <button type="button" class="lead-chip" data-value="Fisioterapia">Fisioterapia</button>
+              <button type="button" class="lead-chip" data-value="Psicologia">Psicologia</button>
+              <button type="button" class="lead-chip" data-value="Medicina Esportiva">Medicina Esportiva</button>
+              <button type="button" class="lead-chip" data-value="Neurologia">Neurologia</button>
+              <button type="button" class="lead-chip" data-value="Oftalmologia">Oftalmologia</button>
+              <button type="button" class="lead-chip" data-value="Clínica Geral">Clínica Geral</button>
+              <button type="button" class="lead-chip" data-value="Marketing Médico">Marketing Médico</button>
+              <button type="button" class="lead-chip" data-value="Clínica / Empresa">Clínica / Empresa</button>
+              <button type="button" class="lead-chip" data-value="Outra">Outra</button>
+            </div>
+            <input class="lead-input lead-input-sm" id="lgAreaOutra" type="text" placeholder="Especifique sua área" style="display:none;margin-top:10px" />
+            <input type="hidden" id="lgArea" />
+          </div>
+
+          <div class="lead-error" id="leadError"></div>
+
+          <button type="submit" class="lead-submit" id="leadSubmitBtn">
+            <span id="leadSubmitText">ACESSAR DIAGNÓSTICO GRATUITO</span>
+            <span id="leadSubmitSpinner" style="display:none">Aguarde...</span>
+          </button>
+
+          <p class="lead-privacy">Seus dados são usados apenas para contato. Não compartilhamos com terceiros.</p>
+        </form>
+      </div>
+    </div>
+    <!-- /LEAD GATE -->
+
     <div class="hero-section" id="heroSection">
       <h1 class="hero-title">Análise do seu Instagram</h1>
       <p class="hero-subtitle">Resultado em segundos. Sem login.</p>
@@ -2681,6 +2875,103 @@
     document.getElementById('igInput').addEventListener('keydown', e => {
       if (e.key === 'Enter') fetchProfileData();
     });
+
+    // ────────────────────────────────────────────────────────────────────────────────
+    // LEAD GATE — controle de acesso
+    // ────────────────────────────────────────────────────────────────────────────────
+    (function initLeadGate() {
+      const LEAD_KEY = 'primora_lead_ok';
+      const leadGate = document.getElementById('leadGate');
+      const heroSection = document.getElementById('heroSection');
+      const searchBox = document.getElementById('searchBox');
+      const formSection = document.getElementById('formSection');
+      const reportSection = document.getElementById('reportSection');
+
+      // Função para esconder o gate e mostrar a plataforma
+      function unlockPlatform() {
+        leadGate.style.display = 'none';
+        heroSection.style.display = '';
+        searchBox.style.display = '';
+      }
+
+      // Esconder tudo até o gate ser resolvido
+      heroSection.style.display = 'none';
+      searchBox.style.display = 'none';
+      formSection.style.display = 'none';
+      reportSection.style.display = 'none';
+
+      // Se já fez cadastro antes, liberar direto
+      if (localStorage.getItem(LEAD_KEY)) {
+        unlockPlatform();
+        return;
+      }
+
+      // Chips de área
+      document.querySelectorAll('#lgAreaChips .lead-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('#lgAreaChips .lead-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          const val = chip.dataset.value;
+          document.getElementById('lgArea').value = val;
+          const outraInput = document.getElementById('lgAreaOutra');
+          outraInput.style.display = val === 'Outra' ? 'block' : 'none';
+          if (val !== 'Outra') outraInput.value = '';
+        });
+      });
+
+      // Máscara de WhatsApp
+      document.getElementById('lgWhatsapp').addEventListener('input', function() {
+        let v = this.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        else if (v.length > 0) v = `(${v}`;
+        this.value = v;
+      });
+
+      // Submit do formulário
+      document.getElementById('leadForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const nome = document.getElementById('lgNome').value.trim();
+        const email = document.getElementById('lgEmail').value.trim();
+        const whatsapp = document.getElementById('lgWhatsapp').value.trim();
+        let area = document.getElementById('lgArea').value.trim();
+        const outraInput = document.getElementById('lgAreaOutra');
+        if (area === 'Outra' && outraInput.value.trim()) area = outraInput.value.trim();
+
+        const errEl = document.getElementById('leadError');
+        errEl.textContent = '';
+
+        // Validação
+        if (!nome) { errEl.textContent = 'Por favor, informe seu nome completo.'; return; }
+        if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { errEl.textContent = 'Informe um e-mail válido.'; return; }
+        if (!whatsapp || whatsapp.replace(/\D/g,'').length < 10) { errEl.textContent = 'Informe um WhatsApp válido com DDD.'; return; }
+        if (!area) { errEl.textContent = 'Selecione sua área de atuação.'; return; }
+
+        // Loading
+        const btn = document.getElementById('leadSubmitBtn');
+        document.getElementById('leadSubmitText').style.display = 'none';
+        document.getElementById('leadSubmitSpinner').style.display = 'inline';
+        btn.disabled = true;
+
+        try {
+          const resp = await fetch('/api/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, email, whatsapp, area }),
+          });
+          if (!resp.ok) throw new Error('Erro no servidor');
+
+          // Salvar no localStorage e liberar plataforma
+          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
+          unlockPlatform();
+        } catch (err) {
+          // Se o servidor falhar, liberar mesmo assim (não bloquear o usuário)
+          localStorage.setItem(LEAD_KEY, JSON.stringify({ nome, email, area, ts: Date.now() }));
+          unlockPlatform();
+        }
+      });
+    })();
+    // ── /LEAD GATE ─────────────────────────────────────────────────────────────────────────────
   </script>
 </body>
 </html>
