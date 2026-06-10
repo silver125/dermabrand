@@ -189,44 +189,36 @@ REGRAS:
 const SEASONAL_CALENDAR = [
   // Janeiro
   { month: 1, day: 1,  label: 'Ano Novo — Metas de Saúde e Bem-estar', tags: ['bem-estar','saúde mental','nutrologia','endocrinologia','dermatologia','medicina esportiva','psicologia'] },
-  { month: 1, day: 11, label: 'Dia Mundial da Hipertensão Pulmonar', tags: ['cardiologia','pneumologia','clínica médica'] },
-  { month: 1, day: 13, label: 'Dia Mundial do Linfoma', tags: ['oncologia','hematologia','imunologia'] },
   { month: 1, day: 17, label: 'Dia Nacional de Combate à Hansenaníase', tags: ['dermatologia','infectologia','saúde pública'] },
   { month: 1, day: 20, label: 'Janeiro Branco — Saúde Mental e Emocional', tags: ['psiquiatria','psicologia','saúde mental','bem-estar','neurologia'] },
-  { month: 1, day: 22, label: 'Dia Nacional do Cego (Oftalmologia Preventiva)', tags: ['oftalmologia','saúde pública'] },
-  { month: 1, day: 25, label: 'Dia Nacional de Combate ao Câncer de Cabeça e Pescoço', tags: ['oncologia','otorrinolaringologia','cirurgia','dermatologia'] },
-  { month: 1, day: 31, label: 'Fim do Verão (Cuidados com a Pele após Exposição Solar)', tags: ['dermatologia','fotoproteção','estética','nutrição'] },
+  { month: 1, day: 22, label: 'Dia Nacional do Cego (Oftalmologia Preventiva)', tags: ['oftalmologia','saúde pública','geriatria'] },
+  { month: 1, day: 27, label: 'Dia Nacional de Combate ao Câncer de Cabeça e Pescoço', tags: ['oncologia','otorrinolaringologia','cirurgia plástica','dermatologia'] },
+  { month: 1, day: 31, label: 'Fim do Verão — Cuidados com a Pele após Exposição Solar', tags: ['dermatologia','fotoproteção','estética','nutrição'] },
   // Fevereiro
   { month: 2, day: 4,  label: 'Dia Mundial do Câncer', tags: ['oncologia','dermatologia','ginecologia','urologia','mastologia','nutrição'] },
-  { month: 2, day: 5,  label: 'Dia Mundial do Combate ao Câncer de Intestino', tags: ['gastroenterologia','oncologia','nutrição','cirurgia'] },
+  { month: 2, day: 5,  label: 'Dia Mundial do Câncer de Intestino', tags: ['gastroenterologia','oncologia','nutrição','cirurgia'] },
   { month: 2, day: 14, label: 'Dia dos Namorados (EUA/Internacional)', tags: ['saúde sexual','ginecologia','urologia','dermatologia','bem-estar','psicologia'] },
-  { month: 2, day: 20, label: 'Dia Mundial da Justiça Social (Acesso à Saúde)', tags: ['saúde pública','medicina preventiva'] },
-  { month: 2, day: 28, label: 'Dia das Doenças Raras', tags: ['genética','neurologia','reumatologia','saúde pública','imunologia'] },
+  { month: 2, day: 28, label: 'Dia das Doenças Raras', tags: ['genética','neurologia','reumatologia','imunologia','pediatria'] },
   // Março
-  { month: 3, day: 1,  label: 'Mês do Câncer de Colo de Útero (Março Lilás)', tags: ['ginecologia','oncologia','saúde feminina','infectologia'] },
-  { month: 3, day: 4,  label: 'Dia Mundial do Obeso', tags: ['endocrinologia','nutrologia','nutrição','cirurgia bariátrica','cardiologia'] },
+  { month: 3, day: 1,  label: 'Março Lilás — Câncer de Colo de Útero (mês inteiro)', tags: ['ginecologia','oncologia','saúde feminina','infectologia','mastologia'] },
+  { month: 3, day: 4,  label: 'Dia Mundial da Obesidade', tags: ['endocrinologia','nutrologia','nutrição','cirurgia bariátrica','cardiologia'] },
   { month: 3, day: 8,  label: 'Dia Internacional da Mulher', tags: ['saúde feminina','ginecologia','mastologia','dermatologia','nutrição','psicologia'] },
-  { month: 3, day: 15, label: 'Dia Mundial do Rim', tags: ['nefrologia','clínica médica','nutrição','urologia'] },
-  { month: 3, day: 20, label: 'Dia Mundial da Felicidade', tags: ['saúde mental','psiquiatria','psicologia','bem-estar','nutrição'] },
-  { month: 3, day: 21, label: 'Dia Mundial da Síndrome de Down', tags: ['genética','neurologia','pediatria','psicologia'] },
-  { month: 3, day: 21, label: 'Início do Outono', tags: ['dermatologia','nutrição','imunologia','bem-estar','reumatologia'] },
-  { month: 3, day: 22, label: 'Dia Mundial da Água (Hidratação e Saúde)', tags: ['nutrição','nefrologia','dermatologia','endocrinologia'] },
+  { month: 3, day: 15, label: 'Dia Mundial do Rim', tags: ['nefrologia','clínica médica','nutrição','urologia','endocrinologia'] },
+  { month: 3, day: 21, label: 'Dia Mundial da Síndrome de Down', tags: ['genética','neurologia','pediatria','psicologia','fonoaudiologia'] },
+  { month: 3, day: 21, label: 'Início do Outono — Transição de Estação', tags: ['dermatologia','nutrição','imunologia','reumatologia','pneumologia'] },
+  { month: 3, day: 22, label: 'Dia Mundial da Água — Hidratação e Saúde', tags: ['nutrição','nefrologia','dermatologia','endocrinologia'] },
   { month: 3, day: 24, label: 'Dia Mundial da Tuberculose', tags: ['infectologia','pneumologia','saúde pública','imunologia'] },
-  { month: 3, day: 26, label: 'Dia Nacional de Prevenção e Combate à Hipertensão', tags: ['cardiologia','clínica médica','nutrição','nefrologia'] },
+  { month: 3, day: 26, label: 'Dia Nacional de Combate à Hipertensão', tags: ['cardiologia','clínica médica','nutrição','nefrologia'] },
   // Abril
-  { month: 4, day: 2,  label: 'Dia Mundial do Autismo (Abril Azul)', tags: ['neurologia','pediatria','psiquiatria','psicologia','fonoaudiologia'] },
+  { month: 4, day: 2,  label: 'Abril Azul — Dia Mundial do Autismo', tags: ['neurologia','pediatria','psiquiatria','psicologia','fonoaudiologia'] },
   { month: 4, day: 7,  label: 'Dia Mundial da Saúde', tags: ['saúde pública','prevenção','todos os especialistas','marketing médico'] },
-  { month: 4, day: 11, label: 'Dia Mundial do Parkinson', tags: ['neurologia','geriatria','fisioterapia','nutrição'] },
+  { month: 4, day: 11, label: 'Dia Mundial do Parkinson', tags: ['neurologia','geriatria','fisioterapia','nutrição','psicologia'] },
   { month: 4, day: 17, label: 'Dia Nacional de Combate à Hipertensão', tags: ['cardiologia','clínica médica','nutrição','nefrologia'] },
-  { month: 4, day: 22, label: 'Dia da Terra (Saúde e Meio Ambiente)', tags: ['saúde ambiental','nutrição','bem-estar','dermatologia'] },
-  { month: 4, day: 25, label: 'Dia Mundial da Malária', tags: ['infectologia','saúde pública','medicina tropical'] },
   { month: 4, day: 28, label: 'Dia Mundial da Saúde e Segurança no Trabalho', tags: ['medicina do trabalho','ortopedia','saúde mental','fisioterapia'] },
   // Maio
-  { month: 5, day: 1,  label: 'Maio Amarelo — Saúde Mental no Trabalho', tags: ['saúde mental','psiquiatria','psicologia','bem-estar','medicina do trabalho'] },
   { month: 5, day: 5,  label: 'Dia Mundial da Higiene das Mãos', tags: ['infectologia','saúde pública','dermatologia','pediatria'] },
   { month: 5, day: 11, label: 'Dia Nacional de Prevenção da Obesidade', tags: ['endocrinologia','nutrologia','cirurgia bariátrica','nutrição','cardiologia'] },
-  { month: 5, day: 12, label: 'Dia das Mães', tags: ['saúde feminina','ginecologia','dermatologia','nutrição','bem-estar','psicologia'] },
-  { month: 5, day: 15, label: 'Dia da Família (Saúde Familiar)', tags: ['pediatria','clínica médica','nutrição','saúde pública','psicologia'] },
+  { month: 5, day: 12, label: 'Dia das Mães', tags: ['saúde feminina','ginecologia','dermatologia','nutrição','bem-estar','psicologia','cirurgia plástica'] },
   { month: 5, day: 17, label: 'Dia Mundial da Hipertensão', tags: ['cardiologia','clínica médica','nutrição','nefrologia','endocrinologia'] },
   { month: 5, day: 19, label: 'Dia Nacional de Combate à Hepatite', tags: ['gastroenterologia','infectologia','hepatologia','nutrição'] },
   { month: 5, day: 22, label: 'Dia Mundial da Esclerose Múltipla', tags: ['neurologia','imunologia','fisioterapia','nutrição'] },
@@ -234,38 +226,31 @@ const SEASONAL_CALENDAR = [
   { month: 5, day: 28, label: 'Dia Internacional da Saúde da Mulher', tags: ['ginecologia','saúde feminina','mastologia','endocrinologia','nutrição'] },
   { month: 5, day: 31, label: 'Dia Mundial Sem Tabaco', tags: ['pneumologia','cardiologia','oncologia','dermatologia','saúde mental'] },
   // Junho
-  { month: 6, day: 5,  label: 'Dia Mundial do Meio Ambiente', tags: ['saúde ambiental','nutrição','bem-estar','dermatologia'] },
   { month: 6, day: 6,  label: 'Dia Nacional de Doação de Sangue', tags: ['hematologia','saúde pública','cirurgia','oncologia'] },
-  { month: 6, day: 12, label: 'Dia dos Namorados (Brasil)', tags: ['saúde sexual','dermatologia','ginecologia','urologia','bem-estar','psicologia'] },
-  { month: 6, day: 13, label: 'Festa Junina (Inverno Brasileiro — Alimentação Sazonal)', tags: ['nutrição','endocrinologia','dermatologia','saúde digestiva','gastroenterologia'] },
+  { month: 6, day: 12, label: 'Dia dos Namorados (Brasil)', tags: ['saúde sexual','dermatologia','ginecologia','urologia','bem-estar','psicologia','cirurgia plástica'] },
   { month: 6, day: 14, label: 'Dia Mundial do Doador de Sangue', tags: ['hematologia','saúde pública','oncologia','cirurgia'] },
-  { month: 6, day: 19, label: 'Dia Nacional de Combate à Infecção Hospitalar', tags: ['infectologia','saúde pública','cirurgia','clínica médica'] },
-  { month: 6, day: 21, label: 'Início do Inverno', tags: ['dermatologia','pneumologia','imunologia','nutrição','reumatologia','ortopedia','alergologia'] },
+  { month: 6, day: 21, label: 'Início do Inverno — Cuidados Sazonais', tags: ['dermatologia','pneumologia','imunologia','nutrição','reumatologia','ortopedia','alergologia'] },
   { month: 6, day: 24, label: 'Dia Nacional da Fisioterapia', tags: ['fisioterapia','ortopedia','neurologia','medicina esportiva','reumatologia'] },
   { month: 6, day: 26, label: 'Dia Internacional de Combate às Drogas', tags: ['psiquiatria','saúde mental','saúde pública','neurologia'] },
   { month: 6, day: 27, label: 'Dia Nacional de Combate ao Diabetes', tags: ['endocrinologia','nutrologia','nutrição','oftalmologia','cardiologia'] },
   // Julho
   { month: 7, day: 4,  label: 'Dia Nacional de Controle da Asma', tags: ['pneumologia','alergologia','pediatria','imunologia'] },
-  { month: 7, day: 11, label: 'Dia Mundial da População', tags: ['saúde pública','ginecologia','obstetrícia'] },
-  { month: 7, day: 14, label: 'Dia Nacional de Prevenção e Controle do Câncer de Cabeça e Pescoço', tags: ['oncologia','otorrinolaringologia','cirurgia','dermatologia'] },
-  { month: 7, day: 20, label: 'Dia do Amigo (Saúde das Relações e Bem-estar)', tags: ['saúde mental','psicologia','psiquiatria','bem-estar'] },
+  { month: 7, day: 14, label: 'Dia Nacional de Prevenção do Câncer de Cabeça e Pescoço', tags: ['oncologia','otorrinolaringologia','cirurgia plástica','dermatologia'] },
+  { month: 7, day: 20, label: 'Dia do Amigo — Saúde das Relações', tags: ['saúde mental','psicologia','psiquiatria','bem-estar'] },
   { month: 7, day: 28, label: 'Dia Mundial da Hepatite', tags: ['gastroenterologia','infectologia','hepatologia','nutrição'] },
-  { month: 7, day: 30, label: 'Dia Mundial de Combate ao Tráfico de Pessoas (Saúde das Vítimas)', tags: ['psiquiatria','saúde pública','medicina legal'] },
   // Agosto
-  { month: 8, day: 1,  label: 'Agosto Dourado — Aleitamento Materno', tags: ['pediatria','ginecologia','nutrologia','obstetrícia','nutrição'] },
+  { month: 8, day: 1,  label: 'Agosto Dourado — Aleitamento Materno (mês inteiro)', tags: ['pediatria','ginecologia','nutrologia','obstetrícia','nutrição'] },
   { month: 8, day: 9,  label: 'Dia Nacional de Combate ao Fumo', tags: ['pneumologia','cardiologia','oncologia','dermatologia','saúde mental'] },
-  { month: 8, day: 10, label: 'Dia do Ótico (Saúde Auditiva)', tags: ['otorrinolaringologia','saúde pública','geriatria'] },
-  { month: 8, day: 13, label: 'Dia dos Pais', tags: ['saúde masculina','urologia','cardiologia','nutrição','bem-estar','psicologia'] },
-  { month: 8, day: 19, label: 'Dia Mundial da Humanitação (Saúde Humanizada)', tags: ['saúde pública','marketing médico','todos os especialistas'] },
+  { month: 8, day: 13, label: 'Dia dos Pais', tags: ['saúde masculina','urologia','cardiologia','nutrição','bem-estar','psicologia','medicina esportiva'] },
   { month: 8, day: 26, label: 'Dia Nacional de Doação de Órgãos', tags: ['cirurgia','saúde pública','nefrologia','cardiologia','hepatologia'] },
   // Setembro
   { month: 9, day: 1,  label: 'Setembro Amarelo — Prevenção ao Suicídio (mês inteiro)', tags: ['psiquiatria','psicologia','saúde mental','neurologia','bem-estar'] },
   { month: 9, day: 10, label: 'Dia Mundial de Prevenção ao Suicídio', tags: ['psiquiatria','saúde mental','neurologia','psicologia'] },
-  { month: 9, day: 13, label: 'Dia do Nutricionista', tags: ['nutrição','nutrologia','endocrinologia','gastroenterologia','saúde esportiva'] },
+  { month: 9, day: 13, label: 'Dia do Nutricionista', tags: ['nutrição','nutrologia','endocrinologia','gastroenterologia','medicina esportiva'] },
   { month: 9, day: 15, label: 'Dia Nacional de Combate ao Colesterol', tags: ['cardiologia','nutrição','endocrinologia','clínica médica','nefrologia'] },
   { month: 9, day: 21, label: 'Dia Mundial do Alzheimer', tags: ['neurologia','geriatria','psiquiatria','nutrição','fisioterapia'] },
-  { month: 9, day: 22, label: 'Início da Primavera', tags: ['dermatologia','alergologia','nutrição','oftalmologia','medicina esportiva'] },
-  { month: 9, day: 26, label: 'Dia Nacional de Prevenção e Controle do Câncer de Tireoide', tags: ['endocrinologia','oncologia','cirurgia','nutrição'] },
+  { month: 9, day: 22, label: 'Início da Primavera — Alergias e Pele', tags: ['dermatologia','alergologia','nutrição','oftalmologia','medicina esportiva'] },
+  { month: 9, day: 26, label: 'Dia Nacional de Prevenção do Câncer de Tireoide', tags: ['endocrinologia','oncologia','cirurgia','nutrição'] },
   { month: 9, day: 29, label: 'Dia Mundial do Coração', tags: ['cardiologia','clínica médica','nutrição','medicina esportiva','fisioterapia'] },
   // Outubro
   { month: 10, day: 1,  label: 'Dia Internacional do Idoso', tags: ['geriatria','cardiologia','ortopedia','nutrição','neurologia','fisioterapia'] },
@@ -298,19 +283,17 @@ const SEASONAL_CALENDAR = [
   { month: 12, day: 31, label: 'Réveillon (Metas de Saúde para o Novo Ano)', tags: ['bem-estar','saúde mental','nutrologia','dermatologia','medicina esportiva','endocrinologia','psicologia'] },
 ];
 
-// Eventos especiais recorrentes (Copa do Mundo, Olímpiadas, etc.)
+// Eventos especiais de saúde e datas de alto impacto editorial
 const SPECIAL_EVENTS = [
-  // Copa do Mundo FIFA 2026: Jun-Jul 2026
-  { from: '2026-06-11', to: '2026-07-19', label: 'Copa do Mundo FIFA 2026', tags: ['medicina esportiva','ortopedia','nutrição','cardiologia','fisioterapia','saúde mental'] },
-  // Jogos Pan-Americanos 2027 (Barranquilla) — pré-temporada de conteúdo esportivo
-  { from: '2026-10-01', to: '2026-12-31', label: 'Pré-temporada: Jogos Pan-Americanos 2027', tags: ['medicina esportiva','ortopedia','nutrição','fisioterapia'] },
-  // Carnaval 2026 (estimado)
-  { from: '2026-02-14', to: '2026-02-17', label: 'Carnaval 2026 (Cuidados com a Saúde e Pele)', tags: ['dermatologia','infectologia','saúde sexual','nutrição','saúde mental'] },
-  // Férias de julho
-  { from: '2026-07-01', to: '2026-07-31', label: 'Férias de Julho (Viagens e Saúde)', tags: ['infectologia','ortopedia','nutrição','dermatologia','medicina do viajante','pediatria'] },
-  // Volta às aulas
-  { from: '2026-01-26', to: '2026-02-10', label: 'Volta às Aulas (Saúde Infantil e Imunização)', tags: ['pediatria','infectologia','nutrição','saúde mental','odontologia'] },
-  { from: '2026-07-27', to: '2026-08-10', label: 'Volta às Aulas (2º semestre)', tags: ['pediatria','infectologia','nutrição','saúde mental','odontologia'] },
+  // Copa do Mundo FIFA 2026 — oportunidade para conteúdo de saúde esportiva e prevenção
+  { from: '2026-06-11', to: '2026-07-19', label: 'Copa do Mundo FIFA 2026 — Saúde Esportiva e Prevenção de Lesões', tags: ['medicina esportiva','ortopedia','nutrição','cardiologia','fisioterapia'] },
+  // Carnaval — cuidados com pele, saúde sexual e imunidade
+  { from: '2026-02-14', to: '2026-02-17', label: 'Carnaval — Cuidados com a Pele, Imunidade e Saúde Sexual', tags: ['dermatologia','infectologia','saúde sexual','nutrição','imunologia'] },
+  // Férias de julho — viagens, saúde infantil, exposição solar
+  { from: '2026-07-01', to: '2026-07-31', label: 'Férias de Julho — Saúde nas Viagens e Cuidados Infantis', tags: ['infectologia','pediatria','dermatologia','nutrição','ortopedia'] },
+  // Volta às aulas — imunização, saúde bucal, nutrição infantil
+  { from: '2026-01-26', to: '2026-02-10', label: 'Volta às Aulas — Imunização, Saúde Bucal e Nutrição Infantil', tags: ['pediatria','infectologia','nutrição','odontologia','saúde mental'] },
+  { from: '2026-07-27', to: '2026-08-10', label: 'Volta às Aulas (2º semestre) — Imunização e Saúde Infantil', tags: ['pediatria','infectologia','nutrição','odontologia','saúde mental'] },
 ];
 
 function getUpcomingSeasonalContext(referenceDate) {
