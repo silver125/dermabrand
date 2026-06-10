@@ -56,8 +56,8 @@ app.use('/api/trends', apiLimiter);
 app.use('/api/profile', apiLimiter);
 app.use('/api/lead', leadLimiter);
 
-// ── Variáveis de ambiente (sem fallback hardcoded para chaves sensíveis) ──────
-const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '';
+// ── Variáveis de ambiente ──────────────────────────────────────────────
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY || '0e22bdfa13msh0e3e0fcbe1c11fdp128553jsn968d0eb71654';
 const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST || 'instagram-scraper-20251.p.rapidapi.com';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 
