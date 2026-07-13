@@ -597,6 +597,110 @@ app.post('/api/lead', async (req, res) => {
   return res.json({ ok: true });
 });
 
+// ── POST /api/content-research ──────────────────────────────────────────────────
+// Recebe { tema, specialty, username } e retorna análise estratégica de desempenho do conteúdo
+app.use('/api/content-research', apiLimiter);
+app.post('/api/content-research', async (req, res) => {
+  const tema      = sanitize(req.body.tema, 200);
+  const specialty = sanitize(req.body.specialty, 80);
+  const username  = sanitize(req.body.username || '', 30).replace(/[^a-zA-Z0-9._]/g, '');
+
+  if (!tema) return res.status(400).json({ error: 'Tema é obrigatório.' });
+
+  const areaLabel = specialty || 'saúde';
+
+  const prompt = `Você é especialista sênior em marketing de conteúdo para médicos e profissionais de saúde no Instagram brasileiro. Analise o potencial de desempenho do tema abaixo para um profissional de ${areaLabel}.
+
+TEMA A ANALISAR: "${tema}"
+ESPECIALIDADE: ${areaLabel}
+${username ? `PERFIL: @${username}` : ''}
+
+Realice uma análise estratégica completa com:
+
+1. POTENCIAL DE ALCANCE: estimativa de alcance orgânico (baixo/médio/alto/viral) com justificativa baseada em comportamento do algoritmo do Instagram para conteúdo médico
+2. ENGAJAMENTO ESPERADO: tipo de engajamento predominante (salvamentos, comentários, compartilhamentos) e por quê
+3. PUBLICO_ALVO: perfil detalhado do paciente/seguidor que mais se identifica com este tema
+4. CONCORRENCIA: nível de saturação deste tema no Instagram médico (baixo/médio/alto) e como se diferenciar
+5. MELHOR_FORMATO: qual formato performa melhor para este tema (Reels/Carrossel/Stories/Lives) com justificativa
+6. MELHOR_HORARIO: melhor dia da semana e faixa de horário para publicar este tema
+7. ANGULOS: 3 ângulos editoriais diferentes para abordar este tema de forma única e diferenciada
+8. GANCHO_ABERTURA: 3 opções de gancho de abertura (primeiras palavras do vídeo ou primeira linha do carrossel) para maximizar retenção
+9. HASHTAGS: 5-8 hashtags estratégicas (mix de nicho + especialidade + amplas) com volume estimado
+10. SCORE_POTENCIAL: nota de 0 a 10 para o potencial geral deste tema para ${areaLabel} agora
+11. ALERTA_CFM: se houver risco ético ou de conformidade com o CFM neste tema, sinalize com orientação
+
+Regras:
+- Seja específico para ${areaLabel} — não dê conselhos genéricos
+- Linguagem técnica, sóbria e premium
+- Baseie-se em padrões reais de comportamento do Instagram para conteúdo médico brasileiro
+- Se o tema for muito genérico, sugira como torná-lo específico da especialidade
+
+Responda EXCLUSIVAMENTE em JSON válido, sem markdown, no formato:
+{
+  "tema_analisado": "${tema}",
+  "area": "${areaLabel}",
+  "score_potencial": <número 0-10>,
+  "score_label": "<Baixo|Médio|Alto|Excelente>",
+  "potencial_alcance": {
+    "nivel": "<baixo|médio|alto|viral>",
+    "justificativa": "<1-2 frases>"
+  },
+  "engajamento_esperado": {
+    "tipo_predominante": "<salvamentos|comentários|compartilhamentos|misto>",
+    "justificativa": "<1-2 frases>"
+  },
+  "publico_alvo": "<descrição do perfil>",
+  "concorrencia": {
+    "nivel": "<baixo|médio|alto>",
+    "diferenciacao": "<como se destacar>"
+  },
+  "melhor_formato": {
+    "formato": "<Reels|Carrossel|Stories|Live>",
+    "justificativa": "<1-2 frases>"
+  },
+  "melhor_horario": {
+    "dia": "<dia(s) da semana>",
+    "horario": "<faixa de horário>"
+  },
+  "angulos": [
+    {"titulo": "<ângulo 1>", "descricao": "<como abordar>"},
+    {"titulo": "<ângulo 2>", "descricao": "<como abordar>"},
+    {"titulo": "<ângulo 3>", "descricao": "<como abordar>"}
+  ],
+  "ganchos_abertura": ["<gancho 1>", "<gancho 2>", "<gancho 3>"],
+  "hashtags": ["<hashtag1>", "<hashtag2>", "<hashtag3>", "<hashtag4>", "<hashtag5>"],
+  "alerta_cfm": "<null ou orientação ética se houver risco>"
+}`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.65,
+        max_tokens: 2000,
+        response_format: { type: 'json_object' },
+      }),
+    });
+
+    const data = await response.json();
+    const raw = data.choices?.[0]?.message?.content || '{}';
+
+    let parsed;
+    try { parsed = JSON.parse(raw); }
+    catch { return res.status(500).json({ error: 'IA retornou JSON inválido', raw }); }
+
+    return res.json({ ok: true, ...parsed });
+  } catch (err) {
+    return res.status(500).json({ error: 'Erro ao analisar conteúdo', detail: err.message });
+  }
+});
+
 // ── Fallback → index.html ─────────────────────────────────────────────────────
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
