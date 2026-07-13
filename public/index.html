@@ -2133,6 +2133,179 @@
       line-height: 1.8;
     }
 
+    /* ── Novos elementos visuais do diagnóstico JSON ─────────────────── */
+    .diag-nivel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .diag-nivel-baixo  { background: rgba(100,200,100,0.1);  color: rgba(120,220,120,0.9);  border: 1px solid rgba(100,200,100,0.2); }
+    .diag-nivel-medio  { background: rgba(247,216,146,0.1);  color: rgba(247,216,146,0.85); border: 1px solid rgba(247,216,146,0.2); }
+    .diag-nivel-alto   { background: rgba(216,175,169,0.1);  color: rgba(216,175,169,0.9);  border: 1px solid rgba(216,175,169,0.2); }
+
+    .diag-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.6rem 0;
+    }
+    .diag-pill {
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(216,175,169,0.07);
+      border: 1px solid rgba(216,175,169,0.15);
+      color: rgba(216,175,169,0.8);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    .diag-item-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .diag-item-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: rgba(234,234,234,0.82);
+      line-height: 1.55;
+    }
+    .diag-item-list li .diag-li-icon {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      font-size: 0.7rem;
+      color: var(--rose-gold);
+    }
+
+    .diag-error-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .diag-error-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      background: rgba(255,80,80,0.04);
+      border: 1px solid rgba(255,80,80,0.1);
+      font-size: 0.85rem;
+      color: rgba(234,234,234,0.8);
+      line-height: 1.5;
+    }
+    .diag-error-list li i {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      color: rgba(255,120,100,0.75);
+      font-size: 0.75rem;
+    }
+
+    .diag-plano-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+    .diag-plano-item {
+      padding: 0.9rem 1.1rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .diag-plano-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(216,175,169,0.55);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .diag-plano-value {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+    }
+    .diag-plano-full {
+      grid-column: 1 / -1;
+    }
+
+    .diag-bio-sugerida {
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 14px;
+      background: rgba(207,166,101,0.05);
+      border: 1px solid rgba(207,166,101,0.15);
+    }
+    .diag-bio-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(207,166,101,0.6);
+      margin-bottom: 0.4rem;
+    }
+    .diag-bio-text {
+      font-size: 0.88rem;
+      color: rgba(247,216,146,0.8);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .diag-highlight-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+    .diag-highlight {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .diag-highlight.forte {
+      background: rgba(100,200,100,0.04);
+      border-color: rgba(100,200,100,0.12);
+    }
+    .diag-highlight.fraco {
+      background: rgba(255,80,80,0.04);
+      border-color: rgba(255,80,80,0.1);
+    }
+    .diag-highlight-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .diag-highlight.forte .diag-highlight-label { color: rgba(120,220,120,0.6); }
+    .diag-highlight.fraco .diag-highlight-label  { color: rgba(255,120,100,0.6); }
+    .diag-highlight-text {
+      font-size: 0.83rem;
+      color: rgba(234,234,234,0.78);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .diag-plano-grid { grid-template-columns: 1fr; }
+      .diag-highlight-row { flex-direction: column; }
+    }
+
     @media (max-width: 760px) {
       .diagnostic-notes-grid {
         grid-template-columns: 1fr;
@@ -3333,7 +3506,7 @@
       }
     }
 
-    function buildFinalView(p, text) {
+    function buildFinalView(p, report) {
       const avatarWrap = document.getElementById('avatarWrap');
       if (globProfilePic) {
         avatarWrap.innerHTML = `<img src="${globProfilePic}" class="avatar-img" onerror="this.outerHTML='<div class=\\'avatar-letter\\'>${p.full_name.charAt(0).toUpperCase()}</div>'">`;
@@ -3345,48 +3518,131 @@
       document.getElementById('pCat').textContent = (p.specialty || 'Área de atuação não informada') + (p.city ? ' • ' + p.city : '');
       document.getElementById('pBio').textContent = p.biography;
 
-      // Calcular e exibir scores especialistas com estrelas preenchidas
-      const scores = extractScores(text);
-      setStarScore('scoreAuthorityValue', 'scoreAuthorityStars', scores.authority);
-      setStarScore('scoreBioValue', 'scoreBioStars', scores.bio);
-      setStarScore('scoreContentValue', 'scoreContentStars', scores.content);
+      // Suporte a report JSON (novo) e texto plano (legado)
+      const d = (typeof report === 'object' && report !== null) ? report : null;
+
+      if (d && d.scores) {
+        setStarScore('scoreAuthorityValue', 'scoreAuthorityStars', d.scores.autoridade);
+        setStarScore('scoreBioValue', 'scoreBioStars', d.scores.bio);
+        setStarScore('scoreContentValue', 'scoreContentStars', d.scores.conteudo);
+      } else if (typeof report === 'string') {
+        const scores = extractScores(report);
+        setStarScore('scoreAuthorityValue', 'scoreAuthorityStars', scores.authority);
+        setStarScore('scoreBioValue', 'scoreBioStars', scores.bio);
+        setStarScore('scoreContentValue', 'scoreContentStars', scores.content);
+      }
 
       toggleDisplay('profileCard', 'block');
 
-      const sections = [
-        "2. POSICIONAMENTO E AUTORIDADE",
-        "3. ANÁLISE DA BIO",
-        "4. ANÁLISE DE CONTEÚDO E ENGAJAMENTO",
-        "5. ERROS E GARGALOS",
-        "6. PLANO DE MELHORIA"
-      ];
-
-      const formatBody = (str) => {
-        return str
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/\n/g, '<br>')
-          .trim();
+      // Helper: badge de nível
+      const nivelBadge = (n) => {
+        const map = { 'baixo': 'diag-nivel-baixo', 'médio': 'diag-nivel-medio', 'medio': 'diag-nivel-medio', 'alto': 'diag-nivel-alto' };
+        const cls = map[(n||'').toLowerCase()] || 'diag-nivel-medio';
+        return `<span class="diag-nivel-badge ${cls}">${(n||'').charAt(0).toUpperCase()+(n||'').slice(1)}</span>`;
       };
 
-      // Notas aparecem somente no quadrante de estrelas do topo — card removido do relatório
-      const notesCardHtml = '';
-      const blocksHtml = sections.map((title, i) => {
-        let content = stripScoreLines(parseSection(text, title));
-        if (!content) return '';
-
-        let visualTitle = title.replace(/^\d\.\s*/, '');
-
-        return `<div class="report-card">
-          <h3 class="rc-title"><div class="rc-number">${i + 2}</div> ${visualTitle}</h3>
-          <div class="rc-body">${formatBody(content)}</div>
+      if (d) {
+        // ── CARD 1: POSICIONAMENTO E AUTORIDADE
+        const pos = d.posicionamento || {};
+        const pontosHtml = Array.isArray(pos.pontos_fortes) ? pos.pontos_fortes.map(f =>
+          `<li><i class="fa-solid fa-check diag-li-icon"></i>${f}</li>`).join('') : '';
+        const card1 = `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-icon"><i class="fa-solid fa-trophy"></i></div> Posicionamento e Autoridade</h3>
+          ${nivelBadge(pos.nivel)}
+          <ul class="diag-item-list">${pontosHtml}</ul>
+          ${pos.gap_principal ? `<div style="margin-top:0.8rem;padding:0.75rem 1rem;border-radius:12px;background:rgba(255,180,50,0.04);border:1px solid rgba(255,180,50,0.12);font-size:0.83rem;color:rgba(255,200,80,0.75);"><i class="fa-solid fa-triangle-exclamation" style="margin-right:0.4rem;font-size:0.75rem;"></i>${pos.gap_principal}</div>` : ''}
         </div>`;
-      }).join('');
 
-      document.getElementById('reportCards').innerHTML = notesCardHtml + blocksHtml;
+        // ── CARD 2: BIO
+        const bio = d.bio || {};
+        const card2 = `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-icon"><i class="fa-solid fa-id-card"></i></div> Análise da Bio</h3>
+          ${bio.tipo_perfil ? `<div class="diag-pill-list"><span class="diag-pill">${bio.tipo_perfil}</span></div>` : ''}
+          <div style="font-size:0.87rem;color:rgba(234,234,234,0.78);line-height:1.65;">${bio.avaliacao || ''}</div>
+          ${bio.oportunidade ? `<div style="margin-top:0.6rem;font-size:0.83rem;color:rgba(216,175,169,0.65);">▸ ${bio.oportunidade}</div>` : ''}
+          ${bio.bio_sugerida ? `<div class="diag-bio-sugerida"><div class="diag-bio-label">Bio sugerida</div><div class="diag-bio-text">${bio.bio_sugerida}</div></div>` : ''}
+        </div>`;
 
-      // As seções adicionais foram consolidadas no novo prompt (6 seções)
-      // O Plano de Melhoria já é renderizado como card no blocksHtml acima
+        // ── CARD 3: CONTEÚDAO E ENGAJAMENTO
+        const cont = d.conteudo || {};
+        const card3 = `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-icon"><i class="fa-solid fa-chart-line"></i></div> Conteúdo e Engajamento</h3>
+          <div class="diag-highlight-row">
+            <div class="diag-highlight forte">
+              <div class="diag-highlight-label"><i class="fa-solid fa-star" style="margin-right:0.3rem;"></i>Ponto forte</div>
+              <div class="diag-highlight-text">${cont.ponto_forte || ''}</div>
+            </div>
+            <div class="diag-highlight fraco">
+              <div class="diag-highlight-label"><i class="fa-solid fa-circle-exclamation" style="margin-right:0.3rem;"></i>Lacuna crítica</div>
+              <div class="diag-highlight-text">${cont.lacuna_critica || ''}</div>
+            </div>
+          </div>
+          <div style="margin-top:0.85rem;display:flex;gap:0.7rem;flex-wrap:wrap;">
+            ${cont.engajamento_estimado ? `<div style="padding:0.5rem 0.9rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);font-size:0.75rem;color:rgba(255,255,255,0.5);"><span style="color:rgba(216,175,169,0.6);margin-right:0.3rem;">Engajamento</span>${(cont.engajamento_estimado||'').charAt(0).toUpperCase()+(cont.engajamento_estimado||'').slice(1)}</div>` : ''}
+          </div>
+          ${cont.potencial_crescimento ? `<div style="margin-top:0.7rem;font-size:0.83rem;color:rgba(234,234,234,0.6);line-height:1.55;">${cont.potencial_crescimento}</div>` : ''}
+        </div>`;
+
+        // ── CARD 4: ERROS E GARGALOS
+        const errosHtml = Array.isArray(d.erros) ? d.erros.map(e =>
+          `<li><i class="fa-solid fa-xmark"></i>${e}</li>`).join('') : '';
+        const card4 = `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-icon" style="background:rgba(255,80,80,0.08);border-color:rgba(255,80,80,0.2);"><i class="fa-solid fa-triangle-exclamation" style="color:rgba(255,120,100,0.8);"></i></div> Erros e Gargalos</h3>
+          <ul class="diag-error-list">${errosHtml}</ul>
+        </div>`;
+
+        // ── CARD 5: PLANO DE MELHORIA
+        const plano = d.plano || {};
+        const acoesHtml = Array.isArray(plano.acoes_imediatas) ? plano.acoes_imediatas.map(a =>
+          `<li><i class="fa-solid fa-bolt diag-li-icon"></i>${a}</li>`).join('') : '';
+        const conteudoHtml = Array.isArray(plano.conteudo_priorizar) ? plano.conteudo_priorizar.map(c =>
+          `<span class="diag-pill">${c}</span>`).join('') : '';
+        const card5 = `<div class="report-card">
+          <h3 class="rc-title"><div class="rc-icon" style="background:rgba(100,200,100,0.08);border-color:rgba(100,200,100,0.2);"><i class="fa-solid fa-rocket" style="color:rgba(120,220,120,0.8);"></i></div> Plano de Melhoria</h3>
+          <div class="diag-plano-grid">
+            <div class="diag-plano-item diag-plano-full">
+              <div class="diag-plano-label"><i class="fa-solid fa-bolt"></i> Ações imediatas (2 semanas)</div>
+              <ul class="diag-item-list" style="margin-top:0.4rem;">${acoesHtml}</ul>
+            </div>
+            <div class="diag-plano-item">
+              <div class="diag-plano-label"><i class="fa-solid fa-film"></i> Conteúdo a priorizar</div>
+              <div class="diag-pill-list" style="margin-top:0.4rem;">${conteudoHtml}</div>
+            </div>
+            <div class="diag-plano-item">
+              <div class="diag-plano-label"><i class="fa-solid fa-calendar"></i> Frequência</div>
+              <div class="diag-plano-value">${plano.frequencia_semanal || ''}</div>
+            </div>
+            <div class="diag-plano-item diag-plano-full">
+              <div class="diag-plano-label"><i class="fa-solid fa-gem"></i> Diferencial</div>
+              <div class="diag-plano-value">${plano.diferencial || ''}</div>
+            </div>
+            ${plano.proximo_passo ? `<div class="diag-plano-item diag-plano-full" style="background:rgba(216,175,169,0.04);border-color:rgba(216,175,169,0.12);">
+              <div class="diag-plano-label"><i class="fa-solid fa-arrow-right"></i> Próximo passo</div>
+              <div class="diag-plano-value" style="color:rgba(216,175,169,0.8);">${plano.proximo_passo}</div>
+            </div>` : ''}
+          </div>
+        </div>`;
+
+        document.getElementById('reportCards').innerHTML = card1 + card2 + card3 + card4 + card5;
+      } else {
+        // Fallback para texto plano (legado)
+        const text = typeof report === 'string' ? report : '';
+        const sections = [
+          '2. POSICIONAMENTO E AUTORIDADE',
+          '3. ANÁLISE DA BIO',
+          '4. ANÁLISE DE CONTEÚDAO E ENGAJAMENTO',
+          '5. ERROS E GARGALOS',
+          '6. PLANO DE MELHORIA'
+        ];
+        const formatBody = (str) => str.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\n/g,'<br>').trim();
+        const blocksHtml = sections.map((title, i) => {
+          const content = stripScoreLines(parseSection(text, title));
+          if (!content) return '';
+          return `<div class="report-card"><h3 class="rc-title"><div class="rc-number">${i+2}</div> ${title.replace(/^\d\.\s*/,'')}</h3><div class="rc-body">${formatBody(content)}</div></div>`;
+        }).join('');
+        document.getElementById('reportCards').innerHTML = blocksHtml;
+      }
+
       document.getElementById('improvementSection').style.display = 'none';
       document.getElementById('suggestionsSection').style.display = 'none';
       document.getElementById('actionPlanSection').style.display = 'none';
@@ -3394,8 +3650,6 @@
       toggleDisplay('reportSection', 'block');
       toggleDisplay('progressSection', 'none');
 
-      // Carregar trends sazonais na última página do diagnóstico
-      // Prioridade: (1) especialidade do lead gate (sessão), (2) p.specialty do formData, (3) globCategory do Instagram, (4) 'Saúde'
       const savedLeadForTrends = JSON.parse(sessionStorage.getItem('primora_lead_ok') || '{}');
       const trendSpecialty = (savedLeadForTrends.area || '').trim() || p.specialty || globCategory || 'Saúde';
       fetchReportTrends(trendSpecialty);

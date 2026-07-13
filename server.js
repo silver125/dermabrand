@@ -154,13 +154,9 @@ app.post('/api/analyze', async (req, res) => {
     ? profile.contentTypes.map(t => sanitize(t, 40)).slice(0, 10)
     : (Array.isArray(req.body.contentTypes) ? req.body.contentTypes.map(t => sanitize(t, 40)).slice(0, 10) : []);
 
-  const prompt = `Você é um especialista em branding premium para saúde, posicionamento digital e comunicação ética para diferentes perfis do ecossistema médico no Brasil.
+  const prompt = `Você é especialista sênior em branding premium para saúde, posicionamento digital e comunicação ética para o ecossistema médico brasileiro.
 
-Sua primeira tarefa é identificar, pelos dados informados, se o perfil representa um profissional de saúde, uma clínica, uma agência de marketing médico, uma consultoria, um serviço B2B para médicos ou outra especialidade/segmento. Nunca assuma dermatologia, médica ou dermatologista por padrão.
-
-Sua análise deve ser técnica, especializada e orientada ao objetivo adequado ao tipo de perfil: atração de pacientes particulares quando for perfil assistencial, fortalecimento institucional quando for clínica, ou geração de autoridade e demanda B2B quando for marketing médico, consultoria ou serviço para profissionais de saúde. Escreva como uma agência de marketing médico premium que entende que o diagnóstico gratuito é a primeira etapa de uma conversa comercial consultiva: entregue valor real, evidencie lacunas estratégicas e conduza o leitor para perceber que existe um próximo nível de planejamento com especialistas.
-
-Analise os dados abaixo com rigor profissional e gere um diagnóstico estratégico completo, adaptado à especialidade, ao segmento e ao público-alvo identificados.
+Identifique o tipo de perfil (profissional de saúde, clínica, agência de marketing médico, consultoria ou B2B). Nunca assuma dermatologia por padrão.
 
 DADOS DO PERFIL:
 - Nome: ${full_name || 'Não informado'}
@@ -168,82 +164,58 @@ DADOS DO PERFIL:
 - Especialidade: ${specialty || 'Não informada'}
 - Cidade: ${city || 'Não informada'}
 - Bio: ${biography || 'Não informada'}
-- Número de seguidores: ${follower_count || 'Não informado'}
-- Média de curtidas: ${likes || 'Não informada'}
-- Média de comentários: ${comments || 'Não informada'}
+- Seguidores: ${follower_count || 'Não informado'}
+- Média curtidas: ${likes || 'Não informada'}
+- Média comentários: ${comments || 'Não informada'}
 - Frequência de posts: ${frequency || 'Não informada'}
-- Tipos de conteúdo (ex: reels, antes/depois, educativo, lifestyle): ${contentTypes && contentTypes.length > 0 ? contentTypes.join(', ') : 'Não informado'}
+- Tipos de conteúdo: ${contentTypes && contentTypes.length > 0 ? contentTypes.join(', ') : 'Não informado'}
 - Exemplos de legendas: ${captions || 'Não informado'}
-- Observações gerais: ${observations || 'Nenhuma'}
 
----
-
-ESTRUTURA DA RESPOSTA (exatamente 6 seções, cada uma objetiva e sem repetição entre elas):
-
-1. NOTAS DO DIAGNÓSTICO
-Retorne as três notas somente aqui, no formato exato:
-Score de Autoridade: X/10
-Score de Bio e Posicionamento: X/10
-Score de Conteúdo e Engajamento: X/10
-
-Em seguida, 2 frases justificando os scores. Seja direto: cite o fator principal que elevou e o principal que reduziu cada nota. Não repita os critérios nas seções seguintes.
-
-Critérios (use internamente, não repita no texto):
-- Autoridade: expertise percebida, diferenciação, consistência de imagem.
-- Bio: clareza de área, público, diferencial, CTA sóbrio.
-- Conteúdo: consistência editorial, qualidade, engajamento real.
-
----
-
-2. POSICIONAMENTO E AUTORIDADE
-Nível: Baixo / Médio / Alto.
-3 a 4 frases: o que transmite autoridade hoje e o principal gap. Sem notas numéricas. Sem repetir o que foi dito em "1".
-
----
-
-3. ANÁLISE DA BIO
-Identifique o tipo de perfil (profissional, clínica, agência, B2B). Avalie em 3 frases: clareza, credibilidade e oportunidade principal.
-Sugira uma BIO otimizada (máx 150 caracteres), sóbria, sem emojis, sem promessas genéricas, adaptada ao tipo de perfil.
-
----
-
-4. ANÁLISE DE CONTEÚDO E ENGAJAMENTO
-Em 4 a 5 frases: qualidade percebida, adequação ao público correto, taxa de engajamento estimada e potencial de crescimento. Aponte 1 ponto forte e 1 lacuna crítica. Seja específico, use os dados informados.
-
----
-
-5. ERROS E GARGALOS
-Liste de 3 a 4 erros estratégicos objetivos que impedem crescimento ou conversão. Cada item em 1 frase acionável. Sem repetição do que foi dito nas seções anteriores.
-
----
-
-6. PLANO DE MELHORIA (EXECUTIVO)
-Apresente em formato conciso:
-- **Próximas 2 semanas**: 2 ações de impacto imediato
-- **Conteúdo a priorizar**: 2 formatos ou temas específicos
-- **Frequência**: postagens por semana recomendadas
-- **Diferencial**: 1 frase sobre como se destacar no segmento
-- **Próximo passo**: em tom consultivo, por que um plano com especialistas da Dermabrand aprofunda o que o diagnóstico identificou.
-
-Seja direto. Cada item em 1 a 2 frases. Sem repetição de pontos já citados.
-
----
+Responda EXCLUSIVAMENTE em JSON válido, sem markdown, no seguinte formato:
+{
+  "scores": {
+    "autoridade": <0-10>,
+    "bio": <0-10>,
+    "conteudo": <0-10>,
+    "justificativa": "<2 frases diretas explicando os scores>"
+  },
+  "posicionamento": {
+    "nivel": "<Baixo|Médio|Alto>",
+    "pontos_fortes": ["<frase 1>", "<frase 2>"],
+    "gap_principal": "<1 frase sobre o maior gap>"
+  },
+  "bio": {
+    "tipo_perfil": "<profissional|clínica|agência|B2B>",
+    "avaliacao": "<2 frases: clareza e credibilidade>",
+    "oportunidade": "<1 frase sobre a principal oportunidade>",
+    "bio_sugerida": "<bio otimizada máx 150 chars, sem emoji, sem clichês>"
+  },
+  "conteudo": {
+    "ponto_forte": "<1 frase>",
+    "lacuna_critica": "<1 frase>",
+    "engajamento_estimado": "<baixo|médio|alto>",
+    "potencial_crescimento": "<1 frase>"
+  },
+  "erros": [
+    "<erro estratégico 1 — 1 frase acionável>",
+    "<erro estratégico 2 — 1 frase acionável>",
+    "<erro estratégico 3 — 1 frase acionável>"
+  ],
+  "plano": {
+    "acoes_imediatas": ["<ação 1 — próximas 2 semanas>", "<ação 2 — próximas 2 semanas>"],
+    "conteudo_priorizar": ["<formato/tema 1>", "<formato/tema 2>"],
+    "frequencia_semanal": "<X posts por semana>",
+    "diferencial": "<1 frase sobre como se destacar no segmento>",
+    "proximo_passo": "<1 frase consultiva sobre aprofundar com a Dermabrand>"
+  }
+}
 
 REGRAS:
-- Linguagem sofisticada, técnica, sóbria e compatível com a credibilidade exigida no mercado de saúde.
-- Nunca use emojis, ícones decorativos, símbolos chamativos ou linguagem de influenciador.
-- Evitar clichês, generalizações, promessas de resultado, sensacionalismo e ofertas agressivas.
-- Foco em diagnóstico estratégico com intenção comercial consultiva: a pessoa deve sentir que recebeu valor, mas que o próximo passo com a Dermabrand pode aprofundar método, plano de ação e execução.
-- Pensar como especialista em branding premium para saúde, respeitando a seriedade da comunicação no setor.
-- Seja conciso e acionável.
-- Use dados para sustentar cada recomendação.
-- Não mencione consultas médicas gratuitas, descontos, garantias de resultado ou chamadas comerciais agressivas. Pode mencionar uma conversa com especialistas da Dermabrand como próximo passo estratégico para transformar o diagnóstico em plano de marca, conteúdo e conversão.
-- A análise de BIO deve ser profunda, especializada e crítica; explique exatamente por que a bio atual transmite ou não autoridade.
-- A sugestão de bio deve ser adequada ao tipo de perfil identificado. Se for marketing médico, agência, consultoria ou serviço B2B, não escreva como se fosse médica, médico, dermatologista ou clínica assistencial. Se for profissional ou clínica, respeite a especialidade informada. Em todos os casos, sem emoji, sem sensacionalismo, sem promessas e sem termos genéricos como “transformando vidas”, “resultados que falam”, “excelência” ou “inovação e cuidado” quando não houver evidência.
-- As três notas devem ser realistas, rigorosas e justificáveis; evite notas infladas sem evidência e explique os critérios usados de forma compreensível para o usuário final.
-- Não repita notas numéricas fora da seção “1. NOTAS DO DIAGNÓSTICO”. Em “Posicionamento e Autoridade” e nas demais seções, escreva apenas análise qualitativa.
-- Nunca use visualização circular, gráfico ou termos técnicos de interface no texto; apenas entregue os scores no formato solicitado.
-- O texto deve soar como uma agência de marketing médico de altíssimo nível: preciso, bonito, persuasivo, premium e voltado à geração de lead qualificado, sem parecer apelativo.`;
+- Linguagem técnica, sóbria e premium. Sem emojis, clichês ou sensacionalismo.
+- Scores realistas e justificáveis. Sem inflar notas.
+- Bio sugerida: sem emoji, sem promessas genéricas, adaptada ao tipo de perfil.
+- Nunca repita informações entre seções.
+- Use os dados fornecidos para sustentar cada recomendação.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -257,15 +229,20 @@ REGRAS:
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
         max_tokens: 2000,
+        response_format: { type: 'json_object' },
       }),
     });
 
     const data = await response.json();
-    const text = data.choices?.[0]?.message?.content || '';
+    const raw = data.choices?.[0]?.message?.content || '';
 
-    if (!text) return res.status(500).json({ error: 'IA não retornou análise', detail: data });
+    if (!raw) return res.status(500).json({ error: 'IA não retornou análise', detail: data });
 
-    return res.json({ ok: true, report: text });
+    let parsed;
+    try { parsed = JSON.parse(raw); }
+    catch { return res.status(500).json({ error: 'IA retornou JSON inválido', raw }); }
+
+    return res.json({ ok: true, report: parsed });
   } catch (err) {
     return res.status(500).json({ error: 'Erro ao gerar análise', detail: err.message });
   }
