@@ -464,53 +464,68 @@ app.post('/api/trends', async (req, res) => {
     seasonalContext += `\nNão há datas comemorativas específicas nos próximos 60 dias, mas considere a estação do ano e o contexto geral de saúde.\n`;
   }
 
-  const prompt = `Você é especialista em estratégia de conteúdo para profissionais e clínicas de saúde no Instagram brasileiro.
+  const prompt = `Você é especialista sênior em estratégia de conteúdo para médicos, especialistas e clínicas de saúde no Instagram brasileiro.
 
 ESPECIALIDADE DO PROFISSIONAL: ${areaLabel}
 
-Sua tarefa é gerar exatamente 3 sugestões de pauta EXCLUSIVAMENTE sobre ${areaLabel}. Todo o conteúdo deve ser específico desta especialidade — termos clínicos, procedimentos, dúvidas e público-alvo típicos de ${areaLabel}. Não gere pautas genéricas de saúde que qualquer especialidade poderia usar.
+Sua tarefa é gerar exatamente 5 oportunidades de conteúdo EXCLUSIVAMENTE sobre ${areaLabel}. Todo o conteúdo deve ser específico desta especialidade — termos clínicos reais, procedimentos, dúvidas frequentes dos pacientes e público-alvo típico de ${areaLabel}. Não gere pautas genéricas de saúde.
 
-Use as datas sazonais abaixo como GANCHO EDITORIAL para criar pautas de ${areaLabel}. Cada pauta deve conectar uma data real com um tema específico da especialidade.
+Use as datas sazonais abaixo como GANCHO EDITORIAL. Cada pauta deve conectar uma data real (ou tendência do momento) com um tema específico da especialidade.
 
 ${seasonalContext}
 
-Instrucões:
-1. Para cada uma das 3 datas mais próximas, crie uma pauta sobre um tema real de ${areaLabel} que se conecte com aquela data.
-2. O tema, o título, o gancho e o ângulo devem ser sobre ${areaLabel} — a data é apenas o gatilho de oportunidade.
-3. Exemplos do nível de especificidade esperado:
-   - Dermatologia: fotoproteção, acne, manchas, botox, peeling, skincare, rosácea, dermatite
-   - Nutrição: microbiota, resistência à insulina, jejum intermitente, suplementação, emagrecimento
-   - Cardiologia: pressão arterial, colesterol, infarto, arritmia, exames preventivos
-   - Ortopedia: coluna, joelho, postura, lesões esportivas, osteoporose
-   - Ginecologia: ciclo menstrual, menopausa, HPV, pré-natal, saúde hormonal
-4. Informe sempre qual data/evento motivou cada pauta no campo "gatilho".
+Para cada oportunidade de conteúdo, forneça:
+1. TEMA: título estratégico da pauta (máx 12 palavras)
+2. GATILHO: data ou evento que justifica publicar agora
+3. OPORTUNIDADE: por que este tema converte e gera autoridade agora (1-2 frases)
+4. PUBLICO: perfil exato do paciente que este conteúdo atinge
+5. REELS: título + gancho de abertura + ângulo estratégico + call-to-action sugerido
+6. CARROSSEL: título + gancho de abertura + estrutura de slides sugerida (3-5 pontos) + call-to-action
+7. STORIES: ideia de sequência de stories (2-3 frames) para amplificar o tema
+8. PALAVRAS_CHAVE: 3-4 termos/hashtags relevantes para a especialidade
+
+Exemplos do nível de especificidade esperado:
+- Dermatologia: fotoproteção FPS, acne hormonal adulta, manchas melasma, bioestimuladores, peeling químico, rosácea rosacea, dermatite atópica
+- Nutrição: microbiota intestinal, resistência insulínica, jejum intermitente 16:8, suplementação vitamina D, emagrecimento funcional
+- Cardiologia: pressão arterial sistólica, LDL colesterol, infarto silencioso, fibrilação atrial, check-up cardiovascular
+- Ortopedia: hérnia de disco L4-L5, condromalácia patelar, postura cervical, lesão LCA, osteoporose pós-menopausa
+- Ginecologia: SOP síndrome ovários policísticos, menopausa precoce, endometriose, HPV vacina, saúde hormonal feminina
+- Medicina Estética: bioestimuladores colágeno, harmonização facial, toxina botulínica, preenchimento labial, fios de sustentação
+- Tricologia: queda capilar telógena, alopecia androgenética, transplante capilar, PRP capilar, microagulhamento couro cabeludo
+- Otorrinolaringologia: rinite alérgica, sinusite crônica, perda auditiva, apneia do sono, desvio septo nasal
+- Radiologia: tomografia vs ressonância, laudos preventivos, mamografia digital, densitometria óssea, ultrassom diagnóstico
 
 Regras de qualidade:
-- Linguagem sóbria, técnica e premium — sem emojis, sem sensacionalismo, sem promessas de resultado
-- Pautas éticas, compatíveis com o CFM e com a comunicação médica responsável
-- Foco em educação, autoridade e conexão com o público correto da especialidade
-- Cada sugestão deve ter: título da pauta (máx 12 palavras), gancho de abertura (1 frase) e ângulo estratégico (1 frase)
-- Não repita datas entre os 3 blocos
-- NUNCA gere pauta genérica — se não souber a especialidade, use saúde geral mas sinalize no campo "area"
+- Linguagem sóbria, técnica e premium — sem emojis no JSON, sem sensacionalismo, sem promessas de resultado
+- Pautas éticas, compatíveis com o CFM e comunicação médica responsável
+- Foco em educação, autoridade e conversão de pacientes qualificados
+- Não repita datas entre os 5 blocos
+- NUNCA gere pauta genérica — seja específico da especialidade
 
 Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, no formato exato:
 {
   "area": "<área identificada>",
   "trends": [
     {
-      "tema": "<título do tema>",
-      "gatilho": "<nome da data ou evento que motivou esta pauta>",
-      "gatilho_data": "<data no formato DD/MM ou descrição como 'em andamento'>",
+      "tema": "<título estratégico do tema>",
+      "gatilho": "<nome da data ou evento>",
+      "gatilho_data": "<data DD/MM ou 'em andamento'>",
+      "oportunidade": "<por que publicar agora — 1-2 frases>",
+      "publico": "<perfil do paciente-alvo>",
       "reels": {
-        "titulo": "<título da pauta para Reels>",
-        "gancho": "<frase de abertura>",
-        "angulo": "<ângulo estratégico>"
+        "titulo": "<título para Reels>",
+        "gancho": "<frase de abertura impactante>",
+        "angulo": "<ângulo estratégico diferenciado>",
+        "cta": "<call-to-action sugerido>"
       },
       "carrossel": {
-        "titulo": "<título da pauta para Carrossel>",
+        "titulo": "<título para Carrossel>",
         "gancho": "<frase de abertura>",
-        "angulo": "<ângulo estratégico>"
-      }
+        "slides": ["<slide 1>", "<slide 2>", "<slide 3>", "<slide 4>"],
+        "cta": "<call-to-action sugerido>"
+      },
+      "stories": "<ideia de sequência de 2-3 frames de stories>",
+      "palavras_chave": ["<termo1>", "<termo2>", "<termo3>"]
     }
   ]
 }`;
@@ -526,7 +541,7 @@ Responda EXCLUSIVAMENTE em JSON válido, sem markdown, sem texto fora do JSON, n
         model: 'gpt-4o-mini',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
-        max_tokens: 1200,
+        max_tokens: 2800,
         response_format: { type: 'json_object' },
       }),
     });

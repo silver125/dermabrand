@@ -597,21 +597,29 @@
     }
 
     .stp-trend-block {
-      padding: 1rem;
+      padding: 1.4rem;
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 20px;
-      background: rgba(0, 0, 0, 0.16);
+      background: linear-gradient(160deg, rgba(15,10,14,0.9) 0%, rgba(8,6,10,0.95) 100%);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .stp-trend-block:hover {
+      border-color: rgba(207,166,101,0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
 
     .stp-trend-tema {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 0.88rem;
-      font-weight: 600;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
       letter-spacing: 0.01em;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .stp-trend-tema-num {
@@ -649,6 +657,104 @@
       flex: 0 0 auto;
     }
 
+    .stp-trend-header {
+      margin-bottom: 0.9rem;
+    }
+
+    .stp-trend-oportunidade {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: 12px;
+      background: rgba(207,166,101,0.06);
+      border: 1px solid rgba(207,166,101,0.12);
+      color: rgba(247,216,146,0.82);
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+    .stp-trend-oportunidade i {
+      color: rgba(207,166,101,0.7);
+      font-size: 0.72rem;
+      margin-top: 0.18rem;
+      flex-shrink: 0;
+    }
+
+    .stp-trend-publico {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+      color: rgba(216,175,169,0.65);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .stp-trend-publico i {
+      color: rgba(216,175,169,0.45);
+      font-size: 0.7rem;
+    }
+
+    .stp-slides-list {
+      margin: 0.4rem 0 0.5rem 0;
+      padding-left: 1.1rem;
+      list-style: none;
+    }
+    .stp-slides-list li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+      margin-bottom: 0.22rem;
+    }
+    .stp-slides-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(207,166,101,0.5);
+    }
+
+    .stp-format-cta {
+      margin: 0.4rem 0 0;
+      color: rgba(207,166,101,0.7);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .stp-format-cta i {
+      font-size: 0.62rem;
+      margin-right: 0.2rem;
+    }
+
+    .stp-format-stories {
+      grid-column: 1 / -1;
+      background: rgba(216,175,169,0.03);
+      border-color: rgba(216,175,169,0.1);
+    }
+
+    .stp-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .stp-keyword {
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.45);
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+    }
+
     .stp-formats {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -656,10 +762,14 @@
     }
 
     .stp-format {
-      padding: 0.75rem;
+      padding: 1rem;
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
+      background: rgba(255, 255, 255, 0.02);
+      transition: background 0.2s ease;
+    }
+    .stp-format:hover {
+      background: rgba(255,255,255,0.04);
     }
 
     .stp-format-label {
@@ -675,11 +785,11 @@
 
     .stp-format-titulo {
       display: block;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.85rem;
       font-weight: 600;
-      line-height: 1.35;
-      margin-bottom: 0.32rem;
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
     }
 
     .stp-format-gancho {
@@ -698,12 +808,21 @@
     }
 
     .trend-tab-section {
-      margin: 2rem 0 0;
-      padding: 1.35rem;
-      border: 1px solid rgba(216, 175, 169, 0.16);
+      margin: 2.5rem 0 0;
+      padding: 2rem;
+      border: 1px solid rgba(207, 166, 101, 0.18);
       border-radius: 28px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(207, 166, 101, 0.05));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.16);
+      background: linear-gradient(160deg, rgba(16,12,8,0.95) 0%, rgba(10,8,5,0.98) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 60px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .trend-tab-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(207,166,101,0.5), transparent);
     }
 
     .trend-tab-header {
@@ -1309,20 +1428,19 @@
     .profile-hero {
       display: none;
       text-align: center;
-      margin: 4rem 0;
+      margin: 4rem 0 2.5rem;
       animation: fadeUp 1s ease forwards;
     }
 
     .avatar-frame {
-      width: 140px;
-      height: 140px;
+      width: 148px;
+      height: 148px;
       margin: 0 auto 2rem;
       border-radius: 50%;
       padding: 4px;
-      border: 3px solid var(--rose-gold);
-      background: linear-gradient(135deg, rgba(216, 175, 169, 0.1), rgba(216, 175, 169, 0.05));
+      background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-dark), rgba(207,166,101,0.6));
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(216, 175, 169, 0.2);
+      box-shadow: 0 24px 60px rgba(216, 175, 169, 0.25), 0 0 0 8px rgba(216,175,169,0.06);
     }
 
     .avatar-img {
@@ -1349,8 +1467,9 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.8rem;
       color: var(--champagne);
-      margin-bottom: 0.5rem;
-      font-weight: 400;
+      margin-bottom: 0.4rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
     }
 
     .ph-meta {
@@ -1369,52 +1488,99 @@
       color: var(--muted-silver);
     }
 
+    @keyframes progressFill {
+      from { width: 0%; }
+    }
+
     .scores-panel {
       margin: 2.5rem auto 0;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.2rem;
       max-width: 860px;
     }
 
     .score-card {
-      padding: 1.45rem 1.2rem;
-      border: 1px solid rgba(216, 175, 169, 0.24);
-      background: linear-gradient(145deg, rgba(216, 175, 169, 0.08), rgba(255, 255, 255, 0.025));
-      border-radius: 22px;
+      padding: 1.8rem 1.4rem 1.5rem;
+      border: 1px solid rgba(216, 175, 169, 0.18);
+      background: linear-gradient(160deg, rgba(20,14,18,0.85) 0%, rgba(10,8,12,0.95) 100%);
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .score-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(216,175,169,0.25);
+    }
+    .score-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+      opacity: 0.6;
+    }
+
+    .score-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      opacity: 0.85;
     }
 
     .score-value {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       line-height: 1;
-      font-weight: 400;
+      font-weight: 300;
       color: var(--champagne);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .score-value sup {
+      font-size: 1rem;
+      color: var(--muted-silver);
+      font-weight: 300;
+    }
+
+    .score-bar-wrap {
+      margin: 0.9rem auto 0.6rem;
+      width: 80%;
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose-gold-dark), var(--rose-gold));
+      border-radius: 99px;
+      width: 0%;
+      animation: progressFill 1.2s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
     }
 
     .score-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--muted-silver);
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-top: 0.8rem;
+      letter-spacing: 0.18em;
+      margin-top: 0.4rem;
     }
 
     .star-rating {
       position: relative;
       display: inline-block;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       line-height: 1;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       font-family: Arial, sans-serif;
     }
 
     .star-rating .stars-empty {
-      color: rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.12);
     }
 
     .star-rating .stars-filled {
@@ -1425,27 +1591,40 @@
       white-space: nowrap;
       width: 0%;
       color: var(--rose-gold);
-      text-shadow: 0 0 18px rgba(216, 175, 169, 0.35);
+      text-shadow: 0 0 12px rgba(216, 175, 169, 0.5);
     }
 
     .score-note {
-      margin-top: 0.65rem;
-      font-size: 0.78rem;
-      color: rgba(232, 226, 218, 0.58);
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: rgba(232, 226, 218, 0.45);
       font-weight: 300;
+      line-height: 1.5;
     }
 
     .score-criteria {
       max-width: 860px;
-      margin: 1rem auto 0;
-      padding: 1.25rem 1.35rem;
-      border: 1px solid rgba(216, 175, 169, 0.18);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.025);
-      color: rgba(232, 226, 218, 0.72);
-      font-size: 0.84rem;
-      line-height: 1.75;
+      margin: 1.2rem auto 0;
+      padding: 1.1rem 1.4rem;
+      border: 1px solid rgba(216, 175, 169, 0.1);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.018);
+      color: rgba(232, 226, 218, 0.55);
+      font-size: 0.8rem;
+      line-height: 1.8;
       text-align: left;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+    .score-criteria::before {
+      content: '\f05a';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: rgba(216,175,169,0.35);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
     }
 
     .score-criteria strong {
@@ -1454,13 +1633,7 @@
     }
 
     .score-criteria-title {
-      display: block;
-      margin-bottom: 0.4rem;
-      color: var(--rose-gold);
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 700;
+      display: none;
     }
 
     @media (max-width: 760px) {
@@ -1479,17 +1652,22 @@
       text-align: center;
       margin: 4rem 0 3rem;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: var(--rose-gold);
-      letter-spacing: 0.3em;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
-
     .editorial-divider::before,
     .editorial-divider::after {
-      content: "✦";
-      margin: 0 1rem;
-      opacity: 0.5;
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216,175,169,0.3), transparent);
     }
 
     .report-grid {
@@ -1499,15 +1677,25 @@
     }
 
     .report-card {
-      background: linear-gradient(135deg, rgba(30, 20, 25, 0.5), rgba(15, 10, 15, 0.7));
-      border: 1px solid var(--glass-border);
-      border-left: 4px solid var(--rose-gold);
-      padding: 2.5rem;
-      border-radius: 12px;
+      background: linear-gradient(160deg, rgba(18,12,16,0.92) 0%, rgba(10,8,12,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-left: 3px solid var(--rose-gold);
+      padding: 2.2rem 2.5rem;
+      border-radius: 20px;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
       animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .report-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(216,175,169,0.03) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .report-card:nth-child(1) { animation-delay: 0s; }
@@ -1520,19 +1708,36 @@
 
     .report-card:hover {
       border-left-color: var(--champagne);
-      background: linear-gradient(135deg, rgba(30, 20, 25, 0.7), rgba(15, 10, 15, 0.85));
-      transform: translateX(10px);
+      background: linear-gradient(160deg, rgba(22,14,18,0.96) 0%, rgba(12,9,14,0.99) 100%);
+      transform: translateX(6px) translateY(-2px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(216,175,169,0.12);
     }
 
     .rc-title {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       color: var(--champagne);
       font-weight: 400;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .rc-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(216,175,169,0.15), rgba(163,127,121,0.08));
+      border: 1px solid rgba(216,175,169,0.2);
+      font-size: 1.1rem;
+      color: var(--rose-gold);
+      flex-shrink: 0;
     }
 
     .rc-number {
@@ -1552,8 +1757,12 @@
 
     .rc-body {
       font-size: 0.95rem;
-      color: var(--silver);
-      line-height: 1.8;
+      color: rgba(234,234,234,0.88);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .rc-body p {
+      margin-bottom: 0.8rem;
     }
 
     .rc-body strong {
@@ -2674,7 +2883,7 @@
 
         const areaLabel = d.area || area;
         if (trTitle) trTitle.textContent = `Conteúdos em alta para ${areaLabel}`;
-        if (trSubtitle) trSubtitle.textContent = `${d.trends.length} pautas baseadas nas próximas datas do calendário de saúde.`;
+        if (trSubtitle) trSubtitle.textContent = `${d.trends.length} oportunidades de conteúdo — calendário sazonal + tendências da especialidade.`;
         if (trBadge) trBadge.textContent = 'Calendário + IA';
 
         const blocksHtml = d.trends.map((t, i) => {
@@ -2683,27 +2892,60 @@
               <i class="fa-solid fa-calendar-days"></i>
               <span>${t.gatilho}${t.gatilho_data ? ' — ' + t.gatilho_data : ''}</span>
             </div>` : '';
+
+          const oportunidadeHtml = t.oportunidade ? `
+            <div class="stp-trend-oportunidade">
+              <i class="fa-solid fa-bolt"></i>
+              <span>${t.oportunidade}</span>
+            </div>` : '';
+
+          const publicoHtml = t.publico ? `
+            <div class="stp-trend-publico">
+              <i class="fa-solid fa-user-check"></i>
+              <span>${t.publico}</span>
+            </div>` : '';
+
+          const slidesHtml = Array.isArray(t.carrossel?.slides) && t.carrossel.slides.length > 0
+            ? `<ul class="stp-slides-list">${t.carrossel.slides.map(s => `<li>${s}</li>`).join('')}</ul>` : '';
+
+          const storiesHtml = t.stories ? `
+            <div class="stp-format stp-format-stories">
+              <span class="stp-format-label"><i class="fa-solid fa-circle-play"></i> Stories</span>
+              <p class="stp-format-angulo">${t.stories}</p>
+            </div>` : '';
+
+          const kwHtml = Array.isArray(t.palavras_chave) && t.palavras_chave.length > 0
+            ? `<div class="stp-keywords">${t.palavras_chave.map(k => `<span class="stp-keyword">${k}</span>`).join('')}</div>` : '';
+
           return `
           <div class="stp-trend-block">
-            <div class="stp-trend-tema">
-              <span class="stp-trend-tema-num">${i + 1}</span>
-              ${t.tema || 'Tema'}
+            <div class="stp-trend-header">
+              <div class="stp-trend-tema">
+                <span class="stp-trend-tema-num">${i + 1}</span>
+                ${t.tema || 'Tema'}
+              </div>
+              ${gatilhoHtml}
             </div>
-            ${gatilhoHtml}
+            ${oportunidadeHtml}
+            ${publicoHtml}
             <div class="stp-formats">
               <div class="stp-format">
                 <span class="stp-format-label"><i class="fa-solid fa-video"></i> Reels</span>
                 <span class="stp-format-titulo">${t.reels?.titulo || ''}</span>
                 <p class="stp-format-gancho">"${t.reels?.gancho || ''}"</p>
                 <p class="stp-format-angulo">${t.reels?.angulo || ''}</p>
+                ${t.reels?.cta ? `<p class="stp-format-cta"><i class="fa-solid fa-arrow-right"></i> ${t.reels.cta}</p>` : ''}
               </div>
               <div class="stp-format">
                 <span class="stp-format-label"><i class="fa-solid fa-layer-group"></i> Carrossel</span>
                 <span class="stp-format-titulo">${t.carrossel?.titulo || ''}</span>
                 <p class="stp-format-gancho">"${t.carrossel?.gancho || ''}"</p>
-                <p class="stp-format-angulo">${t.carrossel?.angulo || ''}</p>
+                ${slidesHtml}
+                ${t.carrossel?.cta ? `<p class="stp-format-cta"><i class="fa-solid fa-arrow-right"></i> ${t.carrossel.cta}</p>` : ''}
               </div>
+              ${storiesHtml}
             </div>
+            ${kwHtml}
           </div>`;
         }).join('');
 
